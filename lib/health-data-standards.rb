@@ -65,6 +65,8 @@ require_relative 'health-data-standards/import/c32/patient_importer'
 require_relative 'health-data-standards/import/c32/provider_importer'
 require_relative 'health-data-standards/import/c32/organization_importer'
 
+require_relative 'health-data-standards/import/scoop_basic/patient_importer'
+
 require_relative 'health-data-standards/import/ccr/patient_importer'
 require_relative 'health-data-standards/import/ccr/provider_importer'
 require_relative 'health-data-standards/import/ccr/section_importer'
