@@ -81,7 +81,7 @@ module HealthDataStandards
           puts 'Before birthdate'
           birthdate_in_hl7ts_node = patient_element.at_xpath('cda:birthTime')
           birthdate_in_hl7ts = birthdate_in_hl7ts_node['value']
-          puts 'Before hl7 helper'
+          puts 'Before hl7 helper: value ' + birthdate_inhl7ts.to_s
           patient.birthdate = HL7Helper.timestamp_to_integer(birthdate_in_hl7ts)
           puts 'After birthdate'
           gender_node = patient_element.at_xpath('cda:administrativeGenderCode')
