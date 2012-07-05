@@ -78,6 +78,7 @@ module HealthDataStandards
           patient_element = doc.at_xpath('/cda:ClinicalDocument/cda:recordTarget/cda:patientRole/cda:patient')
           patient.first = patient_element.at_xpath('cda:name/cda:given').text
           patient.last = patient_element.at_xpath('cda:name/cda:family').text
+          puts 'Before birthdate'
           birthdate_in_hl7ts_node = patient_element.at_xpath('cda:birthTime')
           birthdate_in_hl7ts = birthdate_in_hl7ts_node['value']
           patient.birthdate = HL7Helper.timestamp_to_integer(birthdate_in_hl7ts)
