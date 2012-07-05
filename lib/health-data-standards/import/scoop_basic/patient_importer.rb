@@ -47,7 +47,9 @@ module HealthDataStandards
         # @return [Record] a Mongoid model representing the patient
         def parse_scoop_basic(doc)
           scoop_patient = Record.new
+          puts 'Before Get Demographics'
           get_demographics(scoop_patient, doc)
+          puts 'After Get Demographics'
           create_scoop_basic_hash(scoop_patient, doc)
           
           scoop_patient
