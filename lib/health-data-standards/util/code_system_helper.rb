@@ -19,6 +19,7 @@ module HealthDataStandards
         '2.16.840.1.113883.5.14' => 'HL7 ActStatus',
         '2.16.840.1.113883.6.259' => 'HL7 Healthcare Service Location',
         '2.16.840.1.113883.5.4' => 'HL7 Act Code'
+        "2.16.840.1.113883.5.1105" => "HC-DIN"
       }
       
       # Returns the name of a code system given an oid
