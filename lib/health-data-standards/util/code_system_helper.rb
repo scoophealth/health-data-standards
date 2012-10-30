@@ -22,6 +22,7 @@ module HealthDataStandards
         '2.16.840.1.113883.1.11.18877' => 'HL7 Relationship Code',
         '2.16.840.1.113883.6.238' => 'CDC Race'
         "2.16.840.1.113883.5.1105" => "HC-DIN"
+        "2.16.840.1.113883.6.73" => "whoATC"
       }
       
       # Returns the name of a code system given an oid
