@@ -2549,7 +2549,8 @@ Medications & Prescriptions - Medication List
 								<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
 								<manufacturedProduct classCode="MANU">
 									<manufacturedMaterial classCode="MMAT" determinerCode="KIND">
-										<code code="03741" codeSystem="2.16.840.1.113883.5.1105" codeSystemName="HC-DIN" displayName="Amoxicillin"/>
+										<code code="2352710" codeSystem="2.16.840.1.113883.5.1105" codeSystemName="HC-DIN" displayName="Amoxicillin"/>
+										<code code="J01CA04" codeSystem="2.16.840.1.113883.6.73" codeSystemName="whoATC" displayName="AMOXICILLIN"/>
 										<name>Amoxicillin</name>
 									</manufacturedMaterial>
 								</manufacturedProduct>
