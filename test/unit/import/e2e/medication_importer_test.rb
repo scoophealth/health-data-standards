@@ -8,7 +8,8 @@ class MedicationImporterTest < MiniTest::Unit::TestCase
     patient = pi.parse_e2e(doc)
     
     medication = patient.medications[0]
-    assert medication.codes['HC-DIN'].include? '03741'
+    assert medication.codes['HC-DIN'].include? '2352710'
+    assert medication.codes['whoATC'].include? 'J01CA04'
 
  #   assert_equal 6, medication.administration_timing['period']['value']
  #   assert_equal 'IPINHL', medication.route['code']
