@@ -92,6 +92,7 @@ module HealthDataStandards
 
         def extract_codes(parent_element, entry)
           code_elements = parent_element.xpath(@code_xpath)
+          
           code_elements.each do |code_element|
             add_code_if_present(code_element, entry)
             translations = code_element.xpath('cda:translation')
@@ -99,6 +100,7 @@ module HealthDataStandards
               add_code_if_present(translation, entry)
             end
           end
+
         end
 
         def add_code_if_present(code_element, entry)
