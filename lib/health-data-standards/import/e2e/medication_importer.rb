@@ -33,6 +33,7 @@ module HealthDataStandards
             medication.free_text = medication.description
           end
           
+          
           medication
         end
 
@@ -44,6 +45,29 @@ module HealthDataStandards
             entry.description = code_element
           end
         end
+
+        # Find date in Medication Prescription Event. Commented out because there should be an 
+        # orderinformation object created to hold the prescription dates.
+        
+        #def extract_dates(parent_element, entry, element_name="effectiveTime")
+        #  print "XML Node: " + parent_element.to_s + "\n"
+        #  if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}")
+        #    entry.time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}")['value'])
+        #  end
+        #  if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:low")
+        #    entry.start_time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:low")['value'])
+        #  end
+        #  if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:high")
+        #    entry.end_time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:high")['value'])
+        #  end
+        #  if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:center")
+        #    entry.time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:center")['value'])
+        #  end
+        #  print "Codes: " + entry.codes_to_s + "\n"
+        #  print "Time: " + entry.time.to_s + "\n"
+        #  print "Start Time: " + entry.start_time.to_s + "\n"
+        #  print "End Time: " + entry.end_time.to_s + "\n"
+        #end
 
       end
     end
