@@ -2,14 +2,14 @@ require 'test_helper'
 
 class MedicationImporterTest < MiniTest::Unit::TestCase
   def test_medication_importing
-    doc = Nokogiri::XML(File.new('test/fixtures/PITOExampleE2E.xml'))
+    doc = Nokogiri::XML(File.new('test/fixtures/JOHN_CLEESE_1_25091940.xml'))
     doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
     pi = HealthDataStandards::Import::E2E::PatientImporter.instance
     patient = pi.parse_e2e(doc)
     
     medication = patient.medications[0]
-    assert medication.codes['HC-DIN'].include? '2352710'
-    assert medication.codes['whoATC'].include? 'J01CA04'
+    assert medication.codes['HC-DIN'].include? '00559407'
+    assert medication.codes['whoATC'].include? 'N02BE01'
 
  #   assert_equal 6, medication.administration_timing['period']['value']
  #   assert_equal 'IPINHL', medication.route['code']
