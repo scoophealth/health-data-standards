@@ -50,11 +50,13 @@ module HealthDataStandards
           entry_elements = doc.xpath(@entry_xpath)
           entry_elements.each do |entry_element|
             entry = create_entry(entry_element, id_map)
+
             if @check_for_usable
               entry_list << entry if entry.usable?
             else
               entry_list << entry
             end
+            
           end
           entry_list
         end
@@ -94,7 +96,9 @@ module HealthDataStandards
           code_elements = parent_element.xpath(@code_xpath)
           
           code_elements.each do |code_element|
+
             add_code_if_present(code_element, entry)
+
             translations = code_element.xpath('cda:translation')
             translations.each do |translation|
               add_code_if_present(translation, entry)
@@ -110,6 +114,7 @@ module HealthDataStandards
         end
 
         def extract_dates(parent_element, entry, element_name="effectiveTime")
+          
           if parent_element.at_xpath("cda:#{element_name}")
             entry.time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:#{element_name}")['value'])
           end
