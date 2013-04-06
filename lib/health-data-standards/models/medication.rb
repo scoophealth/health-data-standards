@@ -47,4 +47,11 @@ class Medication < Entry
   alias :dose_indicator= :doseIndicator=
   alias :cumulative_medication_duration :cumulativeMedicationDuration
   alias :cumulative_medication_duration= :cumulativeMedicationDuration=
+
+  # Checks to see if this Entry is usable for measure calculation. This means that it contains
+  # at least one code and has one of its time properties set (start, end or time)
+  # @return [true, false]
+  #def usable?
+  #  codes.present?
+  #end
 end
