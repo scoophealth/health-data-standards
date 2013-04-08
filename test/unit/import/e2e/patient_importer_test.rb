@@ -15,7 +15,7 @@ class PatientImporterTest < MiniTest::Unit::TestCase
     doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
     
     patient = Record.new
-    HealthDataStandards::Import::C32::PatientImporter.instance.get_demographics(patient, doc)
+    HealthDataStandards::Import::E2E::PatientImporter.instance.get_demographics(patient, doc)
     
 
     assert_equal 'JOHN', patient.first
@@ -53,7 +53,7 @@ class PatientImporterTest < MiniTest::Unit::TestCase
     doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
     
     patient = HealthDataStandards::Import::E2E::PatientImporter.instance.parse_e2e(doc)
-    patient.save!
+    #patient.save!
     #assert_equal 1, patient.conditions.size
     #assert patient.expired
 
