@@ -35,6 +35,7 @@ module HealthDataStandards
           
           extract_order_information(entry_element, medication)
           extract_dates(entry_element, medication)
+          extract_author_time(entry_element, medication)
           
           medication
         end
@@ -70,7 +71,7 @@ module HealthDataStandards
         # orderinformation object created to hold the prescription dates.
         
         def extract_dates(parent_element, entry, element_name="effectiveTime")
-          print "XML Node: " + parent_element.to_s + "\n"
+          #print "XML Node: " + parent_element.to_s + "\n"
           if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}")
             entry.time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}")['value'])
           end
@@ -83,11 +84,17 @@ module HealthDataStandards
           if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:center")
             entry.time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:center")['value'])
           end
-          print "Codes: " + entry.codes_to_s + "\n"
-          print "Time: " + entry.time.to_s + "\n"
-          print "Start Time: " + entry.start_time.to_s + "\n"
-          print "End Time: " + entry.end_time.to_s + "\n"
+          #print "Codes: " + entry.codes_to_s + "\n"
+          #print "Time: " + entry.time.to_s + "\n"
+          #print "Start Time: " + entry.start_time.to_s + "\n"
+          #print "End Time: " + entry.end_time.to_s + "\n"
         end
+
+        def extract_author_time(parent_element, entry, element_name="author")
+          if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}")
+            entry.time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:time")['value'])
+          end
+	end
       end
     end
   end
