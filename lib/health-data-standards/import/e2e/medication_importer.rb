@@ -26,13 +26,15 @@ module HealthDataStandards
         def create_entry(entry_element, id_map={})
           medication = Medication.new
           extract_codes(entry_element, medication)
-          extract_dates(entry_element, medication)
+          #extract_dates(entry_element, medication)
           extract_description(entry_element, medication)
           
           if medication.description.present?
             medication.free_text = medication.description
           end
           
+          extract_order_information(entry_element, medication)
+          extract_dates(entry_element, medication)
           
           medication
         end
@@ -45,30 +47,47 @@ module HealthDataStandards
             entry.description = code_element
           end
         end
+    
+        def extract_order_information(parent_element, medication)
+          order_elements = parent_element.xpath("./cda:entryRelationship[@typeCode='REFR']/cda:supply[@moodCode='INT']")
+          if order_elements
+            order_elements.each do |order_element|
+              order_information = OrderInformation.new
+              actor_element = order_element.at_xpath('./cda:author')
+              if actor_element
+                order_information.provider = ProviderImporter.instance.extract_provider(actor_element, "assignedAuthor")
+              end
+              order_information.order_number = order_element.at_xpath('./cda:id').try(:[], 'root')
+              order_information.fills = order_element.at_xpath('./cda:repeatNumber').try(:[], 'value').try(:to_i)
+              order_information.quantity_ordered = extract_scalar(order_element, "./cda:quantity")
+          
+              medication.orderInformation << order_information
+            end
+          end
+        end
 
         # Find date in Medication Prescription Event. Commented out because there should be an 
         # orderinformation object created to hold the prescription dates.
         
-        #def extract_dates(parent_element, entry, element_name="effectiveTime")
-        #  print "XML Node: " + parent_element.to_s + "\n"
-        #  if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}")
-        #    entry.time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}")['value'])
-        #  end
-        #  if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:low")
-        #    entry.start_time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:low")['value'])
-        #  end
-        #  if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:high")
-        #    entry.end_time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:high")['value'])
-        #  end
-        #  if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:center")
-        #    entry.time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:center")['value'])
-        #  end
-        #  print "Codes: " + entry.codes_to_s + "\n"
-        #  print "Time: " + entry.time.to_s + "\n"
-        #  print "Start Time: " + entry.start_time.to_s + "\n"
-        #  print "End Time: " + entry.end_time.to_s + "\n"
-        #end
-
+        def extract_dates(parent_element, entry, element_name="effectiveTime")
+          print "XML Node: " + parent_element.to_s + "\n"
+          if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}")
+            entry.time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}")['value'])
+          end
+          if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:low")
+            entry.start_time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:low")['value'])
+          end
+          if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:high")
+            entry.end_time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:high")['value'])
+          end
+          if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:center")
+            entry.time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:center")['value'])
+          end
+          print "Codes: " + entry.codes_to_s + "\n"
+          print "Time: " + entry.time.to_s + "\n"
+          print "Start Time: " + entry.start_time.to_s + "\n"
+          print "End Time: " + entry.end_time.to_s + "\n"
+        end
       end
     end
   end
