@@ -1,3 +1,5 @@
+# Tests can be run individually using:
+# bundle exec ruby -Ilib:test test/unit/import/e2e/medication_importer_test.rb
 require 'test_helper'
 
 class MedicationImporterTest < MiniTest::Unit::TestCase
@@ -6,6 +8,8 @@ class MedicationImporterTest < MiniTest::Unit::TestCase
     doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
     pi = HealthDataStandards::Import::E2E::PatientImporter.instance
     patient = pi.parse_e2e(doc)
+
+    patient.save!
     
     medication = patient.medications[0]
     assert medication.codes['HC-DIN'].include? '00559407'
