@@ -5,7 +5,7 @@
  xmlns:hl7="urn:hl7-org:v3"
  xmlns:xs="http://www.w3.org/2001/XMLSchema"
  xmlns:e2e="http://standards.pito.bc.ca/E2E-DTC/cda">
-<!-- 
+<!--
 ********************************************************
 CDA Header
 ********************************************************
@@ -17,7 +17,7 @@ CDA Header
 	<title>PITO EMR-2-EMR Complete Instance Example</title>
 	<effectiveTime value="201303210952"/>
 	<confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
-	<!-- 
+	<!--
 	********************************************************
 	Record Target
 	********************************************************
@@ -35,7 +35,7 @@ CDA Header
 			</patient>
 		</patientRole>
 	</recordTarget>
-	<!-- 
+	<!--
 	********************************************************
 	Author
 	********************************************************
@@ -46,7 +46,7 @@ CDA Header
 			<id extension="OSCAR EMR" root="DCCD2C68-389B-44C4-AD99-B8FB2DAD1493"/>
 		</assignedAuthor>
 	</author>
-	<!-- 
+	<!--
 	********************************************************
 	Custodian
 	********************************************************
@@ -58,7 +58,7 @@ CDA Header
 			</representedCustodianOrganization>
 		</assignedCustodian>
 	</custodian>
-<!-- 
+<!--
 ********************************************************
 e-MS CDA Structured Body
 ********************************************************
@@ -104,7 +104,7 @@ Allergies and Intolerances - (Reaction List)
 										<observation classCode="OBS" moodCode="EVN">
 											<code code="SEV" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActCode" displayName="Severity"/>
 											<value xsi:type="CD" code="MI" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ObservationValue" displayName="unknown"/>
-										</observation>	
+										</observation>
 									</entryRelationship>
 									<entryRelationship typeCode="COMP" contextConductionInd="true">
 										<observation classCode="OBS" moodCode="EVN">
@@ -171,10 +171,10 @@ Immunization List
 									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.22"/>
 									<playingEntity classCode="PLC" determinerCode="INSTANCE">
 										<name>Left Delt</name>
-									</playingEntity>								
+									</playingEntity>
 								</participantRole>
 							</participant>
-						</substanceAdministration>						
+						</substanceAdministration>
 					</entry>
 					<entry typeCode="COMP" contextConductionInd="true">
 						<templateId root="2.16.840.1.113883.3.1818.10.3.11"/>
@@ -208,7 +208,7 @@ Immunization List
 									</assignedPerson>
 								</assignedAuthor>
 							</author>
-						</substanceAdministration>						
+						</substanceAdministration>
 					</entry>
 					<entry typeCode="COMP" contextConductionInd="true">
 						<templateId root="2.16.840.1.113883.3.1818.10.3.11"/>
@@ -251,10 +251,10 @@ Immunization List
 									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.22"/>
 									<playingEntity classCode="PLC" determinerCode="INSTANCE">
 										<name>Right Delt</name>
-									</playingEntity>								
+									</playingEntity>
 								</participantRole>
 							</participant>
-						</substanceAdministration>						
+						</substanceAdministration>
 					</entry>
 				</section>
 			</component>
@@ -305,7 +305,7 @@ Laboratory Results & Results
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="12227-5" displayName="WBC"            
+											<code code="12227-5" displayName="WBC"
 												codeSystemName="LOINC"/>
 											<text>WBC</text>
 											<statusCode code="final"/>
@@ -337,7 +337,7 @@ Laboratory Results & Results
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="789-8" displayName="RBC"            
+											<code code="789-8" displayName="RBC"
 												codeSystemName="LOINC"/>
 											<text>RBC</text>
 											<statusCode code="final"/>
@@ -369,7 +369,7 @@ Laboratory Results & Results
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="718-7" displayName="Hemoglobin"            
+											<code code="718-7" displayName="Hemoglobin"
 												codeSystemName="LOINC"/>
 											<text>Hemoglobin</text>
 											<statusCode code="final"/>
@@ -401,7 +401,7 @@ Laboratory Results & Results
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="4544-3" displayName="Hematocrit"            
+											<code code="4544-3" displayName="Hematocrit"
 												codeSystemName="LOINC"/>
 											<text>Hematocrit</text>
 											<statusCode code="final"/>
@@ -433,7 +433,7 @@ Laboratory Results & Results
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="787-2" displayName="MCV"            
+											<code code="787-2" displayName="MCV"
 												codeSystemName="LOINC"/>
 											<text>MCV</text>
 											<statusCode code="final"/>
@@ -465,7 +465,7 @@ Laboratory Results & Results
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="788-0" displayName="RDW"            
+											<code code="788-0" displayName="RDW"
 												codeSystemName="LOINC"/>
 											<text>RDW</text>
 											<statusCode code="final"/>
@@ -497,7 +497,7 @@ Laboratory Results & Results
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="777-3" displayName="Platelet Count"            
+											<code code="777-3" displayName="Platelet Count"
 												codeSystemName="LOINC"/>
 											<text>Platelet Count</text>
 											<statusCode code="final"/>
@@ -529,7 +529,7 @@ Laboratory Results & Results
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="751-8" displayName="Neutrophils"            
+											<code code="751-8" displayName="Neutrophils"
 												codeSystemName="LOINC"/>
 											<text>Neutrophils</text>
 											<statusCode code="final"/>
@@ -561,7 +561,7 @@ Laboratory Results & Results
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="731-0" displayName="Lymphocytes"            
+											<code code="731-0" displayName="Lymphocytes"
 												codeSystemName="LOINC"/>
 											<text>Lymphocytes</text>
 											<statusCode code="final"/>
@@ -593,7 +593,7 @@ Laboratory Results & Results
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="742-7" displayName="Monocytes"            
+											<code code="742-7" displayName="Monocytes"
 												codeSystemName="LOINC"/>
 											<text>Monocytes</text>
 											<statusCode code="final"/>
@@ -625,7 +625,7 @@ Laboratory Results & Results
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="711-2" displayName="Eosinophils"            
+											<code code="711-2" displayName="Eosinophils"
 												codeSystemName="LOINC"/>
 											<text>Eosinophils</text>
 											<statusCode code="final"/>
@@ -657,7 +657,7 @@ Laboratory Results & Results
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="704-7" displayName="Basophils"            
+											<code code="704-7" displayName="Basophils"
 												codeSystemName="LOINC"/>
 											<text>Basophils</text>
 											<statusCode code="final"/>
@@ -698,7 +698,7 @@ Laboratory Results & Results
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="2885-2" displayName="Total Protein"            
+											<code code="2885-2" displayName="Total Protein"
 												codeSystemName="LOINC"/>
 											<text>Total Protein</text>
 											<statusCode code="final"/>
@@ -739,7 +739,7 @@ Laboratory Results & Results
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="1751-7" displayName="Albumin"            
+											<code code="1751-7" displayName="Albumin"
 												codeSystemName="LOINC"/>
 											<text>Albumin</text>
 											<statusCode code="final"/>
@@ -780,7 +780,7 @@ Laboratory Results & Results
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="14631-6" displayName="Total Bilirubin"            
+											<code code="14631-6" displayName="Total Bilirubin"
 												codeSystemName="LOINC"/>
 											<text>Total Bilirubin</text>
 											<statusCode code="final"/>
@@ -812,7 +812,7 @@ Laboratory Results & Results
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="14629-0" displayName="Direct Bilirubin"            
+											<code code="14629-0" displayName="Direct Bilirubin"
 												codeSystemName="LOINC"/>
 											<text>Direct Bilirubin</text>
 											<statusCode code="final"/>
@@ -853,7 +853,7 @@ Laboratory Results & Results
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="6768-6" displayName="Alkaline Phosphatase"            
+											<code code="6768-6" displayName="Alkaline Phosphatase"
 												codeSystemName="LOINC"/>
 											<text>Alkaline Phosphatase</text>
 											<statusCode code="final"/>
@@ -894,7 +894,7 @@ Laboratory Results & Results
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="2324-2" displayName="Gamma GT"            
+											<code code="2324-2" displayName="Gamma GT"
 												codeSystemName="LOINC"/>
 											<text>Gamma GT</text>
 											<statusCode code="final"/>
@@ -935,7 +935,7 @@ Laboratory Results & Results
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="1742-6" displayName="ALT"            
+											<code code="1742-6" displayName="ALT"
 												codeSystemName="LOINC"/>
 											<text>ALT</text>
 											<statusCode code="final"/>
@@ -976,7 +976,7 @@ Laboratory Results & Results
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="1920-8" displayName="AST"            
+											<code code="1920-8" displayName="AST"
 												codeSystemName="LOINC"/>
 											<text>AST</text>
 											<statusCode code="final"/>
@@ -1017,7 +1017,7 @@ Laboratory Results & Results
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="2532-0" displayName="LD"            
+											<code code="2532-0" displayName="LD"
 												codeSystemName="LOINC"/>
 											<text>LD</text>
 											<statusCode code="final"/>
@@ -1058,7 +1058,7 @@ Laboratory Results & Results
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="26513-2" displayName="Fluid Neutrophils"            
+											<code code="26513-2" displayName="Fluid Neutrophils"
 												codeSystemName="LOINC"/>
 											<text>Fluid Neutrophils</text>
 											<statusCode code="corrected"/>
@@ -1090,7 +1090,7 @@ Laboratory Results & Results
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="11031-2" displayName="Fluid Lymphocytes"            
+											<code code="11031-2" displayName="Fluid Lymphocytes"
 												codeSystemName="LOINC"/>
 											<text>Fluid Lymphocytes</text>
 											<statusCode code="corrected"/>
@@ -1122,7 +1122,7 @@ Laboratory Results & Results
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="30437-8" displayName="Fluid Monocytes + Macrophages"            
+											<code code="30437-8" displayName="Fluid Monocytes + Macrophages"
 												codeSystemName="LOINC"/>
 											<text>Fluid Monocytes + Macrophages</text>
 											<statusCode code="corrected"/>
@@ -1154,7 +1154,7 @@ Laboratory Results & Results
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="28544-5" displayName="Fluid Mesothelial Cells"            
+											<code code="28544-5" displayName="Fluid Mesothelial Cells"
 												codeSystemName="LOINC"/>
 											<text>Fluid Mesothelial Cells</text>
 											<statusCode code="corrected"/>
@@ -1221,7 +1221,7 @@ Laboratory Results & Results
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="31208-2" displayName="Specimen Source"            
+											<code code="31208-2" displayName="Specimen Source"
 												codeSystemName="LOINC"/>
 											<text>Specimen Source</text>
 											<statusCode code="final"/>
@@ -1254,15 +1254,15 @@ bone Lt metatarsal</value>
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="664-3" displayName="Gram Stain"            
+											<code code="664-3" displayName="Gram Stain"
 												codeSystemName="LOINC"/>
 											<text>Gram Stain</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110429024909"/>
-											<value xsi:type="ST">+3 Polymorphs 
-+4 Gram negative bacilli resembling coliforms 
-+4 Gram positive cocci in pairs and chains 
-+2 Gram positive cocci in clusters 
+											<value xsi:type="ST">+3 Polymorphs
++4 Gram negative bacilli resembling coliforms
++4 Gram positive cocci in pairs and chains
++2 Gram positive cocci in clusters
 +2 Yeast</value>
 											<interpretationCode code="N"/>
 											<performer typeCode="PRF">
@@ -1290,14 +1290,14 @@ bone Lt metatarsal</value>
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="X10114C" displayName="Report Status Preliminary"            
+											<code code="X10114C" displayName="Report Status Preliminary"
 												codeSystemName="LOINC"/>
 											<text>Report Status Preliminary</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110503105149"/>
-											<value xsi:type="ST">+3 Proteus mirabilis 
-Imipenem : Further report to follow 
-+3 Escherichia coli 
+											<value xsi:type="ST">+3 Proteus mirabilis
+Imipenem : Further report to follow
++3 Escherichia coli
 +3 Klebsiella oxytoca</value>
 											<interpretationCode code="N"/>
 											<performer typeCode="PRF">
@@ -1325,7 +1325,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="6463-4" displayName="Culture"            
+											<code code="6463-4" displayName="Culture"
 												codeSystemName="LOINC"/>
 											<text>Culture</text>
 											<statusCode code="final"/>
@@ -1357,7 +1357,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="28-1" displayName="Ampicillin"            
+											<code code="28-1" displayName="Ampicillin"
 												codeSystemName="LOINC"/>
 											<text>Ampicillin</text>
 											<statusCode code="final"/>
@@ -1389,7 +1389,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="149-5" displayName="Cephalexin"            
+											<code code="149-5" displayName="Cephalexin"
 												codeSystemName="LOINC"/>
 											<text>Cephalexin</text>
 											<statusCode code="final"/>
@@ -1421,7 +1421,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="76-0" displayName="Cefazolin"            
+											<code code="76-0" displayName="Cefazolin"
 												codeSystemName="LOINC"/>
 											<text>Cefazolin</text>
 											<statusCode code="final"/>
@@ -1453,7 +1453,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="145-3" displayName="Cefuroxime Parenteral"            
+											<code code="145-3" displayName="Cefuroxime Parenteral"
 												codeSystemName="LOINC"/>
 											<text>Cefuroxime Parenteral</text>
 											<statusCode code="final"/>
@@ -1485,7 +1485,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="80-2" displayName="Cefixime"            
+											<code code="80-2" displayName="Cefixime"
 												codeSystemName="LOINC"/>
 											<text>Cefixime</text>
 											<statusCode code="final"/>
@@ -1517,7 +1517,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="108-1" displayName="Cefotaxime"            
+											<code code="108-1" displayName="Cefotaxime"
 												codeSystemName="LOINC"/>
 											<text>Cefotaxime</text>
 											<statusCode code="final"/>
@@ -1549,7 +1549,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="141-2" displayName="Ceftriaxone"            
+											<code code="141-2" displayName="Ceftriaxone"
 												codeSystemName="LOINC"/>
 											<text>Ceftriaxone</text>
 											<statusCode code="final"/>
@@ -1581,7 +1581,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="120-6" displayName="Cefpodoxime"            
+											<code code="120-6" displayName="Cefpodoxime"
 												codeSystemName="LOINC"/>
 											<text>Cefpodoxime</text>
 											<statusCode code="final"/>
@@ -1613,7 +1613,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="133-9" displayName="Ceftazidime"            
+											<code code="133-9" displayName="Ceftazidime"
 												codeSystemName="LOINC"/>
 											<text>Ceftazidime</text>
 											<statusCode code="final"/>
@@ -1645,7 +1645,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="516-5" displayName="Trimethoprim-Sulfa"            
+											<code code="516-5" displayName="Trimethoprim-Sulfa"
 												codeSystemName="LOINC"/>
 											<text>Trimethoprim-Sulfa</text>
 											<statusCode code="final"/>
@@ -1677,7 +1677,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="185-9" displayName="Ciprofloxacin"            
+											<code code="185-9" displayName="Ciprofloxacin"
 												codeSystemName="LOINC"/>
 											<text>Ciprofloxacin</text>
 											<statusCode code="final"/>
@@ -1709,7 +1709,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="267-5" displayName="Gentamicin"            
+											<code code="267-5" displayName="Gentamicin"
 												codeSystemName="LOINC"/>
 											<text>Gentamicin</text>
 											<statusCode code="final"/>
@@ -1741,7 +1741,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="496-0" displayName="Tetracycline"            
+											<code code="496-0" displayName="Tetracycline"
 												codeSystemName="LOINC"/>
 											<text>Tetracycline</text>
 											<statusCode code="final"/>
@@ -1773,7 +1773,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="6463-4" displayName="Culture"            
+											<code code="6463-4" displayName="Culture"
 												codeSystemName="LOINC"/>
 											<text>Culture</text>
 											<statusCode code="final"/>
@@ -1805,7 +1805,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="28-1" displayName="Ampicillin"            
+											<code code="28-1" displayName="Ampicillin"
 												codeSystemName="LOINC"/>
 											<text>Ampicillin</text>
 											<statusCode code="final"/>
@@ -1837,7 +1837,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="149-5" displayName="Cephalexin"            
+											<code code="149-5" displayName="Cephalexin"
 												codeSystemName="LOINC"/>
 											<text>Cephalexin</text>
 											<statusCode code="final"/>
@@ -1869,7 +1869,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="76-0" displayName="Cefazolin"            
+											<code code="76-0" displayName="Cefazolin"
 												codeSystemName="LOINC"/>
 											<text>Cefazolin</text>
 											<statusCode code="final"/>
@@ -1901,7 +1901,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="516-5" displayName="Trimethoprim-Sulfa"            
+											<code code="516-5" displayName="Trimethoprim-Sulfa"
 												codeSystemName="LOINC"/>
 											<text>Trimethoprim-Sulfa</text>
 											<statusCode code="final"/>
@@ -1933,7 +1933,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="185-9" displayName="Ciprofloxacin"            
+											<code code="185-9" displayName="Ciprofloxacin"
 												codeSystemName="LOINC"/>
 											<text>Ciprofloxacin</text>
 											<statusCode code="final"/>
@@ -1965,7 +1965,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="267-5" displayName="Gentamicin"            
+											<code code="267-5" displayName="Gentamicin"
 												codeSystemName="LOINC"/>
 											<text>Gentamicin</text>
 											<statusCode code="final"/>
@@ -1997,7 +1997,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="6463-4" displayName="Culture"            
+											<code code="6463-4" displayName="Culture"
 												codeSystemName="LOINC"/>
 											<text>Culture</text>
 											<statusCode code="final"/>
@@ -2029,7 +2029,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="28-1" displayName="Ampicillin"            
+											<code code="28-1" displayName="Ampicillin"
 												codeSystemName="LOINC"/>
 											<text>Ampicillin</text>
 											<statusCode code="final"/>
@@ -2061,7 +2061,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="149-5" displayName="Cephalexin"            
+											<code code="149-5" displayName="Cephalexin"
 												codeSystemName="LOINC"/>
 											<text>Cephalexin</text>
 											<statusCode code="final"/>
@@ -2093,7 +2093,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="76-0" displayName="Cefazolin"            
+											<code code="76-0" displayName="Cefazolin"
 												codeSystemName="LOINC"/>
 											<text>Cefazolin</text>
 											<statusCode code="final"/>
@@ -2125,7 +2125,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="516-5" displayName="Trimethoprim-Sulfa"            
+											<code code="516-5" displayName="Trimethoprim-Sulfa"
 												codeSystemName="LOINC"/>
 											<text>Trimethoprim-Sulfa</text>
 											<statusCode code="final"/>
@@ -2157,7 +2157,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="185-9" displayName="Ciprofloxacin"            
+											<code code="185-9" displayName="Ciprofloxacin"
 												codeSystemName="LOINC"/>
 											<text>Ciprofloxacin</text>
 											<statusCode code="final"/>
@@ -2189,7 +2189,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="267-5" displayName="Gentamicin"            
+											<code code="267-5" displayName="Gentamicin"
 												codeSystemName="LOINC"/>
 											<text>Gentamicin</text>
 											<statusCode code="final"/>
@@ -2252,7 +2252,7 @@ Medications and Prescriptions - Medication List
 										</strength>
 									</manufacturedLabeledDrug>
 								</manufacturedProduct>
-							</consumable>    
+							</consumable>
 							<!--end Medication Identification-->
 							<!-- Medication Prescription Event-->
 							<entryRelationship typeCode="COMP" contextConductionInd="true">
@@ -2332,6 +2332,16 @@ Medications and Prescriptions - Medication List
 											<value xsi:type="BL" value="true"/>
 										</observation>
 									</entryRelationship>
+									<entryRelationship typeCode="SUBJ" inversionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.35"/>
+										<observation classCode="OBS" moodCode="EVN">
+										<code code="INSTRUCT" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1" codeSystemName="PITO ObservationType" displayName="Instructions"/>
+										<text>Special medication instructions to patient</text>
+										<participant typeCode="PRCP" contextControlCode="OP">
+											<participantRole classCode="PAT"/>
+										</participant>
+										</observation>
+									</entryRelationship>
 								</substanceAdministration>
 							</entryRelationship>
 						</substanceAdministration>
@@ -2356,7 +2366,7 @@ Medications and Prescriptions - Medication List
 										</strength>
 									</manufacturedLabeledDrug>
 								</manufacturedProduct>
-							</consumable>    
+							</consumable>
 							<!--end Medication Identification-->
 							<!-- Medication Prescription Event-->
 							<entryRelationship typeCode="COMP" contextConductionInd="true">
@@ -2460,7 +2470,7 @@ Medications and Prescriptions - Medication List
 										</strength>
 									</manufacturedLabeledDrug>
 								</manufacturedProduct>
-							</consumable>    
+							</consumable>
 							<!--end Medication Identification-->
 							<!-- Medication Prescription Event-->
 							<entryRelationship typeCode="COMP" contextConductionInd="true">
@@ -2564,7 +2574,7 @@ Medications and Prescriptions - Medication List
 										</strength>
 									</manufacturedLabeledDrug>
 								</manufacturedProduct>
-							</consumable>    
+							</consumable>
 							<!--end Medication Identification-->
 							<!-- Medication Prescription Event-->
 							<entryRelationship typeCode="COMP" contextConductionInd="true">
@@ -2668,7 +2678,7 @@ Medications and Prescriptions - Medication List
 										</strength>
 									</manufacturedLabeledDrug>
 								</manufacturedProduct>
-							</consumable>    
+							</consumable>
 							<!--end Medication Identification-->
 							<!-- Medication Prescription Event-->
 							<entryRelationship typeCode="COMP" contextConductionInd="true">
@@ -2772,7 +2782,7 @@ Medications and Prescriptions - Medication List
 										</strength>
 									</manufacturedLabeledDrug>
 								</manufacturedProduct>
-							</consumable>    
+							</consumable>
 							<!--end Medication Identification-->
 							<!-- Medication Prescription Event-->
 							<entryRelationship typeCode="COMP" contextConductionInd="true">
@@ -2876,7 +2886,7 @@ Medications and Prescriptions - Medication List
 										</strength>
 									</manufacturedLabeledDrug>
 								</manufacturedProduct>
-							</consumable>    
+							</consumable>
 							<!--end Medication Identification-->
 							<!-- Medication Prescription Event-->
 							<entryRelationship typeCode="COMP" contextConductionInd="true">
@@ -2980,7 +2990,7 @@ Medications and Prescriptions - Medication List
 										</strength>
 									</manufacturedLabeledDrug>
 								</manufacturedProduct>
-							</consumable>    
+							</consumable>
 							<!--end Medication Identification-->
 							<!-- Medication Prescription Event-->
 							<entryRelationship typeCode="COMP" contextConductionInd="true">
@@ -3084,7 +3094,7 @@ Medications and Prescriptions - Medication List
 										</strength>
 									</manufacturedLabeledDrug>
 								</manufacturedProduct>
-							</consumable>    
+							</consumable>
 							<!--end Medication Identification-->
 							<!-- Medication Prescription Event-->
 							<entryRelationship typeCode="COMP" contextConductionInd="true">
@@ -3170,7 +3180,7 @@ Medications and Prescriptions - Medication List
 					</entry>
 				</section>
 			</component>
-<!--			
+<!--
 ********************************************************
 Problems and Conditions - Problem List
 ********************************************************
@@ -3181,7 +3191,7 @@ Problems and Conditions - Problem List
 					<code code="11450-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Problems list Reported"/>
 					<title>Problems and Conditions - Problem List [with entries]</title>
 					<text>Text text text</text>
-					<entry typeCode="COMP" contextConductionInd="true"> 
+					<entry typeCode="COMP" contextConductionInd="true">
 						<templateId root="2.16.840.1.113883.3.1818.10.3.15"/>
 						<!-- Problem List Observation -->
 						<observation classCode="OBS" moodCode="EVN">
@@ -3208,11 +3218,11 @@ codeSystemName="ICD-9" displayName="HEART FAILURE*"/>
 											<family>doe</family>
 										</name>
 									</assignedPerson>
-								</assignedAuthor>								
+								</assignedAuthor>
 							</author>
 						</observation>
 					</entry>
-					<entry typeCode="COMP" contextConductionInd="true"> 
+					<entry typeCode="COMP" contextConductionInd="true">
 						<templateId root="2.16.840.1.113883.3.1818.10.3.15"/>
 						<!-- Problem List Observation -->
 						<observation classCode="OBS" moodCode="EVN">
@@ -3239,11 +3249,11 @@ codeSystemName="ICD-9" displayName="ESSENTIAL HYPERTENSION*"/>
 											<family>doe</family>
 										</name>
 									</assignedPerson>
-								</assignedAuthor>								
+								</assignedAuthor>
 							</author>
 						</observation>
 					</entry>
-					<entry typeCode="COMP" contextConductionInd="true"> 
+					<entry typeCode="COMP" contextConductionInd="true">
 						<templateId root="2.16.840.1.113883.3.1818.10.3.15"/>
 						<!-- Problem List Observation -->
 						<observation classCode="OBS" moodCode="EVN">
@@ -3270,11 +3280,11 @@ codeSystemName="ICD-9" displayName="DIABETES MELLITUS*"/>
 											<family>doe</family>
 										</name>
 									</assignedPerson>
-								</assignedAuthor>								
+								</assignedAuthor>
 							</author>
 						</observation>
 					</entry>
-					<entry typeCode="COMP" contextConductionInd="true"> 
+					<entry typeCode="COMP" contextConductionInd="true">
 						<templateId root="2.16.840.1.113883.3.1818.10.3.15"/>
 						<!-- Problem List Observation -->
 						<observation classCode="OBS" moodCode="EVN">
@@ -3301,7 +3311,7 @@ codeSystemName="ICD-9" displayName="CHRONIC BRONCHITIS*"/>
 											<family>doe</family>
 										</name>
 									</assignedPerson>
-								</assignedAuthor>								
+								</assignedAuthor>
 							</author>
 						</observation>
 					</entry>
