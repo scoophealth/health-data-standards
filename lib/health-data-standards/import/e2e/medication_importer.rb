@@ -20,7 +20,7 @@ module HealthDataStandards
           @description_xpath = "./cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/cda:name/text()"
           @entrystatus_xpath = "./cda:statusCode"            # not used
           @code_xpath = "./cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/cda:code"
-          # use strength to populate Entry.value
+          # using cda:strength to populate Entry.value
           @strength_xpath = "./cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/cda:strength"
 
           # location of Medication class fields
@@ -47,12 +47,7 @@ module HealthDataStandards
 
           # Entry fields not captured by e2e:
           #  specifics
-          #  time
-          #  start_time
-          #  end_time
-          #  value
           #  free_text (instructions from the ordering provider to patient)
-          #  mood_code
 
           # Medication fields not captured by e2e:
           #  typeOfMedication (e.g., prescription, over-counter, etc.)
@@ -107,9 +102,9 @@ module HealthDataStandards
           extract_route(entry_element, medication)
           extract_form(entry_element, medication)
 
-          extract_order_information(entry_element, medication)
+          #extract_order_information(entry_element, medication)
           extract_author_time(entry_element, medication)
-          extract_fulfillment_history(entry_element, medication)
+          #extract_fulfillment_history(entry_element, medication)
           medication
         end
 
@@ -132,25 +127,25 @@ module HealthDataStandards
         # Find date in Medication Prescription Event.
         def extract_dates(parent_element, entry, element_name="effectiveTime")
           #print "XML Node: " + parent_element.to_s + "\n"
-          if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}")
-            entry.time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}")['value'])
-          end
+          #if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}")
+          #  entry.time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}")['value'])
+          #end
           if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:low")
             entry.start_time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:low")['value'])
           end
           if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:high")
             entry.end_time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:high")['value'])
           end
-          if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:center")
-            entry.time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:center")['value'])
-          end
+          #if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:center")
+          #  entry.time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:center")['value'])
+          #end
           #print "Codes: " + entry.codes_to_s + "\n"
           #print "Time: " + entry.time.to_s + "\n"
           #print "Start Time: " + entry.start_time.to_s + "\n"
           #print "End Time: " + entry.end_time.to_s + "\n"
         end
 
-        # only handles drug administration timing expressed as a frequency
+        # this method only handles drug administration timing expressed as a frequency
         # (does not handle specific time, interval or duration specifications)
         def extract_administration_timing(parent_element, medication)
           ate = parent_element.xpath(@timing_xpath)
@@ -206,23 +201,23 @@ module HealthDataStandards
           #print "code: " + entry.productForm.to_s + "\n"
         end
 
-        def extract_order_information(parent_element, medication)
-          order_elements = parent_element.xpath("./cda:entryRelationship[@typeCode='REFR']/cda:supply[@moodCode='INT']")
-          if order_elements
-            order_elements.each do |order_element|
-              order_information = OrderInformation.new
-              actor_element = order_element.at_xpath('./cda:author')
-              if actor_element
-                order_information.provider = ProviderImporter.instance.extract_provider(actor_element, "assignedAuthor")
-              end
-              order_information.order_number = order_element.at_xpath('./cda:id').try(:[], 'root')
-              order_information.fills = order_element.at_xpath('./cda:repeatNumber').try(:[], 'value').try(:to_i)
-              order_information.quantity_ordered = extract_scalar(order_element, "./cda:quantity")
-
-              medication.orderInformation << order_information
-            end
-          end
-        end
+        #def extract_order_information(parent_element, medication)
+        #  order_elements = parent_element.xpath("./cda:entryRelationship[@typeCode='REFR']/cda:supply[@moodCode='INT']")
+        #  if order_elements
+        #    order_elements.each do |order_element|
+        #      order_information = OrderInformation.new
+        #      actor_element = order_element.at_xpath('./cda:author')
+        #      if actor_element
+        #        order_information.provider = ProviderImporter.instance.extract_provider(actor_element, "assignedAuthor")
+        #      end
+        #      order_information.order_number = order_element.at_xpath('./cda:id').try(:[], 'root')
+        #      order_information.fills = order_element.at_xpath('./cda:repeatNumber').try(:[], 'value').try(:to_i)
+        #      order_information.quantity_ordered = extract_scalar(order_element, "./cda:quantity")
+        #
+        #      medication.orderInformation << order_information
+        #    end
+        #  end
+        #end
 
         def extract_author_time(parent_element, entry, element_name="author")
           if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}")
@@ -231,56 +226,25 @@ module HealthDataStandards
         end
 
 
-        def extract_fulfillment_history(parent_element, medication)
-          fhs = parent_element.xpath("./cda:entryRelationship/cda:supply[@moodCode='EVN']")
-          if fhs
-            fhs.each do |fh_element|
-              fulfillment_history = FulfillmentHistory.new
-              fulfillment_history.prescription_number = fh_element.at_xpath('./cda:id').try(:[], 'root')
-              actor_element = fh_element.at_xpath('./cda:performer')
-              if actor_element
-                fulfillment_history.provider = import_actor(actor_element)
-              end
-              hl7_timestamp = fh_element.at_xpath('./cda:effectiveTime').try(:[], 'value')
-              fulfillment_history.dispense_date = HL7Helper.timestamp_to_integer(hl7_timestamp) if hl7_timestamp
-              fulfillment_history.quantity_dispensed = extract_scalar(fh_element, "./cda:quantity")
-              #fill_number = fh_element.at_xpath(@fill_number_xpath).try(:text)
-              #fulfillment_history.fill_number = fill_number.to_i if fill_number
-              medication.fulfillmentHistory << fulfillment_history
-            end
-          end
-        end
-
-
-
-        #def extract_order_information(parent_element, medication)
-        #  order_elements = parent_element.xpath("./cda:entryRelationship[@typeCode='REFR']/cda:supply[@moodCode='INT']")
-        #  if order_elements
-        #    order_elements.each do |order_element|
-        #      order_information = OrderInformation.new
-
-        #      order_information.order_number = order_element.at_xpath('./cda:id').try(:[], 'root')
-        #      order_information.fills = order_element.at_xpath('./cda:repeatNumber').try(:[], 'value').try(:to_i)
-        #      order_information.quantity_ordered = extract_scalar(order_element, "./cda:quantity")
-
-        #      medication.orderInformation << order_information
+        #def extract_fulfillment_history(parent_element, medication)
+        #  fhs = parent_element.xpath("./cda:entryRelationship/cda:supply[@moodCode='EVN']")
+        #  if fhs
+        #    fhs.each do |fh_element|
+        #      fulfillment_history = FulfillmentHistory.new
+        #      fulfillment_history.prescription_number = fh_element.at_xpath('./cda:id').try(:[], 'root')
+        #      actor_element = fh_element.at_xpath('./cda:performer')
+        #      if actor_element
+        #        fulfillment_history.provider = import_actor(actor_element)
+        #      end
+        #      hl7_timestamp = fh_element.at_xpath('./cda:effectiveTime').try(:[], 'value')
+        #      fulfillment_history.dispense_date = HL7Helper.timestamp_to_integer(hl7_timestamp) if hl7_timestamp
+        #      fulfillment_history.quantity_dispensed = extract_scalar(fh_element, "./cda:quantity")
+        #      #fill_number = fh_element.at_xpath(@fill_number_xpath).try(:text)
+        #      #fulfillment_history.fill_number = fill_number.to_i if fill_number
+        #      medication.fulfillmentHistory << fulfillment_history
         #    end
         #  end
         #end
-
-
-        #def extract_dose_restriction(parent_element, medication)
-        #  dre = parent_element.at_xpath("./cda:maxDoseQuantity")
-        #  if dre
-        #    dr = {}
-        #    dr['numerator'] = extract_scalar(dre, "./cda:numerator")
-        #    dr['denominator'] = extract_scalar(dre, "./cda:denominator")
-        #    medication.dose_restriction = dr
-        #  end
-        #end
-
-
-
       end
     end
   end

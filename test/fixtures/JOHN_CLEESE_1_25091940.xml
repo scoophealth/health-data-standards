@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ <ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="urn:hl7-org:v3 Schemas/CDA-PITO-E2E.xsd"
  xmlns="urn:hl7-org:v3"
  xmlns:hl7="urn:hl7-org:v3"
  xmlns:xs="http://www.w3.org/2001/XMLSchema"
  xmlns:e2e="http://standards.pito.bc.ca/E2E-DTC/cda">
-<!--
+<!-- 
 ********************************************************
 CDA Header
 ********************************************************
@@ -15,9 +15,9 @@ CDA Header
 	<id extension="1" root="2.16.840.1.113883.3.933"/>
 	<code code="34140-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Referral"/>
 	<title>PITO EMR-2-EMR Complete Instance Example</title>
-	<effectiveTime value="201303210952"/>
+	<effectiveTime value="201304230943"/>
 	<confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
-	<!--
+	<!-- 
 	********************************************************
 	Record Target
 	********************************************************
@@ -35,18 +35,24 @@ CDA Header
 			</patient>
 		</patientRole>
 	</recordTarget>
-	<!--
+	<!-- 
 	********************************************************
 	Author
 	********************************************************
 	-->
 	<author typeCode="AUT" contextControlCode="OP">
-		<time value="20130321"/>
+		<time value="20130423"/>
 		<assignedAuthor>
-			<id extension="OSCAR EMR" root="DCCD2C68-389B-44C4-AD99-B8FB2DAD1493"/>
+			<id extension="000000" root="DCCD2C68-389B-44C4-AD99-B8FB2DAD1493"/>
+			<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+				<name use="L">
+					<given>doctor</given>
+					<family>doe</family>
+				</name>
+			</assignedPerson>
 		</assignedAuthor>
 	</author>
-	<!--
+	<!-- 
 	********************************************************
 	Custodian
 	********************************************************
@@ -54,17 +60,31 @@ CDA Header
 	<custodian typeCode="CST">
 		<assignedCustodian classCode="ASSIGNED">
 			<representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
-				<id extension="OSCAR EMR" root="7EEF0BCC-F03E-4742-A736-8BAC57180C5F"/>
+				<id extension="1234" root="7EEF0BCC-F03E-4742-A736-8BAC57180C5F"/>
+				<name>McMaster Hospital</name>
 			</representedCustodianOrganization>
 		</assignedCustodian>
 	</custodian>
-<!--
+<!-- 
 ********************************************************
 e-MS CDA Structured Body
 ********************************************************
 -->
 	<component>
 		<structuredBody>
+<!--
+********************************************************
+Alerts
+********************************************************
+-->
+			<component typeCode="COMP" contextConductionInd="true">
+				<section classCode="DOCSECT" moodCode="EVN">
+					<templateId root="2.16.840.1.113883.3.1818.10.2.3"/>
+					<code code="48765-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Allergies or Adverse Reactions Doc"/>
+					<title>Alerts [without entries]</title>
+					<text>No Alerts</text>
+				</section>
+			</component>
 <!--
 ********************************************************
 Allergies and Intolerances - (Reaction List)
@@ -104,7 +124,7 @@ Allergies and Intolerances - (Reaction List)
 										<observation classCode="OBS" moodCode="EVN">
 											<code code="SEV" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActCode" displayName="Severity"/>
 											<value xsi:type="CD" code="MI" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ObservationValue" displayName="unknown"/>
-										</observation>
+										</observation>	
 									</entryRelationship>
 									<entryRelationship typeCode="COMP" contextConductionInd="true">
 										<observation classCode="OBS" moodCode="EVN">
@@ -112,6 +132,43 @@ Allergies and Intolerances - (Reaction List)
 											<value xsi:type="CD" code="C" codeSystem="2.16.840.1.113883.3.1818.10.2.8.2" codeSystemName="PITO AllergyClinicalStatus" displayName="Confirmed"/>
 										</observation>
 									</entryRelationship>
+								</observation>
+							</entryRelationship>
+						</observation>
+					</entry>
+				</section>
+			</component>
+<!--
+********************************************************
+Family History
+********************************************************
+-->
+			<component typeCode="COMP" contextConductionInd="true">
+				<section classCode="DOCSECT" moodCode="EVN">
+					<templateId root="2.16.840.1.113883.3.1818.10.2.13.1"/>
+					<code code="10157-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of Family Member Diseases"/>
+					<title>Family History [with entries]</title>
+					<text>Family History</text>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<templateId root="2.16.840.1.113883.3.1818.10.3.10"/>
+						<!-- Family History Observation -->
+						<observation classCode="OBS" moodCode="EVN">
+							<id extension="5" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
+							<code code="DX" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code" displayName="Diagnosis"/>
+							<text>Heart Attack</text>
+							<effectiveTime value="20130305013450"/>
+							<value xsi:type="ST">Heart Attack</value>
+							<!--Relationship to the patient-->
+							<subject typeCode="SBJ" contextControlCode="OP">
+								<relatedSubject classCode="PRS">
+									<code codeSystem="2.16.840.1.113883.5.111" code="OTH" displayName="Father"/>
+								</relatedSubject>
+							</subject>
+							<entryRelationship typeCode="COMP">
+								<observation classCode="OBS" moodCode="EVN">
+									<!--Age at Onset-->
+									<code code="30972-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Age at onset"/>
+									<value xsi:type="INT" value="45"/>
 								</observation>
 							</entryRelationship>
 						</observation>
@@ -273,7 +330,7 @@ Laboratory Results & Results
 						<!-- Laboratory Observation -->
 						<templateId root="2.16.840.1.113883.3.1818.10.2.16.1"/>
 						<observation classCode="OBS" moodCode="RQO">
-							<id root="TBD" extension="AN123"/>
+							<id extension="7" root="TBD"/>
 							<code nullFlavor='UNK'/>
 							<text>HAEM1/CHEM4/CHEM27</text>
 							<!-- Ordering Provider -->
@@ -1189,7 +1246,7 @@ Laboratory Results & Results
 						<!-- Laboratory Observation -->
 						<templateId root="2.16.840.1.113883.3.1818.10.2.16.1"/>
 						<observation classCode="OBS" moodCode="RQO">
-							<id root="TBD" extension="AN123"/>
+							<id extension="2" root="TBD"/>
 							<code nullFlavor='UNK'/>
 							<text>MICRO3</text>
 							<!-- Ordering Provider -->
@@ -1259,10 +1316,10 @@ bone Lt metatarsal</value>
 											<text>Gram Stain</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110429024909"/>
-											<value xsi:type="ST">+3 Polymorphs
-+4 Gram negative bacilli resembling coliforms
-+4 Gram positive cocci in pairs and chains
-+2 Gram positive cocci in clusters
+											<value xsi:type="ST">+3 Polymorphs 
++4 Gram negative bacilli resembling coliforms 
++4 Gram positive cocci in pairs and chains 
++2 Gram positive cocci in clusters 
 +2 Yeast</value>
 											<interpretationCode code="N"/>
 											<performer typeCode="PRF">
@@ -1295,9 +1352,9 @@ bone Lt metatarsal</value>
 											<text>Report Status Preliminary</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110503105149"/>
-											<value xsi:type="ST">+3 Proteus mirabilis
-Imipenem : Further report to follow
-+3 Escherichia coli
+											<value xsi:type="ST">+3 Proteus mirabilis 
+Imipenem : Further report to follow 
++3 Escherichia coli 
 +3 Klebsiella oxytoca</value>
 											<interpretationCode code="N"/>
 											<performer typeCode="PRF">
@@ -2238,7 +2295,7 @@ Medications and Prescriptions - Medication List
 							<id extension="BC20120201RXA-1452388BN" root="2.16.840.1.113883.3.1818.10.10.3" />
 							<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
 							<statusCode code="active"/>
-							<!--Medication Identification-->
+							<!-- Medication Identification -->
 							<consumable typeCode="CSM">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
 								<manufacturedProduct classCode="MANU">
@@ -2253,7 +2310,26 @@ Medications and Prescriptions - Medication List
 									</manufacturedLabeledDrug>
 								</manufacturedProduct>
 							</consumable>
-							<!--end Medication Identification-->
+							<!-- Record Type -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.32"/>
+								<!-- Unbounded Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="29546-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Record Type"/>
+									<text>Usual medication</text>
+								</observation>
+							</entryRelationship>
+							<!-- Last Review Date -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.4"/>
+								<!-- Date Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DTREVIEW" displayName="Date Reviewed" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1"
+									codeSystemName="PITO ObservationType"/>
+									<effectiveTime value="20130305"/>
+									<e2e:confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
+								</observation>
+							</entryRelationship>
 							<!-- Medication Prescription Event-->
 							<entryRelationship typeCode="COMP" contextConductionInd="true">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.20" />
@@ -2297,7 +2373,7 @@ Medications and Prescriptions - Medication List
 											<effectiveTime xsi:type="IVL_TS" operator="I">
 												<width value="25" unit="D"/>
 											</effectiveTime>
-											<!-- OSCAR Frequency Code "QID" -->
+											<!-- OSCAR Frequency Code QID -->
 											<effectiveTime xsi:type="PIVL_TS" institutionSpecified="true">
 												<frequency>
 													<numerator value="4"/>
@@ -2352,7 +2428,7 @@ Medications and Prescriptions - Medication List
 							<id extension="BC20120201RXA-1452388BN" root="2.16.840.1.113883.3.1818.10.10.3" />
 							<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
 							<statusCode code="active"/>
-							<!--Medication Identification-->
+							<!-- Medication Identification -->
 							<consumable typeCode="CSM">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
 								<manufacturedProduct classCode="MANU">
@@ -2367,7 +2443,26 @@ Medications and Prescriptions - Medication List
 									</manufacturedLabeledDrug>
 								</manufacturedProduct>
 							</consumable>
-							<!--end Medication Identification-->
+							<!-- Record Type -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.32"/>
+								<!-- Unbounded Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="29546-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Record Type"/>
+									<text>Usual medication</text>
+								</observation>
+							</entryRelationship>
+							<!-- Last Review Date -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.4"/>
+								<!-- Date Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DTREVIEW" displayName="Date Reviewed" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1"
+									codeSystemName="PITO ObservationType"/>
+									<effectiveTime value="20130305"/>
+									<e2e:confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
+								</observation>
+							</entryRelationship>
 							<!-- Medication Prescription Event-->
 							<entryRelationship typeCode="COMP" contextConductionInd="true">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.20" />
@@ -2411,7 +2506,7 @@ Medications and Prescriptions - Medication List
 											<effectiveTime xsi:type="IVL_TS" operator="I">
 												<width value="28" unit="D"/>
 											</effectiveTime>
-											<!-- OSCAR Frequency Code "QAM" -->
+											<!-- OSCAR Frequency Code QAM -->
 											<effectiveTime xsi:type="PIVL_TS" institutionSpecified="true">
 												<frequency>
 													<numerator value="1"/>
@@ -2456,7 +2551,7 @@ Medications and Prescriptions - Medication List
 							<id extension="BC20120201RXA-1452388BN" root="2.16.840.1.113883.3.1818.10.10.3" />
 							<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
 							<statusCode code="active"/>
-							<!--Medication Identification-->
+							<!-- Medication Identification -->
 							<consumable typeCode="CSM">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
 								<manufacturedProduct classCode="MANU">
@@ -2471,7 +2566,26 @@ Medications and Prescriptions - Medication List
 									</manufacturedLabeledDrug>
 								</manufacturedProduct>
 							</consumable>
-							<!--end Medication Identification-->
+							<!-- Record Type -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.32"/>
+								<!-- Unbounded Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="29546-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Record Type"/>
+									<text>Usual medication</text>
+								</observation>
+							</entryRelationship>
+							<!-- Last Review Date -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.4"/>
+								<!-- Date Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DTREVIEW" displayName="Date Reviewed" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1"
+									codeSystemName="PITO ObservationType"/>
+									<effectiveTime value="20130305"/>
+									<e2e:confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
+								</observation>
+							</entryRelationship>
 							<!-- Medication Prescription Event-->
 							<entryRelationship typeCode="COMP" contextConductionInd="true">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.20" />
@@ -2515,7 +2629,7 @@ Medications and Prescriptions - Medication List
 											<effectiveTime xsi:type="IVL_TS" operator="I">
 												<width value="28" unit="D"/>
 											</effectiveTime>
-											<!-- OSCAR Frequency Code "TID" -->
+											<!-- OSCAR Frequency Code TID -->
 											<effectiveTime xsi:type="PIVL_TS" institutionSpecified="true">
 												<frequency>
 													<numerator value="3"/>
@@ -2560,7 +2674,7 @@ Medications and Prescriptions - Medication List
 							<id extension="BC20120201RXA-1452388BN" root="2.16.840.1.113883.3.1818.10.10.3" />
 							<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
 							<statusCode code="active"/>
-							<!--Medication Identification-->
+							<!-- Medication Identification -->
 							<consumable typeCode="CSM">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
 								<manufacturedProduct classCode="MANU">
@@ -2575,14 +2689,33 @@ Medications and Prescriptions - Medication List
 									</manufacturedLabeledDrug>
 								</manufacturedProduct>
 							</consumable>
-							<!--end Medication Identification-->
+							<!-- Record Type -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.32"/>
+								<!-- Unbounded Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="29546-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Record Type"/>
+									<text>Usual medication</text>
+								</observation>
+							</entryRelationship>
+							<!-- Last Review Date -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.4"/>
+								<!-- Date Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DTREVIEW" displayName="Date Reviewed" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1"
+									codeSystemName="PITO ObservationType"/>
+									<effectiveTime value="20130305"/>
+									<e2e:confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
+								</observation>
+							</entryRelationship>
 							<!-- Medication Prescription Event-->
 							<entryRelationship typeCode="COMP" contextConductionInd="true">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.20" />
 								<substanceAdministration classCode="SBADM" moodCode="RQO">
 									<id extension="7" root="2.16.840.1.113883.3.1818.10.10.3"/>
 									<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
-									<statusCode code="active"/>
+									<statusCode code="completed"/>
 									<effectiveTime xsi:type="IVL_TS" operator="I">
 										<low value="20130305"/>
 										<high value="20130414" />
@@ -2619,7 +2752,7 @@ Medications and Prescriptions - Medication List
 											<effectiveTime xsi:type="IVL_TS" operator="I">
 												<width value="20" unit="D"/>
 											</effectiveTime>
-											<!-- OSCAR Frequency Code "BID" -->
+											<!-- OSCAR Frequency Code BID -->
 											<effectiveTime xsi:type="PIVL_TS" institutionSpecified="true">
 												<frequency>
 													<numerator value="2"/>
@@ -2664,7 +2797,7 @@ Medications and Prescriptions - Medication List
 							<id extension="BC20120201RXA-1452388BN" root="2.16.840.1.113883.3.1818.10.10.3" />
 							<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
 							<statusCode code="active"/>
-							<!--Medication Identification-->
+							<!-- Medication Identification -->
 							<consumable typeCode="CSM">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
 								<manufacturedProduct classCode="MANU">
@@ -2679,7 +2812,26 @@ Medications and Prescriptions - Medication List
 									</manufacturedLabeledDrug>
 								</manufacturedProduct>
 							</consumable>
-							<!--end Medication Identification-->
+							<!-- Record Type -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.32"/>
+								<!-- Unbounded Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="29546-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Record Type"/>
+									<text>Usual medication</text>
+								</observation>
+							</entryRelationship>
+							<!-- Last Review Date -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.4"/>
+								<!-- Date Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DTREVIEW" displayName="Date Reviewed" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1"
+									codeSystemName="PITO ObservationType"/>
+									<effectiveTime value="20130305"/>
+									<e2e:confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
+								</observation>
+							</entryRelationship>
 							<!-- Medication Prescription Event-->
 							<entryRelationship typeCode="COMP" contextConductionInd="true">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.20" />
@@ -2723,7 +2875,7 @@ Medications and Prescriptions - Medication List
 											<effectiveTime xsi:type="IVL_TS" operator="I">
 												<width value="28" unit="D"/>
 											</effectiveTime>
-											<!-- OSCAR Frequency Code "OD" -->
+											<!-- OSCAR Frequency Code OD -->
 											<effectiveTime xsi:type="PIVL_TS" institutionSpecified="true">
 												<frequency>
 													<numerator value="1"/>
@@ -2768,7 +2920,7 @@ Medications and Prescriptions - Medication List
 							<id extension="BC20120201RXA-1452388BN" root="2.16.840.1.113883.3.1818.10.10.3" />
 							<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
 							<statusCode code="active"/>
-							<!--Medication Identification-->
+							<!-- Medication Identification -->
 							<consumable typeCode="CSM">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
 								<manufacturedProduct classCode="MANU">
@@ -2783,7 +2935,26 @@ Medications and Prescriptions - Medication List
 									</manufacturedLabeledDrug>
 								</manufacturedProduct>
 							</consumable>
-							<!--end Medication Identification-->
+							<!-- Record Type -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.32"/>
+								<!-- Unbounded Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="29546-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Record Type"/>
+									<text>Usual medication</text>
+								</observation>
+							</entryRelationship>
+							<!-- Last Review Date -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.4"/>
+								<!-- Date Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DTREVIEW" displayName="Date Reviewed" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1"
+									codeSystemName="PITO ObservationType"/>
+									<effectiveTime value="20130305"/>
+									<e2e:confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
+								</observation>
+							</entryRelationship>
 							<!-- Medication Prescription Event-->
 							<entryRelationship typeCode="COMP" contextConductionInd="true">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.20" />
@@ -2827,7 +2998,7 @@ Medications and Prescriptions - Medication List
 											<effectiveTime xsi:type="IVL_TS" operator="I">
 												<width value="56" unit="D"/>
 											</effectiveTime>
-											<!-- OSCAR Frequency Code "QAM" -->
+											<!-- OSCAR Frequency Code QAM -->
 											<effectiveTime xsi:type="PIVL_TS" institutionSpecified="true">
 												<frequency>
 													<numerator value="1"/>
@@ -2872,7 +3043,7 @@ Medications and Prescriptions - Medication List
 							<id extension="BC20120201RXA-1452388BN" root="2.16.840.1.113883.3.1818.10.10.3" />
 							<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
 							<statusCode code="active"/>
-							<!--Medication Identification-->
+							<!-- Medication Identification -->
 							<consumable typeCode="CSM">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
 								<manufacturedProduct classCode="MANU">
@@ -2887,7 +3058,26 @@ Medications and Prescriptions - Medication List
 									</manufacturedLabeledDrug>
 								</manufacturedProduct>
 							</consumable>
-							<!--end Medication Identification-->
+							<!-- Record Type -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.32"/>
+								<!-- Unbounded Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="29546-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Record Type"/>
+									<text>Usual medication</text>
+								</observation>
+							</entryRelationship>
+							<!-- Last Review Date -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.4"/>
+								<!-- Date Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DTREVIEW" displayName="Date Reviewed" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1"
+									codeSystemName="PITO ObservationType"/>
+									<effectiveTime value="20130305"/>
+									<e2e:confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
+								</observation>
+							</entryRelationship>
 							<!-- Medication Prescription Event-->
 							<entryRelationship typeCode="COMP" contextConductionInd="true">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.20" />
@@ -2931,7 +3121,7 @@ Medications and Prescriptions - Medication List
 											<effectiveTime xsi:type="IVL_TS" operator="I">
 												<width value="28" unit="D"/>
 											</effectiveTime>
-											<!-- OSCAR Frequency Code "OD" -->
+											<!-- OSCAR Frequency Code OD -->
 											<effectiveTime xsi:type="PIVL_TS" institutionSpecified="true">
 												<frequency>
 													<numerator value="1"/>
@@ -2976,7 +3166,7 @@ Medications and Prescriptions - Medication List
 							<id extension="BC20120201RXA-1452388BN" root="2.16.840.1.113883.3.1818.10.10.3" />
 							<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
 							<statusCode code="active"/>
-							<!--Medication Identification-->
+							<!-- Medication Identification -->
 							<consumable typeCode="CSM">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
 								<manufacturedProduct classCode="MANU">
@@ -2991,7 +3181,26 @@ Medications and Prescriptions - Medication List
 									</manufacturedLabeledDrug>
 								</manufacturedProduct>
 							</consumable>
-							<!--end Medication Identification-->
+							<!-- Record Type -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.32"/>
+								<!-- Unbounded Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="29546-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Record Type"/>
+									<text>Usual medication</text>
+								</observation>
+							</entryRelationship>
+							<!-- Last Review Date -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.4"/>
+								<!-- Date Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DTREVIEW" displayName="Date Reviewed" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1"
+									codeSystemName="PITO ObservationType"/>
+									<effectiveTime value="20130305"/>
+									<e2e:confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
+								</observation>
+							</entryRelationship>
 							<!-- Medication Prescription Event-->
 							<entryRelationship typeCode="COMP" contextConductionInd="true">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.20" />
@@ -3035,7 +3244,7 @@ Medications and Prescriptions - Medication List
 											<effectiveTime xsi:type="IVL_TS" operator="I">
 												<width value="28" unit="D"/>
 											</effectiveTime>
-											<!-- OSCAR Frequency Code "OD" -->
+											<!-- OSCAR Frequency Code OD -->
 											<effectiveTime xsi:type="PIVL_TS" institutionSpecified="true">
 												<frequency>
 													<numerator value="1"/>
@@ -3080,7 +3289,7 @@ Medications and Prescriptions - Medication List
 							<id extension="BC20120201RXA-1452388BN" root="2.16.840.1.113883.3.1818.10.10.3" />
 							<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
 							<statusCode code="active"/>
-							<!--Medication Identification-->
+							<!-- Medication Identification -->
 							<consumable typeCode="CSM">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
 								<manufacturedProduct classCode="MANU">
@@ -3095,7 +3304,26 @@ Medications and Prescriptions - Medication List
 									</manufacturedLabeledDrug>
 								</manufacturedProduct>
 							</consumable>
-							<!--end Medication Identification-->
+							<!-- Record Type -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.32"/>
+								<!-- Unbounded Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="29546-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Record Type"/>
+									<text>Usual medication</text>
+								</observation>
+							</entryRelationship>
+							<!-- Last Review Date -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.4"/>
+								<!-- Date Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DTREVIEW" displayName="Date Reviewed" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1"
+									codeSystemName="PITO ObservationType"/>
+									<effectiveTime value="20130305"/>
+									<e2e:confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
+								</observation>
+							</entryRelationship>
 							<!-- Medication Prescription Event-->
 							<entryRelationship typeCode="COMP" contextConductionInd="true">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.20" />
@@ -3139,7 +3367,7 @@ Medications and Prescriptions - Medication List
 											<effectiveTime xsi:type="IVL_TS" operator="I">
 												<width value="28" unit="D"/>
 											</effectiveTime>
-											<!-- OSCAR Frequency Code "OD" -->
+											<!-- OSCAR Frequency Code OD -->
 											<effectiveTime xsi:type="PIVL_TS" institutionSpecified="true">
 												<frequency>
 													<numerator value="1"/>
@@ -3190,14 +3418,13 @@ Problems and Conditions - Problem List
 					<templateId root="2.16.840.1.113883.3.1818.10.2.21.1"/>
 					<code code="11450-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Problems list Reported"/>
 					<title>Problems and Conditions - Problem List [with entries]</title>
-					<text>Text text text</text>
-					<entry typeCode="COMP" contextConductionInd="true">
+					<text>Problems</text>
+					<entry typeCode="COMP" contextConductionInd="true"> 
 						<templateId root="2.16.840.1.113883.3.1818.10.3.15"/>
 						<!-- Problem List Observation -->
 						<observation classCode="OBS" moodCode="EVN">
 							<id extension="1" root="2.16.840.1.113883.3.1818.10.2.10.31"/>
-							<code code="428" codeSystem="2.16.840.1.113883.3.1818.10.4.28"
-codeSystemName="ICD-9" displayName="HEART FAILURE*"/>
+							<code nullFlavor="UNK"/>
 							<statusCode code="active"/>
 							<effectiveTime xsi:type="IVL_TS">
 								<low value="20130305"/>
@@ -3220,15 +3447,22 @@ codeSystemName="ICD-9" displayName="HEART FAILURE*"/>
 									</assignedPerson>
 								</assignedAuthor>
 							</author>
+							<entryRelationship typeCode="COMP" contextConductionInd="false">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.28"/>
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="SECCODE" displayName="Secondary Code" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1"
+									codeSystemName="PITO ObservationType"/>
+									<value xsi:type="CD" code="428" codeSystem="2.16.840.1.113883.6.42" codeSystemName="ICD9" displayName="HEART FAILURE*"/>
+								</observation>
+							</entryRelationship>
 						</observation>
 					</entry>
-					<entry typeCode="COMP" contextConductionInd="true">
+					<entry typeCode="COMP" contextConductionInd="true"> 
 						<templateId root="2.16.840.1.113883.3.1818.10.3.15"/>
 						<!-- Problem List Observation -->
 						<observation classCode="OBS" moodCode="EVN">
 							<id extension="2" root="2.16.840.1.113883.3.1818.10.2.10.31"/>
-							<code code="401" codeSystem="2.16.840.1.113883.3.1818.10.4.28"
-codeSystemName="ICD-9" displayName="ESSENTIAL HYPERTENSION*"/>
+							<code nullFlavor="UNK"/>
 							<statusCode code="active"/>
 							<effectiveTime xsi:type="IVL_TS">
 								<low value="20130305"/>
@@ -3251,15 +3485,22 @@ codeSystemName="ICD-9" displayName="ESSENTIAL HYPERTENSION*"/>
 									</assignedPerson>
 								</assignedAuthor>
 							</author>
+							<entryRelationship typeCode="COMP" contextConductionInd="false">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.28"/>
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="SECCODE" displayName="Secondary Code" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1"
+									codeSystemName="PITO ObservationType"/>
+									<value xsi:type="CD" code="401" codeSystem="2.16.840.1.113883.6.42" codeSystemName="ICD9" displayName="ESSENTIAL HYPERTENSION*"/>
+								</observation>
+							</entryRelationship>
 						</observation>
 					</entry>
-					<entry typeCode="COMP" contextConductionInd="true">
+					<entry typeCode="COMP" contextConductionInd="true"> 
 						<templateId root="2.16.840.1.113883.3.1818.10.3.15"/>
 						<!-- Problem List Observation -->
 						<observation classCode="OBS" moodCode="EVN">
 							<id extension="3" root="2.16.840.1.113883.3.1818.10.2.10.31"/>
-							<code code="250" codeSystem="2.16.840.1.113883.3.1818.10.4.28"
-codeSystemName="ICD-9" displayName="DIABETES MELLITUS*"/>
+							<code nullFlavor="UNK"/>
 							<statusCode code="active"/>
 							<effectiveTime xsi:type="IVL_TS">
 								<low value="20130305"/>
@@ -3282,15 +3523,22 @@ codeSystemName="ICD-9" displayName="DIABETES MELLITUS*"/>
 									</assignedPerson>
 								</assignedAuthor>
 							</author>
+							<entryRelationship typeCode="COMP" contextConductionInd="false">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.28"/>
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="SECCODE" displayName="Secondary Code" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1"
+									codeSystemName="PITO ObservationType"/>
+									<value xsi:type="CD" code="250" codeSystem="2.16.840.1.113883.6.42" codeSystemName="ICD9" displayName="DIABETES MELLITUS*"/>
+								</observation>
+							</entryRelationship>
 						</observation>
 					</entry>
-					<entry typeCode="COMP" contextConductionInd="true">
+					<entry typeCode="COMP" contextConductionInd="true"> 
 						<templateId root="2.16.840.1.113883.3.1818.10.3.15"/>
 						<!-- Problem List Observation -->
 						<observation classCode="OBS" moodCode="EVN">
 							<id extension="4" root="2.16.840.1.113883.3.1818.10.2.10.31"/>
-							<code code="491" codeSystem="2.16.840.1.113883.3.1818.10.4.28"
-codeSystemName="ICD-9" displayName="CHRONIC BRONCHITIS*"/>
+							<code nullFlavor="UNK"/>
 							<statusCode code="active"/>
 							<effectiveTime xsi:type="IVL_TS">
 								<low value="20130305"/>
@@ -3313,7 +3561,61 @@ codeSystemName="ICD-9" displayName="CHRONIC BRONCHITIS*"/>
 									</assignedPerson>
 								</assignedAuthor>
 							</author>
+							<entryRelationship typeCode="COMP" contextConductionInd="false">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.28"/>
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="SECCODE" displayName="Secondary Code" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1"
+									codeSystemName="PITO ObservationType"/>
+									<value xsi:type="CD" code="491" codeSystem="2.16.840.1.113883.6.42" codeSystemName="ICD9" displayName="CHRONIC BRONCHITIS*"/>
+								</observation>
+							</entryRelationship>
 						</observation>
+					</entry>
+				</section>
+			</component>
+<!--
+********************************************************
+Risk Factors
+********************************************************
+-->
+			<component typeCode="COMP" contextConductionInd="true">
+				<section classCode="DOCSECT" moodCode="EVN">
+					<templateId root="2.16.840.1.113883.3.1818.10.2.24.1"/>
+					<code code="46467-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Risk Factors"/>
+					<title>Risk Factors [with entries]</title>
+					<text>Risk Factors</text>
+					<entry typeCode="COMP" contextConductionInd="true"> 
+						<templateId root="2.16.840.1.113883.3.1818.10.3.17"/>
+						<!-- Risk Factors Organizer -->
+						<organizer classCode="CLUSTER" moodCode="EVN">
+							<id extension="28" root="2.16.840.1.113883.3.1818.10.2.10.35"/>
+							<code nullFlavor='UNK'/>
+							<statusCode code="active"/>
+							<author typeCode="AUT" contextControlCode="OP">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
+								<!-- Author Participation -->
+								<time value="20130326"/>
+								<assignedAuthor>
+									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+									<code nullFlavor='NA'/>
+									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+										<name use="L">
+											<given>doctor</given>
+											<family>oscardoc</family>
+										</name>
+									</assignedPerson>
+								</assignedAuthor>
+							</author>
+							<component typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<id extension="28" root="TBD"/>
+									<code nullFlavor="UNK"/>
+									<text>Risky risk</text>
+									<effectiveTime value="20130326112417"/>
+									<value xsi:type="ST">Risky risk</value>
+								</observation>
+							</component>
+						</organizer>
 					</entry>
 				</section>
 			</component>
