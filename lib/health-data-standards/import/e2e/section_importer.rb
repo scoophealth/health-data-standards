@@ -69,6 +69,9 @@ module HealthDataStandards
           if @status_xpath
             extract_status(entry_element, entry)
           end
+          if @priority_xpath
+              extract_priority(entry_element, entry)
+            end
           if @description_xpath
             extract_description(entry_element, entry, id_map)
           end
@@ -83,6 +86,17 @@ module HealthDataStandards
             entry.status_code = {CodeSystemHelper.code_system_for(status_element['codeSystem']) => [status_element['code']]}
           end
         end
+
+        def extract_priority(parent_element, entry)
+          priority_element = parent_element.at_xpath(@priority_xpath)
+          if priority_element
+            case priority_element['code']
+            when '8319008'
+              entry.ordinality = :principal
+            end
+          end
+        end
+
 
         def extract_description(parent_element, entry, id_map)
           code_elements = parent_element.xpath(@description_xpath)

@@ -59,7 +59,7 @@ module HealthDataStandards
           #@section_importers[:results] = ResultImporter.new
           #@section_importers[:vital_signs] = VitalSignImporter.new
           @section_importers[:medications] = MedicationImporter.new
-          #@section_importers[:conditions] = ConditionImporter.new
+          @section_importers[:conditions] = ConditionImporter.new
           #@section_importers[:social_history] = SectionImporter.new("//cda:observation[cda:templateId/@root='2.16.840.1.113883.3.88.11.83.19']")
           #@section_importers[:care_goals] = CareGoalImporter.new
           #@section_importers[:medical_equipment] = MedicalEquipmentImporter.new
@@ -97,11 +97,12 @@ module HealthDataStandards
           e2e_patient = Record.new
           get_demographics(e2e_patient, doc)
           create_e2e_hash(e2e_patient, doc)
-          check_for_cause_of_death(e2e_patient)
+          #check_for_cause_of_death(e2e_patient)
           
           e2e_patient
         end
-        
+
+        # THIS METHOD DOESN"T WORK.  THERE IS NO e2e_patient.expired field/method"
         # Checks the conditions to see if any of them have a cause of death set. If they do,
         # it will set the expired field on the Record. This is done here rather than replacing
         # the expried method on Record because other formats may actully tell you whether
