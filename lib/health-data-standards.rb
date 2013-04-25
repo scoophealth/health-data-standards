@@ -112,4 +112,6 @@ require_relative 'health-data-standards/import/green_c32/care_goal_importer'
 require_relative 'health-data-standards/import/e2e/section_importer'
 require_relative 'health-data-standards/import/e2e/medication_importer'
 require_relative 'health-data-standards/import/e2e/patient_importer'
+require_relative 'health-data-standards/import/e2e/condition_importer'
+require_relative 'health-data-standards/import/e2e/provider_importer'
 

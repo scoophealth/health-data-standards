@@ -6,6 +6,7 @@ class AllergyImporterTest < MiniTest::Unit::TestCase
     doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
     pi = HealthDataStandards::Import::C32::PatientImporter.instance
     patient = pi.parse_c32(doc)
+    patient.save!
 
     condition = patient.conditions[0]
 
