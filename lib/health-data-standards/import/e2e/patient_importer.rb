@@ -56,7 +56,7 @@ module HealthDataStandards
           @section_importers = {}
           #@section_importers[:encounters] = EncounterImporter.new
           #@section_importers[:procedures] = ProcedureImporter.new
-          #@section_importers[:results] = ResultImporter.new
+          @section_importers[:results] = ResultImporter.new
           #@section_importers[:vital_signs] = VitalSignImporter.new
           @section_importers[:medications] = MedicationImporter.new
           @section_importers[:conditions] = ConditionImporter.new
