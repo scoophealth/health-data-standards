@@ -114,4 +114,4 @@ require_relative 'health-data-standards/import/e2e/medication_importer'
 require_relative 'health-data-standards/import/e2e/patient_importer'
 require_relative 'health-data-standards/import/e2e/condition_importer'
 require_relative 'health-data-standards/import/e2e/provider_importer'
-
+require_relative 'health-data-standards/import/e2e/result_importer'

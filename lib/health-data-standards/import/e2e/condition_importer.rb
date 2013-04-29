@@ -49,7 +49,7 @@ module HealthDataStandards
             #extract_priority(entry_element, condition)
             extract_description(entry_element, condition, id_map)
             extract_author_time(entry_element, condition)
-            extract_cause_of_death(entry_element, condition) if @cod_xpath
+            #extract_cause_of_death(entry_element, condition) if @cod_xpath
             #extract_type(entry_element, condition)
 
             if @provider_xpath
@@ -80,10 +80,10 @@ module HealthDataStandards
           entry.time = HL7Helper.timestamp_to_integer(elements.to_s)
         end
 
-        def extract_cause_of_death(entry_element, condition)
-          cod = entry_element.at_xpath(@cod_xpath)
-          condition.cause_of_death = cod.present?
-        end
+        #def extract_cause_of_death(entry_element, condition)
+        #  cod = entry_element.at_xpath(@cod_xpath)
+        #  condition.cause_of_death = cod.present?
+        #end
 
         #def extract_type(entry_element, condition)
         #  code_element = entry_element.at_xpath('./cda:code')
