@@ -13,7 +13,7 @@ module HealthDataStandards
         
         include Singleton
         include ProviderImportUtils
-        # Extract Healthcare Providers from C32
+        # Extract Healthcare Providers from E2E
         #
         # @param [Nokogiri::XML::Document] doc It is expected that the root node of this document
         #        will have the "cda" namespace registered to "urn:hl7-org:v3"
