@@ -1,0 +1,357 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: HealthDataStandards::Import::CCR::ProviderImporter
+  
+    &mdash; Documentation by YARD 0.8.6.1
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../../';
+  framesUrl = "../../../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../_index.html">Index (P)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../HealthDataStandards.html" title="HealthDataStandards (module)">HealthDataStandards</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Import.html" title="HealthDataStandards::Import (module)">Import</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../CCR.html" title="HealthDataStandards::Import::CCR (module)">CCR</a></span></span>
+     &raquo; 
+    <span class="title">ProviderImporter</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: HealthDataStandards::Import::CCR::ProviderImporter
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">HealthDataStandards::Import::CCR::ProviderImporter</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2"><span class='object_link'><a href="../../../ProviderImportUtils.html" title="ProviderImportUtils (module)">ProviderImportUtils</a></span>, Singleton</dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/health-data-standards/import/ccr/provider_importer.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create_provider-instance_method" title="#create_provider (instance method)">- (Array) <strong>create_provider</strong>(actor) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Extract Healthcare Providers from CCR.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#extract_providers-instance_method" title="#extract_providers (instance method)">- (Object) <strong>extract_providers</strong>(doc) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../../../ProviderImportUtils.html" title="ProviderImportUtils (module)">ProviderImportUtils</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../../../ProviderImportUtils.html#extract_data-instance_method" title="ProviderImportUtils#extract_data (method)">#extract_data</a></span>, <span class='object_link'><a href="../../../ProviderImportUtils.html#extract_provider-instance_method" title="ProviderImportUtils#extract_provider (method)">#extract_provider</a></span>, <span class='object_link'><a href="../../../ProviderImportUtils.html#find_or_create_provider-instance_method" title="ProviderImportUtils#find_or_create_provider (method)">#find_or_create_provider</a></span></p>
+
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="create_provider-instance_method">
+  
+    - (<tt>Array</tt>) <strong>create_provider</strong>(actor) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Extract Healthcare Providers from CCR
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>doc</span>
+      
+      
+        <span class='type'>(<tt>Nokogiri::XML::Document</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+It is expected that the root node of this document will have the
+&#8220;ccr&#8221; namespace registered to &#8220;urn:astm-org:CCR&#8220;
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+an array of providers found in the document
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/health-data-standards/import/ccr/provider_importer.rb', line 17</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_create_provider'>create_provider</span><span class='lparen'>(</span><span class='id identifier rubyid_actor'>actor</span><span class='rparen'>)</span>
+<span class='comment'># Differentiate care providers by content of this field
+</span>  <span class='id identifier rubyid_provider'>provider</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_actor'>actor</span><span class='period'>.</span><span class='id identifier rubyid_at_xpath'>at_xpath</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>./ccr:Person/ccr:Name/ccr:CurrentName/ccr:Given</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_provider'>provider</span><span class='lbracket'>[</span><span class='symbol'>:given_name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_extract_data'>extract_data</span><span class='lparen'>(</span><span class='id identifier rubyid_actor'>actor</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>./ccr:Person/ccr:Name/ccr:CurrentName/ccr:Given</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_provider'>provider</span><span class='lbracket'>[</span><span class='symbol'>:family_name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_extract_data'>extract_data</span><span class='lparen'>(</span><span class='id identifier rubyid_actor'>actor</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>./ccr:Person/ccr:Name/ccr:CurrentName/ccr:Family</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_provider'>provider</span><span class='lbracket'>[</span><span class='symbol'>:specialty</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_extract_data'>extract_data</span><span class='lparen'>(</span><span class='id identifier rubyid_actor'>actor</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>./ccr:Specialty/ccr:Text</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  
+  <span class='id identifier rubyid_provider'>provider</span><span class='lbracket'>[</span><span class='symbol'>:specialty</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_extract_data'>extract_data</span><span class='lparen'>(</span><span class='id identifier rubyid_actor'>actor</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>./ccr:Specialty/ccr:Text</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+
+  
+  <span class='id identifier rubyid_npi_ids'>npi_ids</span> <span class='op'>=</span> <span class='id identifier rubyid_actor'>actor</span><span class='period'>.</span><span class='id identifier rubyid_at_xpath'>at_xpath</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>./ccr:IDs[ccr:Type/ccr:Text = \&quot;NPI\&quot;]</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_npi_ids'>npi_ids</span>
+    <span class='id identifier rubyid_npi_id'>npi_id</span> <span class='op'>=</span> <span class='id identifier rubyid_npi_ids'>npi_ids</span><span class='period'>.</span><span class='id identifier rubyid_at_xpath'>at_xpath</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>./ccr:ID</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_npi'>npi</span> <span class='op'>=</span> <span class='id identifier rubyid_npi_id'>npi_id</span><span class='period'>.</span><span class='id identifier rubyid_content'>content</span>
+    <span class='id identifier rubyid_provider'>provider</span><span class='lbracket'>[</span><span class='symbol'>:npi</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_npi'>npi</span> <span class='kw'>if</span> <span class='const'>Provider</span><span class='period'>.</span><span class='id identifier rubyid_valid_npi?'>valid_npi?</span><span class='lparen'>(</span><span class='id identifier rubyid_npi'>npi</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  
+  <span class='comment'># binding.pry
+</span>  <span class='id identifier rubyid_find_or_create_provider'>find_or_create_provider</span><span class='lparen'>(</span><span class='id identifier rubyid_provider'>provider</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="extract_providers-instance_method">
+  
+    - (<tt>Object</tt>) <strong>extract_providers</strong>(doc) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+41
+42
+43
+44
+45
+46</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/health-data-standards/import/ccr/provider_importer.rb', line 41</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_extract_providers'>extract_providers</span><span class='lparen'>(</span><span class='id identifier rubyid_doc'>doc</span><span class='rparen'>)</span>
+
+  <span class='comment'># Providers are identified as the 'Source' for entries in the CCR.   Sources can also include the patient, relatives, insurance companies, etc
+</span>  <span class='id identifier rubyid_provider_elements'>provider_elements</span> <span class='op'>=</span> <span class='id identifier rubyid_doc'>doc</span><span class='period'>.</span><span class='id identifier rubyid_xpath'>xpath</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>//ccr:ContinuityOfCareRecord/ccr:Actors/ccr:Actor[ccr:IDs/ccr:Type/ccr:Text=\&quot;NPI\&quot;]</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_provider_elements'>provider_elements</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_pv'>pv</span><span class='op'>|</span> <span class='const'>ProviderPerformance</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>provider:</span> <span class='id identifier rubyid_create_provider'>create_provider</span><span class='lparen'>(</span><span class='id identifier rubyid_pv'>pv</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Tue May  7 12:10:47 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.6.1 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

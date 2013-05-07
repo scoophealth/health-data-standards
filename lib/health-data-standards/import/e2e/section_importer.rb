@@ -8,13 +8,13 @@ module HealthDataStandards
         
         attr_accessor :check_for_usable
         # Creates a new SectionImporter
-        # @param [Hash] id_map A hash of all ID tags to values for the enclosing document.  Used to look up descriptions.
-        # @param [String] entry_xpath An XPath expression that can be used to find the desired entries
-        # @param [String] code_xpath XPath expression to find the code element as a child of the desired CDA entry.
+        # @param id_map [Hash] A hash of all ID tags to values for the enclosing document.  Used to look up descriptions.
+        # @param entry_xpath [String] An XPath expression that can be used to find the desired entries
+        # @param code_xpath [String] XPath expression to find the code element as a child of the desired CDA entry.
         #        Defaults to "./cda:code"
-        # @param [String] status_xpath XPath expression to find the status element as a child of the desired CDA
+        # @param status_xpath [String] XPath expression to find the status element as a child of the desired CDA
         #        entry. Defaults to nil. If not provided, a status will not be checked for since it is not applicable
-        #        to all enrty types
+        #        to all entry types
         def initialize(entry_xpath, code_xpath="./cda:code", status_xpath=nil,priority_xpath=nil, description_xpath="./cda:code/cda:originalText/cda:reference[@value] | ./cda:text/cda:reference[@value] ")
           @entry_xpath = entry_xpath
           @code_xpath = code_xpath
@@ -83,9 +83,11 @@ module HealthDataStandards
         def extract_status(parent_element, entry)
           status_element = parent_element.at_xpath(@status_xpath)
           if status_element
-            entry.status_code = {CodeSystemHelper.code_system_for(status_element['codeSystem']) => [status_element['code']]}
+            #entry.status_code = {CodeSystemHelper.code_system_for(status_element['codeSystem']) => [status_element['code']]}
+            entry.status = {CodeSystemHelper.code_system_for(status_element['codeSystem']) => [status_element['code']]}
           end
         end
+
 
         def extract_priority(parent_element, entry)
           priority_element = parent_element.at_xpath(@priority_xpath)

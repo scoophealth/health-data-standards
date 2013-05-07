@@ -1,0 +1,722 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: HealthDataStandards::Import::E2E::MedicationImporter
+  
+    &mdash; Documentation by YARD 0.8.6.1
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../../';
+  framesUrl = "../../../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../_index.html">Index (M)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../HealthDataStandards.html" title="HealthDataStandards (module)">HealthDataStandards</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Import.html" title="HealthDataStandards::Import (module)">Import</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../E2E.html" title="HealthDataStandards::Import::E2E (module)">E2E</a></span></span>
+     &raquo; 
+    <span class="title">MedicationImporter</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: HealthDataStandards::Import::E2E::MedicationImporter
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="SectionImporter.html" title="HealthDataStandards::Import::E2E::SectionImporter (class)">SectionImporter</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="SectionImporter.html" title="HealthDataStandards::Import::E2E::SectionImporter (class)">SectionImporter</a></span></li>
+          
+            <li class="next">HealthDataStandards::Import::E2E::MedicationImporter</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/health-data-standards/import/e2e/medication_importer.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>
+The MedicationImporter class captures the Medications Section of E2E
+documents
+</p>
+<ul>
+<li><p>
+For a more thorough description of the medication model as used when
+capturing the medication section of C32 documents see <a
+href="http://www.mirthcorp.com/community/wiki/plugins/viewsource/viewpagesrc.action?pageId=17105258">www.mirthcorp.com/community/wiki/plugins/viewsource/viewpagesrc.action?pageId=17105258</a>
+</p>
+</li>
+</ul>
+</div>
+  </div>
+
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>
+The following are XPath locations for E2E information elements captured by
+the query-gateway medication model.
+</p>
+</div>
+  </div>
+
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>
+Start of medication section
+</p>
+<ul>
+<li><p>
+entry_xpath =
+&#8220;//cda:section[cda:templateId/@root=&#8217;2.16.840.1.113883.3.1818.10.2.19.1&#8217;
+and
+cda:code/@code=&#8217;10160-6&#8217;]/cda:entry/cda:substanceAdministration&#8220;
+</p>
+</li>
+</ul>
+</div>
+  </div>
+
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>
+Location of base Entry class fields
+</p>
+<ul>
+<li><p>
+description_xpath =
+&#8220;./cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/cda:name/text()&#8220;
+</p>
+</li>
+<li><p>
+entrystatus_xpath = &#8220;./cda:statusCode&#8221;            # not used at
+the moment
+</p>
+</li>
+<li><p>
+code_xpath =
+&#8220;./cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/cda:code&#8220;
+</p>
+</li>
+<li><p>
+strength_xpath =
+&#8220;./cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/cda:strength&#8220;
+</p>
+<ul>
+<li><p>
+using cda:strength to populate Entry.value
+</p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+  </div>
+
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>
+Location of Medication class fields
+</p>
+<ul>
+<li><p>
+administrationTiming [frequency of drug - could be specific time, interval
+(e.g., every 6 hours), duration (e.g., infuse over 30 minutes) but e2e uses
+frequency only]
+</p>
+<ul>
+<li><p>
+timing_xpath =
+&#8220;./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration/cda:effectiveTime/cda:frequency&#8220;
+</p>
+</li>
+</ul>
+</li>
+<li><p>
+freeTextSig (Instructions to patient)
+</p>
+<ul>
+<li><p>
+freetext_xpath = &#8220;./<a
+href="cda:templateId/@root='2.16.840.1.113883.3.1818.10.4.35'">entryRelationship/cda:substanceAdministration/cda:entryRelationship</a>/cda:observation/cda:text/text()&#8220;
+</p>
+</li>
+</ul>
+</li>
+<li><p>
+doseQuantity
+</p>
+<ul>
+<li><p>
+dose_xpath =
+&#8220;./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration/cda:doseQuantity&#8220;
+</p>
+</li>
+</ul>
+</li>
+<li><p>
+statusOfMedication (active, discharged, chronic, acute)
+</p>
+<ul>
+<li><p>
+status_xpath =
+&#8220;./cda:entryRelationship/cda:substanceAdministration/cda:statusCode&#8220;
+</p>
+</li>
+</ul>
+</li>
+<li><p>
+route (by mouth, intravenously, topically, etc.)
+</p>
+<ul>
+<li><p>
+route_xpath =
+&#8220;./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration/cda:routeCode&#8220;
+</p>
+</li>
+</ul>
+</li>
+<li><p>
+productForm (tablet, capsule, liquid, ointment)
+</p>
+<ul>
+<li><p>
+form_xpath =
+&#8220;./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration/cda:administrationUnitCode&#8220;
+</p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+  </div>
+
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>
+Location of embedded OrderInformation class fields
+</p>
+<ul>
+<li><p>
+orderNumber (order identifier from perspective of ordering clinician)
+</p>
+<ul>
+<li><p>
+orderno_xpath =
+&#8220;./cda:entryRelationship/cda:substanceAdministration/cda:id&#8220;
+</p>
+</li>
+</ul>
+</li>
+<li><p>
+orderExpirationDateTime (Date when order is no longer valid)
+</p>
+<ul>
+<li><p>
+expiredate_xpath =
+&#8220;./cda:entryRelationship/cda:substanceAdministration/cda:effectiveTime/cda:high&#8220;
+</p>
+</li>
+</ul>
+</li>
+<li><p>
+orderDateTime (Date when order provider wrote the order/prescription)
+</p>
+<ul>
+<li><p>
+orderdate_xpath =
+&#8220;./cda:entryRelationship/cda:substanceAdministration/cda:author/cda:time&#8220;
+</p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+  </div>
+
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>
+Entry fields not captured by e2e:
+</p>
+<ul>
+<li><p>
+specifics
+</p>
+</li>
+<li><p>
+free_text (instructions from the ordering provider to patient)
+</p>
+</li>
+</ul>
+</div>
+  </div>
+
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>
+Medication fields not captured by e2e:
+</p>
+<ul>
+<li><p>
+typeOfMedication (e.g., prescription, over-counter, etc.)
+</p>
+</li>
+<li><p>
+site (anatomic site where medication is administered)
+</p>
+</li>
+<li><p>
+doseRestriction (maximum dose limit)
+</p>
+</li>
+<li><p>
+fulfillmentInstructions (instructions to the dispensing pharmacist)
+</p>
+</li>
+<li><p>
+indication (medical condition or problem addressed by the ordered product)
+</p>
+</li>
+<li><p>
+vehicle (substance in which the active ingredients are dispersed, e.g.,
+saline solution)
+</p>
+</li>
+<li><p>
+reaction (note of intended or unintended effects, e.g., rash, nausea)
+</p>
+</li>
+<li><p>
+deliveryMethod (how product is administered/consumed)
+</p>
+</li>
+<li><p>
+patientInstructions (instructions not part of free text sig like
+&#8220;keep in the refrigerator&#8221;)
+</p>
+</li>
+<li><p>
+doseIndicator (when action is to be taken, example &#8220;if blood sugar is
+above 250 mg/dl&#8221;)
+</p>
+</li>
+</ul>
+</div>
+  </div>
+
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>
+OrderInformation fields not captured by e2e:
+</p>
+<ul>
+<li><p>
+fills (number of times ordering provider has authorized pharmacy to
+dispense this medication)
+</p>
+</li>
+<li><p>
+quantityOrdered (number of dosage units or volume of liquid substance)
+</p>
+</li>
+</ul>
+</div>
+  </div>
+
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+
+  <h2>Instance Attribute Summary</h2>
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="SectionImporter.html" title="HealthDataStandards::Import::E2E::SectionImporter (class)">SectionImporter</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="SectionImporter.html#check_for_usable-instance_method" title="HealthDataStandards::Import::E2E::SectionImporter#check_for_usable (method)">#check_for_usable</a></span></p>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create_entry-instance_method" title="#create_entry (instance method)">- (Object) <strong>create_entry</strong>(entry_element, id_map = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (MedicationImporter) <strong>initialize</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+A new instance of MedicationImporter.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="SectionImporter.html" title="HealthDataStandards::Import::E2E::SectionImporter (class)">SectionImporter</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="SectionImporter.html#create_entries-instance_method" title="HealthDataStandards::Import::E2E::SectionImporter#create_entries (method)">#create_entries</a></span>, <span class='object_link'><a href="SectionImporter.html#lookup_tag-instance_method" title="HealthDataStandards::Import::E2E::SectionImporter#lookup_tag (method)">#lookup_tag</a></span></p>
+
+  
+  
+  
+  
+  
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="HealthDataStandards::Import::E2E::MedicationImporter (class)">MedicationImporter</a></span></tt>) <strong>initialize</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+A new instance of MedicationImporter
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/health-data-standards/import/e2e/medication_importer.rb', line 74</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
+  <span class='comment'># start of medication section
+</span>  <span class='ivar'>@entry_xpath</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>//cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.19.1' and cda:code/@code='10160-6']/cda:entry/cda:substanceAdministration</span><span class='tstring_end'>&quot;</span></span>
+
+  <span class='comment'># location of base Entry class fields
+</span>  <span class='ivar'>@description_xpath</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>./cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/cda:name/text()</span><span class='tstring_end'>'</span></span>
+  <span class='ivar'>@entrystatus_xpath</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>./cda:statusCode</span><span class='tstring_end'>'</span></span> <span class='comment'># not used
+</span>  <span class='ivar'>@code_xpath</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>./cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/cda:code</span><span class='tstring_end'>'</span></span>
+  <span class='comment'># using cda:strength to populate Entry.value
+</span>  <span class='ivar'>@strength_xpath</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>./cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/cda:strength</span><span class='tstring_end'>'</span></span>
+
+  <span class='comment'># location of Medication class fields
+</span>  <span class='comment'># administrationTiming [frequency of drug - could be specific time, interval (every 6 hours), duration (infuse over 30 minutes) but e2e uses frequency only]
+</span>  <span class='ivar'>@timing_xpath</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration/cda:effectiveTime/cda:frequency</span><span class='tstring_end'>'</span></span>
+  <span class='comment'># freeTextSig (Instructions to patient)
+</span>  <span class='ivar'>@freetext_xpath</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship[cda:templateId/@root='2.16.840.1.113883.3.1818.10.4.35']/cda:observation/cda:text/text()</span><span class='tstring_end'>&quot;</span></span>
+  <span class='comment'># doseQuantity
+</span>  <span class='ivar'>@dose_xpath</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration/cda:doseQuantity</span><span class='tstring_end'>&quot;</span></span>
+  <span class='comment'># statusOfMedication (active, discharged, chronic, acute)
+</span>  <span class='ivar'>@status_xpath</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>./cda:entryRelationship/cda:substanceAdministration/cda:statusCode</span><span class='tstring_end'>'</span></span>
+  <span class='comment'># route (by mouth, intravenously, topically, etc.)
+</span>  <span class='ivar'>@route_xpath</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration/cda:routeCode</span><span class='tstring_end'>'</span></span>
+  <span class='comment'># productForm (tablet, capsule, liquid, ointment)
+</span>  <span class='ivar'>@form_xpath</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration/cda:administrationUnitCode</span><span class='tstring_end'>'</span></span>
+
+  <span class='comment'># location of embedded OrderInformation class fields
+</span>  <span class='comment'># orderNumber (order identifier from perspective of ordering clinician)
+</span>  <span class='ivar'>@orderno_xpath</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>./cda:entryRelationship/cda:substanceAdministration/cda:id</span><span class='tstring_end'>'</span></span>
+  <span class='comment'># orderExpirationDateTime (Date when order is no longer valid)
+</span>  <span class='ivar'>@expiredate_xpath</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>./cda:entryRelationship/cda:substanceAdministration/cda:effectiveTime/cda:high</span><span class='tstring_end'>'</span></span>
+  <span class='comment'># orderDateTime (Date when order provider wrote the order/prescription)
+</span>  <span class='ivar'>@orderdate_xpath</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>./cda:entryRelationship/cda:substanceAdministration/cda:author/cda:time</span><span class='tstring_end'>'</span></span>
+
+  <span class='ivar'>@check_for_usable</span> <span class='op'>=</span> <span class='kw'>true</span>               <span class='comment'># Pilot tools will set this to false
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="create_entry-instance_method">
+  
+    - (<tt>Object</tt>) <strong>create_entry</strong>(entry_element, id_map = {}) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/health-data-standards/import/e2e/medication_importer.rb', line 110</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_create_entry'>create_entry</span><span class='lparen'>(</span><span class='id identifier rubyid_entry_element'>entry_element</span><span class='comma'>,</span> <span class='id identifier rubyid_id_map'>id_map</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_medication'>medication</span> <span class='op'>=</span> <span class='const'>Medication</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+
+  <span class='id identifier rubyid_medication'>medication</span><span class='period'>.</span><span class='id identifier rubyid_administrationTiming'>administrationTiming</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='id identifier rubyid_medication'>medication</span><span class='period'>.</span><span class='id identifier rubyid_freeTextSig'>freeTextSig</span><span class='op'>=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_medication'>medication</span><span class='period'>.</span><span class='id identifier rubyid_dose'>dose</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='comment'>#medication.typeOfMedication={}
+</span>  <span class='id identifier rubyid_medication'>medication</span><span class='period'>.</span><span class='id identifier rubyid_statusOfMedication'>statusOfMedication</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='id identifier rubyid_medication'>medication</span><span class='period'>.</span><span class='id identifier rubyid_route'>route</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='comment'>#medication.site={}
+</span>  <span class='comment'>#medication.doseRestriction={}
+</span>  <span class='comment'>#medication.fulfillmentInstructions=&quot;&quot;
+</span>  <span class='comment'>#medication.indication={}
+</span>  <span class='id identifier rubyid_medication'>medication</span><span class='period'>.</span><span class='id identifier rubyid_productForm'>productForm</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='comment'>#medication.vehicle={}
+</span>  <span class='comment'>#medication.reaction={}
+</span>  <span class='comment'>#medication.deliveryMethod={}
+</span>  <span class='comment'>#medication.patientInstructions=&quot;&quot;
+</span>  <span class='comment'>#medication.doseIndicator=&quot;&quot;
+</span>  <span class='comment'># the following isn't in the IT4 model
+</span>  <span class='comment'>#medication.cumulativeMedicationDuration={}
+</span>
+  <span class='id identifier rubyid_extract_description'>extract_description</span><span class='lparen'>(</span><span class='id identifier rubyid_entry_element'>entry_element</span><span class='comma'>,</span> <span class='id identifier rubyid_medication'>medication</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_extract_codes'>extract_codes</span><span class='lparen'>(</span><span class='id identifier rubyid_entry_element'>entry_element</span><span class='comma'>,</span> <span class='id identifier rubyid_medication'>medication</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_extract_entry_value'>extract_entry_value</span><span class='lparen'>(</span><span class='id identifier rubyid_entry_element'>entry_element</span><span class='comma'>,</span> <span class='id identifier rubyid_medication'>medication</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_extract_dates'>extract_dates</span><span class='lparen'>(</span><span class='id identifier rubyid_entry_element'>entry_element</span><span class='comma'>,</span> <span class='id identifier rubyid_medication'>medication</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_extract_administration_timing'>extract_administration_timing</span><span class='lparen'>(</span><span class='id identifier rubyid_entry_element'>entry_element</span><span class='comma'>,</span> <span class='id identifier rubyid_medication'>medication</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_extract_freetextsig'>extract_freetextsig</span><span class='lparen'>(</span><span class='id identifier rubyid_entry_element'>entry_element</span><span class='comma'>,</span> <span class='id identifier rubyid_medication'>medication</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_extract_dose'>extract_dose</span><span class='lparen'>(</span><span class='id identifier rubyid_entry_element'>entry_element</span><span class='comma'>,</span> <span class='id identifier rubyid_medication'>medication</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_extract_status'>extract_status</span><span class='lparen'>(</span><span class='id identifier rubyid_entry_element'>entry_element</span><span class='comma'>,</span> <span class='id identifier rubyid_medication'>medication</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_extract_route'>extract_route</span><span class='lparen'>(</span><span class='id identifier rubyid_entry_element'>entry_element</span><span class='comma'>,</span> <span class='id identifier rubyid_medication'>medication</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_extract_form'>extract_form</span><span class='lparen'>(</span><span class='id identifier rubyid_entry_element'>entry_element</span><span class='comma'>,</span> <span class='id identifier rubyid_medication'>medication</span><span class='rparen'>)</span>
+
+  <span class='comment'>#extract_order_information(entry_element, medication)
+</span>  <span class='id identifier rubyid_extract_author_time'>extract_author_time</span><span class='lparen'>(</span><span class='id identifier rubyid_entry_element'>entry_element</span><span class='comma'>,</span> <span class='id identifier rubyid_medication'>medication</span><span class='rparen'>)</span>
+  <span class='comment'>#extract_fulfillment_history(entry_element, medication)
+</span>  <span class='id identifier rubyid_medication'>medication</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Tue May  7 12:10:47 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.6.1 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>
