@@ -10,6 +10,65 @@ module HealthDataStandards
       # TODO: Couldn't find an example dose indicator. Isn't clear to me how it should be implemented from the specs, so
       #       dose indicator is not implemented.
       # TODO: Fill Status is not implemented. Couldn't figure out which entryRelationship it should be nested in
+
+      # @note The MedicationImporter class captures the Medications Section of E2E documents
+      #   * For a more thorough description of the medication model as used when capturing the medication section of C32 documents see
+      #     http://www.mirthcorp.com/community/wiki/plugins/viewsource/viewpagesrc.action?pageId=17105258
+      #
+      # @note The following are XPath locations for E2E information elements captured by the query-gateway medication model.
+      #
+      # @note Start of medication section
+      #   * entry_xpath = "//cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.19.1' and cda:code/@code='10160-6']/cda:entry/cda:substanceAdministration"
+      #
+      # @note Location of base Entry class fields
+      #   * description_xpath = "./cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/cda:name/text()"
+      #   * entrystatus_xpath = "./cda:statusCode"            # not used at the moment
+      #   * code_xpath = "./cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/cda:code"
+      #   * strength_xpath = "./cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/cda:strength"
+      #     * using cda:strength to populate Entry.value
+      #
+      # @note Location of Medication class fields
+      #   * administrationTiming [frequency of drug - could be specific time, interval (e.g., every 6 hours), duration (e.g., infuse over 30 minutes) but e2e uses frequency only]
+      #     * timing_xpath = "./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration/cda:effectiveTime/cda:frequency"
+      #   * freeTextSig (Instructions to patient)
+      #     * freetext_xpath = "./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship[cda:templateId/@root='2.16.840.1.113883.3.1818.10.4.35']/cda:observation/cda:text/text()"
+      #   * doseQuantity
+      #     * dose_xpath = "./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration/cda:doseQuantity"
+      #   * statusOfMedication (active, discharged, chronic, acute)
+      #     * status_xpath = "./cda:entryRelationship/cda:substanceAdministration/cda:statusCode"
+      #   * route (by mouth, intravenously, topically, etc.)
+      #     * route_xpath = "./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration/cda:routeCode"
+      #   * productForm (tablet, capsule, liquid, ointment)
+      #     * form_xpath = "./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration/cda:administrationUnitCode"
+      #
+      # @note Location of embedded OrderInformation class fields
+      #   * orderNumber (order identifier from perspective of ordering clinician)
+      #     * orderno_xpath = "./cda:entryRelationship/cda:substanceAdministration/cda:id"
+      #   * orderExpirationDateTime (Date when order is no longer valid)
+      #     * expiredate_xpath = "./cda:entryRelationship/cda:substanceAdministration/cda:effectiveTime/cda:high"
+      #   * orderDateTime (Date when order provider wrote the order/prescription)
+      #     * orderdate_xpath = "./cda:entryRelationship/cda:substanceAdministration/cda:author/cda:time"
+      #
+      # @note Entry fields not captured by e2e:
+      #   * specifics
+      #   * free_text (instructions from the ordering provider to patient)
+      #
+      # @note Medication fields not captured by e2e:
+      #   * typeOfMedication (e.g., prescription, over-counter, etc.)
+      #   * site (anatomic site where medication is administered)
+      #   * doseRestriction (maximum dose limit)
+      #   * fulfillmentInstructions (instructions to the dispensing pharmacist)
+      #   * indication (medical condition or problem addressed by the ordered product)
+      #   * vehicle (substance in which the active ingredients are dispersed, e.g., saline solution)
+      #   * reaction (note of intended or unintended effects, e.g., rash, nausea)
+      #   * deliveryMethod (how product is administered/consumed)
+      #   * patientInstructions (instructions not part of free text sig like "keep in the refrigerator")
+      #   * doseIndicator (when action is to be taken, example "if blood sugar is above 250 mg/dl")
+      #
+      # @note OrderInformation fields not captured by e2e:
+      #   * fills (number of times ordering provider has authorized pharmacy to dispense this medication)
+      #   * quantityOrdered (number of dosage units or volume of liquid substance)
+      #
       class MedicationImporter < SectionImporter
 
         def initialize
@@ -17,53 +76,33 @@ module HealthDataStandards
           @entry_xpath = "//cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.19.1' and cda:code/@code='10160-6']/cda:entry/cda:substanceAdministration"
 
           # location of base Entry class fields
-          @description_xpath = "./cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/cda:name/text()"
-          @entrystatus_xpath = "./cda:statusCode"            # not used
-          @code_xpath = "./cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/cda:code"
+          @description_xpath = './cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/cda:name/text()'
+          @entrystatus_xpath = './cda:statusCode' # not used
+          @code_xpath = './cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/cda:code'
           # using cda:strength to populate Entry.value
-          @strength_xpath = "./cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/cda:strength"
+          @strength_xpath = './cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/cda:strength'
 
           # location of Medication class fields
           # administrationTiming [frequency of drug - could be specific time, interval (every 6 hours), duration (infuse over 30 minutes) but e2e uses frequency only]
-          @timing_xpath = "./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration/cda:effectiveTime/cda:frequency"
+          @timing_xpath = './cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration/cda:effectiveTime/cda:frequency'
           # freeTextSig (Instructions to patient)
           @freetext_xpath = "./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship[cda:templateId/@root='2.16.840.1.113883.3.1818.10.4.35']/cda:observation/cda:text/text()"
           # doseQuantity
           @dose_xpath = "./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration/cda:doseQuantity"
           # statusOfMedication (active, discharged, chronic, acute)
-          @status_xpath = "./cda:entryRelationship/cda:substanceAdministration/cda:statusCode"
+          @status_xpath = './cda:entryRelationship/cda:substanceAdministration/cda:statusCode'
           # route (by mouth, intravenously, topically, etc.)
-          @route_xpath = "./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration/cda:routeCode"
+          @route_xpath = './cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration/cda:routeCode'
           # productForm (tablet, capsule, liquid, ointment)
-          @form_xpath = "./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration/cda:administrationUnitCode"
+          @form_xpath = './cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration/cda:administrationUnitCode'
 
           # location of embedded OrderInformation class fields
           # orderNumber (order identifier from perspective of ordering clinician)
-          @orderno_xpath = "./cda:entryRelationship/cda:substanceAdministration/cda:id"
+          @orderno_xpath = './cda:entryRelationship/cda:substanceAdministration/cda:id'
           # orderExpirationDateTime (Date when order is no longer valid)
-          @expiredate_xpath = "./cda:entryRelationship/cda:substanceAdministration/cda:effectiveTime/cda:high"
+          @expiredate_xpath = './cda:entryRelationship/cda:substanceAdministration/cda:effectiveTime/cda:high'
           # orderDateTime (Date when order provider wrote the order/prescription)
-          @orderdate_xpath = "./cda:entryRelationship/cda:substanceAdministration/cda:author/cda:time"
-
-          # Entry fields not captured by e2e:
-          #  specifics
-          #  free_text (instructions from the ordering provider to patient)
-
-          # Medication fields not captured by e2e:
-          #  typeOfMedication (e.g., prescription, over-counter, etc.)
-          #  site (anatomic site where medication is administered)
-          #  doseRestriction (maximum dose limit)
-          #  fulfillmentInstructions (instructions to the dispensing pharmacist)
-          #  indication (medical condition or problem addressed by the ordered product)
-          #  vehicle (substance in which the active ingredients are dispersed, e.g., saline solution)
-          #  reaction (note of intended or unintended effects, e.g., rash, nausea)
-          #  deliveryMethod (how product is administered/consumed)
-          #  patientInstructions (instructions not part of free text sig like "keep in the refrigerator")
-          #  doseIndicator (when action is to be taken, example "if blood sugar is above 250 mg/dl")
-          #
-          # OrderInformation fields not captured by e2e:
-          #  fills (number of times ordering provider has authorized pharmacy to dispense this medication)
-          #  quantityOrdered (number of dosage units or volume of liquid substance)
+          @orderdate_xpath = './cda:entryRelationship/cda:substanceAdministration/cda:author/cda:time'
 
           @check_for_usable = true               # Pilot tools will set this to false
         end

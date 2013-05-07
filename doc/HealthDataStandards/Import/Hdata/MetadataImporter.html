@@ -1,0 +1,550 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: HealthDataStandards::Import::Hdata::MetadataImporter
+  
+    &mdash; Documentation by YARD 0.8.6.1
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../../';
+  framesUrl = "../../../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../_index.html">Index (M)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../HealthDataStandards.html" title="HealthDataStandards (module)">HealthDataStandards</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Import.html" title="HealthDataStandards::Import (module)">Import</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Hdata.html" title="HealthDataStandards::Import::Hdata (module)">Hdata</a></span></span>
+     &raquo; 
+    <span class="title">MetadataImporter</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: HealthDataStandards::Import::Hdata::MetadataImporter
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">HealthDataStandards::Import::Hdata::MetadataImporter</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2">Singleton</dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/health-data-standards/import/hdata/metadata_importer.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#extract_author-instance_method" title="#extract_author (instance method)">- (Object) <strong>extract_author</strong>(pedi_el) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#extract_change_info-instance_method" title="#extract_change_info (instance method)">- (Object) <strong>extract_change_info</strong>(change_info_el) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#extract_link_info-instance_method" title="#extract_link_info (instance method)">- (Object) <strong>extract_link_info</strong>(link_info_el) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#extract_metadata-instance_method" title="#extract_metadata (instance method)">- (Object) <strong>extract_metadata</strong>(meta_element, meta) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#extract_pedigree-instance_method" title="#extract_pedigree (instance method)">- (Object) <strong>extract_pedigree</strong>(pedi_el) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#import-instance_method" title="#import (instance method)">- (Object) <strong>import</strong>(meta_xml) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="extract_author-instance_method">
+  
+    - (<tt>Object</tt>) <strong>extract_author</strong>(pedi_el) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+53
+54
+55
+56
+57
+58
+59
+60</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/health-data-standards/import/hdata/metadata_importer.rb', line 53</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_extract_author'>extract_author</span><span class='lparen'>(</span><span class='id identifier rubyid_pedi_el'>pedi_el</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>unless</span> <span class='id identifier rubyid_pedi_el'>pedi_el</span>
+  <span class='id identifier rubyid_author'>author</span> <span class='op'>=</span> <span class='id identifier rubyid_pedi_el'>pedi_el</span><span class='period'>.</span><span class='id identifier rubyid_at_xpath'>at_xpath</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>./hrf-md:Author</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>unless</span> <span class='id identifier rubyid_author'>author</span>
+  <span class='const'>Metadata</span><span class='op'>::</span><span class='const'>Author</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>name:</span> <span class='id identifier rubyid_author'>author</span><span class='period'>.</span><span class='id identifier rubyid_try'>try</span><span class='lparen'>(</span><span class='symbol'>:content</span><span class='rparen'>)</span><span class='comma'>,</span> 
+                       <span class='label'>type:</span> <span class='id identifier rubyid_author'>author</span><span class='period'>.</span><span class='id identifier rubyid_attribute'>attribute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>typeCode</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_try'>try</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>content</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='comma'>,</span> 
+                       <span class='label'>role:</span> <span class='id identifier rubyid_author'>author</span><span class='period'>.</span><span class='id identifier rubyid_attribute'>attribute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>role</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_try'>try</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>content</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="extract_change_info-instance_method">
+  
+    - (<tt>Object</tt>) <strong>extract_change_info</strong>(change_info_el) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+70
+71
+72
+73
+74
+75
+76
+77</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/health-data-standards/import/hdata/metadata_importer.rb', line 70</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_extract_change_info'>extract_change_info</span><span class='lparen'>(</span><span class='id identifier rubyid_change_info_el'>change_info_el</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>unless</span> <span class='id identifier rubyid_change_info_el'>change_info_el</span>
+  <span class='id identifier rubyid_change_info'>change_info</span> <span class='op'>=</span> <span class='const'>Metadata</span><span class='op'>::</span><span class='const'>ChangeInfo</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='id identifier rubyid_change_info'>change_info</span><span class='period'>.</span><span class='id identifier rubyid_timestamp'>timestamp</span> <span class='op'>=</span> <span class='id identifier rubyid_change_info_el'>change_info_el</span><span class='period'>.</span><span class='id identifier rubyid_at_xpath'>at_xpath</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>./hrf-md:ChangeDateTime</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_try'>try</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>content</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_change_info'>change_info</span><span class='period'>.</span><span class='id identifier rubyid_pedigree'>pedigree</span> <span class='op'>=</span> <span class='id identifier rubyid_extract_pedigree'>extract_pedigree</span><span class='lparen'>(</span><span class='id identifier rubyid_change_info_el'>change_info_el</span><span class='period'>.</span><span class='id identifier rubyid_at_xpath'>at_xpath</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>./hrf-md:PedigreeInfo</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_change_info_el'>change_info_el</span>
+  <span class='id identifier rubyid_change_info'>change_info</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="extract_link_info-instance_method">
+  
+    - (<tt>Object</tt>) <strong>extract_link_info</strong>(link_info_el) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+62
+63
+64
+65
+66
+67
+68</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/health-data-standards/import/hdata/metadata_importer.rb', line 62</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_extract_link_info'>extract_link_info</span><span class='lparen'>(</span><span class='id identifier rubyid_link_info_el'>link_info_el</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>unless</span> <span class='id identifier rubyid_link_info_el'>link_info_el</span>
+  <span class='id identifier rubyid_target_el'>target_el</span> <span class='op'>=</span> <span class='id identifier rubyid_link_info_el'>link_info_el</span><span class='period'>.</span><span class='id identifier rubyid_at_xpath'>at_xpath</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>./hrf-md:Target</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>unless</span> <span class='id identifier rubyid_target_el'>target_el</span>
+  <span class='const'>Metadata</span><span class='op'>::</span><span class='const'>LinkInfo</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>uri:</span> <span class='id identifier rubyid_target_el'>target_el</span><span class='period'>.</span><span class='id identifier rubyid_content'>content</span><span class='comma'>,</span> 
+               <span class='label'>extension:</span> <span class='id identifier rubyid_target_el'>target_el</span><span class='period'>.</span><span class='id identifier rubyid_attribute'>attribute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>TargetExtension</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_try'>try</span><span class='lparen'>(</span><span class='symbol'>:content</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="extract_metadata-instance_method">
+  
+    - (<tt>Object</tt>) <strong>extract_metadata</strong>(meta_element, meta) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/health-data-standards/import/hdata/metadata_importer.rb', line 19</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_extract_metadata'>extract_metadata</span><span class='lparen'>(</span><span class='id identifier rubyid_meta_element'>meta_element</span><span class='comma'>,</span> <span class='id identifier rubyid_meta'>meta</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_meta'>meta</span><span class='period'>.</span><span class='id identifier rubyid_mime_types'>mime_types</span> <span class='op'>=</span> <span class='id identifier rubyid_meta_element'>meta_element</span><span class='period'>.</span><span class='id identifier rubyid_xpath'>xpath</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>./hrf-md:MediaType</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_media'>media</span><span class='op'>|</span> <span class='id identifier rubyid_media'>media</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_meta'>meta</span><span class='period'>.</span><span class='id identifier rubyid_confidentiality'>confidentiality</span> <span class='op'>=</span> <span class='id identifier rubyid_meta_element'>meta_element</span><span class='period'>.</span><span class='id identifier rubyid_at_xpath'>at_xpath</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>./hrf-md:Confidentiality</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_try'>try</span><span class='lparen'>(</span><span class='symbol'>:text</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_meta'>meta</span><span class='period'>.</span><span class='id identifier rubyid_pedigrees'>pedigrees</span> <span class='op'>=</span> <span class='id identifier rubyid_meta_element'>meta_element</span><span class='period'>.</span><span class='id identifier rubyid_xpath'>xpath</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>./hrf-md:PedigreeInfo</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ped'>ped</span><span class='op'>|</span> <span class='id identifier rubyid_extract_pedigree'>extract_pedigree</span><span class='lparen'>(</span><span class='id identifier rubyid_ped'>ped</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_creation_el'>creation_el</span> <span class='op'>=</span> <span class='id identifier rubyid_meta_element'>meta_element</span><span class='period'>.</span><span class='id identifier rubyid_at_xpath'>at_xpath</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>./hrf-md:RecordDate/hrf-md:CreatedDateTime</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_meta'>meta</span><span class='period'>.</span><span class='id identifier rubyid_original_creation_time'>original_creation_time</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_creation_el'>creation_el</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_creation_el'>creation_el</span>
+  <span class='id identifier rubyid_meta'>meta</span><span class='period'>.</span><span class='id identifier rubyid_linked_documents'>linked_documents</span> <span class='op'>=</span> <span class='id identifier rubyid_meta_element'>meta_element</span><span class='period'>.</span><span class='id identifier rubyid_xpath'>xpath</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>./hrf-md:LinkedDocuments/hrf-md:Link</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_l'>l</span><span class='op'>|</span> <span class='id identifier rubyid_extract_link_info'>extract_link_info</span><span class='lparen'>(</span><span class='id identifier rubyid_l'>l</span><span class='rparen'>)</span><span class='rbrace'>}</span>
+  <span class='id identifier rubyid_copied_elements'>copied_elements</span> <span class='op'>=</span> <span class='id identifier rubyid_meta_element'>meta_element</span><span class='period'>.</span><span class='id identifier rubyid_xpath'>xpath</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>./hrf-md:RecordDate/hrf-md:Copied/hrf-md:CopiedInfo</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_meta'>meta</span><span class='period'>.</span><span class='id identifier rubyid_copied_dates'>copied_dates</span> <span class='op'>=</span> <span class='id identifier rubyid_copied_elements'>copied_elements</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_cp'>cp</span><span class='op'>|</span> <span class='id identifier rubyid_extract_change_info'>extract_change_info</span><span class='lparen'>(</span><span class='id identifier rubyid_cp'>cp</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_modified_elements'>modified_elements</span> <span class='op'>=</span> <span class='id identifier rubyid_meta_element'>meta_element</span><span class='period'>.</span><span class='id identifier rubyid_xpath'>xpath</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>./hrf-md:RecordDate/hrf-md:Modified/hrf-md:ModifiedInfo</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_meta'>meta</span><span class='period'>.</span><span class='id identifier rubyid_modified_dates'>modified_dates</span> <span class='op'>=</span> <span class='id identifier rubyid_modified_elements'>modified_elements</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_md'>md</span><span class='op'>|</span> <span class='id identifier rubyid_extract_change_info'>extract_change_info</span><span class='lparen'>(</span><span class='id identifier rubyid_md'>md</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_meta'>meta</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="extract_pedigree-instance_method">
+  
+    - (<tt>Object</tt>) <strong>extract_pedigree</strong>(pedi_el) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/health-data-standards/import/hdata/metadata_importer.rb', line 33</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_extract_pedigree'>extract_pedigree</span><span class='lparen'>(</span><span class='id identifier rubyid_pedi_el'>pedi_el</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>unless</span> <span class='id identifier rubyid_pedi_el'>pedi_el</span>
+  
+  <span class='id identifier rubyid_author'>author</span> <span class='op'>=</span> <span class='id identifier rubyid_extract_author'>extract_author</span><span class='lparen'>(</span><span class='id identifier rubyid_pedi_el'>pedi_el</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_organization'>organization</span> <span class='op'>=</span> <span class='id identifier rubyid_pedi_el'>pedi_el</span><span class='period'>.</span><span class='id identifier rubyid_at_xpath'>at_xpath</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>./hrf-md:Organization</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  
+  <span class='id identifier rubyid_ped'>ped</span> <span class='op'>=</span> <span class='const'>Metadata</span><span class='op'>::</span><span class='const'>Pedigree</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>author:</span> <span class='id identifier rubyid_author'>author</span><span class='comma'>,</span>
+                     <span class='label'>organization:</span> <span class='id identifier rubyid_organization'>organization</span><span class='period'>.</span><span class='id identifier rubyid_try'>try</span><span class='lparen'>(</span><span class='symbol'>:content</span><span class='rparen'>)</span><span class='rparen'>)</span>
+                      
+  <span class='id identifier rubyid_source_pedigree_els'>source_pedigree_els</span> <span class='op'>=</span> <span class='id identifier rubyid_pedi_el'>pedi_el</span><span class='period'>.</span><span class='id identifier rubyid_xpath'>xpath</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>./hrf-md:Source/hrf-md:PedigreeInfo</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ped'>ped</span><span class='period'>.</span><span class='id identifier rubyid_source_pedigrees'>source_pedigrees</span> <span class='op'>=</span> <span class='id identifier rubyid_source_pedigree_els'>source_pedigree_els</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ped_el'>ped_el</span><span class='op'>|</span> <span class='id identifier rubyid_extract_pedigree'>extract_pedigree</span><span class='lparen'>(</span><span class='id identifier rubyid_ped_el'>ped_el</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_ped'>ped</span><span class='period'>.</span><span class='id identifier rubyid_derived'>derived</span> <span class='op'>=</span> <span class='id identifier rubyid_pedi_el'>pedi_el</span><span class='period'>.</span><span class='id identifier rubyid_attribute'>attribute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>derived</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='comment'># == &quot;true&quot; ? true : false
+</span>  <span class='comment'># ped.signature = pedi_el.at_xpath(&quot;./hrf-md:Signature/&quot;)
+</span>  
+  <span class='id identifier rubyid_source_doc_els'>source_doc_els</span> <span class='op'>=</span> <span class='id identifier rubyid_pedi_el'>pedi_el</span><span class='period'>.</span><span class='id identifier rubyid_xpath'>xpath</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>./hrf-md:Source/hrf-md:Document</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ped'>ped</span><span class='period'>.</span><span class='id identifier rubyid_source_documents'>source_documents</span> <span class='op'>=</span> <span class='id identifier rubyid_source_doc_els'>source_doc_els</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_doc_el'>doc_el</span><span class='op'>|</span> <span class='id identifier rubyid_extract_link_info'>extract_link_info</span><span class='lparen'>(</span><span class='id identifier rubyid_doc_el'>doc_el</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  
+  <span class='id identifier rubyid_ped'>ped</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="import-instance_method">
+  
+    - (<tt>Object</tt>) <strong>import</strong>(meta_xml) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/health-data-standards/import/hdata/metadata_importer.rb', line 7</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_import'>import</span><span class='lparen'>(</span><span class='id identifier rubyid_meta_xml'>meta_xml</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_meta_xml'>meta_xml</span><span class='period'>.</span><span class='id identifier rubyid_root'>root</span><span class='period'>.</span><span class='id identifier rubyid_add_namespace_definition'>add_namespace_definition</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>hrf-md</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='const'>Metadata</span><span class='op'>::</span><span class='const'>NS</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_meta_element'>meta_element</span> <span class='op'>=</span> <span class='id identifier rubyid_meta_xml'>meta_xml</span><span class='period'>.</span><span class='id identifier rubyid_at_xpath'>at_xpath</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>./hrf-md:DocumentMetadata</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>unless</span> <span class='id identifier rubyid_meta_element'>meta_element</span>
+  
+  <span class='id identifier rubyid_meta'>meta</span> <span class='op'>=</span> <span class='const'>Metadata</span><span class='op'>::</span><span class='const'>Base</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  
+  <span class='id identifier rubyid_extract_metadata'>extract_metadata</span><span class='lparen'>(</span><span class='id identifier rubyid_meta_element'>meta_element</span><span class='comma'>,</span> <span class='id identifier rubyid_meta'>meta</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_meta'>meta</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Tue May  7 12:10:47 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.6.1 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>
