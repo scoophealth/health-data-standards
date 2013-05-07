@@ -1,25 +1,34 @@
 module HealthDataStandards
   module Import
     module E2E
-
-      # Fields in models/entry.rb
-      # field :description, type: String
-      # field :specifics, type: String
-      # field :time, type: Integer
-      # field :start_time, type: Integer
-      # field :end_time, type: Integer
-      # field :status, type: String
-      # field :codes, type: Hash, default: {}
-      # field :value, type: Hash, default: {}
-      # field :free_text, type: String
-      # field :mood_code, type: String, default: "EVN"
+      # @note The ConditionImporter class captures the Problems Section of E2E documents
+      #   * For a more thorough description of the condition model as used when capturing the problem section of C32 documents see
+      #     http://www.mirthcorp.com/community/wiki/plugins/viewsource/viewpagesrc.action?pageId=17105254
+      # @note Fields in models/entry.rb
+      #   * field :description, type: String
+      #   * field :specifics, type: String
+      #   * field :time, type: Integer
+      #   * field :start_time, type: Integer
+      #   * field :end_time, type: Integer
+      #   * field :status, type: String
+      #   * field :codes, type: Hash, default: {}
+      #   * field :value, type: Hash, default: {}
+      #   * field :free_text, type: String
+      #   * field :mood_code, type: String, default: "EVN"
       #
-      # Fields in models/condition.rb
-      # field :type,          type: String
-      # field :causeOfDeath,  type: Boolean
-      # field :priority,      type: Integer
-      # field :name,          type: String
-      # field :ordinality,    type: String
+      # @note Fields in models/condition.rb
+      #   * field :type,          type: String
+      #   * field :causeOfDeath,  type: Boolean
+      #   * field :priority,      type: Integer
+      #   * field :name,          type: String
+      #   * field :ordinality,    type: String
+      #
+      # @note The following XPath locations provide access to E2E information elements
+      #   * entry_xpath = "//cda:component/cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.21.1' and cda:code/@code='11450-4']/cda:entry/cda:observation"
+      #   * code_xpath = "./cda:entryRelationship/cda:observation/cda:value"
+      #   * status_xpath = "./cda:statusCode"
+      #   * description_xpath = "./cda:value/cda:originalText[@originalText]"
+      #   * provider_xpath = "./cda:author" #"/cda:assignedAuthor"
 
       class ConditionImporter < SectionImporter
 

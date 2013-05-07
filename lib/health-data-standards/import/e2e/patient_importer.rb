@@ -81,7 +81,7 @@ module HealthDataStandards
           id_map
         end
 
-        # @param [boolean] value for check_usable_entries...importer uses true, stats uses false 
+        # @param check_usable_entries [boolean]...importer uses true, stats uses false
         def check_usable(check_usable_entries)
           @section_importers.each_pair do |section, importer|
             importer.check_for_usable = check_usable_entries

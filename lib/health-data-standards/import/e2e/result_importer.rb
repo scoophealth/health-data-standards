@@ -1,23 +1,35 @@
 module HealthDataStandards
   module Import
     module E2E
-      class ResultImporter < SectionImporter
 
-          # class Entry
-          # field :description, type: String
-          # field :specifics, type: String
-          # field :time, type: Integer
-          # field :start_time, type: Integer
-          # field :end_time, type: Integer
-          # field :status, type: String
-          # field :codes, type: Hash, default: {}
-          # field :value, type: Hash, default: {}
-          # field :free_text, type: String
-          # field :mood_code, type: String, default: "EVN"
-          #
-          # class LabResult < Entry
-          # field :referenceRange, type: String
-          # field :interpretation, type: Hash
+      # @note The ResultImporter class captures the Laboratory Results Section of E2E documents
+      #   * For a more thorough description of the laboratory result model as used when capturing the results section of C32 documents see
+      #     http://www.mirthcorp.com/community/wiki/plugins/viewsource/viewpagesrc.action?pageId=17105264
+      #
+      # @note class Entry
+      #   * field :description, type: String
+      #   * field :specifics, type: String
+      #   * field :time, type: Integer
+      #   * field :start_time, type: Integer
+      #   * field :end_time, type: Integer
+      #   * field :status, type: String
+      #   * field :codes, type: Hash, default: {}
+      #   * field :value, type: Hash, default: {}
+      #   * field :free_text, type: String
+      #   * field :mood_code, type: String, default: "EVN"
+      #
+      # @note class LabResult < Entry
+      #   * field :referenceRange, type: String
+      #   * field :interpretation, type: Hash
+      #
+      # @note The following are XPath locations for E2E information elements captured by the query-gateway results model.
+      #   * entry_xpath = "//cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.16.1' and cda:code/@code='11502-2']/cda:entry/cda:observation/cda:entryRelationship/cda:organizer/cda:component/cda:observation"
+      #   * code_xpath = "./cda:code"
+      #   * interpretation_xpath = "./cda:interpretationCode"
+      #   * description_xpath = "./cda:text/text()"
+      #   * status_xpath = "./cda:statusCode/@code"
+      #
+      class ResultImporter < SectionImporter
 
         def initialize
           @entry_xpath = "//cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.16.1' and cda:code/@code='11502-2']/cda:entry/cda:observation/cda:entryRelationship/cda:organizer/cda:component/cda:observation"
