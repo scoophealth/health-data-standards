@@ -15,7 +15,7 @@ CDA Header
 	<id extension="1" root="2.16.840.1.113883.3.933"/>
 	<code code="34140-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Referral"/>
 	<title>PITO EMR-2-EMR Complete Instance Example</title>
-	<effectiveTime value="201304230943"/>
+	<effectiveTime value="201305071207"/>
 	<confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
 	<!-- 
 	********************************************************
@@ -41,7 +41,7 @@ CDA Header
 	********************************************************
 	-->
 	<author typeCode="AUT" contextControlCode="OP">
-		<time value="20130423"/>
+		<time value="20130507"/>
 		<assignedAuthor>
 			<id extension="000000" root="DCCD2C68-389B-44C4-AD99-B8FB2DAD1493"/>
 			<assignedPerson classCode="PSN" determinerCode="INSTANCE">
@@ -330,922 +330,6 @@ Laboratory Results & Results
 						<!-- Laboratory Observation -->
 						<templateId root="2.16.840.1.113883.3.1818.10.2.16.1"/>
 						<observation classCode="OBS" moodCode="RQO">
-							<id extension="7" root="TBD"/>
-							<code nullFlavor='UNK'/>
-							<text>HAEM1/CHEM4/CHEM27</text>
-							<!-- Ordering Provider -->
-							<author typeCode="AUT" contextControlCode="OP">
-								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
-								<!-- Author Participation -->
-								<time value="20110927"/>
-								<assignedAuthor>
-									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
-									<code nullFlavor='NA'/>
-									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
-										<name use="L">
-											<given>doctor</given>
-											<family>doe</family>
-										</name>
-									</assignedPerson>
-								</assignedAuthor>
-							</author>
-							<!-- Result Organizer -->
-							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
-								<templateId root="2.16.840.1.113883.3.1818.10.4.26"/>
-								<!-- Result Organizer -->
-								<organizer classCode="BATTERY" moodCode="EVN">
-									<id extension="0" root="2.16.840.1.113883.3.1818.10.2.10.35"/>
-									<code nullFlavor='UNK'/>
-									<statusCode code="final"/>
-									<component typeCode="COMP" contextConductionInd="true">
-										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
-										<!-- Result Component -->
-										<observation classCode="OBS" moodCode="EVN">
-											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="12227-5" displayName="WBC"
-												codeSystemName="LOINC"/>
-											<text>WBC</text>
-											<statusCode code="final"/>
-											<effectiveTime value="20110825033817"/>
-											<value xsi:type="ST">6.9</value>
-											<interpretationCode code="N"/>
-											<performer typeCode="PRF">
-												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
-												<time value="20110825033817"/>
-												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
-													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
-														<id extension="TBD" root="TBD"/>
-														<name>VCH</name>
-													</representedOrganization>
-												</assignedEntity>
-											</performer>
-											<entryRelationship typeCode="COMP">
-												<procedure classCode="PROC" moodCode="EVN">
-													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
-												</procedure>
-											</entryRelationship>
-										</observation>
-									</component>
-									<component typeCode="COMP" contextConductionInd="true">
-										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
-										<!-- Result Component -->
-										<observation classCode="OBS" moodCode="EVN">
-											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="789-8" displayName="RBC"
-												codeSystemName="LOINC"/>
-											<text>RBC</text>
-											<statusCode code="final"/>
-											<effectiveTime value="20110825033817"/>
-											<value xsi:type="ST">4.39</value>
-											<interpretationCode code="N"/>
-											<performer typeCode="PRF">
-												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
-												<time value="20110825033817"/>
-												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
-													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
-														<id extension="TBD" root="TBD"/>
-														<name>VCH</name>
-													</representedOrganization>
-												</assignedEntity>
-											</performer>
-											<entryRelationship typeCode="COMP">
-												<procedure classCode="PROC" moodCode="EVN">
-													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
-												</procedure>
-											</entryRelationship>
-										</observation>
-									</component>
-									<component typeCode="COMP" contextConductionInd="true">
-										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
-										<!-- Result Component -->
-										<observation classCode="OBS" moodCode="EVN">
-											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="718-7" displayName="Hemoglobin"
-												codeSystemName="LOINC"/>
-											<text>Hemoglobin</text>
-											<statusCode code="final"/>
-											<effectiveTime value="20110825033817"/>
-											<value xsi:type="ST">141</value>
-											<interpretationCode code="N"/>
-											<performer typeCode="PRF">
-												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
-												<time value="20110825033817"/>
-												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
-													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
-														<id extension="TBD" root="TBD"/>
-														<name>VCH</name>
-													</representedOrganization>
-												</assignedEntity>
-											</performer>
-											<entryRelationship typeCode="COMP">
-												<procedure classCode="PROC" moodCode="EVN">
-													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
-												</procedure>
-											</entryRelationship>
-										</observation>
-									</component>
-									<component typeCode="COMP" contextConductionInd="true">
-										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
-										<!-- Result Component -->
-										<observation classCode="OBS" moodCode="EVN">
-											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="4544-3" displayName="Hematocrit"
-												codeSystemName="LOINC"/>
-											<text>Hematocrit</text>
-											<statusCode code="final"/>
-											<effectiveTime value="20110825033817"/>
-											<value xsi:type="ST">0.42</value>
-											<interpretationCode code="N"/>
-											<performer typeCode="PRF">
-												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
-												<time value="20110825033817"/>
-												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
-													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
-														<id extension="TBD" root="TBD"/>
-														<name>VCH</name>
-													</representedOrganization>
-												</assignedEntity>
-											</performer>
-											<entryRelationship typeCode="COMP">
-												<procedure classCode="PROC" moodCode="EVN">
-													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
-												</procedure>
-											</entryRelationship>
-										</observation>
-									</component>
-									<component typeCode="COMP" contextConductionInd="true">
-										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
-										<!-- Result Component -->
-										<observation classCode="OBS" moodCode="EVN">
-											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="787-2" displayName="MCV"
-												codeSystemName="LOINC"/>
-											<text>MCV</text>
-											<statusCode code="final"/>
-											<effectiveTime value="20110825033817"/>
-											<value xsi:type="ST">95</value>
-											<interpretationCode code="N"/>
-											<performer typeCode="PRF">
-												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
-												<time value="20110825033817"/>
-												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
-													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
-														<id extension="TBD" root="TBD"/>
-														<name>VCH</name>
-													</representedOrganization>
-												</assignedEntity>
-											</performer>
-											<entryRelationship typeCode="COMP">
-												<procedure classCode="PROC" moodCode="EVN">
-													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
-												</procedure>
-											</entryRelationship>
-										</observation>
-									</component>
-									<component typeCode="COMP" contextConductionInd="true">
-										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
-										<!-- Result Component -->
-										<observation classCode="OBS" moodCode="EVN">
-											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="788-0" displayName="RDW"
-												codeSystemName="LOINC"/>
-											<text>RDW</text>
-											<statusCode code="final"/>
-											<effectiveTime value="20110825033817"/>
-											<value xsi:type="ST">12.6</value>
-											<interpretationCode code="N"/>
-											<performer typeCode="PRF">
-												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
-												<time value="20110825033817"/>
-												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
-													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
-														<id extension="TBD" root="TBD"/>
-														<name>VCH</name>
-													</representedOrganization>
-												</assignedEntity>
-											</performer>
-											<entryRelationship typeCode="COMP">
-												<procedure classCode="PROC" moodCode="EVN">
-													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
-												</procedure>
-											</entryRelationship>
-										</observation>
-									</component>
-									<component typeCode="COMP" contextConductionInd="true">
-										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
-										<!-- Result Component -->
-										<observation classCode="OBS" moodCode="EVN">
-											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="777-3" displayName="Platelet Count"
-												codeSystemName="LOINC"/>
-											<text>Platelet Count</text>
-											<statusCode code="final"/>
-											<effectiveTime value="20110825033817"/>
-											<value xsi:type="ST">182</value>
-											<interpretationCode code="N"/>
-											<performer typeCode="PRF">
-												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
-												<time value="20110825033817"/>
-												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
-													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
-														<id extension="TBD" root="TBD"/>
-														<name>VCH</name>
-													</representedOrganization>
-												</assignedEntity>
-											</performer>
-											<entryRelationship typeCode="COMP">
-												<procedure classCode="PROC" moodCode="EVN">
-													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
-												</procedure>
-											</entryRelationship>
-										</observation>
-									</component>
-									<component typeCode="COMP" contextConductionInd="true">
-										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
-										<!-- Result Component -->
-										<observation classCode="OBS" moodCode="EVN">
-											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="751-8" displayName="Neutrophils"
-												codeSystemName="LOINC"/>
-											<text>Neutrophils</text>
-											<statusCode code="final"/>
-											<effectiveTime value="20110825033817"/>
-											<value xsi:type="ST">3.6</value>
-											<interpretationCode code="N"/>
-											<performer typeCode="PRF">
-												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
-												<time value="20110825033817"/>
-												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
-													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
-														<id extension="TBD" root="TBD"/>
-														<name>VCH</name>
-													</representedOrganization>
-												</assignedEntity>
-											</performer>
-											<entryRelationship typeCode="COMP">
-												<procedure classCode="PROC" moodCode="EVN">
-													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
-												</procedure>
-											</entryRelationship>
-										</observation>
-									</component>
-									<component typeCode="COMP" contextConductionInd="true">
-										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
-										<!-- Result Component -->
-										<observation classCode="OBS" moodCode="EVN">
-											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="731-0" displayName="Lymphocytes"
-												codeSystemName="LOINC"/>
-											<text>Lymphocytes</text>
-											<statusCode code="final"/>
-											<effectiveTime value="20110825033817"/>
-											<value xsi:type="ST">2.5</value>
-											<interpretationCode code="N"/>
-											<performer typeCode="PRF">
-												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
-												<time value="20110825033817"/>
-												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
-													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
-														<id extension="TBD" root="TBD"/>
-														<name>VCH</name>
-													</representedOrganization>
-												</assignedEntity>
-											</performer>
-											<entryRelationship typeCode="COMP">
-												<procedure classCode="PROC" moodCode="EVN">
-													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
-												</procedure>
-											</entryRelationship>
-										</observation>
-									</component>
-									<component typeCode="COMP" contextConductionInd="true">
-										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
-										<!-- Result Component -->
-										<observation classCode="OBS" moodCode="EVN">
-											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="742-7" displayName="Monocytes"
-												codeSystemName="LOINC"/>
-											<text>Monocytes</text>
-											<statusCode code="final"/>
-											<effectiveTime value="20110825033817"/>
-											<value xsi:type="ST">0.5</value>
-											<interpretationCode code="N"/>
-											<performer typeCode="PRF">
-												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
-												<time value="20110825033817"/>
-												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
-													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
-														<id extension="TBD" root="TBD"/>
-														<name>VCH</name>
-													</representedOrganization>
-												</assignedEntity>
-											</performer>
-											<entryRelationship typeCode="COMP">
-												<procedure classCode="PROC" moodCode="EVN">
-													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
-												</procedure>
-											</entryRelationship>
-										</observation>
-									</component>
-									<component typeCode="COMP" contextConductionInd="true">
-										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
-										<!-- Result Component -->
-										<observation classCode="OBS" moodCode="EVN">
-											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="711-2" displayName="Eosinophils"
-												codeSystemName="LOINC"/>
-											<text>Eosinophils</text>
-											<statusCode code="final"/>
-											<effectiveTime value="20110825033817"/>
-											<value xsi:type="ST">0.3</value>
-											<interpretationCode code="N"/>
-											<performer typeCode="PRF">
-												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
-												<time value="20110825033817"/>
-												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
-													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
-														<id extension="TBD" root="TBD"/>
-														<name>VCH</name>
-													</representedOrganization>
-												</assignedEntity>
-											</performer>
-											<entryRelationship typeCode="COMP">
-												<procedure classCode="PROC" moodCode="EVN">
-													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
-												</procedure>
-											</entryRelationship>
-										</observation>
-									</component>
-									<component typeCode="COMP" contextConductionInd="true">
-										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
-										<!-- Result Component -->
-										<observation classCode="OBS" moodCode="EVN">
-											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="704-7" displayName="Basophils"
-												codeSystemName="LOINC"/>
-											<text>Basophils</text>
-											<statusCode code="final"/>
-											<effectiveTime value="20110825033817"/>
-											<value xsi:type="ST">0.0</value>
-											<interpretationCode code="N"/>
-											<performer typeCode="PRF">
-												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
-												<time value="20110825033817"/>
-												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
-													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
-														<id extension="TBD" root="TBD"/>
-														<name>VCH</name>
-													</representedOrganization>
-												</assignedEntity>
-											</performer>
-											<entryRelationship typeCode="COMP">
-												<procedure classCode="PROC" moodCode="EVN">
-													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
-												</procedure>
-											</entryRelationship>
-										</observation>
-									</component>
-								</organizer>
-							</entryRelationship>
-							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
-								<templateId root="2.16.840.1.113883.3.1818.10.4.26"/>
-								<!-- Result Organizer -->
-								<organizer classCode="BATTERY" moodCode="EVN">
-									<id extension="1" root="2.16.840.1.113883.3.1818.10.2.10.35"/>
-									<code nullFlavor='UNK'/>
-									<statusCode code="final"/>
-									<component typeCode="COMP" contextConductionInd="true">
-										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
-										<!-- Result Component -->
-										<observation classCode="OBS" moodCode="EVN">
-											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="2885-2" displayName="Total Protein"
-												codeSystemName="LOINC"/>
-											<text>Total Protein</text>
-											<statusCode code="final"/>
-											<effectiveTime value="20110825034310"/>
-											<value xsi:type="ST">75</value>
-											<interpretationCode code="N"/>
-											<performer typeCode="PRF">
-												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
-												<time value="20110825034310"/>
-												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
-													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
-														<id extension="TBD" root="TBD"/>
-														<name>VCH</name>
-													</representedOrganization>
-												</assignedEntity>
-											</performer>
-											<entryRelationship typeCode="COMP">
-												<procedure classCode="PROC" moodCode="EVN">
-													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
-												</procedure>
-											</entryRelationship>
-										</observation>
-									</component>
-								</organizer>
-							</entryRelationship>
-							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
-								<templateId root="2.16.840.1.113883.3.1818.10.4.26"/>
-								<!-- Result Organizer -->
-								<organizer classCode="BATTERY" moodCode="EVN">
-									<id extension="2" root="2.16.840.1.113883.3.1818.10.2.10.35"/>
-									<code nullFlavor='UNK'/>
-									<statusCode code="final"/>
-									<component typeCode="COMP" contextConductionInd="true">
-										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
-										<!-- Result Component -->
-										<observation classCode="OBS" moodCode="EVN">
-											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="1751-7" displayName="Albumin"
-												codeSystemName="LOINC"/>
-											<text>Albumin</text>
-											<statusCode code="final"/>
-											<effectiveTime value="20110825034243"/>
-											<value xsi:type="ST">39</value>
-											<interpretationCode code="N"/>
-											<performer typeCode="PRF">
-												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
-												<time value="20110825034243"/>
-												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
-													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
-														<id extension="TBD" root="TBD"/>
-														<name>VCH</name>
-													</representedOrganization>
-												</assignedEntity>
-											</performer>
-											<entryRelationship typeCode="COMP">
-												<procedure classCode="PROC" moodCode="EVN">
-													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
-												</procedure>
-											</entryRelationship>
-										</observation>
-									</component>
-								</organizer>
-							</entryRelationship>
-							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
-								<templateId root="2.16.840.1.113883.3.1818.10.4.26"/>
-								<!-- Result Organizer -->
-								<organizer classCode="BATTERY" moodCode="EVN">
-									<id extension="3" root="2.16.840.1.113883.3.1818.10.2.10.35"/>
-									<code nullFlavor='UNK'/>
-									<statusCode code="final"/>
-									<component typeCode="COMP" contextConductionInd="true">
-										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
-										<!-- Result Component -->
-										<observation classCode="OBS" moodCode="EVN">
-											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="14631-6" displayName="Total Bilirubin"
-												codeSystemName="LOINC"/>
-											<text>Total Bilirubin</text>
-											<statusCode code="final"/>
-											<effectiveTime value="20110825034243"/>
-											<value xsi:type="ST">12</value>
-											<interpretationCode code="N"/>
-											<performer typeCode="PRF">
-												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
-												<time value="20110825034243"/>
-												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
-													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
-														<id extension="TBD" root="TBD"/>
-														<name>VCH</name>
-													</representedOrganization>
-												</assignedEntity>
-											</performer>
-											<entryRelationship typeCode="COMP">
-												<procedure classCode="PROC" moodCode="EVN">
-													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
-												</procedure>
-											</entryRelationship>
-										</observation>
-									</component>
-									<component typeCode="COMP" contextConductionInd="true">
-										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
-										<!-- Result Component -->
-										<observation classCode="OBS" moodCode="EVN">
-											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="14629-0" displayName="Direct Bilirubin"
-												codeSystemName="LOINC"/>
-											<text>Direct Bilirubin</text>
-											<statusCode code="final"/>
-											<effectiveTime value="20110825034243"/>
-											<value xsi:type="ST">2</value>
-											<interpretationCode code="N"/>
-											<performer typeCode="PRF">
-												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
-												<time value="20110825034243"/>
-												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
-													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
-														<id extension="TBD" root="TBD"/>
-														<name>VCH</name>
-													</representedOrganization>
-												</assignedEntity>
-											</performer>
-											<entryRelationship typeCode="COMP">
-												<procedure classCode="PROC" moodCode="EVN">
-													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
-												</procedure>
-											</entryRelationship>
-										</observation>
-									</component>
-								</organizer>
-							</entryRelationship>
-							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
-								<templateId root="2.16.840.1.113883.3.1818.10.4.26"/>
-								<!-- Result Organizer -->
-								<organizer classCode="BATTERY" moodCode="EVN">
-									<id extension="4" root="2.16.840.1.113883.3.1818.10.2.10.35"/>
-									<code nullFlavor='UNK'/>
-									<statusCode code="final"/>
-									<component typeCode="COMP" contextConductionInd="true">
-										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
-										<!-- Result Component -->
-										<observation classCode="OBS" moodCode="EVN">
-											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="6768-6" displayName="Alkaline Phosphatase"
-												codeSystemName="LOINC"/>
-											<text>Alkaline Phosphatase</text>
-											<statusCode code="final"/>
-											<effectiveTime value="20110825034243"/>
-											<value xsi:type="ST">56</value>
-											<interpretationCode code="N"/>
-											<performer typeCode="PRF">
-												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
-												<time value="20110825034243"/>
-												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
-													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
-														<id extension="TBD" root="TBD"/>
-														<name>VCH</name>
-													</representedOrganization>
-												</assignedEntity>
-											</performer>
-											<entryRelationship typeCode="COMP">
-												<procedure classCode="PROC" moodCode="EVN">
-													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
-												</procedure>
-											</entryRelationship>
-										</observation>
-									</component>
-								</organizer>
-							</entryRelationship>
-							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
-								<templateId root="2.16.840.1.113883.3.1818.10.4.26"/>
-								<!-- Result Organizer -->
-								<organizer classCode="BATTERY" moodCode="EVN">
-									<id extension="5" root="2.16.840.1.113883.3.1818.10.2.10.35"/>
-									<code nullFlavor='UNK'/>
-									<statusCode code="final"/>
-									<component typeCode="COMP" contextConductionInd="true">
-										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
-										<!-- Result Component -->
-										<observation classCode="OBS" moodCode="EVN">
-											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="2324-2" displayName="Gamma GT"
-												codeSystemName="LOINC"/>
-											<text>Gamma GT</text>
-											<statusCode code="final"/>
-											<effectiveTime value="20110825034243"/>
-											<value xsi:type="ST">43</value>
-											<interpretationCode code="N"/>
-											<performer typeCode="PRF">
-												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
-												<time value="20110825034243"/>
-												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
-													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
-														<id extension="TBD" root="TBD"/>
-														<name>VCH</name>
-													</representedOrganization>
-												</assignedEntity>
-											</performer>
-											<entryRelationship typeCode="COMP">
-												<procedure classCode="PROC" moodCode="EVN">
-													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
-												</procedure>
-											</entryRelationship>
-										</observation>
-									</component>
-								</organizer>
-							</entryRelationship>
-							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
-								<templateId root="2.16.840.1.113883.3.1818.10.4.26"/>
-								<!-- Result Organizer -->
-								<organizer classCode="BATTERY" moodCode="EVN">
-									<id extension="6" root="2.16.840.1.113883.3.1818.10.2.10.35"/>
-									<code nullFlavor='UNK'/>
-									<statusCode code="final"/>
-									<component typeCode="COMP" contextConductionInd="true">
-										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
-										<!-- Result Component -->
-										<observation classCode="OBS" moodCode="EVN">
-											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="1742-6" displayName="ALT"
-												codeSystemName="LOINC"/>
-											<text>ALT</text>
-											<statusCode code="final"/>
-											<effectiveTime value="20110825034243"/>
-											<value xsi:type="ST">85</value>
-											<interpretationCode code="A"/>
-											<performer typeCode="PRF">
-												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
-												<time value="20110825034243"/>
-												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
-													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
-														<id extension="TBD" root="TBD"/>
-														<name>VCH</name>
-													</representedOrganization>
-												</assignedEntity>
-											</performer>
-											<entryRelationship typeCode="COMP">
-												<procedure classCode="PROC" moodCode="EVN">
-													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
-												</procedure>
-											</entryRelationship>
-										</observation>
-									</component>
-								</organizer>
-							</entryRelationship>
-							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
-								<templateId root="2.16.840.1.113883.3.1818.10.4.26"/>
-								<!-- Result Organizer -->
-								<organizer classCode="BATTERY" moodCode="EVN">
-									<id extension="7" root="2.16.840.1.113883.3.1818.10.2.10.35"/>
-									<code nullFlavor='UNK'/>
-									<statusCode code="final"/>
-									<component typeCode="COMP" contextConductionInd="true">
-										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
-										<!-- Result Component -->
-										<observation classCode="OBS" moodCode="EVN">
-											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="1920-8" displayName="AST"
-												codeSystemName="LOINC"/>
-											<text>AST</text>
-											<statusCode code="final"/>
-											<effectiveTime value="20110825034243"/>
-											<value xsi:type="ST">51</value>
-											<interpretationCode code="A"/>
-											<performer typeCode="PRF">
-												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
-												<time value="20110825034243"/>
-												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
-													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
-														<id extension="TBD" root="TBD"/>
-														<name>VCH</name>
-													</representedOrganization>
-												</assignedEntity>
-											</performer>
-											<entryRelationship typeCode="COMP">
-												<procedure classCode="PROC" moodCode="EVN">
-													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
-												</procedure>
-											</entryRelationship>
-										</observation>
-									</component>
-								</organizer>
-							</entryRelationship>
-							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
-								<templateId root="2.16.840.1.113883.3.1818.10.4.26"/>
-								<!-- Result Organizer -->
-								<organizer classCode="BATTERY" moodCode="EVN">
-									<id extension="8" root="2.16.840.1.113883.3.1818.10.2.10.35"/>
-									<code nullFlavor='UNK'/>
-									<statusCode code="final"/>
-									<component typeCode="COMP" contextConductionInd="true">
-										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
-										<!-- Result Component -->
-										<observation classCode="OBS" moodCode="EVN">
-											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="2532-0" displayName="LD"
-												codeSystemName="LOINC"/>
-											<text>LD</text>
-											<statusCode code="final"/>
-											<effectiveTime value="20110825034243"/>
-											<value xsi:type="ST">191</value>
-											<interpretationCode code="N"/>
-											<performer typeCode="PRF">
-												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
-												<time value="20110825034243"/>
-												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
-													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
-														<id extension="TBD" root="TBD"/>
-														<name>VCH</name>
-													</representedOrganization>
-												</assignedEntity>
-											</performer>
-											<entryRelationship typeCode="COMP">
-												<procedure classCode="PROC" moodCode="EVN">
-													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
-												</procedure>
-											</entryRelationship>
-										</observation>
-									</component>
-								</organizer>
-							</entryRelationship>
-							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
-								<templateId root="2.16.840.1.113883.3.1818.10.4.26"/>
-								<!-- Result Organizer -->
-								<organizer classCode="BATTERY" moodCode="EVN">
-									<id extension="9" root="2.16.840.1.113883.3.1818.10.2.10.35"/>
-									<code nullFlavor='UNK'/>
-									<statusCode code="final"/>
-									<component typeCode="COMP" contextConductionInd="true">
-										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
-										<!-- Result Component -->
-										<observation classCode="OBS" moodCode="EVN">
-											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="26513-2" displayName="Fluid Neutrophils"
-												codeSystemName="LOINC"/>
-											<text>Fluid Neutrophils</text>
-											<statusCode code="corrected"/>
-											<effectiveTime value="20110825021308"/>
-											<value xsi:type="ST">Results unavailable due to laboratory error.</value>
-											<interpretationCode code="N"/>
-											<performer typeCode="PRF">
-												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
-												<time value="20110825021308"/>
-												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
-													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
-														<id extension="TBD" root="TBD"/>
-														<name>VCH</name>
-													</representedOrganization>
-												</assignedEntity>
-											</performer>
-											<entryRelationship typeCode="COMP">
-												<procedure classCode="PROC" moodCode="EVN">
-													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
-												</procedure>
-											</entryRelationship>
-										</observation>
-									</component>
-									<component typeCode="COMP" contextConductionInd="true">
-										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
-										<!-- Result Component -->
-										<observation classCode="OBS" moodCode="EVN">
-											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="11031-2" displayName="Fluid Lymphocytes"
-												codeSystemName="LOINC"/>
-											<text>Fluid Lymphocytes</text>
-											<statusCode code="corrected"/>
-											<effectiveTime value="20110825021308"/>
-											<value xsi:type="ST">Results unavailable due to laboratory error.</value>
-											<interpretationCode code="N"/>
-											<performer typeCode="PRF">
-												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
-												<time value="20110825021308"/>
-												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
-													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
-														<id extension="TBD" root="TBD"/>
-														<name>VCH</name>
-													</representedOrganization>
-												</assignedEntity>
-											</performer>
-											<entryRelationship typeCode="COMP">
-												<procedure classCode="PROC" moodCode="EVN">
-													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
-												</procedure>
-											</entryRelationship>
-										</observation>
-									</component>
-									<component typeCode="COMP" contextConductionInd="true">
-										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
-										<!-- Result Component -->
-										<observation classCode="OBS" moodCode="EVN">
-											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="30437-8" displayName="Fluid Monocytes + Macrophages"
-												codeSystemName="LOINC"/>
-											<text>Fluid Monocytes + Macrophages</text>
-											<statusCode code="corrected"/>
-											<effectiveTime value="20110825021308"/>
-											<value xsi:type="ST">Results unavailable due to laboratory error.</value>
-											<interpretationCode code="N"/>
-											<performer typeCode="PRF">
-												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
-												<time value="20110825021308"/>
-												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
-													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
-														<id extension="TBD" root="TBD"/>
-														<name>VCH</name>
-													</representedOrganization>
-												</assignedEntity>
-											</performer>
-											<entryRelationship typeCode="COMP">
-												<procedure classCode="PROC" moodCode="EVN">
-													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
-												</procedure>
-											</entryRelationship>
-										</observation>
-									</component>
-									<component typeCode="COMP" contextConductionInd="true">
-										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
-										<!-- Result Component -->
-										<observation classCode="OBS" moodCode="EVN">
-											<id extension="21395659" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="28544-5" displayName="Fluid Mesothelial Cells"
-												codeSystemName="LOINC"/>
-											<text>Fluid Mesothelial Cells</text>
-											<statusCode code="corrected"/>
-											<effectiveTime value="20110825021308"/>
-											<value xsi:type="ST">Results unavailable due to laboratory error.</value>
-											<interpretationCode code="N"/>
-											<performer typeCode="PRF">
-												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
-												<time value="20110825021308"/>
-												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
-													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
-														<id extension="TBD" root="TBD"/>
-														<name>VCH</name>
-													</representedOrganization>
-												</assignedEntity>
-											</performer>
-											<entryRelationship typeCode="COMP">
-												<procedure classCode="PROC" moodCode="EVN">
-													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
-												</procedure>
-											</entryRelationship>
-										</observation>
-									</component>
-								</organizer>
-							</entryRelationship>
-						</observation>
-					</entry>
-					<entry typeCode="COMP" contextConductionInd="true">
-						<!-- Laboratory Observation -->
-						<templateId root="2.16.840.1.113883.3.1818.10.2.16.1"/>
-						<observation classCode="OBS" moodCode="RQO">
 							<id extension="2" root="TBD"/>
 							<code nullFlavor='UNK'/>
 							<text>MICRO3</text>
@@ -1278,8 +362,7 @@ Laboratory Results & Results
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="31208-2" displayName="Specimen Source"
-												codeSystemName="LOINC"/>
+											<code code="31208-2" displayName="Specimen Source" codeSystemName="LOINC"/>
 											<text>Specimen Source</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110429084000"/>
@@ -1311,8 +394,7 @@ bone Lt metatarsal</value>
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="664-3" displayName="Gram Stain"
-												codeSystemName="LOINC"/>
+											<code code="664-3" displayName="Gram Stain" codeSystemName="LOINC"/>
 											<text>Gram Stain</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110429024909"/>
@@ -1347,8 +429,7 @@ bone Lt metatarsal</value>
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="X10114C" displayName="Report Status Preliminary"
-												codeSystemName="LOINC"/>
+											<code code="X10114C" displayName="Report Status Preliminary" codeSystemName="LOINC"/>
 											<text>Report Status Preliminary</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110503105149"/>
@@ -1382,8 +463,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="6463-4" displayName="Culture"
-												codeSystemName="LOINC"/>
+											<code code="6463-4" displayName="Culture" codeSystemName="LOINC"/>
 											<text>Culture</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110503104913"/>
@@ -1414,8 +494,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="28-1" displayName="Ampicillin"
-												codeSystemName="LOINC"/>
+											<code code="28-1" displayName="Ampicillin" codeSystemName="LOINC"/>
 											<text>Ampicillin</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110838"/>
@@ -1446,8 +525,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="149-5" displayName="Cephalexin"
-												codeSystemName="LOINC"/>
+											<code code="149-5" displayName="Cephalexin" codeSystemName="LOINC"/>
 											<text>Cephalexin</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110838"/>
@@ -1478,8 +556,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="76-0" displayName="Cefazolin"
-												codeSystemName="LOINC"/>
+											<code code="76-0" displayName="Cefazolin" codeSystemName="LOINC"/>
 											<text>Cefazolin</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110838"/>
@@ -1510,8 +587,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="145-3" displayName="Cefuroxime Parenteral"
-												codeSystemName="LOINC"/>
+											<code code="145-3" displayName="Cefuroxime Parenteral" codeSystemName="LOINC"/>
 											<text>Cefuroxime Parenteral</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110503104913"/>
@@ -1542,8 +618,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="80-2" displayName="Cefixime"
-												codeSystemName="LOINC"/>
+											<code code="80-2" displayName="Cefixime" codeSystemName="LOINC"/>
 											<text>Cefixime</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110503104755"/>
@@ -1574,8 +649,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="108-1" displayName="Cefotaxime"
-												codeSystemName="LOINC"/>
+											<code code="108-1" displayName="Cefotaxime" codeSystemName="LOINC"/>
 											<text>Cefotaxime</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110503104755"/>
@@ -1606,8 +680,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="141-2" displayName="Ceftriaxone"
-												codeSystemName="LOINC"/>
+											<code code="141-2" displayName="Ceftriaxone" codeSystemName="LOINC"/>
 											<text>Ceftriaxone</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110503104755"/>
@@ -1638,8 +711,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="120-6" displayName="Cefpodoxime"
-												codeSystemName="LOINC"/>
+											<code code="120-6" displayName="Cefpodoxime" codeSystemName="LOINC"/>
 											<text>Cefpodoxime</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110503104755"/>
@@ -1670,8 +742,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="133-9" displayName="Ceftazidime"
-												codeSystemName="LOINC"/>
+											<code code="133-9" displayName="Ceftazidime" codeSystemName="LOINC"/>
 											<text>Ceftazidime</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110503104755"/>
@@ -1702,8 +773,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="516-5" displayName="Trimethoprim-Sulfa"
-												codeSystemName="LOINC"/>
+											<code code="516-5" displayName="Trimethoprim-Sulfa" codeSystemName="LOINC"/>
 											<text>Trimethoprim-Sulfa</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110838"/>
@@ -1734,8 +804,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="185-9" displayName="Ciprofloxacin"
-												codeSystemName="LOINC"/>
+											<code code="185-9" displayName="Ciprofloxacin" codeSystemName="LOINC"/>
 											<text>Ciprofloxacin</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110838"/>
@@ -1766,8 +835,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="267-5" displayName="Gentamicin"
-												codeSystemName="LOINC"/>
+											<code code="267-5" displayName="Gentamicin" codeSystemName="LOINC"/>
 											<text>Gentamicin</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110838"/>
@@ -1798,8 +866,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="496-0" displayName="Tetracycline"
-												codeSystemName="LOINC"/>
+											<code code="496-0" displayName="Tetracycline" codeSystemName="LOINC"/>
 											<text>Tetracycline</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110503104755"/>
@@ -1830,8 +897,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="6463-4" displayName="Culture"
-												codeSystemName="LOINC"/>
+											<code code="6463-4" displayName="Culture" codeSystemName="LOINC"/>
 											<text>Culture</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110441"/>
@@ -1862,8 +928,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="28-1" displayName="Ampicillin"
-												codeSystemName="LOINC"/>
+											<code code="28-1" displayName="Ampicillin" codeSystemName="LOINC"/>
 											<text>Ampicillin</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110441"/>
@@ -1894,8 +959,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="149-5" displayName="Cephalexin"
-												codeSystemName="LOINC"/>
+											<code code="149-5" displayName="Cephalexin" codeSystemName="LOINC"/>
 											<text>Cephalexin</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110441"/>
@@ -1926,8 +990,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="76-0" displayName="Cefazolin"
-												codeSystemName="LOINC"/>
+											<code code="76-0" displayName="Cefazolin" codeSystemName="LOINC"/>
 											<text>Cefazolin</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110441"/>
@@ -1958,8 +1021,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="516-5" displayName="Trimethoprim-Sulfa"
-												codeSystemName="LOINC"/>
+											<code code="516-5" displayName="Trimethoprim-Sulfa" codeSystemName="LOINC"/>
 											<text>Trimethoprim-Sulfa</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110441"/>
@@ -1990,8 +1052,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="185-9" displayName="Ciprofloxacin"
-												codeSystemName="LOINC"/>
+											<code code="185-9" displayName="Ciprofloxacin" codeSystemName="LOINC"/>
 											<text>Ciprofloxacin</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110441"/>
@@ -2022,8 +1083,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="267-5" displayName="Gentamicin"
-												codeSystemName="LOINC"/>
+											<code code="267-5" displayName="Gentamicin" codeSystemName="LOINC"/>
 											<text>Gentamicin</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110441"/>
@@ -2054,8 +1114,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="6463-4" displayName="Culture"
-												codeSystemName="LOINC"/>
+											<code code="6463-4" displayName="Culture" codeSystemName="LOINC"/>
 											<text>Culture</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110429"/>
@@ -2086,8 +1145,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="28-1" displayName="Ampicillin"
-												codeSystemName="LOINC"/>
+											<code code="28-1" displayName="Ampicillin" codeSystemName="LOINC"/>
 											<text>Ampicillin</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110429"/>
@@ -2118,8 +1176,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="149-5" displayName="Cephalexin"
-												codeSystemName="LOINC"/>
+											<code code="149-5" displayName="Cephalexin" codeSystemName="LOINC"/>
 											<text>Cephalexin</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110429"/>
@@ -2150,8 +1207,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="76-0" displayName="Cefazolin"
-												codeSystemName="LOINC"/>
+											<code code="76-0" displayName="Cefazolin" codeSystemName="LOINC"/>
 											<text>Cefazolin</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110429"/>
@@ -2182,8 +1238,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="516-5" displayName="Trimethoprim-Sulfa"
-												codeSystemName="LOINC"/>
+											<code code="516-5" displayName="Trimethoprim-Sulfa" codeSystemName="LOINC"/>
 											<text>Trimethoprim-Sulfa</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110429"/>
@@ -2214,8 +1269,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="185-9" displayName="Ciprofloxacin"
-												codeSystemName="LOINC"/>
+											<code code="185-9" displayName="Ciprofloxacin" codeSystemName="LOINC"/>
 											<text>Ciprofloxacin</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110429"/>
@@ -2246,8 +1300,7 @@ Imipenem : Further report to follow
 										<!-- Result Component -->
 										<observation classCode="OBS" moodCode="EVN">
 											<id extension="11-999-222027" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
-											<code code="267-5" displayName="Gentamicin"
-												codeSystemName="LOINC"/>
+											<code code="267-5" displayName="Gentamicin" codeSystemName="LOINC"/>
 											<text>Gentamicin</text>
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110429"/>
@@ -2262,6 +1315,696 @@ Imipenem : Further report to follow
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>VIHA</name>
+													</representedOrganization>
+												</assignedEntity>
+											</performer>
+											<entryRelationship typeCode="COMP">
+												<procedure classCode="PROC" moodCode="EVN">
+													<!-- specimen collection date -->
+													<effectiveTime value="20110927021747"/>
+												</procedure>
+											</entryRelationship>
+										</observation>
+									</component>
+								</organizer>
+							</entryRelationship>
+						</observation>
+					</entry>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<!-- Laboratory Observation -->
+						<templateId root="2.16.840.1.113883.3.1818.10.2.16.1"/>
+						<observation classCode="OBS" moodCode="RQO">
+							<id extension="3" root="TBD"/>
+							<code nullFlavor='UNK'/>
+							<text>CHEM2/MICRO3</text>
+							<!-- Ordering Provider -->
+							<author typeCode="AUT" contextControlCode="OP">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
+								<!-- Author Participation -->
+								<time value="20110927"/>
+								<assignedAuthor>
+									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+									<code nullFlavor='NA'/>
+									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+										<name use="L">
+											<given>doctor</given>
+											<family>doe</family>
+										</name>
+									</assignedPerson>
+								</assignedAuthor>
+							</author>
+							<!-- Result Organizer -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.26"/>
+								<!-- Result Organizer -->
+								<organizer classCode="BATTERY" moodCode="EVN">
+									<id extension="0" root="2.16.840.1.113883.3.1818.10.2.10.35"/>
+									<code nullFlavor='UNK'/>
+									<statusCode code="final"/>
+									<component typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
+										<!-- Result Component -->
+										<observation classCode="OBS" moodCode="EVN">
+											<id extension="222075056" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
+											<code code="5778-6" displayName="Colour" codeSystemName="LOINC"/>
+											<text>Colour</text>
+											<statusCode code="final"/>
+											<effectiveTime value="20110731112000"/>
+											<value xsi:type="ST">YELLOW</value>
+											<interpretationCode code="N"/>
+											<performer typeCode="PRF">
+												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
+												<!--Performer Participation-->
+												<time value="20110731112000"/>
+												<assignedEntity>
+													<id extension="TBD" root="TBD"/>
+													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+														<id extension="TBD" root="TBD"/>
+														<name>LIFELABS</name>
+													</representedOrganization>
+												</assignedEntity>
+											</performer>
+											<entryRelationship typeCode="COMP">
+												<procedure classCode="PROC" moodCode="EVN">
+													<!-- specimen collection date -->
+													<effectiveTime value="20110927021747"/>
+												</procedure>
+											</entryRelationship>
+										</observation>
+									</component>
+									<component typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
+										<!-- Result Component -->
+										<observation classCode="OBS" moodCode="EVN">
+											<id extension="222075056" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
+											<code code="5767-9" displayName="Appearance" codeSystemName="LOINC"/>
+											<text>Appearance</text>
+											<statusCode code="final"/>
+											<effectiveTime value="20110731112000"/>
+											<value xsi:type="ST">CLEAR</value>
+											<interpretationCode code="N"/>
+											<performer typeCode="PRF">
+												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
+												<!--Performer Participation-->
+												<time value="20110731112000"/>
+												<assignedEntity>
+													<id extension="TBD" root="TBD"/>
+													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+														<id extension="TBD" root="TBD"/>
+														<name>LIFELABS</name>
+													</representedOrganization>
+												</assignedEntity>
+											</performer>
+											<entryRelationship typeCode="COMP">
+												<procedure classCode="PROC" moodCode="EVN">
+													<!-- specimen collection date -->
+													<effectiveTime value="20110927021747"/>
+												</procedure>
+											</entryRelationship>
+										</observation>
+									</component>
+									<component typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
+										<!-- Result Component -->
+										<observation classCode="OBS" moodCode="EVN">
+											<id extension="222075056" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
+											<code code="2756-5" displayName="pH" codeSystemName="LOINC"/>
+											<text>pH</text>
+											<statusCode code="final"/>
+											<effectiveTime value="20110731112000"/>
+											<value xsi:type="ST">7.5</value>
+											<interpretationCode code="N"/>
+											<performer typeCode="PRF">
+												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
+												<!--Performer Participation-->
+												<time value="20110731112000"/>
+												<assignedEntity>
+													<id extension="TBD" root="TBD"/>
+													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+														<id extension="TBD" root="TBD"/>
+														<name>LIFELABS</name>
+													</representedOrganization>
+												</assignedEntity>
+											</performer>
+											<entryRelationship typeCode="COMP">
+												<procedure classCode="PROC" moodCode="EVN">
+													<!-- specimen collection date -->
+													<effectiveTime value="20110927021747"/>
+												</procedure>
+											</entryRelationship>
+											<referenceRange typeCode="REFV">
+												<observationRange classCode="OBS" moodCode="EVN.CRT">
+													<code code="2756-5" displayName="pH" codeSystemName="LOINC"/>
+													<text>5.0...8.5</text>
+													<value xsi:type="ST">5.0...8.5</value>
+												</observationRange>
+											</referenceRange>
+										</observation>
+									</component>
+									<component typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
+										<!-- Result Component -->
+										<observation classCode="OBS" moodCode="EVN">
+											<id extension="222075056" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
+											<code code="5811-5" displayName="Specific Gravity" codeSystemName="LOINC"/>
+											<text>Specific Gravity</text>
+											<statusCode code="final"/>
+											<effectiveTime value="20110731112000"/>
+											<value xsi:type="ST">1.010</value>
+											<interpretationCode code="N"/>
+											<performer typeCode="PRF">
+												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
+												<!--Performer Participation-->
+												<time value="20110731112000"/>
+												<assignedEntity>
+													<id extension="TBD" root="TBD"/>
+													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+														<id extension="TBD" root="TBD"/>
+														<name>LIFELABS</name>
+													</representedOrganization>
+												</assignedEntity>
+											</performer>
+											<entryRelationship typeCode="COMP">
+												<procedure classCode="PROC" moodCode="EVN">
+													<!-- specimen collection date -->
+													<effectiveTime value="20110927021747"/>
+												</procedure>
+											</entryRelationship>
+											<referenceRange typeCode="REFV">
+												<observationRange classCode="OBS" moodCode="EVN.CRT">
+													<code code="5811-5" displayName="Specific Gravity" codeSystemName="LOINC"/>
+													<text>1.003...1.035</text>
+													<value xsi:type="ST">1.003...1.035</value>
+												</observationRange>
+											</referenceRange>
+										</observation>
+									</component>
+									<component typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
+										<!-- Result Component -->
+										<observation classCode="OBS" moodCode="EVN">
+											<id extension="222075056" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
+											<code code="5804-0" displayName="Protein" codeSystemName="LOINC"/>
+											<text>Protein</text>
+											<statusCode code="final"/>
+											<effectiveTime value="20110731112000"/>
+											<value xsi:type="ST">&lt;0.3 g/L</value>
+											<interpretationCode code="N"/>
+											<performer typeCode="PRF">
+												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
+												<!--Performer Participation-->
+												<time value="20110731112000"/>
+												<assignedEntity>
+													<id extension="TBD" root="TBD"/>
+													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+														<id extension="TBD" root="TBD"/>
+														<name>LIFELABS</name>
+													</representedOrganization>
+												</assignedEntity>
+											</performer>
+											<entryRelationship typeCode="COMP">
+												<procedure classCode="PROC" moodCode="EVN">
+													<!-- specimen collection date -->
+													<effectiveTime value="20110927021747"/>
+												</procedure>
+											</entryRelationship>
+											<referenceRange typeCode="REFV">
+												<observationRange classCode="OBS" moodCode="EVN.CRT">
+													<code code="5804-0" displayName="Protein" codeSystemName="LOINC"/>
+													<text>...0.3</text>
+													<value xsi:type="ST">...0.3</value>
+												</observationRange>
+											</referenceRange>
+										</observation>
+									</component>
+									<component typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
+										<!-- Result Component -->
+										<observation classCode="OBS" moodCode="EVN">
+											<id extension="222075056" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
+											<code code="2349-9" displayName="Glucose" codeSystemName="LOINC"/>
+											<text>Glucose</text>
+											<statusCode code="final"/>
+											<effectiveTime value="20110731112000"/>
+											<value xsi:type="ST">&lt;6 mmol/L</value>
+											<interpretationCode code="N"/>
+											<performer typeCode="PRF">
+												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
+												<!--Performer Participation-->
+												<time value="20110731112000"/>
+												<assignedEntity>
+													<id extension="TBD" root="TBD"/>
+													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+														<id extension="TBD" root="TBD"/>
+														<name>LIFELABS</name>
+													</representedOrganization>
+												</assignedEntity>
+											</performer>
+											<entryRelationship typeCode="COMP">
+												<procedure classCode="PROC" moodCode="EVN">
+													<!-- specimen collection date -->
+													<effectiveTime value="20110927021747"/>
+												</procedure>
+											</entryRelationship>
+											<referenceRange typeCode="REFV">
+												<observationRange classCode="OBS" moodCode="EVN.CRT">
+													<code code="2349-9" displayName="Glucose" codeSystemName="LOINC"/>
+													<text>...6</text>
+													<value xsi:type="ST">...6</value>
+												</observationRange>
+											</referenceRange>
+										</observation>
+									</component>
+									<component typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
+										<!-- Result Component -->
+										<observation classCode="OBS" moodCode="EVN">
+											<id extension="222075056" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
+											<code code="2514-8" displayName="Ketones" codeSystemName="LOINC"/>
+											<text>Ketones</text>
+											<statusCode code="final"/>
+											<effectiveTime value="20110731112000"/>
+											<value xsi:type="ST">&lt;1.5 mmol/L</value>
+											<interpretationCode code="N"/>
+											<performer typeCode="PRF">
+												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
+												<!--Performer Participation-->
+												<time value="20110731112000"/>
+												<assignedEntity>
+													<id extension="TBD" root="TBD"/>
+													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+														<id extension="TBD" root="TBD"/>
+														<name>LIFELABS</name>
+													</representedOrganization>
+												</assignedEntity>
+											</performer>
+											<entryRelationship typeCode="COMP">
+												<procedure classCode="PROC" moodCode="EVN">
+													<!-- specimen collection date -->
+													<effectiveTime value="20110927021747"/>
+												</procedure>
+											</entryRelationship>
+											<referenceRange typeCode="REFV">
+												<observationRange classCode="OBS" moodCode="EVN.CRT">
+													<code code="2514-8" displayName="Ketones" codeSystemName="LOINC"/>
+													<text>...1.5</text>
+													<value xsi:type="ST">...1.5</value>
+												</observationRange>
+											</referenceRange>
+										</observation>
+									</component>
+									<component typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
+										<!-- Result Component -->
+										<observation classCode="OBS" moodCode="EVN">
+											<id extension="222075056" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
+											<code code="5794-3" displayName="Hemoglobin" codeSystemName="LOINC"/>
+											<text>Hemoglobin</text>
+											<statusCode code="final"/>
+											<effectiveTime value="20110731112000"/>
+											<value xsi:type="ST">NEG</value>
+											<interpretationCode code="N"/>
+											<performer typeCode="PRF">
+												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
+												<!--Performer Participation-->
+												<time value="20110731112000"/>
+												<assignedEntity>
+													<id extension="TBD" root="TBD"/>
+													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+														<id extension="TBD" root="TBD"/>
+														<name>LIFELABS</name>
+													</representedOrganization>
+												</assignedEntity>
+											</performer>
+											<entryRelationship typeCode="COMP">
+												<procedure classCode="PROC" moodCode="EVN">
+													<!-- specimen collection date -->
+													<effectiveTime value="20110927021747"/>
+												</procedure>
+											</entryRelationship>
+											<referenceRange typeCode="REFV">
+												<observationRange classCode="OBS" moodCode="EVN.CRT">
+													<code code="5794-3" displayName="Hemoglobin" codeSystemName="LOINC"/>
+													<text>Neg</text>
+													<value xsi:type="ST">Neg</value>
+												</observationRange>
+											</referenceRange>
+										</observation>
+									</component>
+									<component typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
+										<!-- Result Component -->
+										<observation classCode="OBS" moodCode="EVN">
+											<id extension="222075056" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
+											<code code="5802-4" displayName="Nitrite" codeSystemName="LOINC"/>
+											<text>Nitrite</text>
+											<statusCode code="final"/>
+											<effectiveTime value="20110731112000"/>
+											<value xsi:type="ST">NEG</value>
+											<interpretationCode code="N"/>
+											<performer typeCode="PRF">
+												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
+												<!--Performer Participation-->
+												<time value="20110731112000"/>
+												<assignedEntity>
+													<id extension="TBD" root="TBD"/>
+													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+														<id extension="TBD" root="TBD"/>
+														<name>LIFELABS</name>
+													</representedOrganization>
+												</assignedEntity>
+											</performer>
+											<entryRelationship typeCode="COMP">
+												<procedure classCode="PROC" moodCode="EVN">
+													<!-- specimen collection date -->
+													<effectiveTime value="20110927021747"/>
+												</procedure>
+											</entryRelationship>
+											<referenceRange typeCode="REFV">
+												<observationRange classCode="OBS" moodCode="EVN.CRT">
+													<code code="5802-4" displayName="Nitrite" codeSystemName="LOINC"/>
+													<text>Neg</text>
+													<value xsi:type="ST">Neg</value>
+												</observationRange>
+											</referenceRange>
+										</observation>
+									</component>
+									<component typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
+										<!-- Result Component -->
+										<observation classCode="OBS" moodCode="EVN">
+											<id extension="222075056" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
+											<code code="5799-2" displayName="Leukocytes" codeSystemName="LOINC"/>
+											<text>Leukocytes</text>
+											<statusCode code="final"/>
+											<effectiveTime value="20110731112000"/>
+											<value xsi:type="ST">+2</value>
+											<interpretationCode code="A"/>
+											<performer typeCode="PRF">
+												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
+												<!--Performer Participation-->
+												<time value="20110731112000"/>
+												<assignedEntity>
+													<id extension="TBD" root="TBD"/>
+													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+														<id extension="TBD" root="TBD"/>
+														<name>LIFELABS</name>
+													</representedOrganization>
+												</assignedEntity>
+											</performer>
+											<entryRelationship typeCode="COMP">
+												<procedure classCode="PROC" moodCode="EVN">
+													<!-- specimen collection date -->
+													<effectiveTime value="20110927021747"/>
+												</procedure>
+											</entryRelationship>
+											<referenceRange typeCode="REFV">
+												<observationRange classCode="OBS" moodCode="EVN.CRT">
+													<code code="5799-2" displayName="Leukocytes" codeSystemName="LOINC"/>
+													<text>Neg</text>
+													<value xsi:type="ST">Neg</value>
+												</observationRange>
+											</referenceRange>
+										</observation>
+									</component>
+								</organizer>
+							</entryRelationship>
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.26"/>
+								<!-- Result Organizer -->
+								<organizer classCode="BATTERY" moodCode="EVN">
+									<id extension="1" root="2.16.840.1.113883.3.1818.10.2.10.35"/>
+									<code nullFlavor='UNK'/>
+									<statusCode code="final"/>
+									<component typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
+										<!-- Result Component -->
+										<observation classCode="OBS" moodCode="EVN">
+											<id extension="222075056" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
+											<code code="X10114" displayName="Report Status" codeSystemName="LOINC"/>
+											<text>Report Status</text>
+											<statusCode code="final"/>
+											<effectiveTime value="20110731112000"/>
+											<value xsi:type="ST">Final</value>
+											<interpretationCode code="N"/>
+											<performer typeCode="PRF">
+												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
+												<!--Performer Participation-->
+												<time value="20110731112000"/>
+												<assignedEntity>
+													<id extension="TBD" root="TBD"/>
+													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+														<id extension="TBD" root="TBD"/>
+														<name>LIFELABS</name>
+													</representedOrganization>
+												</assignedEntity>
+											</performer>
+											<entryRelationship typeCode="COMP">
+												<procedure classCode="PROC" moodCode="EVN">
+													<!-- specimen collection date -->
+													<effectiveTime value="20110927021747"/>
+												</procedure>
+											</entryRelationship>
+										</observation>
+									</component>
+									<component typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
+										<!-- Result Component -->
+										<observation classCode="OBS" moodCode="EVN">
+											<id extension="222075056" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
+											<code code="X433" displayName="Organism 1" codeSystemName="LOINC"/>
+											<text>Organism 1</text>
+											<statusCode code="final"/>
+											<effectiveTime value="20110731112000"/>
+											<value xsi:type="ST">ESCHERICHIA COLI\.Zt\OVER 100 M CFU/L
+</value>
+											<interpretationCode code="N"/>
+											<performer typeCode="PRF">
+												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
+												<!--Performer Participation-->
+												<time value="20110731112000"/>
+												<assignedEntity>
+													<id extension="TBD" root="TBD"/>
+													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+														<id extension="TBD" root="TBD"/>
+														<name>LIFELABS</name>
+													</representedOrganization>
+												</assignedEntity>
+											</performer>
+											<entryRelationship typeCode="COMP">
+												<procedure classCode="PROC" moodCode="EVN">
+													<!-- specimen collection date -->
+													<effectiveTime value="20110927021747"/>
+												</procedure>
+											</entryRelationship>
+										</observation>
+									</component>
+									<component typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
+										<!-- Result Component -->
+										<observation classCode="OBS" moodCode="EVN">
+											<id extension="222075056" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
+											<code code="28-1" displayName="Ampicillin" codeSystemName="LOINC"/>
+											<text>Ampicillin</text>
+											<statusCode code="final"/>
+											<effectiveTime value="20110731112000"/>
+											<value xsi:type="ST">R</value>
+											<interpretationCode code="N"/>
+											<performer typeCode="PRF">
+												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
+												<!--Performer Participation-->
+												<time value="20110731112000"/>
+												<assignedEntity>
+													<id extension="TBD" root="TBD"/>
+													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+														<id extension="TBD" root="TBD"/>
+														<name>LIFELABS</name>
+													</representedOrganization>
+												</assignedEntity>
+											</performer>
+											<entryRelationship typeCode="COMP">
+												<procedure classCode="PROC" moodCode="EVN">
+													<!-- specimen collection date -->
+													<effectiveTime value="20110927021747"/>
+												</procedure>
+											</entryRelationship>
+										</observation>
+									</component>
+									<component typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
+										<!-- Result Component -->
+										<observation classCode="OBS" moodCode="EVN">
+											<id extension="222075056" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
+											<code code="X10042" displayName="Cephalothin-Cephalexin" codeSystemName="LOINC"/>
+											<text>Cephalothin-Cephalexin</text>
+											<statusCode code="final"/>
+											<effectiveTime value="20110731112000"/>
+											<value xsi:type="ST">S</value>
+											<interpretationCode code="N"/>
+											<performer typeCode="PRF">
+												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
+												<!--Performer Participation-->
+												<time value="20110731112000"/>
+												<assignedEntity>
+													<id extension="TBD" root="TBD"/>
+													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+														<id extension="TBD" root="TBD"/>
+														<name>LIFELABS</name>
+													</representedOrganization>
+												</assignedEntity>
+											</performer>
+											<entryRelationship typeCode="COMP">
+												<procedure classCode="PROC" moodCode="EVN">
+													<!-- specimen collection date -->
+													<effectiveTime value="20110927021747"/>
+												</procedure>
+											</entryRelationship>
+										</observation>
+									</component>
+									<component typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
+										<!-- Result Component -->
+										<observation classCode="OBS" moodCode="EVN">
+											<id extension="222075056" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
+											<code code="516-5" displayName="Trimethoprim-Sulfa" codeSystemName="LOINC"/>
+											<text>Trimethoprim-Sulfa</text>
+											<statusCode code="final"/>
+											<effectiveTime value="20110731112000"/>
+											<value xsi:type="ST">S</value>
+											<interpretationCode code="N"/>
+											<performer typeCode="PRF">
+												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
+												<!--Performer Participation-->
+												<time value="20110731112000"/>
+												<assignedEntity>
+													<id extension="TBD" root="TBD"/>
+													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+														<id extension="TBD" root="TBD"/>
+														<name>LIFELABS</name>
+													</representedOrganization>
+												</assignedEntity>
+											</performer>
+											<entryRelationship typeCode="COMP">
+												<procedure classCode="PROC" moodCode="EVN">
+													<!-- specimen collection date -->
+													<effectiveTime value="20110927021747"/>
+												</procedure>
+											</entryRelationship>
+										</observation>
+									</component>
+									<component typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
+										<!-- Result Component -->
+										<observation classCode="OBS" moodCode="EVN">
+											<id extension="222075056" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
+											<code code="185-9" displayName="Ciprofloxacin" codeSystemName="LOINC"/>
+											<text>Ciprofloxacin</text>
+											<statusCode code="final"/>
+											<effectiveTime value="20110731112000"/>
+											<value xsi:type="ST">S</value>
+											<interpretationCode code="N"/>
+											<performer typeCode="PRF">
+												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
+												<!--Performer Participation-->
+												<time value="20110731112000"/>
+												<assignedEntity>
+													<id extension="TBD" root="TBD"/>
+													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+														<id extension="TBD" root="TBD"/>
+														<name>LIFELABS</name>
+													</representedOrganization>
+												</assignedEntity>
+											</performer>
+											<entryRelationship typeCode="COMP">
+												<procedure classCode="PROC" moodCode="EVN">
+													<!-- specimen collection date -->
+													<effectiveTime value="20110927021747"/>
+												</procedure>
+											</entryRelationship>
+										</observation>
+									</component>
+									<component typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
+										<!-- Result Component -->
+										<observation classCode="OBS" moodCode="EVN">
+											<id extension="222075056" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
+											<code code="267-5" displayName="Gentamicin" codeSystemName="LOINC"/>
+											<text>Gentamicin</text>
+											<statusCode code="final"/>
+											<effectiveTime value="20110731112000"/>
+											<value xsi:type="ST">S</value>
+											<interpretationCode code="N"/>
+											<performer typeCode="PRF">
+												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
+												<!--Performer Participation-->
+												<time value="20110731112000"/>
+												<assignedEntity>
+													<id extension="TBD" root="TBD"/>
+													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+														<id extension="TBD" root="TBD"/>
+														<name>LIFELABS</name>
+													</representedOrganization>
+												</assignedEntity>
+											</performer>
+											<entryRelationship typeCode="COMP">
+												<procedure classCode="PROC" moodCode="EVN">
+													<!-- specimen collection date -->
+													<effectiveTime value="20110927021747"/>
+												</procedure>
+											</entryRelationship>
+										</observation>
+									</component>
+									<component typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
+										<!-- Result Component -->
+										<observation classCode="OBS" moodCode="EVN">
+											<id extension="222075056" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
+											<code code="496-0" displayName="Tetracycline" codeSystemName="LOINC"/>
+											<text>Tetracycline</text>
+											<statusCode code="final"/>
+											<effectiveTime value="20110731112000"/>
+											<value xsi:type="ST">S</value>
+											<interpretationCode code="N"/>
+											<performer typeCode="PRF">
+												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
+												<!--Performer Participation-->
+												<time value="20110731112000"/>
+												<assignedEntity>
+													<id extension="TBD" root="TBD"/>
+													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+														<id extension="TBD" root="TBD"/>
+														<name>LIFELABS</name>
+													</representedOrganization>
+												</assignedEntity>
+											</performer>
+											<entryRelationship typeCode="COMP">
+												<procedure classCode="PROC" moodCode="EVN">
+													<!-- specimen collection date -->
+													<effectiveTime value="20110927021747"/>
+												</procedure>
+											</entryRelationship>
+										</observation>
+									</component>
+									<component typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/>
+										<!-- Result Component -->
+										<observation classCode="OBS" moodCode="EVN">
+											<id extension="222075056" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
+											<code code="363-2" displayName="Nitrofurantoin" codeSystemName="LOINC"/>
+											<text>Nitrofurantoin</text>
+											<statusCode code="final"/>
+											<effectiveTime value="20110731112000"/>
+											<value xsi:type="ST">S</value>
+											<interpretationCode code="N"/>
+											<performer typeCode="PRF">
+												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
+												<!--Performer Participation-->
+												<time value="20110731112000"/>
+												<assignedEntity>
+													<id extension="TBD" root="TBD"/>
+													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+														<id extension="TBD" root="TBD"/>
+														<name>LIFELABS</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
@@ -2336,7 +2079,7 @@ Medications and Prescriptions - Medication List
 								<substanceAdministration classCode="SBADM" moodCode="RQO">
 									<id extension="5" root="2.16.840.1.113883.3.1818.10.10.3"/>
 									<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
-									<statusCode code="active"/>
+									<statusCode code="completed"/>
 									<effectiveTime xsi:type="IVL_TS" operator="I">
 										<low value="20130305"/>
 										<high value="20130424" />
@@ -2469,7 +2212,7 @@ Medications and Prescriptions - Medication List
 								<substanceAdministration classCode="SBADM" moodCode="RQO">
 									<id extension="2" root="2.16.840.1.113883.3.1818.10.10.3"/>
 									<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
-									<statusCode code="active"/>
+									<statusCode code="completed"/>
 									<effectiveTime xsi:type="IVL_TS" operator="I">
 										<low value="20130305"/>
 										<high value="20130430" />
@@ -2592,7 +2335,7 @@ Medications and Prescriptions - Medication List
 								<substanceAdministration classCode="SBADM" moodCode="RQO">
 									<id extension="9" root="2.16.840.1.113883.3.1818.10.10.3"/>
 									<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
-									<statusCode code="active"/>
+									<statusCode code="completed"/>
 									<effectiveTime xsi:type="IVL_TS" operator="I">
 										<low value="20130305"/>
 										<high value="20130430" />
@@ -2838,7 +2581,7 @@ Medications and Prescriptions - Medication List
 								<substanceAdministration classCode="SBADM" moodCode="RQO">
 									<id extension="6" root="2.16.840.1.113883.3.1818.10.10.3"/>
 									<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
-									<statusCode code="active"/>
+									<statusCode code="completed"/>
 									<effectiveTime xsi:type="IVL_TS" operator="I">
 										<low value="20130305"/>
 										<high value="20130430" />
@@ -3084,7 +2827,7 @@ Medications and Prescriptions - Medication List
 								<substanceAdministration classCode="SBADM" moodCode="RQO">
 									<id extension="1" root="2.16.840.1.113883.3.1818.10.10.3"/>
 									<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
-									<statusCode code="active"/>
+									<statusCode code="completed"/>
 									<effectiveTime xsi:type="IVL_TS" operator="I">
 										<low value="20130305"/>
 										<high value="20130430" />
@@ -3207,7 +2950,7 @@ Medications and Prescriptions - Medication List
 								<substanceAdministration classCode="SBADM" moodCode="RQO">
 									<id extension="8" root="2.16.840.1.113883.3.1818.10.10.3"/>
 									<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
-									<statusCode code="active"/>
+									<statusCode code="completed"/>
 									<effectiveTime xsi:type="IVL_TS" operator="I">
 										<low value="20130305"/>
 										<high value="20130430" />
@@ -3330,7 +3073,7 @@ Medications and Prescriptions - Medication List
 								<substanceAdministration classCode="SBADM" moodCode="RQO">
 									<id extension="4" root="2.16.840.1.113883.3.1818.10.10.3"/>
 									<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
-									<statusCode code="active"/>
+									<statusCode code="completed"/>
 									<effectiveTime xsi:type="IVL_TS" operator="I">
 										<low value="20130305"/>
 										<high value="20130430" />
@@ -3580,43 +3323,10 @@ Risk Factors
 -->
 			<component typeCode="COMP" contextConductionInd="true">
 				<section classCode="DOCSECT" moodCode="EVN">
-					<templateId root="2.16.840.1.113883.3.1818.10.2.24.1"/>
+					<templateId root="2.16.840.1.113883.3.1818.10.2.24"/>
 					<code code="46467-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Risk Factors"/>
-					<title>Risk Factors [with entries]</title>
-					<text>Risk Factors</text>
-					<entry typeCode="COMP" contextConductionInd="true"> 
-						<templateId root="2.16.840.1.113883.3.1818.10.3.17"/>
-						<!-- Risk Factors Organizer -->
-						<organizer classCode="CLUSTER" moodCode="EVN">
-							<id extension="28" root="2.16.840.1.113883.3.1818.10.2.10.35"/>
-							<code nullFlavor='UNK'/>
-							<statusCode code="active"/>
-							<author typeCode="AUT" contextControlCode="OP">
-								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
-								<!-- Author Participation -->
-								<time value="20130326"/>
-								<assignedAuthor>
-									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
-									<code nullFlavor='NA'/>
-									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
-										<name use="L">
-											<given>doctor</given>
-											<family>oscardoc</family>
-										</name>
-									</assignedPerson>
-								</assignedAuthor>
-							</author>
-							<component typeCode="COMP" contextConductionInd="true">
-								<observation classCode="OBS" moodCode="EVN">
-									<id extension="28" root="TBD"/>
-									<code nullFlavor="UNK"/>
-									<text>Risky risk</text>
-									<effectiveTime value="20130326112417"/>
-									<value xsi:type="ST">Risky risk</value>
-								</observation>
-							</component>
-						</organizer>
-					</entry>
+					<title>Risk Factors [without entries]</title>
+					<text>No Risk Factors</text>
 				</section>
 			</component>
 		</structuredBody>
