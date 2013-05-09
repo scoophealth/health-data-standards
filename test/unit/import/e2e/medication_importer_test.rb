@@ -34,7 +34,7 @@ class MedicationImporterTest < MiniTest::Unit::TestCase
     assert_equal '1.0', medication.dose['low']
     assert_equal '2.0', medication.dose['high']
 
-    assert_equal 'active', medication.statusOfMedication
+    assert_equal 'completed', medication.statusOfMedication
 
     assert_equal 'PO', medication.route['code']
     assert_equal '2.16.840.1.113883.5.112', medication.route['codeSystem']
@@ -69,7 +69,7 @@ class MedicationImporterTest < MiniTest::Unit::TestCase
     assert_equal '1.0', medication.dose['low']
     assert_equal '1.0', medication.dose['high']
 
-    assert_equal 'active', medication.statusOfMedication
+    assert_equal 'completed', medication.statusOfMedication
 
     assert_equal 'PO', medication.route['code']
     assert_equal '2.16.840.1.113883.5.112', medication.route['codeSystem']
