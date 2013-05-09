@@ -34,6 +34,7 @@ module HealthDataStandards
         def initialize
           @entry_xpath = "//cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.16.1' and cda:code/@code='11502-2']/cda:entry/cda:observation/cda:entryRelationship/cda:organizer/cda:component/cda:observation"
           @code_xpath = "./cda:code"
+          @referencerange_xpath = "./cda:referenceRange"
           @interpretation_xpath = "./cda:interpretationCode"
           @description_xpath = "./cda:text/text()"
           @status_xpath = "./cda:statusCode/@code"
@@ -70,11 +71,19 @@ module HealthDataStandards
           extract_dates(entry_element, result)
           extract_value(entry_element, result)
           extract_description(entry_element, result)
+          extract_referencerange(entry_element, result)
           extract_interpretation(entry_element, result)
           result
         end
     
         private
+
+        def extract_referencerange(parent_element, result)
+          element = parent_element.xpath(@referencerange_xpath+"/cda:observationRange/cda:text/text()")
+          result.referenceRange = element.to_s if not element.empty?
+
+        end
+
         def extract_interpretation(parent_element, result)
           interpretation_element = parent_element.xpath(@interpretation_xpath+"/@code")
           if interpretation_element
