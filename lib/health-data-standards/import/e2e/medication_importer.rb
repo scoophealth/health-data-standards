@@ -157,10 +157,9 @@ module HealthDataStandards
         end
 
         def extract_entry_value(parent_element, entry)
-          value = {}
-          value['value'] = parent_element.xpath(@strength_xpath+"/cda:center/@value").to_s
-          value['unit'] = parent_element.xpath(@strength_xpath+"/cda:center/@unit").to_s
-          entry.value = value
+          myscalar = parent_element.xpath(@strength_xpath+"/cda:center/@value").to_s
+          myunit = parent_element.xpath(@strength_xpath+"/cda:center/@unit").to_s
+          entry.set_value(myscalar,myunit)
         end
 
         # Find date in Medication Prescription Event.
