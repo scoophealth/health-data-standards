@@ -18,8 +18,10 @@ class MedicationImporterTest < MiniTest::Unit::TestCase
     assert medication.codes['HC-DIN'].include? '00559407'
     assert medication.codes['whoATC'].include? 'N02BE01'
 
-    assert_equal "500.0", medication.value['value']
-    assert_equal "MG", medication.value['unit']
+    #assert_equal "500.0", medication.value['value']
+    #assert_equal "MG", medication.value['unit']
+    assert_equal "500.0", medication.values.first.scalar
+    assert_equal "MG", medication.values.first.units
 
     assert_equal 1362441600, medication.time
     assert_equal 1362441600, medication.start_time
@@ -53,8 +55,10 @@ class MedicationImporterTest < MiniTest::Unit::TestCase
     assert medication.codes['HC-DIN'].include? '02387913'
     assert medication.codes['whoATC'].include? 'C10AA05'
 
-    assert_equal "40.0", medication.value['value']
-    assert_equal "MG", medication.value['unit']
+    #assert_equal "40.0", medication.value['value']
+    #assert_equal "MG", medication.value['unit']
+    assert_equal "40.0", medication.values.first.scalar
+    assert_equal "MG", medication.values.first.units
 
     assert_equal 1362441600, medication.time   # returns nil?
     assert_equal 1362441600, medication.start_time
