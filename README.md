@@ -3,7 +3,7 @@ This is a project to generate and consume HITSP C32, ASTM CCR and PQRI
 Environment
 ===========
 
-This project currently uses Ruby 1.9.2 and is built using [Bundler](http://gembundler.com/). To get all of the dependencies for the project, first install bundler:
+This project currently uses Ruby 1.9.3 and is built using [Bundler](http://gembundler.com/). To get all of the dependencies for the project, first install bundler:
 
     gem install bundler
 
