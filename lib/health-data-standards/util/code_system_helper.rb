@@ -20,10 +20,10 @@ module HealthDataStandards
         '2.16.840.1.113883.6.259' => 'HL7 Healthcare Service Location',
         '2.16.840.1.113883.5.4' => 'HL7 Act Code',
         '2.16.840.1.113883.1.11.18877' => 'HL7 Relationship Code',
-        '2.16.840.1.113883.6.238' => 'CDC Race'
-        '2.16.840.1.113883.5.1105" => 'HC-DIN',
-        '2.16.840.1.113883.6.73" => 'whoATC',
-        '2.16.840.1.113883.6.42" => 'ICD9'
+        '2.16.840.1.113883.6.238' => 'CDC Race',
+        '2.16.840.1.113883.5.1105' => 'HC-DIN',
+        '2.16.840.1.113883.6.73' => 'whoATC',
+        '2.16.840.1.113883.6.42' => 'ICD9'
       }
       
       # Returns the name of a code system given an oid
