@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
- <ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="urn:hl7-org:v3 Schemas/CDA-PITO-E2E.xsd"
  xmlns="urn:hl7-org:v3"
  xmlns:hl7="urn:hl7-org:v3"
@@ -15,7 +15,7 @@ CDA Header
 	<id extension="1" root="2.16.840.1.113883.3.933"/>
 	<code code="34140-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Referral"/>
 	<title>PITO EMR-2-EMR Complete Instance Example</title>
-	<effectiveTime value="201305071207"/>
+	<effectiveTime value="201306100342"/>
 	<confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
 	<!-- 
 	********************************************************
@@ -24,7 +24,15 @@ CDA Header
 	-->
 	<recordTarget typeCode="RCT" contextControlCode="OP">
 		<patientRole classCode="PAT">
-			<id extension="000000000" root="2BFBA1E9-79C2-4bbb-B589-41B949BD6A3B" assigningAuthorityName="BC-PHN"/>
+			<id extension="000000000" root="2BFBA1E9-79C2-4BBB-B589-41B949BD6A3B" assigningAuthorityName="BC-PHN"/>
+			<addr>
+				<streetAddressLine></streetAddressLine>
+				<city></city>
+				<state>BC</state>
+				<postalCode></postalCode>
+			</addr>
+			<!-- Home Phone -->
+			<telecom value="tel: 250-" use="HP"/>
 			<patient>
 				<name>
 					<given>JOHN</given>
@@ -32,6 +40,9 @@ CDA Header
 				</name>
 				<administrativeGenderCode code="M" codeSystem="2.16.840.1.113883.5.1" codeSystemName="HL7 - Administrative Gender" displayName="Male"/>
 				<birthTime value="19400925"/>
+				<languageCommunication>
+					<languageCode code="EN"/>
+				</languageCommunication>
 			</patient>
 		</patientRole>
 	</recordTarget>
@@ -41,7 +52,7 @@ CDA Header
 	********************************************************
 	-->
 	<author typeCode="AUT" contextControlCode="OP">
-		<time value="20130507"/>
+		<time value="20130610"/>
 		<assignedAuthor>
 			<id extension="000000" root="DCCD2C68-389B-44C4-AD99-B8FB2DAD1493"/>
 			<assignedPerson classCode="PSN" determinerCode="INSTANCE">
@@ -135,6 +146,223 @@ Allergies and Intolerances - (Reaction List)
 								</observation>
 							</entryRelationship>
 						</observation>
+					</entry>
+				</section>
+			</component>
+<!--
+********************************************************
+Clinically Measured Observation
+********************************************************
+-->
+			<component typeCode="COMP" contextConductionInd="true">
+				<section classCode="DOCSECT" moodCode="EVN">
+					<templateId root="2.16.840.1.113883.3.1818.10.2.8.1"/>
+					<code code="CLINOBS" codeSystem="2.16.840.1.113883.3.1818.10.2.100.1" codeSystemName="PITOObservationType" displayName="Clinically Measured Observations"/>
+					<title>Clinical Measured Observations [with entries]</title>
+					<text>Clinical Measured Observations</text>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<templateId root="2.16.840.1.113883.3.1818.10.3.7"/>
+						<!-- Clinically Measured Observations Organizer -->
+						<organizer classCode="CLUSTER" moodCode="EVN">
+							<id extension="76" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+							<code code="MEAOBSORG" displayName="Measured Observations Organizer" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1" codeSystemName="PITO ObservationType"/>
+							<statusCode code="active"/>
+							<author typeCode="AUT" contextControlCode="OP">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
+								<!-- Author Participation -->
+								<time value="20130508013121"/>
+								<assignedAuthor>
+									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+									<code nullFlavor='NA'/>
+									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+										<name use="L">
+											<given>doctor</given>
+											<family>oscardoc</family>
+										</name>
+									</assignedPerson>
+								</assignedAuthor>
+							</author>
+							<component typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<id extension="76" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+									<code nullFlavor="UNK"/>
+									<!-- OSCAR Type Code: BP -->
+									<text>Blood Pressure</text>
+									<effectiveTime value="20130508120000"/>
+									<value xsi:type="ST">130/85 (sitting position)</value>
+								</observation>
+							</component>
+						</organizer>
+					</entry>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<templateId root="2.16.840.1.113883.3.1818.10.3.7"/>
+						<!-- Clinically Measured Observations Organizer -->
+						<organizer classCode="CLUSTER" moodCode="EVN">
+							<id extension="77" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+							<code code="MEAOBSORG" displayName="Measured Observations Organizer" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1" codeSystemName="PITO ObservationType"/>
+							<statusCode code="active"/>
+							<author typeCode="AUT" contextControlCode="OP">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
+								<!-- Author Participation -->
+								<time value="20130508013121"/>
+								<assignedAuthor>
+									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+									<code nullFlavor='NA'/>
+									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+										<name use="L">
+											<given>doctor</given>
+											<family>oscardoc</family>
+										</name>
+									</assignedPerson>
+								</assignedAuthor>
+							</author>
+							<component typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<id extension="77" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+									<code nullFlavor="UNK"/>
+									<!-- OSCAR Type Code: TEMP -->
+									<text>Temperature</text>
+									<effectiveTime value="20130508120000"/>
+									<value xsi:type="ST">37 (degrees celcius)</value>
+								</observation>
+							</component>
+						</organizer>
+					</entry>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<templateId root="2.16.840.1.113883.3.1818.10.3.7"/>
+						<!-- Clinically Measured Observations Organizer -->
+						<organizer classCode="CLUSTER" moodCode="EVN">
+							<id extension="78" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+							<code code="MEAOBSORG" displayName="Measured Observations Organizer" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1" codeSystemName="PITO ObservationType"/>
+							<statusCode code="active"/>
+							<author typeCode="AUT" contextControlCode="OP">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
+								<!-- Author Participation -->
+								<time value="20130508013121"/>
+								<assignedAuthor>
+									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+									<code nullFlavor='NA'/>
+									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+										<name use="L">
+											<given>doctor</given>
+											<family>oscardoc</family>
+										</name>
+									</assignedPerson>
+								</assignedAuthor>
+							</author>
+							<component typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<id extension="78" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+									<code nullFlavor="UNK"/>
+									<!-- OSCAR Type Code: WT -->
+									<text>Weight</text>
+									<effectiveTime value="20130508120000"/>
+									<value xsi:type="ST">71 (in kg)</value>
+								</observation>
+							</component>
+						</organizer>
+					</entry>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<templateId root="2.16.840.1.113883.3.1818.10.3.7"/>
+						<!-- Clinically Measured Observations Organizer -->
+						<organizer classCode="CLUSTER" moodCode="EVN">
+							<id extension="79" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+							<code code="MEAOBSORG" displayName="Measured Observations Organizer" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1" codeSystemName="PITO ObservationType"/>
+							<statusCode code="active"/>
+							<author typeCode="AUT" contextControlCode="OP">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
+								<!-- Author Participation -->
+								<time value="20130508013121"/>
+								<assignedAuthor>
+									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+									<code nullFlavor='NA'/>
+									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+										<name use="L">
+											<given>doctor</given>
+											<family>oscardoc</family>
+										</name>
+									</assignedPerson>
+								</assignedAuthor>
+							</author>
+							<component typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<id extension="79" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+									<code nullFlavor="UNK"/>
+									<!-- OSCAR Type Code: HT -->
+									<text>Height</text>
+									<effectiveTime value="20130508120000"/>
+									<value xsi:type="ST">170 (in cm)</value>
+								</observation>
+							</component>
+						</organizer>
+					</entry>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<templateId root="2.16.840.1.113883.3.1818.10.3.7"/>
+						<!-- Clinically Measured Observations Organizer -->
+						<organizer classCode="CLUSTER" moodCode="EVN">
+							<id extension="80" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+							<code code="MEAOBSORG" displayName="Measured Observations Organizer" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1" codeSystemName="PITO ObservationType"/>
+							<statusCode code="active"/>
+							<author typeCode="AUT" contextControlCode="OP">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
+								<!-- Author Participation -->
+								<time value="20130508013121"/>
+								<assignedAuthor>
+									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+									<code nullFlavor='NA'/>
+									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+										<name use="L">
+											<given>doctor</given>
+											<family>oscardoc</family>
+										</name>
+									</assignedPerson>
+								</assignedAuthor>
+							</author>
+							<component typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<id extension="80" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+									<code nullFlavor="UNK"/>
+									<!-- OSCAR Type Code: WAIS -->
+									<text>Waist</text>
+									<effectiveTime value="20130508120000"/>
+									<value xsi:type="ST">36 (Waist Circum in cm)</value>
+								</observation>
+							</component>
+						</organizer>
+					</entry>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<templateId root="2.16.840.1.113883.3.1818.10.3.7"/>
+						<!-- Clinically Measured Observations Organizer -->
+						<organizer classCode="CLUSTER" moodCode="EVN">
+							<id extension="81" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+							<code code="MEAOBSORG" displayName="Measured Observations Organizer" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1" codeSystemName="PITO ObservationType"/>
+							<statusCode code="active"/>
+							<author typeCode="AUT" contextControlCode="OP">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
+								<!-- Author Participation -->
+								<time value="20130508013121"/>
+								<assignedAuthor>
+									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+									<code nullFlavor='NA'/>
+									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+										<name use="L">
+											<given>doctor</given>
+											<family>oscardoc</family>
+										</name>
+									</assignedPerson>
+								</assignedAuthor>
+							</author>
+							<component typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<id extension="81" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+									<code nullFlavor="UNK"/>
+									<!-- OSCAR Type Code: PULSE -->
+									<text>Heart Rate</text>
+									<effectiveTime value="20130508120000"/>
+									<value xsi:type="ST">85 (in bpm (nnn) Range:40-180)</value>
+								</observation>
+							</component>
+						</organizer>
 					</entry>
 				</section>
 			</component>
@@ -342,10 +570,7 @@ Laboratory Results & Results
 									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
 									<code nullFlavor='NA'/>
 									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
-										<name use="L">
-											<given>doctor</given>
-											<family>doe</family>
-										</name>
+										<name use="L">BOB MDCARE</name>
 									</assignedPerson>
 								</assignedAuthor>
 							</author>
@@ -1346,10 +1571,7 @@ Imipenem : Further report to follow
 									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
 									<code nullFlavor='NA'/>
 									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
-										<name use="L">
-											<given>doctor</given>
-											<family>doe</family>
-										</name>
+										<name use="L">BOB MDCARE</name>
 									</assignedPerson>
 								</assignedAuthor>
 							</author>
@@ -2059,7 +2281,7 @@ Medications and Prescriptions - Medication List
 								<!-- Unbounded Observation -->
 								<observation classCode="OBS" moodCode="EVN">
 									<code code="29546-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Record Type"/>
-									<text>Usual medication</text>
+									<text>Usual/long-term medication</text>
 								</observation>
 							</entryRelationship>
 							<!-- Last Review Date -->
@@ -2093,7 +2315,6 @@ Medications and Prescriptions - Medication List
 											</manufacturedMaterial>
 										</manufacturedProduct>
 									</consumable>
-									<!-- Author Participation -->
 									<author typeCode="AUT" contextControlCode="OP">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
 										<!-- Author Participation -->
@@ -2129,7 +2350,7 @@ Medications and Prescriptions - Medication List
 												<low value="1.0"/>
 												<high value="2.0"/>
 											</doseQuantity>
-											<!-- OSCAR Form Code "TABLET" -->
+											<!-- OSCAR Form Code TABLET -->
 											<administrationUnitCode code="TAB" codeSystem="2.16.840.1.113883.5.1127" displayName="TABLET"/>
 											<consumable typeCode="CSM">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
@@ -2192,7 +2413,7 @@ Medications and Prescriptions - Medication List
 								<!-- Unbounded Observation -->
 								<observation classCode="OBS" moodCode="EVN">
 									<code code="29546-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Record Type"/>
-									<text>Usual medication</text>
+									<text>Usual/long-term medication</text>
 								</observation>
 							</entryRelationship>
 							<!-- Last Review Date -->
@@ -2226,7 +2447,6 @@ Medications and Prescriptions - Medication List
 											</manufacturedMaterial>
 										</manufacturedProduct>
 									</consumable>
-									<!-- Author Participation -->
 									<author typeCode="AUT" contextControlCode="OP">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
 										<!-- Author Participation -->
@@ -2262,7 +2482,7 @@ Medications and Prescriptions - Medication List
 												<low value="1.0"/>
 												<high value="1.0"/>
 											</doseQuantity>
-											<!-- OSCAR Form Code "TABLET" -->
+											<!-- OSCAR Form Code TABLET -->
 											<administrationUnitCode code="TAB" codeSystem="2.16.840.1.113883.5.1127" displayName="TABLET"/>
 											<consumable typeCode="CSM">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
@@ -2315,7 +2535,7 @@ Medications and Prescriptions - Medication List
 								<!-- Unbounded Observation -->
 								<observation classCode="OBS" moodCode="EVN">
 									<code code="29546-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Record Type"/>
-									<text>Usual medication</text>
+									<text>Usual/long-term medication</text>
 								</observation>
 							</entryRelationship>
 							<!-- Last Review Date -->
@@ -2349,7 +2569,6 @@ Medications and Prescriptions - Medication List
 											</manufacturedMaterial>
 										</manufacturedProduct>
 									</consumable>
-									<!-- Author Participation -->
 									<author typeCode="AUT" contextControlCode="OP">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
 										<!-- Author Participation -->
@@ -2385,7 +2604,7 @@ Medications and Prescriptions - Medication List
 												<low value="1.0"/>
 												<high value="1.0"/>
 											</doseQuantity>
-											<!-- OSCAR Form Code "TABLET" -->
+											<!-- OSCAR Form Code TABLET -->
 											<administrationUnitCode code="TAB" codeSystem="2.16.840.1.113883.5.1127" displayName="TABLET"/>
 											<consumable typeCode="CSM">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
@@ -2438,7 +2657,7 @@ Medications and Prescriptions - Medication List
 								<!-- Unbounded Observation -->
 								<observation classCode="OBS" moodCode="EVN">
 									<code code="29546-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Record Type"/>
-									<text>Usual medication</text>
+									<text>Usual/long-term medication</text>
 								</observation>
 							</entryRelationship>
 							<!-- Last Review Date -->
@@ -2472,7 +2691,6 @@ Medications and Prescriptions - Medication List
 											</manufacturedMaterial>
 										</manufacturedProduct>
 									</consumable>
-									<!-- Author Participation -->
 									<author typeCode="AUT" contextControlCode="OP">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
 										<!-- Author Participation -->
@@ -2508,7 +2726,7 @@ Medications and Prescriptions - Medication List
 												<low value="1.0"/>
 												<high value="1.0"/>
 											</doseQuantity>
-											<!-- OSCAR Form Code "TABLET" -->
+											<!-- OSCAR Form Code TABLET -->
 											<administrationUnitCode code="TAB" codeSystem="2.16.840.1.113883.5.1127" displayName="TABLET"/>
 											<consumable typeCode="CSM">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
@@ -2561,7 +2779,7 @@ Medications and Prescriptions - Medication List
 								<!-- Unbounded Observation -->
 								<observation classCode="OBS" moodCode="EVN">
 									<code code="29546-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Record Type"/>
-									<text>Usual medication</text>
+									<text>Usual/long-term medication</text>
 								</observation>
 							</entryRelationship>
 							<!-- Last Review Date -->
@@ -2595,7 +2813,6 @@ Medications and Prescriptions - Medication List
 											</manufacturedMaterial>
 										</manufacturedProduct>
 									</consumable>
-									<!-- Author Participation -->
 									<author typeCode="AUT" contextControlCode="OP">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
 										<!-- Author Participation -->
@@ -2631,7 +2848,7 @@ Medications and Prescriptions - Medication List
 												<low value="1.0"/>
 												<high value="1.0"/>
 											</doseQuantity>
-											<!-- OSCAR Form Code "TABLET (ENTERIC-COATED)" -->
+											<!-- OSCAR Form Code TABLET (ENTERIC-COATED) -->
 											<administrationUnitCode code="ECTAB" codeSystem="2.16.840.1.113883.5.1127" displayName="TABLET (ENTERIC-COATED)"/>
 											<consumable typeCode="CSM">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
@@ -2684,7 +2901,7 @@ Medications and Prescriptions - Medication List
 								<!-- Unbounded Observation -->
 								<observation classCode="OBS" moodCode="EVN">
 									<code code="29546-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Record Type"/>
-									<text>Usual medication</text>
+									<text>Usual/long-term medication</text>
 								</observation>
 							</entryRelationship>
 							<!-- Last Review Date -->
@@ -2718,7 +2935,6 @@ Medications and Prescriptions - Medication List
 											</manufacturedMaterial>
 										</manufacturedProduct>
 									</consumable>
-									<!-- Author Participation -->
 									<author typeCode="AUT" contextControlCode="OP">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
 										<!-- Author Participation -->
@@ -2754,7 +2970,7 @@ Medications and Prescriptions - Medication List
 												<low value="1.0"/>
 												<high value="1.0"/>
 											</doseQuantity>
-											<!-- OSCAR Form Code "TABLET" -->
+											<!-- OSCAR Form Code TABLET -->
 											<administrationUnitCode code="TAB" codeSystem="2.16.840.1.113883.5.1127" displayName="TABLET"/>
 											<consumable typeCode="CSM">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
@@ -2807,7 +3023,7 @@ Medications and Prescriptions - Medication List
 								<!-- Unbounded Observation -->
 								<observation classCode="OBS" moodCode="EVN">
 									<code code="29546-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Record Type"/>
-									<text>Usual medication</text>
+									<text>Usual/long-term medication</text>
 								</observation>
 							</entryRelationship>
 							<!-- Last Review Date -->
@@ -2841,7 +3057,6 @@ Medications and Prescriptions - Medication List
 											</manufacturedMaterial>
 										</manufacturedProduct>
 									</consumable>
-									<!-- Author Participation -->
 									<author typeCode="AUT" contextControlCode="OP">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
 										<!-- Author Participation -->
@@ -2877,7 +3092,7 @@ Medications and Prescriptions - Medication List
 												<low value="1.0"/>
 												<high value="1.0"/>
 											</doseQuantity>
-											<!-- OSCAR Form Code "TABLET" -->
+											<!-- OSCAR Form Code TABLET -->
 											<administrationUnitCode code="TAB" codeSystem="2.16.840.1.113883.5.1127" displayName="TABLET"/>
 											<consumable typeCode="CSM">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
@@ -2930,7 +3145,7 @@ Medications and Prescriptions - Medication List
 								<!-- Unbounded Observation -->
 								<observation classCode="OBS" moodCode="EVN">
 									<code code="29546-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Record Type"/>
-									<text>Usual medication</text>
+									<text>Usual/long-term medication</text>
 								</observation>
 							</entryRelationship>
 							<!-- Last Review Date -->
@@ -2964,7 +3179,6 @@ Medications and Prescriptions - Medication List
 											</manufacturedMaterial>
 										</manufacturedProduct>
 									</consumable>
-									<!-- Author Participation -->
 									<author typeCode="AUT" contextControlCode="OP">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
 										<!-- Author Participation -->
@@ -3000,7 +3214,7 @@ Medications and Prescriptions - Medication List
 												<low value="1.0"/>
 												<high value="1.0"/>
 											</doseQuantity>
-											<!-- OSCAR Form Code "TABLET" -->
+											<!-- OSCAR Form Code TABLET -->
 											<administrationUnitCode code="TAB" codeSystem="2.16.840.1.113883.5.1127" displayName="TABLET"/>
 											<consumable typeCode="CSM">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
@@ -3053,7 +3267,7 @@ Medications and Prescriptions - Medication List
 								<!-- Unbounded Observation -->
 								<observation classCode="OBS" moodCode="EVN">
 									<code code="29546-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Record Type"/>
-									<text>Usual medication</text>
+									<text>Usual/long-term medication</text>
 								</observation>
 							</entryRelationship>
 							<!-- Last Review Date -->
@@ -3087,7 +3301,6 @@ Medications and Prescriptions - Medication List
 											</manufacturedMaterial>
 										</manufacturedProduct>
 									</consumable>
-									<!-- Author Participation -->
 									<author typeCode="AUT" contextControlCode="OP">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
 										<!-- Author Participation -->
@@ -3123,7 +3336,7 @@ Medications and Prescriptions - Medication List
 												<low value="1.0"/>
 												<high value="1.0"/>
 											</doseQuantity>
-											<!-- OSCAR Form Code "TABLET" -->
+											<!-- OSCAR Form Code TABLET -->
 											<administrationUnitCode code="TAB" codeSystem="2.16.840.1.113883.5.1127" displayName="TABLET"/>
 											<consumable typeCode="CSM">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
