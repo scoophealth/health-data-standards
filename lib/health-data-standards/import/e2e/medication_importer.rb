@@ -138,7 +138,7 @@ module HealthDataStandards
           extract_freetextsig(entry_element, medication)
           extract_dose(entry_element, medication)
           #TODO: reenable extract-status
-          #extract_status(entry_element, medication)
+          extract_status(entry_element, medication)
           extract_route(entry_element, medication)
           extract_form(entry_element, medication)
 
@@ -209,12 +209,10 @@ module HealthDataStandards
         end
 
         def extract_status(parent_element, entry)
-          print "status entry point\n"
+          #print "#{entry.inspect}\n"
           status_element = parent_element.xpath(@status_xpath+"/@code")
-          print "status: " + status_element.to_s + "\n"
-          #TODO - fix error here
-          entry.statusOfMedication = status_element
-          print "status exit point\n"
+          #print "#{status_element.inspect}\n"
+          entry.statusOfMedication = {value: status_element.to_s}
         end
 
         def extract_route(parent_element, entry)
