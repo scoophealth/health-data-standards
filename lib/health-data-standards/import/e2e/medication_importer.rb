@@ -137,7 +137,6 @@ module HealthDataStandards
           extract_administration_timing(entry_element, medication)
           extract_freetextsig(entry_element, medication)
           extract_dose(entry_element, medication)
-          #TODO: reenable extract-status
           extract_status(entry_element, medication)
           extract_route(entry_element, medication)
           extract_form(entry_element, medication)

@@ -36,8 +36,7 @@ class MedicationImporterTest < MiniTest::Unit::TestCase
     assert_equal '1.0', medication.dose['low']
     assert_equal '2.0', medication.dose['high']
 
-    #TODO - reenable this failing test
-    print "#{medication.statusOfMedication.inspect}"
+    #print "Inspect: #{medication.statusOfMedication[:value].inspect}\n"
     assert_equal 'completed', medication.statusOfMedication[:value]
 
     assert_equal 'PO', medication.route['code']
@@ -75,8 +74,7 @@ class MedicationImporterTest < MiniTest::Unit::TestCase
     assert_equal '1.0', medication.dose['low']
     assert_equal '1.0', medication.dose['high']
 
-    #TODO - reenable this failing test
-    assert_equal 'completed', medication.statusOfMedication
+    assert_equal 'completed', medication.statusOfMedication[:value]
 
     assert_equal 'PO', medication.route['code']
     assert_equal '2.16.840.1.113883.5.112', medication.route['codeSystem']
