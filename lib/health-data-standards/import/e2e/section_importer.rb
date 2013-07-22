@@ -216,6 +216,8 @@ module HealthDataStandards
         def extract_code(parent_element, code_xpath, code_system=nil)
           code_element = parent_element.at_xpath(code_xpath)
           code_hash = nil
+          #STDERR.puts "PARENT_ELEMENT: " +parent_element
+          #STDERR.puts "CODE_XPATH: " +code_xpath
           if code_element
             code_hash = {'code' => code_element['code']}
             if code_system

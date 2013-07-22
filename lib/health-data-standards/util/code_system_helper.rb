@@ -23,7 +23,8 @@ module HealthDataStandards
         '2.16.840.1.113883.6.238' => 'CDC Race',
         '2.16.840.1.113883.5.1105' => 'HC-DIN',
         '2.16.840.1.113883.6.73' => 'whoATC',
-        '2.16.840.1.113883.6.42' => 'ICD9'
+        '2.16.840.1.113883.6.42' => 'ICD9',
+        '2.16.840.1.113883.3.1818.10.2.8.2' => 'PITO AlleryClinicalStatus'
       }
       
       # Returns the name of a code system given an oid

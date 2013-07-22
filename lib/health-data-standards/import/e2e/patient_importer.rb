@@ -63,7 +63,7 @@ module HealthDataStandards
           #@section_importers[:social_history] = SectionImporter.new("//cda:observation[cda:templateId/@root='2.16.840.1.113883.3.88.11.83.19']")
           #@section_importers[:care_goals] = CareGoalImporter.new
           #@section_importers[:medical_equipment] = MedicalEquipmentImporter.new
-          #@section_importers[:allergies] = AllergyImporter.new
+          @section_importers[:allergies] = AllergyImporter.new
           @section_importers[:immunizations] = ImmunizationImporter.new
           #@section_importers[:insurance_providers] = InsuranceProviderImporter.new
         end
