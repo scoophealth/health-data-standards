@@ -10,11 +10,9 @@ class VitalSignImporterTest < MiniTest::Unit::TestCase
 
     vital_sign = patient.vital_signs[0]
 
-    #assert_equal 'xyz', vital_sign.inspect
-    #assert_equal 'N', vital_sign.interpretation['code']
-    #assert_equal "177", vital_sign.values.first.scalar
-    #assert_equal "cm", vital_sign.values.first.units
-    #assert_equal 'HITSP C80 Observation Status', vital_sign.interpretation['codeSystem']
+    assert_equal Time.gm(2013,5,8,12,0,0).to_i, vital_sign.time
+    assert_equal "Blood Pressure", vital_sign.description
+    assert_equal "130/85 (sitting position)", vital_sign.free_text
   end
 
 end
