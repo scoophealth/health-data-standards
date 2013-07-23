@@ -3,9 +3,9 @@ module HealthDataStandards
     module E2E
       class VitalSignImporter < ResultImporter
 
-            # @note The ResultImporter class captures the Laboratory Results Section of E2E documents
-            #   * For a more thorough description of the laboratory result model as used when capturing the results section of C32 documents see
-            #     http://www.mirthcorp.com/community/wiki/plugins/viewsource/viewpagesrc.action?pageId=17105264
+            # @note The VitalSignImporter class captures the Clinical Observation Section of E2E documents
+            #   * For a more thorough description of the vital sign model as used when capturing the vital signs section
+            #   * of C32 documents see http://www.mirthcorp.com/community/wiki/pages/viewpage.action?pageId=17105260
             #
             # @note class Entry
             #   * field :description, type: String
@@ -23,13 +23,11 @@ module HealthDataStandards
             #   * field :referenceRange, type: String
             #   * field :interpretation, type: Hash
             #
-            # @note The following are XPath locations for E2E information elements captured by the query-gateway results model.
-            #   * entry_xpath = "//cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.16.1' and cda:code/@code='11502-2']/cda:entry/cda:observation/cda:entryRelationship/cda:organizer/cda:component/cda:observation"
-            #   * code_xpath = "./cda:code"
-            #   * interpretation_xpath = "./cda:interpretationCode"
-            #   * description_xpath = "./cda:text/text()"
-            #   * status_xpath = "./cda:statusCode/@code"
-            #
+            # @note The following are XPath locations for E2E information elements captured for the query-gateway results model.
+            #   * entry_xpath = "//cda:section[cda:code/@code='CLINOBS']/cda:entry/cda:organizer"
+            #   * time_xpath = "./cda:component/cda:observation/cda:effectiveTime"
+            #   * description_xpath = "./cda:component/cda:observation/cda:text"
+            #   * result_text_xpath = "./cda:component/cda:observation/cda:value"
 
         def initialize
           super
