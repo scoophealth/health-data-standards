@@ -1,0 +1,21 @@
+01) In demographics, make use of this section of the e2etemplate.vm generated information:
+
+----
+
+#if ( $demographic.address || $demographic.city || $demographic.province || $demographic.postal )
+			<addr>
+				<streetAddressLine>$!demographic.address</streetAddressLine>
+				<city>$!demographic.city</city>
+				<state>$!demographic.province</state>
+				<postalCode>$!demographic.postal</postalCode>
+			</addr>
+#end
+#if ( $demographic.phone != "" )
+			<!-- Home Phone -->
+			<telecom value="tel: $demographic.phone" use="HP"/>
+#end
+#if ( $demographic.phone2 != "" )
+			<!-- Work Phone -->
+			<telecom value="tel: $demographic.phone2" use="HP"/>
+#end
+
