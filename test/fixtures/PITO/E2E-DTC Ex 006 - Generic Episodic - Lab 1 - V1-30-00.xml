@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This example is a Generic Episodic Document that includes Laboratory results based on the examples provided by Excelleris for allergy testing.  
+	In addition to a fully populated L3 Laboratory Results and Observations section, this example includes several Header sections relevant to an episodic 
+	document such as Order Fulfilment, Service Event and Encompassing Encounter.  
+	
+	The HL7 v2 message provided by Excelleris is as follows:
+	MSH|^~\&|PATHL7|LIFELABS|HTTPCLIENT|vendor1|20120322083038||ORU^R01|ASH20120322083038159|P|2.3|||ER|AL
+	PID||9089777777|||EXCELLERIS^AAACHILD||20030710|M|||||(604)658-2112
+	ORC|RE||12-222222012-RAST-1|||||||||90909^MDCARE^BOB
+	OBR|1||12-222222012-RAST-1|RAST^Allergy Testing||20120220090200|20120220090200|||||||20120220090200||90909^MDCARE^BOB||||||20120222132021||CHEM16|F|||90909^MDCARE^BOB
+	OBX|1|FT|X633^Specific Allergen IgE||Results may not correlate directly with\.br\severity of symptoms.\.br\\.br\An undetectable level of food allergen\.br\should not be interpreted to mean the\.br\patient is not or is no longer sensitive\.br\to the allergen tested. \.br\\.br\Level of Allergen Specific Antibody\.br\(<0.35)        KU/L  Undetectable\.br\(0.36 - 0.69)  KU/L  Low\.br\(0.70 - 3.49)  KU/L  Moderate\.br\(3.50 - 17.49) KU/L  High\.br\(>17.5)        KU/L  Very High\.br\||||||F|||20120222132021
+	OBX|2|ST|23803-0^Grass Mix (June, Rye, M.Fescue, Orchard, Timothy)||Neg||||||F|||20120222132021
+	NTE|||Negative for Meadow, Rye, M. fescue,\.br\Orchard, Timothy\.br\
+	OBX|3|ST|23801-4^Food Mix||Neg||||||F|||20120222132021
+	NTE|||Negative for Egg White, Milk, Wheat,\.br\Peanut, Soybean\.br\
+	OBX|4|ST|6833-8^Cat Dander||<0.35||||||F|||20120222132021
+	OBX|5|ST|23795-8^Dust (Cockroach,  American and European mites, House dust HS)||Neg||||||F|||20120222132021
+	NTE|||A NEGATIVE result on a mix indicates\.br\absence of detectable levels of specific\.br\IgE antibodies to one or more of the \.br\allergens. False positive results may\.br\occur if the cumulative concentration \.br\exceeds 0.35 KU/L.\.br\Negative for House dust, D. pteronyssinus,\.br\Cockroach, D. farinae\.br\
+-->
+<ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="urn:hl7-org:v3 Schemas/CDA-PITO-E2E.xsd"
+ xmlns="urn:hl7-org:v3"
+ xmlns:hl7="urn:hl7-org:v3"
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns:e2e="http://standards.pito.bc.ca/E2E-DTC/cda">
+<!-- 
+********************************************************
+CDA Header
+********************************************************
+-->
+	<realmCode code="CA" />
+	<typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040"/>
+	<!-- Conforms to the BC PITO EMR Standard Header Specification -->
+	<templateId root="2.16.840.1.113883.3.1818.10.7.1"/>
+	<!-- Conforms to the BC PITO EMR Generic Episodic Document  specification -->
+	<templateId root="2.16.840.1.113883.3.1818.10.1.2"/>
+	
+	<id extension="12345" root="2.16.840.1.113883.3.933"/>
+	<code code="34122-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Pathology Procedure Report"/>
+	<title>PITO EMR-2-EMR Generic Episodic Document - Laboratory </title>
+	<effectiveTime value="201201091422"/>
+	<confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
+	<!-- 
+	********************************************************
+	Record Target
+	********************************************************
+	-->
+	<recordTarget typeCode="RCT" contextControlCode="OP">
+		<patientRole classCode="PAT">
+			<id extension="9999999999" root="2BFBA1E9-79C2-4bbb-B589-41B949BD6A3B" assigningAuthorityName="BC-PHN"/>
+			<addr>
+				<streetAddressLine>2222 Home Street</streetAddressLine>
+				<city>Vancouver</city>
+				<state>BC</state>
+				<postalCode>A1B 2C3</postalCode>
+				<country>CA</country>
+			</addr>
+			<telecom value="tel: (604) 6582112" use="HP"/>
+			<patient>
+				<name>
+					<prefix>Mstr.</prefix>
+					<given>AAACHILD</given>
+					<family>EXCELLERIS</family>
+				</name>
+				<administrativeGenderCode code="M" codeSystem="2.16.840.1.113883.5.1" codeSystemName="HL7 - Administrative Gender" displayName="Male"/>
+				<birthTime value="20030410"/>
+				<languageCommunication>
+					<languageCode code="EN"/>
+				</languageCommunication>
+			</patient>
+		</patientRole>
+	</recordTarget>
+	<!-- 
+	********************************************************
+	Author
+	********************************************************
+	-->
+	<author typeCode="AUT" contextControlCode="OP">
+		<time value="20030529"/>
+		<assignedAuthor classCode="ASSIGNED">
+			<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+			<code code="MLT" codeSystem="2.16.840.1.113883.5.111" codeSystemName="RoleCode" displayName="Medical Laboratory Technologist"/>
+			<addr>
+				<streetAddressLine>4444 Healthcare Drive</streetAddressLine>
+				<city>Vancouver</city>
+				<state>BC</state>
+				<postalCode>A1B 2C3</postalCode>
+				<country>CA</country>
+			</addr>
+			<telecom value="tel: (604) 431-7206" use="WP"/>
+			<telecom value="fax: (604) 412-4445" use="WP"/>
+			<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+				<name>
+					<prefix>Mrs.</prefix>
+					<given>Pat</given>
+					<family>Hology</family>
+				</name>
+			</assignedPerson>
+			<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+				<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+				<name>LifeLabs</name>
+			</representedOrganization>
+		</assignedAuthor>      							
+	</author>
+	<!--
+	********************************************************
+	Data Enterer
+	******************************************************** -->
+	<dataEnterer typeCode="ENT" contextControlCode="OP">
+		<time value="200910201235" />
+		<assignedEntity>
+			<id root="B8E71AC2-0CD0-11E0-8746-CE50DFD72085" />
+			<code code="LT" codeSystem="2.16.840.1.113883.5.111" codeSystemName="RoleCode" displayName="Lab Technician"/>
+			<telecom value="tel: (555) 555-1009" use="WP"/>
+			<assignedPerson>
+				<name>
+					<given>Linda</given>
+					<family>Labtech</family>
+				</name>
+			</assignedPerson>
+			<representedOrganization>
+				<name>LifeLabs</name>
+			</representedOrganization>
+		</assignedEntity>
+	</dataEnterer>
+	<!-- 
+	********************************************************
+	Custodian
+	******************************************************** -->
+	<custodian typeCode="CST">
+		<assignedCustodian classCode="ASSIGNED">
+			<representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
+				<id extension="123" root="7EEF0BCC-F03E-4742-A736-8BAC57180C5F"/>
+				<name>LifeLabs</name>
+			</representedCustodianOrganization>
+		</assignedCustodian>
+	</custodian>
+	<!-- 
+	********************************************************
+	Information Recipient
+	******************************************************** -->
+	<informationRecipient typeCode="PRCP">
+		<intendedRecipient classCode="ASSIGNED">
+			<id extension="ppump" root="DCCD2C68-389B-44c4-AD99-B8FB2DAD1493"/>
+			<e2e:code code="MD" codeSystem="2.16.840.1.113883.5.111" codeSystemName="RoleCode" displayName="Medical Doctor"/>
+			<addr>
+				<streetAddressLine>4444 Healthcare Drive</streetAddressLine>
+				<city>Vancouver</city>
+				<state>BC</state>
+				<postalCode>A1B 2C3</postalCode>
+				<country>CA</country>
+			</addr>
+			<telecom value="tel: (555) 555-1009" use="WP"/>
+			<informationRecipient classCode="PSN" determinerCode="INSTANCE">
+				<name>
+					<prefix>Dr.</prefix>
+					<given>BOB</given>
+					<family>MDCARE</family>
+				</name>
+			</informationRecipient>
+			<receivedOrganization classCode="ORG" determinerCode="INSTANCE">
+				<name>GP Office MDCare</name>
+			</receivedOrganization>
+		</intendedRecipient>
+	</informationRecipient>
+	<!--
+	*******************************************************
+	Legal Authenticator
+	******************************************************** -->
+	<legalAuthenticator>
+		<time value="200910201235" />
+		<signatureCode code="S" />
+		<assignedEntity>
+			<id root="B8E71AC2-0CD0-11E0-8746-CE50DFD72085" />
+			<code code="MLT" codeSystem="2.16.840.1.113883.5.111" codeSystemName="RoleCode" displayName="Medical Laboratory Technologist"/>
+			<addr use="WP">
+				<streetAddressLine>4444 Healthcare Drive</streetAddressLine>
+				<city>Vancouver</city>
+				<state>BC</state>
+				<postalCode>A1B 2C3</postalCode>
+				<country>CA</country>
+			</addr>
+			<telecom value="tel: (555) 555-1009" use="WP"/>
+			<telecom value="fax: (555) 555-1199" use="WP"/>
+			<assignedPerson>
+				<name>
+					<prefix>Mrs.</prefix>
+					<given>Pat</given>
+					<family>Hology</family>
+				</name>
+			</assignedPerson>
+			<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+				<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+				<name>LifeLabs</name>
+			</representedOrganization>
+		</assignedEntity>
+	</legalAuthenticator>
+	<!--
+	********************************************************
+	Authenticator
+	******************************************************** -->
+	<authenticator>
+		<time value="200910201235"/>
+		<signatureCode nullFlavor="NI"/>
+		<assignedEntity>
+			<id root="B8E71AC2-0CD0-11E0-8746-CE50DFD72085" />
+			<code code="LT" codeSystem="2.16.840.1.113883.5.111" codeSystemName="RoleCode" displayName="Lab Technician"/>
+			<addr use="WP">
+				<streetAddressLine>4444 Healthcare Drive</streetAddressLine>
+				<city>Vancouver</city>
+				<state>BC</state>
+				<postalCode>A1B 2C3</postalCode>
+				<country>CA</country>
+			</addr>
+			<telecom value="tel: (555) 555-1009" use="WP"/>
+			<telecom value="fax: (555) 555-1199" use="WP"/>
+			<assignedPerson>
+				<name>
+					<given>Linda</given>
+					<family>Labtech</family>
+				</name>
+			</assignedPerson>
+			<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+				<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+				<name>LifeLabs</name>
+			</representedOrganization>
+		</assignedEntity>
+	</authenticator>
+	<!--
+	********************************************************
+	Participant - Healthcare Participant (copy to Doctor)
+	******************************************************** -->
+	<participant typeCode="IND">
+		<functionCode code="PCP"/>
+		<associatedEntity classCode="PROV">
+			<id root="8FF6156A-0CE8-11E0-BE3B-6C69DFD72085"/>
+			<code code="PCP" codeSystem="2.16.840.1.113883.11.10267" codeSystemName="ParticipationFunction" displayName="Primary Care Provider" />
+			<addr use="WP">
+				<streetAddressLine>4444 Healthcare Drive</streetAddressLine>
+				<city>Vancouver</city>
+				<state>BC</state>
+				<postalCode>A1B 2C3</postalCode>
+				<country>CA</country>
+			</addr>
+			<telecom value="tel: (555) 555-1009" use="WP"/>
+			<telecom value="fax: (555) 555-1199" use="WP"/>
+			<associatedPerson classCode="PSN" determinerCode="INSTANCE">
+				<name>
+					<prefix>Dr.</prefix>
+					<given>Patrick</given>
+					<given>P.</given>
+					<family>Pump</family>
+					<suffix>Sr.</suffix>
+				</name>
+			</associatedPerson>
+			<scopingOrganization>
+				<name>Level 7 Healthcare, Inc</name>
+			</scopingOrganization>
+		</associatedEntity>
+	</participant>
+	
+	<!--
+	********************************************************
+	Order Fulfilment 
+	******************************************************** -->
+	<inFulfillmentOf>
+		<order>
+			<id extension="12366" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+			<code code="18716-1" displayName="Allergy Studies" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+			<priorityCode code="Routine"/>
+		</order>
+	</inFulfillmentOf>
+	<!--
+	********************************************************
+	Service Event (laboratory encounter)
+	******************************************************** -->
+	<documentationOf typeCode="DOC">
+		<serviceEvent classCode="ENC" moodCode="EVN">
+			<id root="B8E71AC2-0CD0-11E0-8746-CE50DFD72085" />
+			<code code="165007007" displayName="Allergy Testing" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT"/>
+			<effectiveTime value="201202220920"/>
+			<performer typeCode="PRF">
+				<functionCode></functionCode>
+				<time value="201202220920"/>
+				<assignedEntity>
+					<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+					<code code="LT" codeSystem="2.16.840.1.113883.5.111" codeSystemName="RoleCode" displayName="Lab Technician"/>
+					<addr>
+						<streetAddressLine>4444 Healthcare Drive</streetAddressLine>
+						<city>Vancouver</city>
+						<state>BC</state>
+						<postalCode>A1B 2C3</postalCode>
+						<country>CA</country>
+					</addr>
+					<telecom value="tel: (604) 431-7206" use="WP"/>
+					<telecom value="fax: (604) 412-4445" use="WP"/>
+					<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+						<name>
+							<given>Linda</given>
+							<family>Labtech</family>
+						</name>
+					</assignedPerson>
+					<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+						<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+						<name>LifeLabs</name>
+					</representedOrganization>
+				</assignedEntity>
+			</performer>
+		</serviceEvent>
+	</documentationOf>
+	<!--
+	********************************************************
+	Parent Document (preliminary results report)
+	******************************************************** -->
+	<relatedDocument typeCode="RPLC">
+		<parentDocument>
+			<id extension="12366" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+			<code code="34122-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Pathology Procedure Report"/>
+			<text>Laboratory Preliminary Report </text>
+			<setId extension="12344" root="2.16.840.1.113883.3.933"/>
+			<versionNumber value="1"/>
+		</parentDocument>
+	</relatedDocument>
+	<!--
+	********************************************************
+	Authorization & Consent
+	******************************************************** -->
+	<authorization typeCode="AUTH">
+		<consent classCode="CONS" moodCode="EVN">
+			<id extension="12366" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+			<statusCode code="complete"/>
+		</consent>
+	</authorization>
+	
+	<!--
+	********************************************************
+	Encompassing Encounter (laboratory encounter)
+	******************************************************** -->
+	<componentOf>
+		<encompassingEncounter>
+			<effectiveTime value="201202220920"/>
+			<responsibleParty>
+				<assignedEntity>
+					<id root="B8E71AC2-0CD0-11E0-8746-CE50DFD72085" />
+					<code code="MLT" codeSystem="2.16.840.1.113883.5.111" codeSystemName="RoleCode" displayName="Medical Laboratory Technologist"/>
+					<addr use="WP">
+						<streetAddressLine>4444 Healthcare Drive</streetAddressLine>
+						<city>Vancouver</city>
+						<state>BC</state>
+						<postalCode>A1B 2C3</postalCode>
+						<country>CA</country>
+					</addr>
+					<telecom value="tel: (555) 555-1009" use="WP"/>
+					<telecom value="fax: (555) 555-1199" use="WP"/>
+					<assignedPerson>
+						<name>
+							<prefix>Mrs.</prefix>
+							<given>Pat</given>
+							<family>Hology</family>
+						</name>
+					</assignedPerson>
+					<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+						<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+						<name>LifeLabs</name>
+					</representedOrganization>
+				</assignedEntity>
+			</responsibleParty>
+			<encounterParticipant typeCode="ATND">
+				<assignedEntity>
+					<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+					<code code="LT" codeSystem="2.16.840.1.113883.5.111" codeSystemName="RoleCode" displayName="Lab Technician"/>
+					<addr>
+						<streetAddressLine>4444 Healthcare Drive</streetAddressLine>
+						<city>Vancouver</city>
+						<state>BC</state>
+						<postalCode>A1B 2C3</postalCode>
+						<country>CA</country>
+					</addr>
+					<telecom value="tel: (604) 431-7206" use="WP"/>
+					<telecom value="fax: (604) 412-4445" use="WP"/>
+					<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+						<name>
+							<given>Linda</given>
+							<family>Labtech</family>
+						</name>
+					</assignedPerson>
+					<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+						<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+						<name>LifeLabs</name>
+					</representedOrganization>
+				</assignedEntity>
+			</encounterParticipant>
+			<location>
+				<healthCareFacility classCode="SDLOC">
+					<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+					<code code="OUTLAB" codeSystem="2.16.840.1.113883.5.111" codeSystemName="RoleCode" displayName="Outpatient Laboratory"/>
+					<location classCode="PLC" determinerCode="INSTANCE">
+						<name>LifeLabs Healthcare Drive</name>
+						<addr>
+							<streetAddressLine>4444 Healthcare Drive</streetAddressLine>
+							<city>Vancouver</city>
+							<state>BC</state>
+							<postalCode>A1B 2C3</postalCode>
+							<country>CA</country>
+						</addr>
+					</location>
+				</healthCareFacility>
+			</location>
+		</encompassingEncounter>
+	</componentOf>
+
+	<component>
+		<structuredBody>
+
+<!--
+********************************************************
+Laboratory Results and Reports (allergies)	
+******************************************************** -->
+			<component typeCode="COMP" contextConductionInd="true">
+				<section classCode="DOCSECT" moodCode="EVN">
+					<templateId root="2.16.840.1.113883.3.1818.10.2.16.1"/>
+					<code code="30954-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Relevant diagnostic testas and/or laboratory data"/>
+					<title>Laboratory Results and Reports [with entries</title>
+					<text>
+						Allergy Testing
+						<paragraph>
+							<caption>Specific Allergen IgE:</caption>
+							Results may not correlate directly with severity of symptoms.
+							An undetectable level of food allergen should not be interpreted to mean the patient is not or is no longer sensitive
+							to the allergen tested.
+							Level of Allergen Specific Antibody
+								(&lt;0.35) KU/L Undetectable
+								(0.36 - 0.69) KU/L Low
+								(0.70 - 3.49) KU/L Moderate
+								(3.50 - 17.49) KU/L High
+								(>17.5) KU/L Very High
+						</paragraph>
+						<paragraph>						
+							<caption> Grass Mix (June, M.Fescue, Orchard, Rye,
+							Timothy)</caption>
+							Neg
+							Negative for Meadow, Rye, M. fescue,Orchard, Timothy
+						</paragraph>	
+						<paragraph>
+							<caption>Food</caption>
+							Negative for Egg White, Milk, Wheat, Peanut, Soybean
+							Mix Neg
+						</paragraph>
+						<paragraph>
+							<caption>Cat Dander</caption>
+							&lt;0.35
+						</paragraph>
+						<paragraph>
+							<caption>Dust Allergen (Cockroach, American and
+								European mites, House dust HS)</caption>
+								Neg
+								A NEGATIVE result on a mix indicates
+								absence of detectable levels of specific
+								IgE antibodies to one or more of the
+								allergens. False positive results may
+								occur if the cumulative concentration
+								exceeds 0.35 KU/L.
+								Negative for House dust, D. pteronyssinus,
+								Cockroach, D. farinae
+						</paragraph>	
+					</text>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<templateId root="2.16.840.1.113883.3.1818.10.3.12" /> <!-- Laboratory Observation -->
+						<observation classCode="OBS" moodCode="EVN">
+							<id extension="12366" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+							<code code="165007007" displayName="Allergy Testing" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT"/>
+							<text>Allergy Testing</text>
+							<author typeCode="AUT" contextControlCode="OP">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/> <!-- Author Participation -->
+								<time value="20120222132021"/>
+								<assignedAuthor classCode="ASSIGNED">
+									<id use="BUS" extension="12345" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+										<name>
+											<prefix>Dr.</prefix>
+											<given>BOB</given>
+											<family>MDCARE</family>
+										</name>
+									</assignedPerson>
+								</assignedAuthor>      							
+							</author>
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.3"/> <!-- Comment Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="COMMENT" displayName="Comment Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<value xsi:type="ST">Patient has unexplained hives and rashes</value>
+								</observation>								
+							</entryRelationship>
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.26"/> <!-- Results Organizer -->
+								<organizer classCode="CLUSTER" moodCode="EVN">
+									<id extension="12366" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+									<code code="18716-1" displayName="Allergy Studies" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+									<statusCode code="final"/>
+									<component typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/> <!-- Results Component -->
+										<observation classCode="OBS" moodCode="EVN">
+											<id extension="12367" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+											<code code="X633" displayName="Specific Allergen IgE" codeSystem="1.2.3.4" codeSystemName="Exclleris" />
+											<statusCode code="final"/>
+											<effectiveTime value="20120222132021"/>
+											<value xsi:type="ST">Results may not correlate directly with severity of symptoms.
+												An undetectable level of food allergen should not be interpreted to mean the
+												patient is not or is no longer sensitive to the allergen tested. 
+												Level of Allergen Specific Antibody
+												(&lt;0.35)       KU/L  Undetectable
+												(0.36 - 0.69) 	 KU/L  Low
+												(0.70 - 3.49) 	 KU/L  Moderate
+												(3.50 - 17.49)	 KU/L  High
+												(&gt;17.5)       KU/L  Very High
+											</value>
+									</observation>
+									</component>
+									<component typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/> <!-- Results Component -->
+										<observation classCode="OBS" moodCode="EVN">
+											<id extension="12368" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+											<code code="23803-0" displayName="Grass Mix (June, Rye, M.Fescue, Orchard, Timothy)" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+											<effectiveTime value="20120222132021"/>
+											<value xsi:type="ST">Neg</value>
+											<interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83" codeSystemName="ObservationInterpretation" displayName="Normal"/>
+											<!-- Result Notes -->
+											<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+												<templateId root="2.16.840.1.113883.3.1818.10.4.3"/> <!-- Comment Observation -->
+												<observation classCode="OBS" moodCode="EVN">
+													<code code="COMMENT" displayName="Comment Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+													<value xsi:type="ST">Negative for Meadow, Rye, M. fescue,Orchard, Timothy</value>
+												</observation>								
+											</entryRelationship>
+										</observation>
+									</component>
+									<component typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/> <!-- Results Component -->
+										<observation classCode="OBS" moodCode="EVN">
+											<id extension="12368" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+											<code code="23801-4" displayName="Food Mix" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+											<effectiveTime value="20120222132021"/>
+											<value xsi:type="ST">Neg</value>
+											<interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83" codeSystemName="ObservationInterpretation" displayName="Normal"/>
+											<!-- Result Notes -->
+											<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+												<templateId root="2.16.840.1.113883.3.1818.10.4.3"/> <!-- Comment Observation -->
+												<observation classCode="OBS" moodCode="EVN">
+													<code code="COMMENT" displayName="Comment Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+													<value xsi:type="ST">Negative for Egg White, Milk, Wheat,Peanut, Soybean</value>
+												</observation>								
+											</entryRelationship>
+										</observation>
+									</component>
+									<component typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/> <!-- Results Component -->
+										<observation classCode="OBS" moodCode="EVN">
+											<id extension="12368" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+											<code code="6833-8" displayName="Cat Dander" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+											<effectiveTime value="20120222132021"/>
+											<value xsi:type="ST">&lt;0.35 KU/L</value>
+											<interpretationCode code="LX" codeSystem="2.16.840.1.113883.5.83" codeSystemName="ObservationInterpretation" displayName="Below Low Threshhold"/>
+										</observation>
+									</component>
+									<component typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.25"/> <!-- Results Component -->
+										<observation classCode="OBS" moodCode="EVN">
+											<id extension="12368" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+											<code code="23795-8" displayName="Dust (Cockroach,  American and European mites, House dust HS)" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" />
+											<effectiveTime value="20120222132021"/>
+											<value xsi:type="ST">Neg</value>
+											<interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83" codeSystemName="ObservationInterpretation" displayName="Normal"/>
+											<!-- Result Notes -->
+											<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+												<templateId root="2.16.840.1.113883.3.1818.10.4.3"/> <!-- Comment Observation -->
+												<observation classCode="OBS" moodCode="EVN">
+													<code code="COMMENT" displayName="Comment Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+													<value xsi:type="ST">A NEGATIVE result on a mix indicates absence of detectable levels of specific IgE antibodies to one or more of the allergens. 
+														False positive results may occur if the cumulative concentration exceeds 0.35 KU/L.
+														Negative for House dust, D. pteronyssinus, Cockroach, D. farinae
+													</value>
+												</observation>								
+											</entryRelationship>
+										</observation>
+									</component>
+								</organizer>
+							</entryRelationship>
+						</observation>
+					</entry>
+				</section>
+			</component>
+		</structuredBody>
+	</component>
+</ClinicalDocument>
+
+

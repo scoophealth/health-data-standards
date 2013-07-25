@@ -159,7 +159,7 @@ module HealthDataStandards
         end
         
         def import_actor(actor_element)
-          return ProviderImporter.instance.extract_provider(actor_element)
+          return ProviderImporter.instance.extract_providers(actor_element)
         end
         
         def import_organization(organization_element)

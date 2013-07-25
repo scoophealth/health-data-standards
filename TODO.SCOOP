@@ -19,3 +19,20 @@
 			<telecom value="tel: $demographic.phone2" use="HP"/>
 #end
 
+2) Sections to be included in the future if populated in E2E document:
+Care Goal Importer (Plan of Care)
+Encounter
+Insurance Provider
+Medical Equipment (e.g., implants, protheses, wheelchair, etc.)
+Procedure (e.g., colonscopy, total hip replacement, extract blood for CBC test, extract blood for electrolytes test, etc.)
+
+Social History
+
+3) To check
+Organization
+Provider
+
+4) To incorporate
+Alerts
+Family History
+Risk Factors

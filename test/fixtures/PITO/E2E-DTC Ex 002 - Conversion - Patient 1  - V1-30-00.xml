@@ -1,0 +1,2243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This example is based on the clinical scenario "Patient 1" 
+•	1 year old baby (DOB 17 January 2012)
+•	Male
+•	Failure to thrive
+•	Fetal alocohol syndrome
+•	Respiratory symptoms
+-->
+<ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="urn:hl7-org:v3 Schemas/CDA-PITO-E2E.xsd"
+ xmlns="urn:hl7-org:v3"
+ xmlns:hl7="urn:hl7-org:v3"
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns:e2e="http://standards.pito.bc.ca/E2E-DTC/cda">
+<!-- 
+********************************************************
+CDA Header
+********************************************************
+-->
+	<realmCode code="CA" />
+	<typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040"/>
+	<!-- Conforms to the BC PITO EMR Standard Header specification -->
+	<templateId root="2.16.840.1.113883.3.1818.10.7.1"/>
+	<!-- Conforms to the BC PITO EMR Conversion Document specification -->
+	<templateId root="2.16.840.1.113883.3.1818.10.1.1"/>
+	<id extension="12345" root="2.16.840.1.113883.3.933"/><!-- Document Identifier -->
+	<code code="11503-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Medical Records"/>
+	<title>PITO EMR-2-EMR Complete Instance Example</title>
+	<effectiveTime value="201201091422"/>
+	<confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
+	<!-- 
+	********************************************************
+	Record Target
+	********************************************************
+	-->
+	<recordTarget typeCode="RCT" contextControlCode="OP">
+		<patientRole classCode="PAT">
+			<id extension="9999999999" root="2.16.840.1.113883.4.50" assigningAuthorityName="BC-PHN"/>
+			<addr>
+				<streetAddressLine>2222 Home Street</streetAddressLine>
+				<city>Vancouver</city>
+				<state>BC</state>
+				<postalCode>A1B 2C3</postalCode>
+				<country>CA</country>
+			</addr>
+			<telecom value="tel: (555) 555-2003" use="HP"/>
+			<patient>
+				<name>
+					<prefix>Mstr.</prefix>
+					<given>Adam</given>
+					<given>E.</given>
+					<family>Everyboy</family>
+					<suffix>Jr.</suffix>
+				</name>
+				<administrativeGenderCode code="M" codeSystem="2.16.840.1.113883.5.1" codeSystemName="HL7 Administrative Gender" displayName="Male"/>
+				<birthTime value="20120117"/>
+				<languageCommunication>
+					<languageCode code="EN"/>
+				</languageCommunication>
+			</patient>
+		</patientRole>
+	</recordTarget>
+	<!-- 
+	********************************************************
+	Author
+	********************************************************
+	-->
+	<author typeCode="AUT" contextControlCode="OP">
+		<time value="20030529"/>
+		<assignedAuthor classCode="ASSIGNED">
+			<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+			<code code="MD" displayName="Medical Doctor" codeSystem="2.16.840.1.113883.2.20.5.3" codeSystemName="SCPTYPE" />
+			<addr>
+				<streetAddressLine>4444 Healthcare Drive</streetAddressLine>
+				<city>Vancouver</city>
+				<state>BC</state>
+				<postalCode>A1B 2C3</postalCode>
+				<country>CA</country>
+			</addr>
+			<telecom value="tel: (555) 555-1003" use="WP"/>
+			<telecom value="fax: (555) 555-1133" use="WP"/>
+			<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+				<name>
+					<prefix>Dr.</prefix>
+					<given>Harold</given>
+					<given>H.</given>
+					<family>Hippocrates</family>
+					<suffix>the 1st</suffix>
+				</name>
+			</assignedPerson>
+			<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+				<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+				<name>Healthcare Drive Clinical Centre</name>
+			</representedOrganization>
+		</assignedAuthor>      							
+	</author>
+		<!-- If document is authored by device, then include this section instead of assignedPerson 
+			<assignedAuthoringDevice classCode="DEV" determinerCode="INSTANCE">
+				<softwareName code="TBD" codeSystem="TBD"  codeSystemName="TBD" displayName="Authoring Software Application Name" />				
+			</assignedAuthoringDevice> 
+			-->
+	<!--
+	********************************************************
+	Data Enterer
+	******************************************************** -->
+	<dataEnterer typeCode="ENT" contextControlCode="OP">
+		<time value="200910201235" />
+		<assignedEntity>
+			<id root="B8E71AC2-0CD0-11E0-8746-CE50DFD72085" />
+			<code code="PA" codeSystem="2.16.840.1.113883.2.20.5.3" codeSystemName="SCPTYPE" displayName="Physician Assistant" />
+			<addr use="WP">
+				<streetAddressLine>4444 Healthcare Drive</streetAddressLine>
+				<city>Vancouver</city>
+				<state>BC</state>
+				<postalCode>A1B 2C3</postalCode>
+				<country>CA</country>
+			</addr>
+			<telecom value="tel: (555) 555-1009" use="WP"/>
+			<assignedPerson>
+				<name>
+					<prefix>Mr.</prefix>
+					<given>Typ</given>
+					<family>Fast</family>
+				</name>
+			</assignedPerson>
+			<representedOrganization>
+				<name>Good Health Clinic</name>
+			</representedOrganization>
+		</assignedEntity>
+	</dataEnterer>
+	<!--
+	********************************************************
+	Informant
+	******************************************************** -->
+	<informant typeCode="INF" contextControlCode="OP">
+		<assignedEntity classCode="ASSIGNED">
+			<id root="B8E71AC2-0CD0-11E0-8746-CE50DFD72085"/>
+			<code code="RES" displayName="Resident" codeSystem="2.16.840.1.113883.5.111" codeSystemName="RoleCode" />
+			<addr use="WP">
+				<streetAddressLine>4444 Healthcare Drive</streetAddressLine>
+				<city>Vancouver</city>
+				<state>BC</state>
+				<postalCode>A1B 2C3</postalCode>
+				<country>CA</country>
+			</addr>
+			<telecom value="tel: (555) 555-1009" use="WP"/>
+			<assignedPerson>
+				<name>
+					<prefix>Mr.</prefix>
+					<given>Gimme</given>
+					<family>Infoplease</family>
+				</name>
+			</assignedPerson>
+			<representedOrganization>
+				<name>Tellall Health Clinic</name>
+			</representedOrganization>
+		</assignedEntity>
+	</informant>
+	<!-- 
+	********************************************************
+	Custodian
+	******************************************************** -->
+	<custodian typeCode="CST">
+		<assignedCustodian classCode="ASSIGNED">
+			<representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
+				<id root="7EEF0BCC-F03E-4742-A736-8BAC57180C5F"/>
+				<name>Level 7 Healthcare, Inc</name>
+			</representedCustodianOrganization>
+		</assignedCustodian>
+	</custodian>
+	<!-- 
+	********************************************************
+	Information Recipient
+	******************************************************** -->
+	<informationRecipient typeCode="PRCP">
+		<intendedRecipient classCode="ASSIGNED">
+			<id root="2.16.840.1.113883.4.530" extension="99887755"/>
+			<!--<e2e:code  code="MD" displayName="Medical Doctor" codeSystem="2.16.840.1.113883.2.20.5.3" codeSystemName="SCPTYPE"/>-->
+			<addr>
+				<streetAddressLine>4444 Healthcare Drive</streetAddressLine>
+				<city>Vancouver</city>
+				<state>BC</state>
+				<postalCode>A1B 2C3</postalCode>
+				<country>CA</country>
+			</addr>
+			<telecom value="tel: (555) 555-1009" use="WP"/>
+			<informationRecipient classCode="PSN" determinerCode="INSTANCE">
+				<name>
+					<prefix>Dr.</prefix>
+					<given>Patrick</given>
+					<given>P.</given>
+					<family>Pump</family>
+					<suffix>Sr.</suffix>
+				</name>
+			</informationRecipient>
+			<receivedOrganization classCode="ORG" determinerCode="INSTANCE">
+				<name>Level 7 Healthcare, Inc</name>
+			</receivedOrganization>
+		</intendedRecipient>
+	</informationRecipient>
+	<!--
+	*******************************************************
+	Legal Authenticator
+	******************************************************** -->
+	<legalAuthenticator>
+		<time value="200910201235" />
+		<signatureCode code="S" />
+		<assignedEntity>
+			<id root="2.16.840.1.113883.4.422" extension="111111" />
+			<code  code="MD" displayName="Medical Doctor" codeSystem="2.16.840.1.113883.2.20.5.3" codeSystemName="SCPTYPE"/>
+			<addr use="WP">
+				<streetAddressLine>4444 Healthcare Drive</streetAddressLine>
+				<city>Vancouver</city>
+				<state>BC</state>
+				<postalCode>A1B 2C3</postalCode>
+				<country>CA</country>
+			</addr>
+			<telecom value="tel: (555) 555-1009" use="WP"/>
+			<telecom value="fax: (555) 555-1199" use="WP"/>
+			<assignedPerson>
+				<name>
+					<prefix>Dr.</prefix>
+					<given>Good</given>
+					<family>Doctor</family>
+				</name>
+			</assignedPerson>
+			<representedOrganization>
+				<name>Good Health Clinic</name>
+			</representedOrganization>
+		</assignedEntity>
+	</legalAuthenticator>
+	<!--
+	********************************************************
+	Authenticator
+	******************************************************** -->
+	<authenticator>
+		<time value="200910201235"/>
+		<signatureCode nullFlavor="NI"/>
+		<assignedEntity>
+			<id root="2.16.840.1.113883.3.40.2.11" extension="12341234" />
+			<code code="MD" displayName="Medical Doctor" codeSystem="2.16.840.1.113883.2.20.5.3" codeSystemName="SCPTYPE"/>
+			<addr use="WP">
+				<streetAddressLine>4444 Healthcare Drive</streetAddressLine>
+				<city>Vancouver</city>
+				<state>BC</state>
+				<postalCode>A1B 2C3</postalCode>
+				<country>CA</country>
+			</addr>
+			<telecom value="tel: (555) 555-1009" use="WP"/>
+			<telecom value="fax: (555) 555-1199" use="WP"/>
+			<assignedPerson>
+				<name>
+					<prefix>Dr.</prefix>
+					<given>Allright</given>
+					<family>Resident</family>
+				</name>
+			</assignedPerson>
+			<representedOrganization>
+				<name>Good Health Clinic</name>
+			</representedOrganization>
+		</assignedEntity>
+	</authenticator>
+	<!-- 
+	********************************************************
+	Participant - Personal Contact
+	******************************************************** -->
+	<participant typeCode="NOT" contextControlCode="OP">
+		<associatedEntity classCode="CON">
+			<code code="MTH" codeSystem="2.16.840.1.113883.5.111" codeSystemName="RoleCode" displayName="Mother"/>
+			<addr>
+				<streetAddressLine>2222 Home Street</streetAddressLine>
+				<city>Vancouver</city>
+				<state>BC</state>
+				<postalCode>A1B 2C3</postalCode>
+				<country>CA</country>
+			</addr>
+			<telecom value="tel: (555) 555-5001" use="HP"/>
+			<telecom value="mailto: Neville.Nuclear@eg.net" use="HP"/>
+			<associatedPerson>
+				<name>
+					<prefix>Mrs.</prefix>
+					<given>Mama</given>
+					<given>E.</given>
+					<family>Everywoman</family>
+					<suffix>Jr.</suffix>
+				</name>
+			</associatedPerson>
+		</associatedEntity>
+	</participant>
+	<!--
+	********************************************************
+	Participant - Healthcare Participant
+	******************************************************** -->
+	<participant typeCode="IND">
+		<functionCode code="PCP" displayName="Primary Care Provider" codeSystem="2.16.840.1.113883.5.88" codeSystemName="ParticipationFunction"/>
+		<associatedEntity classCode="PROV">
+			<id root="2.16.840.1.113883.3.40.2.11" extension="123"/>
+			<code code="MD" displayName="Medical Doctor" codeSystem="2.16.840.1.113883.2.20.5.3" codeSystemName="SCPTYPE"/>
+			<addr use="WP">
+				<streetAddressLine>4444 Healthcare Drive</streetAddressLine>
+				<city>Vancouver</city>
+				<state>BC</state>
+				<postalCode>A1B 2C3</postalCode>
+				<country>CA</country>
+			</addr>
+			<telecom value="tel: (555) 555-1009" use="WP"/>
+			<telecom value="fax: (555) 555-1199" use="WP"/>
+			<associatedPerson classCode="PSN" determinerCode="INSTANCE">
+				<name>
+					<prefix>Dr.</prefix>
+					<given>Patrick</given>
+					<given>P.</given>
+					<family>Pump</family>
+					<suffix>Sr.</suffix>
+				</name>
+			</associatedPerson>
+			<scopingOrganization>
+				<name>Level 7 Healthcare, Inc</name>
+			</scopingOrganization>
+		</associatedEntity>
+	</participant>
+
+	<component>
+		<structuredBody>
+<!--
+********************************************************
+Alerts 
+********************************************************-->
+			<component typeCode="COMP" contextConductionInd="true">
+				<section classCode="DOCSECT" moodCode="EVN">
+					<templateId root="2.16.840.1.113883.3.1818.10.2.3.1"/>
+					<code code="ALERTS" codeSystem="2.16.840.1.113883.3.3068.10.6.2" codeSystemName="SectionType-CA-Pending" displayName="Alerts"/>
+					<title>Alerts [with entries]</title>
+					<text>
+						Alert for preventative service
+						MCFS apprehension in the past.
+						Active
+						June 12 2012
+					</text>
+					<confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" codeSystemName="HL7 - Confidentiality" displayName="Normal"/> <!--Alertd Observation-->
+					<entry typeCode="COMP" contextConductionInd="true">
+						<templateId root="2.16.840.1.113883.3.1818.10.3.2"/> <!-- Alert Observation -->
+						<observation classCode="OBS" moodCode="EVN">
+							<id extension="12366" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+							<code code="PREVSVCS" displayName="Preventative Services" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+							<text>MCFS apprehension in the past.</text>
+							<statusCode code="active"/>
+							<effectiveTime value="20120612"/>
+							<e2e:confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" displayName="Normal"/>
+							<!-- Attachment not included in this sample -->
+							<!-- Comment not included in this sample -->
+						</observation>
+					</entry>			
+				</section>
+			</component>
+
+<!--
+********************************************************
+Allergies and Intolerances - (Reaction List) 	
+******************************************************** -->
+			<component typeCode="COMP" contextConductionInd="true">
+				<section classCode="DOCSECT" moodCode="EVN">
+					<templateId root="2.16.840.1.113883.3.1818.10.2.4.1"/>
+					<code code="48765-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Allergies andor adverse reactions Doc"/>
+					<title>Allergies and Intolerances (Reaction List) [with entries]</title>
+					<text>
+						1.  Food intolerance to Lactose from birth documented April 12, 2012; onset March 2012. Confirmed mild abdominal pain.
+						4.  Drug intolerance to Amoxicillin 250mg/5mL s/f oral suspension (Penicillin); documented May 10, 2012; onset May 8 2012. Confirmed moderate Hives presented at clinic. 
+					</text>
+					<!--Lactose allergy coding -->
+					<entry typeCode="COMP" contextConductionInd="true">
+						<templateId root="2.16.840.1.113883.3.1818.10.3.3"/> <!--Allergy and Intolerance Observation-->
+						<act classCode="ACT" moodCode="EVN">
+							<id extension="123" root="2.16.840.1.113883.3.1818.10.2.10.1"/>
+							<code nullFlavor="NA"/> 
+							<statusCode code="active"/>
+							<effectiveTime value="20120412"/>
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="FINT" displayName="Food Intolerance" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActCode"/>
+									<effectiveTime> <low value="201203"/> </effectiveTime> 
+									<participant typeCode="CSM" contextControlCode="OP">
+										<participantRole classCode="MANU">
+											<playingEntity classCode="MMAT" determinerCode="INSTANCE">
+												<code code="47703008" displayName="Lactose" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"/>
+												<name>Lactose Intolerance</name>
+											</playingEntity>
+										</participantRole>
+									</participant>
+									<!-- Allergen Group Observation not relevant for this allergy--> 
+									<!-- Lifestage at Onset -->
+									<entryRelationship typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.12"/> <!--Livestage observation-->
+										<observation classCode="OBS" moodCode="EVN">
+											<code code="LIFEOBS" displayName="Lifestage Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+											<value xsi:type="CD" code="133933007" displayName="Newborn" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT"/>				</observation>
+									</entryRelationship>
+									<!-- Reported Comment Observation -->
+									<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.3"/> <!-- Comment Observation -->
+										<observation classCode="OBS" moodCode="EVN">
+											<code code="COMMENT" displayName="Comment Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+											<text>Abdominal pain after feeding reported by mother.</text>
+										</observation>
+									</entryRelationship>
+									<!-- Reaction -->
+									<entryRelationship typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.23"/> <!-- Reaction Observation -->
+										<observation classCode="OBS" moodCode="EVN">
+											<code code="REACTOBS" displayName="Reaction Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+											<text>Mild abdominal pain</text>
+											<effectiveTime> <low value="201203"/> </effectiveTime>
+											<value xsi:type="CD" code="21522001" displayName="Abdominal Pain" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"/>
+											<!-- Reaction Severity -->
+											<entryRelationship typeCode="COMP" contextConductionInd="true">
+												<templateId root="2.16.840.1.113883.3.1818.10.4.30"/> <!-- Severity Observation -->
+												<observation classCode="OBS" moodCode="EVN">
+													<code code="SEV" displayName="Severity" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActCode" />
+													<value xsi:type="CD" code="A2" displayName="Mild Reaction" codeSystem="2.16.840.1.113883.5.1063" codeSystemName="HL7 ObservationValue" />
+												</observation>	
+											</entryRelationship>
+											<!-- Reaction Comment not included in this sample -->
+											<!-- Reaction Author not included in this sample -->
+											<!-- Reaction Informant not included in this sample -->
+										</observation>
+									</entryRelationship>
+									<!-- Allergy Severity  -->
+									<entryRelationship typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.30"/> <!-- Severity Observation -->
+										<observation classCode="OBS" moodCode="EVN">
+											<code code="SEV" displayName="Severity" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActCode" />
+											<value xsi:type="CD" code="A2" displayName="Mild Reaction" codeSystem="2.16.840.1.113883.5.1063" codeSystemName="HL7 ObservationValue" />
+										</observation>	
+									</entryRelationship>
+									<!-- Allergy Clinical Status -->
+									<entryRelationship typeCode="SUBJ" contextConductionInd="true">
+										<observation classCode="OBS" moodCode="EVN">
+											<code code="CLINSTAT" displayName="Allergy Clinical Status" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
+											<text>Confirmed</text>
+											<value xsi:type="CD" code="C" displayName="Confirmed" codeSystem="2.16.840.1.113883.3.1818.10.2.8.2" codeSystemName="PITO AllergyClinicalStatus"/>
+										</observation>
+									</entryRelationship>
+									<!-- Alert Device Code not included in this sample -->
+									<!-- Status Change Audit Event not included in this sample -->
+								</observation>
+							</entryRelationship>
+						</act>
+					</entry>
+					<!--Angiotensin antagonist allergy coding -->
+					<entry typeCode="COMP" contextConductionInd="true">
+						<templateId root="2.16.840.1.113883.3.1818.10.3.3"/> <!--Allergy and Intolerance Observation-->
+						<act classCode="ACT" moodCode="EVN">
+							<id extension="123" root="2.16.840.1.113883.3.1818.10.2.10.1"/>
+							<code nullFlavor="NA"/> 
+							<statusCode code="active"/>
+							<effectiveTime value="20120410"/>
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DALG" displayName="Drug Allergy" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActCode"/>
+									<effectiveTime> <low value="20120408"/> </effectiveTime> 
+									<participant typeCode="CSM" contextControlCode="OP">
+										<participantRole classCode="MANU">
+											<playingEntity classCode="MMAT" determinerCode="INSTANCE">
+												<code code="323740008" displayName="Amoxicillin 250mg/5mL s/f oral suspension " codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"/>
+												<name>Amoxicillin 250mg/5mL s/f oral suspension </name>
+											</playingEntity>
+										</participantRole>
+									</participant>
+									<!-- Allergen Group Observation --> 
+									<entryRelationship typeCode="COMP" contextConductionInd="true">
+										<observation classCode="OBS" moodCode="EVN">
+											<code code="ALLGRP" displayName="Allergen Group Code" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
+											<value xsi:type="CD" code="6369005" displayName="Penicillin -class of antibiotic-" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"/>
+										</observation>
+									</entryRelationship>
+									<!-- Lifestage at Onset -->
+									<entryRelationship typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.12"/> <!--Livestage observation-->
+										<observation classCode="OBS" moodCode="EVN">
+											<code code="LIFEOBS" displayName="Lifestage Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+											<value xsi:type="CD" code="418119000" displayName="Infant child" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT"/>				</observation>
+									</entryRelationship>
+									<!-- Reported Comment Observation -->
+									<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.3"/> <!-- Comment Observation -->
+										<observation classCode="OBS" moodCode="EVN">
+											<code code="COMMENT" displayName="Comment Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+											<text>Presented at clinic with hives.</text>
+										</observation>
+									</entryRelationship>
+									<!-- Allergy Reaction -->
+									<entryRelationship typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.23"/> <!-- Reaction Observation -->
+										<observation classCode="OBS" moodCode="EVN">
+											<code code="REACTOBS" displayName="Reaction Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
+											<text>Moderate Hives</text>
+											<effectiveTime> <low value="20120408"/> </effectiveTime>
+											<value xsi:type="CD" code="422587007" displayName="Nausea" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"/>
+											<!-- Reaction Severity -->
+											<entryRelationship typeCode="COMP" contextConductionInd="true">
+												<templateId root="2.16.840.1.113883.3.1818.10.4.30"/> <!-- Severity Observation -->
+												<observation classCode="OBS" moodCode="EVN">
+													<code code="M" displayName="Severity" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActCode" />
+													<value xsi:type="CD" code="A3" displayName="Moderate Reaction" codeSystem="2.16.840.1.113883.5.1063" codeSystemName="HL7 ObservationValue" />
+												</observation>	
+											</entryRelationship>
+											<!-- Reaction Comment not included in this sample -->
+											<!-- Reaction Author not included in this sample -->
+											<!-- Reaction Informant not included in this sample -->
+										</observation>
+									</entryRelationship>
+									<!-- Allergy Severity  -->
+									<entryRelationship typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.30"/> <!-- Severity Observation -->
+										<observation classCode="OBS" moodCode="EVN">
+											<code code="SEV" displayName="Severity" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActCode" />
+											<value xsi:type="CD" code="A3" displayName="Moderate Reaction" codeSystem="2.16.840.1.113883.5.1063" codeSystemName="HL7 ObservationValue" />
+										</observation>	
+									</entryRelationship>
+									<!-- Comment Observation not included in this sample-->
+									<!-- Allergy Clinical Status -->
+									<entryRelationship typeCode="SUBJ" contextConductionInd="true">
+										<observation classCode="OBS" moodCode="EVN">
+											<code code="CLINSTAT" displayName="Allergy Clinical Status" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
+											<text>Confirmed</text>
+											<value xsi:type="CD" code="C" displayName="Confirmed" codeSystem="2.16.840.1.113883.3.1818.10.2.8.2" codeSystemName="PITO AllergyClinicalStatus"/>
+										</observation>
+									</entryRelationship>
+									<!-- Alert Device Code not included in this sample -->
+									<!-- Status Change Audit Event not included in this sample -->
+								</observation>
+							</entryRelationship>
+						</act>
+					</entry>
+				</section>
+			</component>
+<!--
+********************************************************
+Appointments and Scheduling 
+********************************************************
+-->
+			<component typeCode="COMP" contextConductionInd="true">
+				<section classCode="DOCSECT" moodCode="EVN">
+					<templateId root="2.16.840.1.113883.3.1818.10.2.5"/>
+					<code code="56446-8" displayName="Appointment Summary" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" />
+					<title>Appointments and Scheduling [with entries]</title>
+					<text>
+						May 14 2013, 10 am (15 min)
+						Follow-up in office; Weight, height and head circumference please	
+						
+						June 18, 2013 2 pm (30 min)
+						follow-up in office; 
+					</text>
+					<!-- May 14th Appointment -->
+					<entry typeCode="COMP" contextConductionInd="true">
+						<templateId root="2.16.840.1.113883.3.1818.10.3.4"/> <!-- Appointment Observation -->
+						<encounter classCode="ENC" moodCode="PRP">
+							<code nullFlavor="NA"/>
+							<statusCode code="Planned"/>
+							<effectiveTime>
+								<low value="201304141000"/>
+								<high value="201304141015"/>
+							</effectiveTime>
+							<!-- Appointment Location -->
+							<participant typeCode="LOC" contextControlCode="OP">
+								<participantRole classCode="SDLOC"> 
+									<addr>
+										<streetAddressLine>4444 Healthcare Drive</streetAddressLine>
+										<city>Vancouver</city>
+										<state>BC</state>
+										<postalCode>A1B 2C3</postalCode>
+										<country>CA</country>
+									</addr>
+								</participantRole>
+							</participant>
+							<!-- Primary Performer -->
+							<participant typeCode="PPRF"> 
+								<participantRole>
+									<id extension="23377" root="1.2.3.4"/>
+									<addr></addr>
+									<telecom value="tel:5555552003" use="WP"/>
+									<playingEntity classCode="PSN" determinerCode="INSTANCE">
+										<name>Dr. A. de Wit</name>
+									</playingEntity>
+								</participantRole>
+							</participant>
+							<!-- Referred by Provider not included in this sample-->
+							<!-- Information Recipient Provider not included in this sample -->
+							<!-- Encounter Reason -->
+							<entryRelationship typeCode="SUBJ">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.24"/> <!-- Reason Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<id extension="127797" root="2.16.840.1.113883.3.1818.10.2.10.16"/>
+									<code code="REASON" displayName="Reason Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<text> Growth follow-up</text>
+									<value xsi:type="CD" code="410390008" displayName="Growth/development surveillance " codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"/>
+									<!-- Encounter Reason Record Link -->
+									<entryRelationship typeCode="SUBJ">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.38"/> <!-- Record ID Link -->
+										<observation classCode="OBS" moodCode="EVN">
+											<id extension="12779999" root="2.16.840.1.113883.3.1818.10.2.10.16"/>
+											<code code="RECLINK" displayName="Record Link Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+										</observation>
+									</entryRelationship>
+									<!-- Reason Author not included in sample -->
+									<!-- Reason Informant not included in sample -->
+								</observation>
+							</entryRelationship>
+							<!-- Appointment Notes Comment Observation -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.3"/> <!-- Comment Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="COMMENT" displayName="Comment Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<text>Weight, height and head circumference measurements.</text>
+								</observation>
+							</entryRelationship>
+						</encounter>
+					</entry>
+					<!-- June 18th Appointemnt -->
+					<entry typeCode="COMP" contextConductionInd="true">
+						<templateId root="2.16.840.1.113883.3.1818.10.3.4"/> <!-- Appointment Observation -->
+						<encounter classCode="ENC" moodCode="EVN">
+							<code nullFlavor="NA"/>
+							<statusCode code="Planned"/>
+							<effectiveTime>
+								<low value="201306181400"/>
+								<high value="201306181430"/>
+							</effectiveTime>
+							 <!-- Appointment Location -->
+							<participant typeCode="LOC" contextControlCode="OP">
+								<participantRole classCode="SDLOC">
+									<addr>
+										<streetAddressLine>4444 Healthcare Drive</streetAddressLine>
+										<city>Vancouver</city>
+										<state>BC</state>
+										<postalCode>A1B 2C3</postalCode>
+										<country>CA</country>
+									</addr>
+								</participantRole>
+							</participant>
+							<!-- Primary Performer -->
+							<participant typeCode="PPRF"> 
+								<participantRole>
+									<playingEntity classCode="PSN" determinerCode="INSTANCE">
+										<desc>General Practitioner on call</desc>
+									</playingEntity>
+								</participantRole>
+							</participant>
+							<entryRelationship typeCode="SUBJ">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.24"/> <!-- Reason Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<id extension="127797" root="2.16.840.1.113883.3.1818.10.2.10.16"/>
+									<code code="REASON" displayName="Reason Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<text> Growth follow-up</text>
+									<value xsi:type="CD" code="410390008" displayName="Growth/development surveillance " codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"/>
+									<!-- Record ID Link not included in sample -->
+									<!-- Reason Author not included in sample -->
+									<!-- Reason Informant not included in sample -->
+								</observation>
+							</entryRelationship>
+							<!-- Appointment Notes Comment Observation not included in sample -->
+						</encounter>
+					</entry>
+				</section>
+			</component>			
+<!--
+********************************************************
+Care Plan / Reminders / Tasks 
+******************************************************** -->
+			<component typeCode="COMP" contextConductionInd="true">
+				<section classCode="DOCSECT" moodCode="EVN">
+					<templateId root="2.16.840.1.113883.3.1818.10.2.7"/>
+					<code code="56851-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Care process or plan"/>
+					<title>Care Plan / Reminders / Tasks [without entries]</title>
+					<text>Mother requires follow up with early childhood intervention program.</text>
+				</section>
+			</component>
+<!--
+********************************************************
+Clinically Measured Observation  
+******************************************************** -->
+			<component typeCode="COMP" contextConductionInd="true">
+				<section classCode="DOCSECT" moodCode="EVN">
+					<templateId root="2.16.840.1.113883.3.1818.10.2.8.1"/>
+					<code code="CLINOBS" codeSystem="2.16.840.1.113883.3.3068.10.6.2" codeSystemName="SectionType-CA-Pending" displayName="Clinically Measured Observations"/>
+					<title>Clinical  Measured Observations [with entries]</title>
+					<text>						
+						Height 	27 Jan 2012		46.0 cm
+						Weight 	27 Jan 2012		 2.7 kg
+						Height 	July 17 2012	57.0 cm
+						Weight 	July 17 2012 	 4.9 kg
+						Height 	Dec15 2012		63.0 cm
+						Weight 	Dec 15 2012		 5.2 kg
+					</text>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<templateId root="2.16.840.1.113883.3.1818.10.3.7"/> <!-- Clinically Measured Observations Organizer -->
+						<organizer classCode="CLUSTER" moodCode="EVN">
+							<id extension="12366" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+							<code code="MEAOBSORG" displayName="Measured Observations Organizer" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+							<statusCode code="active"/>
+							<author typeCode="AUT" contextControlCode="OP">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/> <!-- Author Participation -->
+								<time value="20120127"/>
+								<assignedAuthor classCode="ASSIGNED">
+									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+										<name>Dr.  A. de Wit</name>
+									</assignedPerson>
+								</assignedAuthor>      							
+							</author>
+							<informant typeCode="INF" contextControlCode="OP">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.10"/> <!-- Informant Participation -->
+								<assignedEntity classCode="ASSIGNED">
+									<id nullFlavor="NA"/>
+									<assignedPerson>
+										<name>M. O. Assistant</name>
+									</assignedPerson>
+								</assignedEntity>
+							</informant>
+							<component typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<id extension="12367" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+									<code code="8302-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Height"/>
+									<effectiveTime value="20120127"/>
+									<value xsi:type="PQ" value="46.0" unit="cm"/>
+									<interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83" codeSystemName="ObservationInterpretation" displayName="Normal"/>
+								</observation>
+							</component>
+							<component typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<id extension="12368" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+									<code code="3141-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Weight"/>
+									<effectiveTime value="20120127"/>
+									<value xsi:type="PQ" value="2.7" unit="kg"/>
+									<interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83" codeSystemName="ObservationInterpretation" displayName="Normal"/>
+								</observation>
+							</component>
+						</organizer>
+					</entry>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<templateId root="2.16.840.1.113883.3.1818.10.3.7"/> <!-- Clinically Measured Observations Organizer -->
+						<organizer classCode="CLUSTER" moodCode="EVN">
+							<id extension="12366" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+							<code code="MEAOBSORG" displayName="Measured Observations Organizer" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+							<statusCode code="active"/>
+							<author typeCode="AUT" contextControlCode="OP">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/> <!-- Author Participation -->
+								<time value="20120717"/>
+								<assignedAuthor classCode="ASSIGNED">
+									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+										<name>Dr. A. de Wit</name>
+									</assignedPerson>
+								</assignedAuthor>      							
+							</author>
+							<informant typeCode="INF" contextControlCode="OP">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.10"/> <!-- Informant Participation -->
+								<assignedEntity classCode="ASSIGNED">
+									<id nullFlavor="NA"/>
+									<assignedPerson>
+										<name>M. O. Assistant</name>
+									</assignedPerson>
+								</assignedEntity>
+							</informant>
+							<component typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<id extension="12367" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+									<code code="8302-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Height"/>
+									<effectiveTime value="20120717"/>
+									<value xsi:type="PQ" value="57.0" unit="cm"/>
+									<interpretationCode code="L" codeSystem="2.16.840.1.113883.5.83" codeSystemName="ObservationInterpretation" displayName="Low"/>
+								</observation>
+							</component>
+							<component typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<id extension="12368" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+									<code code="3141-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Weight"/>
+									<effectiveTime value="20120717"/>
+									<value xsi:type="PQ" value="4.9" unit="kg"/>
+									<interpretationCode code="L" codeSystem="2.16.840.1.113883.5.83" codeSystemName="ObservationInterpretation" displayName="Low"/>
+								</observation>
+							</component>
+						</organizer>
+					</entry>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<templateId root="2.16.840.1.113883.3.1818.10.3.7"/> <!-- Clinically Measured Observations Organizer -->
+						<organizer classCode="CLUSTER" moodCode="EVN">
+							<id extension="12366" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+							<code code="MEAOBSORG" displayName="Measured Observations Organizer" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+							<statusCode code="active"/>
+							<author typeCode="AUT" contextControlCode="OP">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/> <!-- Author Participation -->
+								<time value="20121215"/>
+								<assignedAuthor classCode="ASSIGNED">
+									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+										<name>Dr.  A. de Wit</name>
+									</assignedPerson>
+								</assignedAuthor>      							
+							</author>
+							<informant typeCode="INF" contextControlCode="OP">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.10"/> <!-- Informant Participation -->
+								<assignedEntity classCode="ASSIGNED">
+									<id nullFlavor="NA"/>
+									<assignedPerson>
+											<name>M. O. Assistant</name>
+											</assignedPerson>
+								</assignedEntity>
+							</informant>
+							<component typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<id extension="12367" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+									<code code="8302-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Height"/>
+									<effectiveTime value="20121215"/>
+									<value xsi:type="PQ" value="63.0" unit="cm"/>
+									<interpretationCode code="LL" codeSystem="2.16.840.1.113883.5.83" codeSystemName="ObservationInterpretation" displayName="Low Alert"/>
+								</observation>
+							</component>
+							<component typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<id extension="12368" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+									<code code="3141-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Weight"/>
+									<effectiveTime value="20121215"/>
+									<value xsi:type="PQ" value="5.2" unit="kg"/>
+									<interpretationCode code="LL" codeSystem="2.16.840.1.113883.5.83" codeSystemName="ObservationInterpretation" displayName="Low Alert"/>
+								</observation>
+							</component>
+						</organizer>
+					</entry>			
+				</section>
+			</component>
+<!--
+********************************************************
+Current Medications  - 
+******************************************************** -->
+			<component typeCode="COMP" contextConductionInd="true">
+				<section classCode="DOCSECT" moodCode="EVN">
+					<templateId root="2.16.840.1.113883.3.1818.10.2.19.1"/>
+					<code code="19009-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Medication Current"/>
+					<title>Medications and Prescriptions - Medication List [with entries]</title>
+					<text>
+						<list>
+							<item>Biaxin Suspension; 40 mg of 125 mg/5ml Suspension	</item>
+							<item>Ventolin MDi; 2 puffs-Standard MDI</item>
+						</list>
+					</text>
+					<!-- Ventolin MDI simple example without prescription details -->
+					<entry typeCode="COMP" contextConductionInd="true">
+						<templateId root="2.16.840.1.113883.3.1818.10.3.18" /> <!-- Medication Event -->
+						<substanceAdministration classCode="SBADM" moodCode="EVN">
+							<id extension="BC20120201RXA-1452388BN" root="2.16.840.1.113883.3.1818.10.10.3"/>
+							<code code="DRUG"  displayName="Drug Therapy" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 Act Code"/>
+							<statusCode code="active"/>
+							<!-- Medication -->
+							<consumable typeCode="CSM">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.16"/> <!--Medication Identification-->
+								<manufacturedProduct classCode="MANU">
+									<manufacturedLabeledDrug>
+										<code code="02213486" displayName="VENTOLIN RESPIRATOR SOLUTION" codeSystem="2.16.840.1.113883.5.1105" codeSystemName="hc-DIN"/>
+										<name>Ventolin</name>
+										<e2e:desc>Ventolin MDi; 2 puffs-Standard MDI</e2e:desc>
+										<e2e:formCode code="PUFF" displayName="puff" codeSystem="2.16.840.1.113883.19.5.3" codeSystemName="HL7 Orderable Drug Form"/>
+										<e2e:ingredient classCode="INGR">
+											<e2e:quantity value="5" unit="MG"/>
+											<e2e:ingredient classCode="MMAT" determinerCode="KIND">
+												<e2e:code code="2585" displayName="SALBUTAMOL (SALBUTAMOL SULFATE)" codeSystem="2.16.840.1.113883.5.1103" codeSystemName="hc-AIC"/>
+												<e2e:name>SALBUTAMOL SULFATE</e2e:name>
+											</e2e:ingredient>
+										</e2e:ingredient>
+									</manufacturedLabeledDrug>
+								</manufacturedProduct>
+							</consumable>    
+							<!-- Record Type -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.32"/> <!--Unbounded Observation-->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="UNBOUND" displayName="Unbound Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
+									<text>Short Term</text>
+									<value xsi:type="CD" code="ACU" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 Act Code"/>
+								</observation>
+							</entryRelationship>
+							<!-- Last Review Date -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.4"/>   <!-- Date Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<effectiveTime value="20121215"/>
+								</observation>
+							</entryRelationship>
+							<!-- Reason -->
+							<entryRelationship typeCode="RSON" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.24"/>  <!-- Reason Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<id extension="12366" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+									<code code="REASON" displayName="Reason Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3"   codeSystemName="ObservationType-CA-Pending"/>
+									<text>Otiti Media</text>
+									<effectiveTime value="20121214"/>
+									<value xsi:type="CD" code="65363002" displayName="Otitis Media (disorder)" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT" />
+									<author typeCode="AUT" contextControlCode="OP">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.2"/> <!-- Author Participation -->
+										<time value="20121215"/>
+										<assignedAuthor classCode="ASSIGNED">
+											<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+											<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+												<name>Dr.  A. de Wit</name>
+											</assignedPerson>
+										</assignedAuthor>      							
+									</author>
+								</observation>									
+							</entryRelationship>
+							<!-- Reaction not included in this sample -->
+							<!-- Medication Record Comments not included in this sample -->
+						</substanceAdministration>
+					</entry>
+					<!-- Biaxin Suspension -->
+					<entry typeCode="COMP" contextConductionInd="true">
+						<templateId root="2.16.840.1.113883.3.1818.10.3.18" /> <!-- Medication Event -->
+						<substanceAdministration classCode="SBADM" moodCode="EVN">
+							<id extension="BC20120201RXA-1452388BN" root="2.16.840.1.113883.3.1818.10.10.3"/>
+							<code code="DRUG"  displayName="Drug Therapy" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 Act Code"/>
+							<statusCode code="active"/>
+							<!-- Medication -->
+							<consumable typeCode="CSM">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.16"/> <!--Medication Identification-->
+								<manufacturedProduct classCode="MANU">
+									<manufacturedLabeledDrug>
+										<code code="02146908" displayName="BIAXIN - 125MG/5ML" codeSystem="2.16.840.1.113883.5.1106" codeSystemName="hc-DIN"/>
+										<name>Biaxin</name>
+										<e2e:desc>Biaxin Suspension; 40 mg of 125 mg/5ml Suspension</e2e:desc>
+										<e2e:formCode code="ORDROP" displayName="Oral Drop" codeSystem="2.16.840.1.113883.19.5.3" codeSystemName="HL7 Orderable Drug Form"/>
+										<e2e:ingredient classCode="INGR">
+											<e2e:quantity value="125" unit="MG"/>
+											<e2e:ingredient classCode="MMAT" determinerCode="KIND">
+												<e2e:code code="8318" displayName="CLARITHROMYCIN" codeSystem="2.16.840.1.113883.5.1106" codeSystemName="hc-AIC"/>
+												<e2e:name>CLARITHROMYCIN</e2e:name>
+											</e2e:ingredient>
+										</e2e:ingredient>
+									</manufacturedLabeledDrug>
+								</manufacturedProduct>
+							</consumable>    
+							<!-- Record Type -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.32"/> <!--Unbounded Observation-->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="UNBOUND" displayName="Unbound Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
+									<text>Short Term</text>
+								</observation>
+							</entryRelationship>
+							<!-- Last Review Date -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.4"/>   <!-- Date Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<effectiveTime value="20121215"/>
+								</observation>
+							</entryRelationship>
+							<!-- Reason -->
+							<entryRelationship typeCode="RSON" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.24"/>  <!-- Reason Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<id extension="12366" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+									<code code="REASON" displayName="Reason Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3"   codeSystemName="ObservationType-CA-Pending"/>
+									<text>Otiti Media</text>
+									<effectiveTime value="20121214"/>
+									<value xsi:type="CD" code="65363002" displayName="Otitis Media (disorder)" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT" />
+									<author typeCode="AUT" contextControlCode="OP">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.2"/> <!-- Author Participation -->
+										<time value="20121215"/>
+										<assignedAuthor classCode="ASSIGNED">
+											<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+											<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+												<name>Dr.  A. de Wit</name>
+											</assignedPerson>
+										</assignedAuthor>      							
+									</author>
+								</observation>									
+							</entryRelationship>
+							<!-- Reaction not included in this sample -->
+							<!-- Medication Record Comments not included in this sample -->
+						</substanceAdministration>
+					</entry>
+				</section>
+			</component>
+
+			<!--
+********************************************************
+Developmental Observations - 
+******************************************************** 
+-->
+			<component typeCode="COMP" contextConductionInd="true">
+				<section classCode="DOCSECT" moodCode="EVN">
+					<templateId root="2.16.840.1.113883.3.1818.10.2.10.1"/>
+					<code code="11334-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of Growth+Development"/>
+					<title>Developmental  Measured Observations [with entries]</title>
+					<text>						
+						Birth weight		17 Jan 2012		2.8 kg
+						Infant APGAR score	17 Jan 2012		5/7/9
+						Head Circumference 	17 Jan 2012		31 cm
+						Height 				17 Jan 2012		46 cm
+					</text>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<templateId root="2.16.840.1.113883.3.1818.10.4.6"/> <!-- Clinically Measured Observations Organizer -->
+						<organizer classCode="CLUSTER" moodCode="EVN">
+							<id extension="12366" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+							<code code="MEAOBSORG" displayName="Measured Observations Organizer" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+							<statusCode code="active"/>
+							<author typeCode="AUT" contextControlCode="OP">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/> <!-- Author Participation -->
+								<time value="20120117"/>
+								<assignedAuthor classCode="ASSIGNED">
+									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+										<name>Dr.  A. de Wit</name>
+									</assignedPerson>
+								</assignedAuthor>      							
+							</author>
+							<informant typeCode="INF" contextControlCode="OP">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.10"/> <!-- Informant Participation -->
+								<assignedEntity classCode="ASSIGNED">
+									<id nullFlavor="NA"/>
+									<assignedPerson>
+										<name>M. O. Assistant</name>
+									</assignedPerson>
+								</assignedEntity>
+							</informant>
+							<component typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<id extension="12367" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+									<code code="56056-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Body weight at Birth"/>
+									<effectiveTime value="20120117"/>
+									<value xsi:type="PQ" value="2.8" unit="kg"/>
+									<interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83" codeSystemName="ObservationInterpretation" displayName="Normal"/>
+								</observation>
+							</component>
+							<component typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<id extension="12368" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+									<code code="48334-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="APGAR 1M Post Birth"/>
+									<effectiveTime value="20120117"/>
+									<value xsi:type="ST">5/7/9</value>
+									<interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83" codeSystemName="ObservationInterpretation" displayName="Normal"/>
+								</observation>
+							</component>
+							<component typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<id extension="12367" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+									<code code="8290-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Circumference.occipital-frontal at birth"/>
+									<effectiveTime value="20120117"/>
+									<value xsi:type="PQ" value="31" unit="cm"/>
+									<interpretationCode code="L" codeSystem="2.16.840.1.113883.5.83" codeSystemName="ObservationInterpretation" displayName="Low"/>
+								</observation>
+							</component>
+							<component typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<id extension="12367" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+									<code code="8302-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Height"/>
+									<effectiveTime value="20120117"/>
+									<value xsi:type="PQ" value="46.0" unit="cm"/>
+									<interpretationCode code="LL" codeSystem="2.16.840.1.113883.5.83" codeSystemName="ObservationInterpretation" displayName="Low Alert"/>
+								</observation>
+							</component>
+						</organizer>
+					</entry>			
+				</section>
+			</component>
+			<!--
+********************************************************
+Encounter History and Notes - 
+******************************************************** -->
+
+			<component typeCode="COMP" contextConductionInd="true">
+				<section classCode="DOCSECT" moodCode="EVN">
+					<templateId root="2.16.840.1.113883.3.1818.10.2.22.1"/>
+					<code code="46240-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of hospitalizations+History of outpatient visits"/>
+					<title>Encounter History and Notes [with entries]</title>
+					<text>
+						<list>
+							<item>1.  17 April 2012 10 am -10.30 am
+										Office
+										Dr. Andre de Wit
+										3 month well baby check
+								<paragraph>3 month well baby check. Mom missed 6 week check. 
+									Hx: SVD 39 wks. Known alcohol exposure during pregnancy. Head circumference &lt;95th percentile at birth. Breast fed. 
+									No vaccination yet. Single mom. Milestones: No smiling, no grasping. Responds to sound/localizing. Head flexion up 45 degrees. 
+									Hypotonic. Irritable. Microcephalic. Chestclear. Hearsounds normal. No murmurs. Responding to sound. Abdomen soft. ENT-NAD.
+									Dx FAS
+										Plan:Refer early childhood development program
+										DTp vaccination today.
+										MCFS will be contacted.
+								</paragraph>
+								<!-- This will render the attachment image identified in the Encapsulated Data Template below -->
+								Denver developmental chart: <renderMultiMedia referencedObject="M11"></renderMultiMedia>
+							</item>
+							<item>2.  15 Dec 2012
+										Office
+										Dr. Andre de Wit
+										Cough and fever
+								<paragraph>3 days cough and fever. Not eating well. No vomiting or diarrhea. Formula fed but taking baby food as well.
+									O/E Lethargic baby.  Temp 39 degrees C. Not dehydrated. Resp rate 18. Some wheeze ut no indrawing. Crusty nose. Both Tm’s red and bulging. Pharynx red. No pus. Neck supple. Crusty eyes.
+									Ongoing microcephaly.
+									Weight: 5.2 kg
+									Head circ: 42. cm
+									Dx Influenza
+									BOM
+									Bronchiolitis
+									Rx Biaxin
+									Tylenol
+									Ventolin with aerochamber.
+									Advise mom to see public health for next vaccination.
+								</paragraph>
+								<!-- This will render the attachment image identified in the Encapsulated Data Template below -->
+								Percentile Chart: <renderMultiMedia referencedObject="M12"></renderMultiMedia>
+								
+							</item>
+						</list>
+					</text> 
+					<!-- 17 April  Encounter Event -->						
+					<entry typeCode="COMP" contextConductionInd="true">
+						<templateId root="2.16.840.1.113883.3.1818.10.3.9"/> <!-- Encounter Event -->
+						<encounter classCode="ENC" moodCode="EVN">
+							<id extension="12366" root="2.16.840.1.113883.3.1818.10.2.10.12" use="BUS"/>
+							<effectiveTime value="201204171000-1030"/>
+							<!-- Encounter Location -->
+							<participant typeCode="LOC" contextControlCode="OP">
+								<participantRole classCode="SDLOC">
+									<id extension="155388" root="2.16.840.1.113883.3.1818.10.2.10.19" use="BUS"/>
+								</participantRole>
+							</participant>
+							<!-- Encounter Provider -->
+							<participant typeCode="PRF" contextControlCode="OP">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.21"/> <!-- Provider Participation -->
+								<participantRole>
+									<id extension="155388" root="2.16.840.1.113883.3.1818.10.2.10.19" use="BUS"/>
+									<playingEntity classCode="PSN" determinerCode="INSTANCE">
+										<name>
+											<prefix>Dr.</prefix>
+											<given>A.</given>
+											<family>de Wit</family>
+										</name>
+										<desc>On-call attending provider.</desc>
+									</playingEntity>
+								</participantRole>
+							</participant>
+							<!-- Encounter Reason -->
+							<entryRelationship typeCode="RSON" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.24"/> <!-- Reason Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="REASON" displayName="Reason Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
+									<text>3 month well baby check</text>
+								</observation>
+							</entryRelationship>
+							<!-- Next Encounter Date -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.4"/> <!-- Date Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<effectiveTime value="20120408"/>
+								</observation>								
+							</entryRelationship>
+							<!-- Next Encounter Reason -->
+							<entryRelationship typeCode="RSON" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<id extension="155388" root="2.16.840.1.113883.3.1818.10.2.10.19"/>
+									<code code="NXTENCREAS" displayName="Next Encounter Reason" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
+									<text>Follow-up FAS</text>
+									<!-- Next Encounter Reason Author  not included in this sample-->
+									<!-- Next Encounter Reason Informant not included in this sample-->
+									<!-- Next Encounter Reason Record Link  not included in this sample -->
+								</observation>
+							</entryRelationship>
+							<!-- Encounter Notes -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.3"/> <!-- Comment Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="COMMENT" displayName="Comment Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<value xsi:type="ST">3 month well baby check. Mom missed 6 week check. 
+										Hx: SVD 39 wks. Known alcohol exposure during pregnancy. Head circumference &lt;95th percentile at birth. Breast fed. No vaccination yet. Single mom. Milestones: No smiling, no grasping. Responds to sound/localizing. Head flexion up 45 degrees. 
+											
+											Hypotonic. Irritable. Microcephalic. Chestclear. Hearsounds normal. No murmurs. Responding to sound. Abdomen soft. ENT-NAD.
+											
+											Dx FAS
+											
+											Plan:Refer early childhood development program
+											DTp vaccination today.
+											MCFS will be contacted.
+									</value>
+								</observation>								
+							</entryRelationship>
+							<!-- Attachment or Reference -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.1"/> <!-- Attachment -->
+								<observation classCode="OBS" moodCode="EVN">
+									<id extension="12366" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+									<code code="ATTACH" displayName="Attachment Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
+									<text>Keywords: developmental chart</text>
+									<effectiveTime value="20120202"/>
+									<value xsi:type="ST">Denver developmental chart</value>
+									<!-- Attachment Notes not included in this sample-->
+									<!-- Reviewed Dates not included in this sample-->
+									<!-- Attachment or Reference -->
+									<entryRelationship typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.9"/> <!-- Encapsulated Data with ID for renderMultiMedia above-->
+										<observationMedia classCode="OBS" moodCode="EVN" ID="M11">
+											<id extension="127797" root="2.16.840.1.113883.3.1818.10.2.10.16"/>
+											<value mediaType="application/pdf">
+												<reference value="http://www.anywhere.com/folder1/20120202-Patient2-DenverDevelopmentalChart.pdf"/>
+											</value>
+											<!-- Attachment author not included in this sample -->
+										</observationMedia>												
+									</entryRelationship>        
+								</observation>    															
+							</entryRelationship>
+							<!-- Related Records -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.38"/> <!-- Record ID Link -->
+								<act classCode="ACT" moodCode="EVN">
+									<id extension="BC20120201RXO-1458755BN" root="2.16.840.1.113883.3.1818.10.10.3"/>
+									<code code="RECLINK" displayName="Record Link" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
+								</act>
+							</entryRelationship>
+						</encounter>
+					</entry>							
+					<!-- 15 Dec  Encounter Event -->						
+					<entry typeCode="COMP" contextConductionInd="true">
+						<templateId root="2.16.840.1.113883.3.1818.10.3.9"/> <!-- Encounter Event -->
+						<encounter classCode="ENC" moodCode="EVN">
+							<id extension="12366" root="2.16.840.1.113883.3.1818.10.2.10.12" use="BUS"/>
+							<effectiveTime value="20121215"/>
+							<!-- Encounter Location -->
+							<participant typeCode="LOC" contextControlCode="OP">
+								<participantRole classCode="SDLOC">
+									<id extension="155388" root="2.16.840.1.113883.3.1818.10.2.10.19" use="BUS"/>
+								</participantRole>
+							</participant>
+							<!-- Encounter Provider -->
+							<participant typeCode="PRF" contextControlCode="OP">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.21"/> <!-- Provider Participation -->
+								<participantRole>
+									<id extension="155388" root="2.16.840.1.113883.3.1818.10.2.10.19" use="BUS"/>
+									<playingEntity classCode="PSN" determinerCode="INSTANCE">
+										<name>
+											<prefix>Dr.</prefix>
+											<given>A.</given>
+											<family>de Wit</family>
+										</name>
+										<desc>On-call attending provider.</desc>
+									</playingEntity>
+								</participantRole>
+							</participant>
+							<!-- Encounter Reason -->
+							<entryRelationship typeCode="RSON" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.24"/> <!-- Reason Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="REASON" displayName="Reason Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
+									<text>Cough and fever</text>
+									<value xsi:type="CD" code="135883003" displayName="Cough with fever (finding)" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"/>
+								</observation>
+							</entryRelationship>
+							<!-- Next Encounter Date -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.4"/> <!-- Date Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<effectiveTime value="201212221100"/>
+								</observation>								
+							</entryRelationship>
+							<!-- Next Encounter Reason -->
+							<entryRelationship typeCode="RSON" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<id extension="155388" root="2.16.840.1.113883.3.1818.10.2.10.19"/>
+									<code code="NXTENCREAS" displayName="Next Encounter Reason" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
+									<text>follow up influenza</text>
+									<!-- Next Encounter Reason Author  not included in this sample-->
+									<!-- Next Encounter Reason Informant not included in this sample-->
+									<!-- Next Encounter Reason Record Link  not included in this sample -->
+								</observation>
+							</entryRelationship>
+							<!-- Encounter Notes -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.3"/> <!-- Comment Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="COMMENT" displayName="Comment Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<value xsi:type="ST">3 days cough and fever. Not eating well. No vomiting or diarrhea. Formula fed but taking baby food as well.
+										O/E Lethargic baby.  Temp 39 degrees C. Not dehydrated. Resp rate 18. Some wheeze ut no indrawing. Crusty nose. Both Tm’s red and bulging. Pharynx red. No pus. Neck supple. Crusty eyes.
+										Ongoing microcephaly.
+										Weight: 5.2 kg
+										Head circ: 42. cm
+										Dx Influenza
+										BOM
+										Bronchiolitis
+										Rx Biaxin
+										Tylenol
+										Ventolin with aerochamber.
+										Advise mom to see public health for next vaccination.
+									</value>
+								</observation>								
+							</entryRelationship>
+							<!-- Attachment or Reference -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.1"/> <!-- Attachment -->
+								<observation classCode="OBS" moodCode="EVN">
+									<id extension="12366" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+									<code code="ATTACH" displayName="Attachment Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
+									<text>Keywords: percentile chart</text>
+									<effectiveTime value="20120202"/>
+									<value xsi:type="ST">Percentile chart</value>
+									<!-- Attachment Notes not included in this sample-->
+									<!-- Reviewed Dates not included in this sample-->
+									<!-- Attachment or Reference -->
+									<entryRelationship typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.9"/> <!-- Encapsulated Data with ID for renderMultiMedia above-->
+										<observationMedia classCode="OBS" moodCode="EVN" ID="M12">
+											<id extension="127797" root="2.16.840.1.113883.3.1818.10.2.10.16"/>
+											<value mediaType="application/pdf">
+												<reference value="http://www.anywhere.com/folder1/20120202-Patient2-PercentileChart.pdf"/>
+											</value>
+											<!-- Attachment author not included in this sample -->
+										</observationMedia>												
+									</entryRelationship>        
+								</observation>    															
+							</entryRelationship>
+							<!-- Related Records -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.38"/> <!-- Record ID Link -->
+								<act classCode="ACT" moodCode="EVN">
+									<id extension="BC20120201RXO-1458755BN" root="2.16.840.1.113883.3.1818.10.10.3"/>
+									<code code="RECLINK" displayName="Record Link" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
+								</act>
+							</entryRelationship>
+						</encounter>
+					</entry>							
+				</section>
+			</component>
+			<!--
+********************************************************
+Family History - 
+******************************************************** -->
+			<component typeCode="COMP" contextConductionInd="true">
+				<section classCode="DOCSECT" moodCode="EVN">
+					<templateId root="2.16.840.1.113883.3.1818.10.2.13.1"/>
+					<code code="10157-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of Family Member Diseases"/>
+					<title>Family History [with entries]</title>
+					<text> <!-- Note that this is a record of the MOTHER suffering from FAS; the patient's diagnosis of FAS is recorded in the Problems & Conditions section -->
+								Diagnosis Name					FAS - Fetal Alchohol Syndrome
+								Onset Date/Date Resolved		1995 Onset
+								Diagnosis Code.					
+								Family Member relationship		Natural Mother
+								Treatment Comment 				
+								Notes / Comments 				moderate
+								Diagnosis Billing Code.			760.71 (ICD 9)
+								Lifestage at onset				Newborn
+								Age at Onset Value				0
+								Age at Death Value				
+								Cause of Death Value			 
+					</text>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<templateId root="2.16.840.1.113883.3.1818.10.3.10"/> <!-- Family History Observation -->
+						<observation classCode="OBS" moodCode="EVN">
+							<id extension="123669" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
+							<code code="DX" displayName="Diagnosis" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+							<text>Family history of fetal alcohol syndrome.</text>
+							<effectiveTime value="1995"/>
+							<value xsi:type="CD" code="169942003" displayName="Maternal alcohol abuse (finding) " codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT" />
+							<!--Relationship to the patient-->
+							<subject typeCode="SBJ" contextControlCode="OP">
+								<relatedSubject classCode="PRS">
+									<code code="NMTH" displayName="Natural Mother" codeSystem="2.16.840.1.113883.5.111" codeSystemName="PersonalRelationshipRoleType" />
+								</relatedSubject>
+							</subject>
+							<!-- Notes / Comments -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.3"/> <!-- Comment Observation -->								
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="COMMENT" displayName="Comment Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<text>Mother suffers from moderate FAS.</text>
+								</observation>																								
+							</entryRelationship>
+							<!-- Diagnosis Billing Code -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.28"/> <!-- Secondary Code (ICD9) -->
+								<observation classCode="OBS" moodCode="EVN"> 
+									<code code="BILLINGCODE" displayName="Billing Code" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<value xsi:type="CD" code="760.71" displayName="Alcohol affecting fetus or newborn via placenta or breast milk" codeSystem="2.16.840.1.113883.6.42" codeSystemName="ICD9" />								
+								</observation>
+							</entryRelationship>
+							<!-- Lifestage at onset -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.12"/> <!-- Lifestage Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="LIFEOBS"  displayName="Lifestage Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<value xsi:type="CD" code="133933007" displayName="Newborn" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT"/>
+								</observation>
+							</entryRelationship>
+							<!--Pertinent observations regarding the condition-->
+							<!--Age at Onset-->
+							<entryRelationship typeCode="COMP">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="30972-4" displayName="Age at onset" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+									<value xsi:type="INT" value="0"/>
+								</observation>
+							</entryRelationship>
+							<!--Age at Death not included in this sample -->
+							<!--Cause of Death not included in this sample -->
+							<!--Treatment Comment not included in this sample -->
+					</observation>					
+					</entry>
+				</section>
+			</component>
+			<!--
+********************************************************
+Immunization List - 
+******************************************************** -->
+			
+			<component typeCode="COMP" contextConductionInd="true">
+				<section classCode="DOCSECT" moodCode="EVN">
+					<templateId root="2.16.840.1.113883.3.1818.10.2.14.1"/>
+					<code code="11369-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of Immunization"/>
+					<title>Immunizations List [with entries]</title>
+					<text>
+						<table border="1" width="100%">
+							<thead>
+								<tr>
+									<th>Vaccine</th>
+									<th>Date</th>
+									<th>Status</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Measles, Mumps, Rubella</td>
+									<td>April 17, 2012</td>
+									<td>Completed</td>
+								</tr>
+
+								<tr>
+									<td>Diphtheria + tetanus</td>
+									<td>April 17, 2012</td>
+									<td>Completed</td>
+								</tr>
+								<tr>
+									<td>Influenza</td>
+									<td>April 17, 2012</td>
+									<td>Contraindicated</td>
+								</tr>
+							</tbody>
+						</table>
+					</text>
+					<!-- Measles, Mumps, Rubella -->
+					<entry typeCode="COMP" contextConductionInd="true">
+						<templateId root="2.16.840.1.113883.3.1818.10.3.11"/> <!-- Immunization Observation -->
+						<substanceAdministration classCode="SBADM" moodCode="EVN" negationInd="false">
+							<id extension="BC20120211VAC-145999X" root="2.16.840.1.113883.3.1818.10.10.3"/>
+							<code code="IMMUNIZ"  displayName="Immunization" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 Act Code"/>
+							<!-- Immunizatin Date -->
+							<effectiveTime value="20120417"/>
+							<routeCode code="IM" displayName="injection, intramuscular" codeSystem="2.16.840.1.113883.5.112" codeSystemName="RouteOfAdministration"/>
+							<approachSiteCode code="LA"  displayName="left arm" codeSystem="2.16.840.1.113883.12.163" codeSystemName="Body Site"/>
+							
+							<doseQuantity>
+								<center value="100" unit="mg"/>
+							</doseQuantity>
+							<!-- Dose Type-->
+							<administrationUnitCode code="DROP"  displayName="Drops" codeSystem="2.16.840.1.113883.5.85" codeSystemName="AdministerableDrugForm"/>
+							
+							<!-- Immunization Product (i.e. DIN) -->   
+							<consumable typeCode="CSM">
+								<manufacturedProduct classCode="MANU">
+									<manufacturedMaterial classCode="MMAT" determinerCode="KIND">
+										<code code="00466085" displayName="M-M-R*II" codeSystem="2.16.840.1.113.883.5.1105" codeSystemName="hc-DIN" />
+										<name>Measles, Mumps, Rubella</name>
+										<lotNumberText>BR549-201112</lotNumberText>
+									</manufacturedMaterial>
+								</manufacturedProduct>
+							</consumable>
+							
+							<!-- Immunization Administration Provider -->
+							<author typeCode="AUT" contextControlCode="OP">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/> <!-- Author Participation -->
+								<time value="20120417"/>
+								<assignedAuthor classCode="ASSIGNED">
+									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+										<name>Dr. A. de Wit</name>
+									</assignedPerson>
+								</assignedAuthor>      							
+							</author>
+							<!-- Immunization Administration Location -->
+							<participant typeCode="LOC" contextControlCode="OP">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.13"/> 	<!-- Location Participation -->
+								<participantRole classCode="SDLOC"> 
+									<playingEntity>
+										<name>GP Office</name>
+									</playingEntity>
+								</participantRole>
+							</participant>
+							
+							<!-- Alternate Product Coding -->
+							<entryRelationship typeCode="COMP">
+								<observation classCode="OBS" moodCode="EVN">
+									<templateId root="2.16.840.1.113883.3.1818.10.4.27"/> <!-- Secondary Code Drug -->
+									<code code="SECDRUGCODE" displayName="Secondary Drug Code" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<value xsi:type="CD" code="61153008" displayName="Measles, mumps and rubella vaccine" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT" />
+								</observation>
+							</entryRelationship>
+							
+							<!-- Antigen Vaccine Type (PHAC Antigen code) -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
+								<substanceAdministration classCode="SBADM" moodCode="EVN">
+									<code code="ANTIGEN" codeSystem="2.16.840.1.113883.5.4" displayName="Anitgen"/>
+									<repeatNumber value="2"/>
+									<consumable typeCode="CSM">
+										<manufacturedProduct classCode="MANU">
+											<manufacturedMaterial classCode="MMAT" determinerCode="KIND">
+												<code code="61153008" displayName="Measles, mumps and rubella vaccine" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT" />
+												<name>Measles, mumps and rubella vaccine</name>
+											</manufacturedMaterial>
+										</manufacturedProduct>
+									</consumable>
+								</substanceAdministration>
+							</entryRelationship>
+							
+							<!--Reported Immunization Indicator -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="REPIND" displayName="Reported Indicator" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
+									<value xsi:type="BL" value="false"/>
+								</observation>
+							</entryRelationship>
+							
+							
+							<!-- Immunization or Refusal Reason 1022 -->
+							<entryRelationship typeCode="RSON" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.24"/> <!-- Reason Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="REASON" displayName="Reason Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
+									<text>Patient potentially exposed. </text>
+									<value xsi:type="CD" code="37743000" displayName="History and physical examination, monitoring" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"/>
+								</observation>
+							</entryRelationship>
+							
+							<!-- Next Immunization Date --> 
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.4"/> <!-- Date Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<effectiveTime>
+										<low value="201205"/>
+										<high value="201305"/>
+									</effectiveTime>
+								</observation>								
+							</entryRelationship>
+							
+							<!-- Immunization Administration Comment -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.3"/> <!-- Comment Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="COMMENT" displayName="Comment Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<value xsi:type="ST">This is the administration comment.  Patient bites!</value>
+								</observation>								
+							</entryRelationship>
+							
+							<!-- Reaction -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.23"/> <!-- Reaction Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="REACTOBS" displayName="Reaction Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<text>Sweating Fever</text>
+									<effectiveTime> <low value="20120417"/> </effectiveTime>
+									<value xsi:type="CD" code="186694006" displayName="Sweating fever" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"/>
+									<!-- Reaction Severity -->
+									<entryRelationship typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.30"/> <!-- Severity Observation -->
+										<observation classCode="OBS" moodCode="EVN">
+											<code code="SEV" displayName="Severity" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActCode" />
+											<value xsi:type="CD" code="A2" displayName="Mild Reaction" codeSystem="2.16.840.1.113883.5.1063" codeSystemName="HL7 ObservationValue" />
+										</observation>	
+									</entryRelationship>
+									<!-- Reaction Comment not included in this sample -->
+									<!-- Reaction Author not included in this sample -->
+									<!-- Reaction Informant not included in this sample -->
+								</observation>
+							</entryRelationship>
+						</substanceAdministration>
+					</entry>
+					<!-- Diphtheria + tetanus -->
+					<entry typeCode="COMP" contextConductionInd="true">
+						<templateId root="2.16.840.1.113883.3.1818.10.3.11"/> <!-- Immunization Observation -->
+						<substanceAdministration classCode="SBADM" moodCode="EVN" negationInd="false">
+							<id extension="BC20120211VAC-145999X" root="2.16.840.1.113883.3.1818.10.10.3"/>
+							<code code="IMMUNIZ"  displayName="Immunization" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 Act Code"/>
+							<!-- Immunizatin Date -->
+							<effectiveTime value="20120417"/>
+							<routeCode code="IM" displayName="injection, intramuscular" codeSystem="2.16.840.1.113883.5.112" codeSystemName="RouteOfAdministration"/>
+							<approachSiteCode code="RA"  displayName="right arm" codeSystem="2.16.840.1.113883.12.163" codeSystemName="Body Site"/>
+							
+							<doseQuantity>
+								<center value="0.5" unit="cc"/>
+							</doseQuantity>
+							<!-- Dose Type-->
+							<administrationUnitCode code="APPFUL"  displayName="applicatorful" codeSystem="2.16.840.1.113883.5.85" codeSystemName="AdministerableDrugForm"/>
+							
+							<!-- Immunization Product (i.e. DIN) -->   
+							<consumable typeCode="CSM">
+								<manufacturedProduct classCode="MANU">
+									<manufacturedMaterial classCode="MMAT" determinerCode="KIND">
+										<code code="02312557" displayName="BOOSTRIX-POLIO" codeSystem="2.16.840.1.113.883.5.1105" codeSystemName="hc-DIN" />
+										<name>Diphtheria and Tetanus vaccine</name>
+										<lotNumberText>BR549-201112</lotNumberText>
+									</manufacturedMaterial>
+								</manufacturedProduct>
+							</consumable>
+
+							<!-- Immunization Administration Provider -->
+							<author typeCode="AUT" contextControlCode="OP">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/> <!-- Author Participation -->
+								<time value="20120417"/>
+								<assignedAuthor classCode="ASSIGNED">
+									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+										<name>Dr. A. de Wit</name>
+									</assignedPerson>
+								</assignedAuthor>      							
+							</author>
+							<!-- Immunization Administration Location -->
+							<participant typeCode="LOC" contextControlCode="OP">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.13"/> 	<!-- Location Participation -->
+								<participantRole classCode="SDLOC"> 
+									<playingEntity>
+										<name>GP Office</name>
+									</playingEntity>
+								</participantRole>
+							</participant>
+							
+							<!-- Alternate Product Coding -->
+							<entryRelationship typeCode="COMP">
+								<observation classCode="OBS" moodCode="EVN">
+									<templateId root="2.16.840.1.113883.3.1818.10.4.27"/> <!-- Secondary Code Drug -->
+									<code code="SECDRUGCODE" displayName="Secondary Drug Code" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<value xsi:type="CD" code="350327004" displayName="diphtheria + tetanus vaccine" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT" />
+								</observation>
+							</entryRelationship>
+							
+							<!-- Antigen Vaccine Type (PHAC Antigen code) -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
+								<substanceAdministration classCode="SBADM" moodCode="EVN">
+									<code code="ANTIGEN" codeSystem="2.16.840.1.113883.5.4" displayName="Anitgen"/>
+									<repeatNumber value="2"/>
+									<consumable typeCode="CSM">
+										<manufacturedProduct classCode="MANU">
+											<manufacturedMaterial classCode="MMAT" determinerCode="KIND">
+												<code code="350327004" displayName="diphtheria + tetanus vaccine" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT" />
+												<name>Diphtheria and Tetanus vaccine</name>
+											</manufacturedMaterial>
+										</manufacturedProduct>
+									</consumable>
+								</substanceAdministration>
+							</entryRelationship>
+						
+							<!--Reported Immunization Indicator -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="REPIND" displayName="Reported Indicator" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
+									<value xsi:type="BL" value="false"/>
+								</observation>
+							</entryRelationship>
+							
+
+							<!-- Immunization or Refusal Reason 1022 -->
+							<entryRelationship typeCode="RSON" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.24"/> <!-- Reason Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="REASON" displayName="Reason Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
+									<text>Was due age 2 months </text>
+								</observation>
+							</entryRelationship>
+							
+							<!-- Next Immunization Date --> 
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.4"/> <!-- Date Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<effectiveTime value="20120615"/>
+								</observation>								
+							</entryRelationship>
+							
+							<!-- Immunization Administration Comment -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.3"/> <!-- Comment Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="COMMENT" displayName="Comment Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<value xsi:type="ST">This is the administration comment.  Patient bites!</value>
+								</observation>								
+							</entryRelationship>
+							
+							<!-- Reaction -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.23"/> <!-- Reaction Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="REACTOBS" displayName="Reaction Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<text>Nil</text>
+								</observation>
+							</entryRelationship>
+						</substanceAdministration>
+					</entry>
+					<!-- Influenza  -->
+					<entry typeCode="COMP" contextConductionInd="true">
+						<templateId root="2.16.840.1.113883.3.1818.10.3.11"/> <!-- Immunization Observation -->
+						<substanceAdministration classCode="SBADM" moodCode="EVN" negationInd="true">   <!-- Negation Indicator = TRUE -->
+							<id extension="BC20120211VAC-145999X" root="2.16.840.1.113883.3.1818.10.10.3"/>
+							<code code="IMMUNIZ"  displayName="Immunization" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 Act Code"/>
+							<!-- Immunizatin Date -->
+							<effectiveTime value="20120417"/>
+							<!-- Immunization Product (i.e. DIN) -->   
+							<consumable typeCode="CSM">
+								<manufacturedProduct classCode="MANU">
+									<manufacturedMaterial classCode="MMAT" determinerCode="KIND">
+										<code code="02352621" displayName="FLUMIST" codeSystem="2.16.840.1.113.883.5.1105" codeSystemName="hc-DIN" />
+										<name>Influenza</name>
+									</manufacturedMaterial>
+								</manufacturedProduct>
+							</consumable>
+							
+							<!-- Immunization Administration Provider -->
+							<author typeCode="AUT" contextControlCode="OP">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/> <!-- Author Participation -->
+								<time value="20120417"/>
+								<assignedAuthor classCode="ASSIGNED">
+									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+										<name>Dr. A. de Wit</name>
+									</assignedPerson>
+								</assignedAuthor>      							
+							</author>
+							<!-- Alternate Product Coding -->
+							<entryRelationship typeCode="COMP">
+								<observation classCode="OBS" moodCode="EVN">
+									<templateId root="2.16.840.1.113883.3.1818.10.4.27"/> <!-- Secondary Code Drug -->
+									<code code="SECDRUGCODE" displayName="Secondary Drug Code" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<value xsi:type="CD" code="46233009" displayName="Influenza vaccine " codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT" />
+								</observation>
+							</entryRelationship>
+							
+							<!-- Immunization or Refusal Reason 1022 -->
+							<entryRelationship typeCode="RSON" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.24"/> <!-- Reason Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="REASON" displayName="Reason Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
+									<text>Influenza vaccination contraindicated</text>
+									<value xsi:type="CD" code="390796006" displayName="Influenza vaccination contraindicated" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"/>
+								</observation>
+							</entryRelationship>
+						</substanceAdministration>
+					</entry>
+				</section>
+			</component>
+			
+			<!--
+********************************************************
+Medical History - 
+******************************************************** -->
+			<component typeCode="COMP" contextConductionInd="true">
+				<section classCode="DOCSECT" moodCode="EVN">
+					<templateId root="2.16.840.1.113883.3.1818.10.2.17.1"/>
+					<code code="11348-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of Past Illness"/>
+					<title>Medical History (with entries)</title>
+					<text>
+						<list>
+							<item>Onset Date/Date Resolved:	21 Jan 2012</item>
+							<item>Diagnosis Name:			Fetal Alcohol Syndrome</item>
+							<item>Problem Status:			Active</item>
+							<item>Diagnosing Provider: 		Dr. A. de Wit</item>
+							<item>Symptoms:					Microcephaly. Low tone . Irritable. Positive history</item>
+							<item>Diagnosis Note:			none.</item>
+							<item>Lifestage at onset:		Newborn</item>
+							<item>Problem Outcome: 			</item>
+						</list>
+						<list>
+							<item>Onset Date/Date Resolved:	21 Jan 2012</item>
+							<item>Diagnosis Name:			SVD - Single ventricle defects</item>
+							<item>Problem Status:			Inactive</item>
+							<item>Diagnosing Provider: 		Dr. A. de Wit</item>
+							<item>Symptoms:					</item>
+							<item>Diagnosis Note:			none</item>
+							<item>Lifestage at onset:		Newborn</item>
+							<item>Problem Outcome: 			Inactive</item>
+						</list>
+						
+					</text>
+					<!-- FAS Entry -->
+					<entry typeCode="COMP" contextConductionInd="true"> 
+						<templateId root="2.16.840.1.113883.3.1818.10.3.15"/> <!-- Problem List Observation -->
+						<observation classCode="OBS" moodCode="EVN">
+							<id extension="123669" root="2.16.840.1.113883.3.1818.10.2.10.31"/>
+							<code code="282291009" codeSystem="2.16.840.1.113883.6.69" codeSystemName="SNOMED-CT" displayName="Diagnosis"/>
+							<text>Fetal Alcohol Syndrome</text>
+							<statusCode code="active"/>
+							<effectiveTime value="20120121"/>
+							<value xsi:type="CD" code="169942003" displayName="Maternal alcohol abuse (finding) " codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT" />
+							<!-- Diagnosing Provider -->
+							<author typeCode="AUT" contextControlCode="OP">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/> <!-- Author Participation -->
+								<time value="20030529"/>
+								<assignedAuthor classCode="ASSIGNED">
+									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+										<name>Dr. A. de Wit</name>
+									</assignedPerson>
+								</assignedAuthor>      							
+							</author>
+							<!-- Diagnosis Billing Code -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.28"/> <!-- Secondary Code (ICD9) -->
+								<observation classCode="OBS" moodCode="EVN"> 
+									<code code="BILLINGCODE" displayName="Billing Code" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<value xsi:type="CD" code="760.71" displayName="Alcohol affecting fetus or newborn via placenta or breast milk" codeSystem="2.16.840.1.113883.6.42" codeSystemName="ICD9" />								
+								</observation>
+							</entryRelationship>
+							<!-- Diagnosis Date -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.4"/> <!-- Date Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<effectiveTime value="20120417"/>
+								</observation>								
+							</entryRelationship>
+							<!-- Diagnosis Note-->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true"> 	 
+								<templateId root="2.16.840.1.113883.3.1818.10.4.3"/> <!-- Comment Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="COMMENT" displayName="Comment Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<value xsi:type="ST">None.</value>
+								</observation>	
+							</entryRelationship>
+							<!-- Symptoms not specified for this sample -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true"> 	 
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="SYMPTOMOBS" displayName="Symptom Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<value xsi:type="ST">Microcephaly. Low tone . Irritable. Positive history.</value>
+								</observation>	
+							</entryRelationship>
+							
+							<!-- Diagnosis Modifier -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">	 
+								<templateId root="2.16.840.1.113883.3.1818.10.4.32"/> <!-- Unbound Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="UNBOUND" displayName="Unbound Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<value xsi:type="ST">none</value>
+								</observation>	
+							</entryRelationship>
+							<!-- Lifestage Observation -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.12"/> <!-- Lifestage Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="LIFEOBS"  displayName="Lifestage Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<value xsi:type="CD" code="133933007" displayName="Newborn" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT"/>				
+								</observation>
+							</entryRelationship>
+							<!--Outcome Code-->
+							<entryRelationship typeCode="CAUS">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="OUTCOME" displayName="Outcome Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<value xsi:type="ST">none</value>
+								</observation>
+							</entryRelationship>
+						</observation>
+					</entry>
+					<!-- SVD Entry -->
+					<entry typeCode="COMP" contextConductionInd="true"> 
+						<templateId root="2.16.840.1.113883.3.1818.10.3.15"/> <!-- Problem List Observation -->
+						<observation classCode="OBS" moodCode="EVN">
+							<id extension="123669" root="2.16.840.1.113883.3.1818.10.2.10.31"/>
+							<code code="282291009" codeSystem="2.16.840.1.113883.6.69" codeSystemName="SNOMED-CT" displayName="Diagnosis"/>
+							<text>Single ventricle defects</text>
+							<statusCode code="inactive"/>
+							<effectiveTime value="20120121"/>
+							<value xsi:type="CD" code="45503006" displayName="Single ventricle defects" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT" />
+							<!-- Diagnosing Provider -->
+							<author typeCode="AUT" contextControlCode="OP">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/> <!-- Author Participation -->
+								<time value="20030529"/>
+								<assignedAuthor classCode="ASSIGNED">
+									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+										<name>Dr. A. de Wit</name>
+									</assignedPerson>
+								</assignedAuthor>      							
+							</author>
+							<!-- Diagnosis Billing Code -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.28"/> <!-- Secondary Code (ICD9) -->
+								<observation classCode="OBS" moodCode="EVN"> 
+									<code code="BILLINGCODE" displayName="Billing Code" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<value xsi:type="CD" code="745.3" displayName="SVD" codeSystem="2.16.840.1.113883.6.42" codeSystemName="ICD9" />								
+								</observation>
+							</entryRelationship>
+							<!-- Diagnosis Date -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.4"/> <!-- Date Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<effectiveTime value="20120417"/>
+								</observation>								
+							</entryRelationship>
+							<!-- Diagnosis Note-->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true"> 	 
+								<templateId root="2.16.840.1.113883.3.1818.10.4.3"/> <!-- Comment Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="COMMENT" displayName="Comment Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<value xsi:type="ST">None.</value>
+								</observation>	
+							</entryRelationship>
+							<!-- Symptoms not specified for this sample -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true"> 	 
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="SYMPTOMOBS" displayName="Symptom Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<value xsi:type="ST">None documented</value>
+								</observation>	
+							</entryRelationship>
+							
+							<!-- Diagnosis Modifier -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">	 
+								<templateId root="2.16.840.1.113883.3.1818.10.4.32"/> <!-- Unbound Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="UNBOUND" displayName="Unbound Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<value xsi:type="ST">none</value>
+								</observation>	
+							</entryRelationship>
+							<!-- Lifestage Observation -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.12"/> <!-- Lifestage Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="LIFEOBS"  displayName="Lifestage Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<value xsi:type="CD" code="133933007" displayName="Newborn" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT"/>				
+								</observation>
+							</entryRelationship>
+							<!--Outcome Code-->
+							<entryRelationship typeCode="CAUS">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="OUTCOME" displayName="Outcome Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<value xsi:type="ST">Inactive</value>
+								</observation>
+							</entryRelationship>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			
+			<!--
+********************************************************
+Medical Imaging History Results & Reports 
+******************************************************** -->
+			<component typeCode="COMP" contextConductionInd="true">
+				<section classCode="DOCSECT" moodCode="EVN">
+					<templateId root="2.16.840.1.113883.3.1818.10.2.18.1"/>
+					<code code="55115-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Requested imaging studies information"/>
+					<title>Medical Imaging Results and Reports (with entries)</title>
+					<text>
+						<table border="1">
+							<tbody>
+								<tr>
+									<th>Procedure</th>
+									<th>Results</th>
+									<th>Date</th>
+									<th>Indication / Reason</th>
+									<th>Result Author</th>
+								</tr>
+								<tr>
+									<td>Chest x-ray</td>
+									<td>Nothing unusual could be observed. X-ray image is attached. 
+										<!-- This will render the attachment image identified in the Encapsulated Data Template below -->
+										<renderMultiMedia referencedObject="M13"></renderMultiMedia>
+									</td>
+									<td>Feb 11, 2013</td>
+									<td>cough and fever</td>
+									<td>Dr. Raymond Xpert</td>
+								</tr>
+							</tbody>
+						</table>
+					</text>
+					<entry typeCode="COMP" contextConductionInd="true">
+						<templateId root="2.16.840.1.113883.3.1818.10.3.13"/> <!-- Medical Imaging Observation -->
+						<observation classCode="OBS" moodCode="EVN">
+							<id extension="123669" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
+							<code code="10144323" displayName="Plain chest X-ray " codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT"/>
+							<text>Chest x-ray</text>
+							<effectiveTime value="20121215"/>
+							<!-- Indication or Reason for Procedure -->
+							<entryRelationship typeCode="RSON" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.24"/> <!-- Reason Observation-->								
+								<observation classCode="OBS" moodCode="EVN">
+									<id extension="12366" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+									<code code="REASON" displayName="Reason Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<text>cough and fever </text>
+									<effectiveTime value="20121215"/>
+									<value xsi:type="CD" code="10144323" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT" displayName="Patient findings pneumonia"/>
+									<!-- Reason Author not included in this sample -->
+									<!-- Reason Informant not included in this sample -->
+								</observation>								
+							</entryRelationship>
+							<!-- Imaging Attachments -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.1"/> <!-- Attachment -->
+								<observation classCode="OBS" moodCode="EVN">
+									<id extension="12366" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+									<code code="ATTACH" displayName="Attachment Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
+									<text>Keywords: chest x-ray</text>
+									<effectiveTime value="20121215"/>
+									<value xsi:type="ST">Chest x-Ray image</value>
+									<!-- Attachment Notes not included in this sample-->
+									<!-- Reviewed Dates not included in this sample-->
+									<!-- Attachment or Reference -->
+									<entryRelationship typeCode="COMP" contextConductionInd="true">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.9"/> <!-- Encapsulated Data with ID for renderMultiMedia above-->
+										<observationMedia classCode="OBS" moodCode="EVN" ID="M13">
+											<id extension="127797" root="2.16.840.1.113883.3.1818.10.2.10.16"/>
+											<value mediaType="application/png">
+												<reference value="http://www.anywhere.com/folder1/20120202-Patient1-xray.png"/>
+											</value>
+											<!-- Attachment author not included in this sample -->
+										</observationMedia>												
+									</entryRelationship>        
+								</observation>    										
+							</entryRelationship>
+							<!-- Imagage Detail Sections -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
+								<observation classCode="OBS" moodCode="EVN">
+									<id extension="12366" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+									<code code="59776-5" displayName="Procedure Findings" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" />
+									<text>Nothing unusual could be observed.</text>
+									<effectiveTime value="20120211"/>
+									<value xsi:type="CD" code="272519000" displayName="Absense findings" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT" />
+									<!-- Image Detail Section Author -->
+									<author typeCode="AUT" contextControlCode="OP">
+										<templateId root="2.16.840.1.113883.3.1818.10.4.2"/> <!-- Author Participation -->
+										<time value="20030529"/>
+										<assignedAuthor classCode="ASSIGNED">
+											<id use="BUS" extension="38810" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+											<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+												<name>Dr. Raymond Xpert</name>
+											</assignedPerson>
+										</assignedAuthor>      							
+									</author>
+								</observation>
+							</entryRelationship>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!--
+********************************************************
+Orders & Requests 
+******************************************************** -->
+			<component typeCode="COMP" contextConductionInd="true">
+				<section classCode="DOCSECT" moodCode="EVN">
+					<templateId root="2.16.840.1.113883.3.1818.10.2.20.1"/>
+					<code code="REQS" codeSystem="2.16.840.1.113883.3.3068.10.6.2" codeSystemName="SectionType-CA-Pending" displayName="Problems list Reported"/>
+					<title>Orders and Requests (with entries)</title>
+					<text>
+						<list>
+							<item>
+								Refer to MCFS Dec 15, 2012 11:15am
+								Routine
+								Reason: FAS Developmental delay
+								Comment: Please arrange appointment
+							</item>
+						</list>
+					</text>
+					<entry typeCode="COMP" contextConductionInd="true"> 
+						<templateId root="2.16.840.1.113883.3.1818.10.3.14"/> <!-- Order Event -->
+						<observation classCode="OBS" moodCode="EVN">
+							<id extension="123669" root="2.16.840.1.113883.3.1818.10.2.10.31"/>
+							<code code="309630000" displayName="Child referral-social services (procedure)" codeSystem="2.16.840.1.113883.6.69" codeSystemName="SNOMED-CT"/>
+							<text>Refer to Ministry of Children and Family Services.</text>
+							<statusCode code="new"/>
+							<effectiveTime value="20121215"/>
+							<priorityCode code="Routine"/>
+							<!-- Order Performer -->
+							<performer typeCode="PRF">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.19"/> <!--Performer Participation-->
+								<time value="201111111111"/>
+								<assignedEntity>
+									<id extension="123" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
+									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+										<name>
+											<prefix>Mrs.</prefix>
+											<family>F.</family>
+											<given>Amily</given>
+										</name>
+									</assignedPerson>
+									<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+										<name>BC Ministry of Children and Family Services.</name>
+									</representedOrganization>
+								</assignedEntity>
+							</performer>
+							<!-- Diagnosing Provider -->
+							<author typeCode="AUT" contextControlCode="OP">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/> <!-- Author Participation -->
+								<time value="20121215"/>
+								<assignedAuthor classCode="ASSIGNED">
+									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+										<name>Dr. A. de Wit</name>
+									</assignedPerson>
+								</assignedAuthor>      							
+							</author>
+							<!-- Order Priority Notes -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
+									<observation classCode="OBS" moodCode="EVN"> 
+									<code code="ORDPRYNT" displayName="Order Priority Note" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<text>Routine appointment to assess appropriate services available.</text>							
+								</observation>
+							</entryRelationship>
+							<!-- Order Reason -->
+							<entryRelationship typeCode="RSON" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.24"/>  <!-- Reason Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<id extension="12366" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
+									<code code="REASON" displayName="Reason Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<text>FAS Developmental delay</text>
+									<effectiveTime value="20121215"/>
+									<value xsi:type="CD" code="312824007" displayName="Family history of cancer of colon" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT" />
+								</observation>									
+							</entryRelationship>
+							<!-- Order Comments -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true"> 	 
+								<templateId root="2.16.840.1.113883.3.1818.10.4.3"/> <!-- Comment Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="COMMENT" displayName="Comment Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<value xsi:type="ST">Please arrange appointment.</value>
+								</observation>	
+							</entryRelationship>
+							<!-- Outcome Observation -->
+								<!-- Outcomes not available for this order as it is a future order; refer to Investigative Procedures Sections for examples of outcomes -->						
+							<!-- Result Organizer --> 
+								<!-- Results not available for this order as it is a future order; refer to Laboratory or Medical Imaging Sections for examples of Results -->
+						</observation>
+					</entry>
+				</section>
+			</component>
+							
+			<!--			
+********************************************************
+Problems and Conditions
+******************************************************** -->
+			<component typeCode="COMP" contextConductionInd="true">
+				<section classCode="DOCSECT" moodCode="EVN">
+					<templateId root="2.16.840.1.113883.3.1818.10.2.21.1"/>
+					<code code="11450-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Problems list Reported"/>
+					<title>Problems and Conditions - Problem List (with entries)</title>
+					<text>
+						<list>
+							<item>
+								Onset Date/Date Resolved:		Jan 21, 2012
+								Diagnosis Name:					Fetal Alcohol Syndrome
+								Problem Status:					Active
+								Diagnosing Provider (id):		Dr. A. de Wit
+								Diagnosis Date:					Apr 17, 2012
+								Diagnosis Note:					Hx positive and mets clinical criteria
+								Symptoms:						Poor tone, Microcephaly, Irritable
+								Diagnosis Modifier:				Moderate severity
+								Lifestage at onset:				Newborn
+							</item>
+						</list>
+					</text>
+					<entry typeCode="COMP" contextConductionInd="true"> 
+						<templateId root="2.16.840.1.113883.3.1818.10.3.15"/> <!-- Problem List Observation -->
+						<observation classCode="OBS" moodCode="EVN">
+							<id extension="123669" root="2.16.840.1.113883.3.1818.10.2.10.31"/>
+							<code code="ASSERTION"  displayName="Assertion" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActCode"/>
+							<text>Patient has positive diagnosis for Fetal Alcohol Syndrome.</text>
+							<statusCode code="active"/>
+							<effectiveTime xsi:type="IVL_TS">
+								<low value="20120121"/>
+							</effectiveTime>
+							<value xsi:type="CD" code="205788004" displayName="fetal alcohol syndrome" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT" />
+							<!-- Diagnosing Provider -->
+							<author typeCode="AUT" contextControlCode="OP">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/> <!-- Author Participation -->
+								<time value="20120417"/>
+								<assignedAuthor classCode="ASSIGNED">
+									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
+									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+										<name>Dr. A. de Wit</name>
+									</assignedPerson>
+								</assignedAuthor>      							
+							</author>
+							<!-- Diagnosis Billing Code -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.28"/> <!-- Secondary Code (ICD9) -->
+								<observation classCode="OBS" moodCode="EVN"> 
+									<code code="BILLINGCODE" displayName="Billing Code" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<value xsi:type="CD" code="760.71" displayName="FAS" codeSystem="2.16.840.1.113883.6.42" codeSystemName="ICD9"/>								
+								</observation>
+							</entryRelationship>
+							<!-- Diagnosis Date -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.4"/> <!-- Date Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<effectiveTime value="20120417"/>
+								</observation>								
+							</entryRelationship>
+							<!-- Diagnosis Note-->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true"> 	 
+								<templateId root="2.16.840.1.113883.3.1818.10.4.3"/> <!-- Comment Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="COMMENT" displayName="Comment Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<value xsi:type="ST">Hx positive and mets clinical criteria</value>
+								</observation>	
+							</entryRelationship>
+							<!-- Symptoms -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true"> 	 
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="SYMPTOMOBS" displayName="Symptom Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<value xsi:type="ST">Poor tone, Microcephaly, Irritable</value>
+								</observation>	
+							</entryRelationship>
+							<!-- Diagnosis Modifier -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">	 
+								<templateId root="2.16.840.1.113883.3.1818.10.4.32"/> <!-- Unbound Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="UNBOUND" displayName="Unbound Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<value xsi:type="ST">Moderate severity</value>
+								</observation>	
+							</entryRelationship>
+							<!-- Lifestage Observation -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.12"/> <!-- Lifestage Observation -->
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="LIFEOBS"  displayName="Lifestage Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<value xsi:type="CD" code="133933007" displayName="Newborn" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT"/>
+								</observation>
+							</entryRelationship>
+						</observation>
+					</entry>
+				</section>
+			</component>
+
+		</structuredBody>
+	</component>
+</ClinicalDocument>
+
+

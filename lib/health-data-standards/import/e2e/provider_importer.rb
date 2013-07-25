@@ -12,31 +12,37 @@ module HealthDataStandards
         end
         
         include Singleton
-        include ProviderImportUtils
+        #include ProviderImportUtils
         # Extract Healthcare Providers from E2E
         #
         # @param [Nokogiri::XML::Document] doc It is expected that the root node of this document
         #        will have the "cda" namespace registered to "urn:hl7-org:v3"
         # @return [Array] an array of providers found in the document
+
+        # TODO: From NIST document provider in this instance seems to be taken from document header and most
+        # closely corresponds to the author of E2E document
         def extract_providers(doc)
-          performers = doc.xpath("//cda:documentationOf/cda:serviceEvent/cda:performer")
+          #performers = doc.xpath("//cda:performer[cda:time and cda:assignedEntity/cda:assignedPerson and cda:assignedEntity/cda:representedOrganization]")
+          performers = doc.xpath("//cda:performer[cda:time and cda:assignedEntity/cda:assignedPerson or cda:assignedEntity/cda:representedOrganization]")
           performers.map do |performer|
             provider_perf = extract_provider_data(performer, true)
-            ProviderPerformance.new(start_date: provider_perf.delete(:start), end_date: provider_perf.delete(:end), provider: find_or_create_provider(provider_perf))
+            p = ProviderPerformance.new(start_date: provider_perf.delete(:start), end_date: provider_perf.delete(:end), provider: find_or_create_provider(provider_perf))
           end
+          STDERR.puts "p: "+p.inspect
         end
 
         private
       
         def extract_provider_data(performer, use_dates=true)
+
           provider = {}
           entity = performer.xpath("./cda:assignedAuthor")
           name = entity.xpath("./cda:assignedPerson/cda:name")
-          #provider[:title]        = extract_data(name, "./cda:prefix")
+          provider[:title]        = extract_data(name, "./cda:prefix")
           provider[:given_name]   = extract_data(name, "./cda:given")
           provider[:family_name]  = extract_data(name, "./cda:family")
-          #provider[:organization] = OrganizationImporter.instance.extract_organization(entity.at_xpath("./cda:representedOrganization"))
-          #provider[:specialty]    = extract_data(entity, "./cda:code/@code")
+          provider[:organization] = OrganizationImporter.instance.extract_organization(performer.at_xpath("./cda:assignedEntity/cda:representedOrganization"))
+          provider[:specialty]    = extract_data(entity, "./cda:code/@code")
           time                    = performer.xpath(performer, "./cda:time/@value")
 
           if use_dates
@@ -54,7 +60,8 @@ module HealthDataStandards
         end
         
         def find_or_create_provider(provider_hash)
-          provider = Provider.first(conditions: {npi: provider_hash[:npi]}) if provider_hash[:npi]
+          #provider = Provider.first(conditions: {npi: provider_hash[:npi]}) if provider_hash[:npi]
+          provider = Provider.where(npi: provider_hash[:npi]).first if provider_hash[:npi] && !provider_hash[:npi].empty?
           provider ||= Provider.create(provider_hash)
         end
       
@@ -72,7 +79,7 @@ module HealthDataStandards
             result
           end
         end
-      
+
       end
     end
   end

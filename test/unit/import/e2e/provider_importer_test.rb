@@ -4,47 +4,17 @@ class ProviderImporterTest < MiniTest::Unit::TestCase
   
   def setup
     Provider.all.each(&:destroy)
-    @doc = Nokogiri::XML(File.new("test/fixtures/provider_importer_sample.xml"))
-    @doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
-    
-    @nist_doc = Nokogiri::XML(File.new("test/fixtures/NISTExampleC32.xml"))
-    @nist_doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
+
+    @e2e_doc = Nokogiri::XML(File.new("test/fixtures/JOHN_CLEESE_1_25091940.xml"))
+    @e2e_doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
     @importer = HealthDataStandards::Import::E2E::ProviderImporter.instance
   end
-  
-  def test_document_provider_extraction
-    providers = @importer.extract_providers(@doc)
 
-    assert_equal 2, providers.size
+  def test_e2e_example_provider_extraction
     
-    provider_perf = providers.first
-    provider = provider_perf.provider
-    refute_nil provider
-    
-    #assert_equal "Dr.", provider.title
-    #assert_equal "Stanley", provider.given_name
-    #assert_equal "Strangelove", provider.family_name
-    #refute_nil provider.addresses.first
-    #assert_equal '808401234567893', provider.npi
-    # assert_equal "Kubrick Permanente", provider[:organization]
-    #assert_equal "200000000X", provider.specialty
-    
-    provider_perf2 = providers.last 
-    provider2 = provider_perf2.provider
-    refute_nil provider2
-
-    #assert_equal "Dr.", provider2.title
-    #assert_equal "Teddy", provider2.given_name
-    #assert_equal "Seuss", provider2.family_name
-    #assert_equal '1234567893', provider2.npi
-    # assert_equal "Redfish Labs", provider2[:organization]
-    #assert_equal "230000000X", provider2.specialty
-    assert_nil provider2.phone
-  end
-  
-  def test_nist_example_provider_extraction
-    
-    providers = @importer.extract_providers(@nist_doc)
+    providers = @importer.extract_providers(@e2e_doc)
+    #STDERR.puts "PROVIDERS_INSPECT: "+providers.inspect
+    #STDERR.puts "PROVIDERS: "+providers.to_s
 
     assert_equal 2, providers.size
     
