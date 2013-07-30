@@ -71,6 +71,7 @@ module HealthDataStandards
           #provider = Provider.first(conditions: {npi: provider_hash[:npi]}) if provider_hash[:npi]
           provider = Provider.where(npi: provider_hash[:npi]).first if provider_hash[:npi] && !provider_hash[:npi].empty?
           #provider ||= Provider.create(provider_hash)
+          #STDERR.puts "provider_hash: "+provider_hash.inspect
           if provider == nil
             provider = Provider.new(provider_hash)
           end

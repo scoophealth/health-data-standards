@@ -14,9 +14,9 @@ module E2E
     def test_e2e_example_provider_extraction
 
       providers = @importer.extract_providers(@e2e_doc)
-      STDERR.puts "PROVIDERS: "+providers.inspect
 
-      assert_equal 2, providers.size
+      assert_equal 50, providers.size
+      #assert_equal 'xyz', "providers[25].inspect: " + providers[25].inspect
 
       provider_perf = providers.first
       provider = provider_perf.provider
