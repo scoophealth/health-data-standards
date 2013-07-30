@@ -13,8 +13,7 @@ class ProviderImporterTest < MiniTest::Unit::TestCase
   def test_e2e_example_provider_extraction
     
     providers = @importer.extract_providers(@e2e_doc)
-    #STDERR.puts "PROVIDERS_INSPECT: "+providers.inspect
-    #STDERR.puts "PROVIDERS: "+providers.to_s
+    STDERR.puts "PROVIDERS: "+providers.inspect
 
     assert_equal 2, providers.size
     

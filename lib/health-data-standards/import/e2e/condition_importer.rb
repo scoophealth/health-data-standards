@@ -39,7 +39,7 @@ module HealthDataStandards
           #@priority_xpath = "./cda:priorityCode"
           @description_xpath = "./cda:value/cda:originalText[@originalText]"
           #@description_xpath = "./cda:text/cda:reference[@value]"
-          @provider_xpath = "./cda:author" #"/cda:assignedAuthor"
+          @provider_xpath = "./cda:author/cda:assignedAuthor"
           #@cod_xpath = "./cda:entryRelationship[@typeCode='CAUS']/cda:observation/cda:code[@code='419620001']"
         end
         
