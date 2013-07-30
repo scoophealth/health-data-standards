@@ -76,11 +76,13 @@ module HealthDataStandards
           @entry_xpath = "//cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.19.1' and cda:code/@code='10160-6']/cda:entry/cda:substanceAdministration"
 
           # location of base Entry class fields
-          @description_xpath = './cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/cda:name/text()'
+          #description_xpath = './cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/cda:name/text()'
+          @description_xpath = './cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/e2e:desc/text()'
           @entrystatus_xpath = './cda:statusCode' # not used
           @code_xpath = './cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/cda:code'
           # using cda:strength to populate Entry.value
-          @strength_xpath = './cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/cda:strength'
+          #@strength_xpath = './cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/cda:strength'
+          @strength_xpath = './cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/e2e:ingredient/e2e:quantity'
 
           # location of Medication class fields
           # administrationTiming [frequency of drug - could be specific time, interval (every 6 hours), duration (infuse over 30 minutes) but e2e uses frequency only]
@@ -90,7 +92,8 @@ module HealthDataStandards
           # doseQuantity
           @dose_xpath = "./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration/cda:doseQuantity"
           # statusOfMedication (active, discharged, chronic, acute)
-          @status_xpath = './cda:entryRelationship/cda:substanceAdministration/cda:statusCode'
+          #@status_xpath = './cda:entryRelationship/cda:substanceAdministration/cda:statusCode'
+          @status_xpath = './cda:statusCode'
           # route (by mouth, intravenously, topically, etc.)
           @route_xpath = './cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration/cda:routeCode'
           # productForm (tablet, capsule, liquid, ointment)
@@ -157,8 +160,10 @@ module HealthDataStandards
         end
 
         def extract_entry_value(parent_element, entry)
-          myscalar = parent_element.xpath(@strength_xpath+"/cda:center/@value").to_s
-          myunit = parent_element.xpath(@strength_xpath+"/cda:center/@unit").to_s
+          #myscalar = parent_element.xpath(@strength_xpath+"/cda:center/@value").to_s
+          myscalar = parent_element.xpath(@strength_xpath+"/@value").to_s
+          #myunit = parent_element.xpath(@strength_xpath+"/cda:center/@unit").to_s
+          myunit = parent_element.xpath(@strength_xpath+"/@unit").to_s
           entry.set_value(myscalar,myunit)
         end
 

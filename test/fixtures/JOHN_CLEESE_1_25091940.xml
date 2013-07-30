@@ -14,8 +14,8 @@ CDA Header
 	<typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040"/>
 	<id extension="1" root="2.16.840.1.113883.3.933"/>
 	<code code="34140-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Referral"/>
-	<title>PITO EMR-2-EMR Complete Instance Example</title>
-	<effectiveTime value="201306100342"/>
+	<title>PITO EMR-2-EMR Record of JOHN CLEESE</title>
+	<effectiveTime value="201307300316"/>
 	<confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
 	<!-- 
 	********************************************************
@@ -52,7 +52,7 @@ CDA Header
 	********************************************************
 	-->
 	<author typeCode="AUT" contextControlCode="OP">
-		<time value="20130610"/>
+		<time value="20130730"/>
 		<assignedAuthor>
 			<id extension="000000" root="DCCD2C68-389B-44C4-AD99-B8FB2DAD1493"/>
 			<assignedPerson classCode="PSN" determinerCode="INSTANCE">
@@ -76,6 +76,17 @@ CDA Header
 			</representedCustodianOrganization>
 		</assignedCustodian>
 	</custodian>
+	<!--
+	********************************************************
+	Information Recipient
+	********************************************************
+	-->
+	<informationRecipient typeCode="PRCP">
+		<intendedRecipient classCode="ASSIGNED">
+			<id extension="ppump" root="DCCD2C68-389B-44C4-AD99-B8FB2DAD1493"/>
+			<e2e:code code="MD" codeSystem="2.16.840.1.113883.5.111" codeSystemName="RoleCode" displayName="Medical Doctor"/>
+		</intendedRecipient>
+	</informationRecipient>
 <!-- 
 ********************************************************
 e-MS CDA Structured Body
@@ -2258,20 +2269,27 @@ Medications and Prescriptions - Medication List
 						<templateId root="2.16.840.1.113883.3.1818.10.3.18" />
 						<substanceAdministration classCode="SBADM" moodCode="EVN">
 							<id extension="BC20120201RXA-1452388BN" root="2.16.840.1.113883.3.1818.10.10.3" />
-							<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
+							<code code="DRUG" displayName="Drug Therapy" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 Act
+Code"/>
 							<statusCode code="active"/>
-							<!-- Medication Identification -->
+							<!-- Medication -->
 							<consumable typeCode="CSM">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
+								<!-- Medication Identification -->
 								<manufacturedProduct classCode="MANU">
 									<manufacturedLabeledDrug classCode="MMAT" determinerCode="KIND">
 										<code code="00559407" codeSystem="2.16.840.1.113883.5.1105" codeSystemName="HC-DIN" displayName="ACETAMINOPHEN"/>
 										<code code="N02BE01" codeSystem="2.16.840.1.113883.6.73" codeSystemName="whoATC" displayName="ACETAMINOPHEN"/>
-										<name>TYLENOL EXTRA STRENGTH TAB 500MG</name>
-										<e2e:desc nullFlavor="UNK"/>
-										<strength>
-											<center value="500.0" unit="MG"/>
-										</strength>
+										<name>ACETAMINOPHEN</name>
+										<e2e:desc>TYLENOL EXTRA STRENGTH TAB 500MG</e2e:desc>
+										<e2e:formCode code="TAB" displayName="TABLET" codeSystem="2.16.840.1.113883.19.5.3" codeSystemName="HL7 Orderable Drug Form"/>
+										<e2e:ingredient classCode="INGR">
+											<e2e:quantity value="500.0" unit="MG"/>
+											<e2e:ingredient classCode="MMAT" determinerCode="KIND">
+												<e2e:code code="TBD" displayName="ACETAMINOPHEN" codeSystem="TBD" codeSystemName="ClinicalDrug"/>
+												<e2e:name>ACETAMINOPHEN</e2e:name>
+											</e2e:ingredient>
+										</e2e:ingredient>
 									</manufacturedLabeledDrug>
 								</manufacturedProduct>
 							</consumable>
@@ -2280,8 +2298,8 @@ Medications and Prescriptions - Medication List
 								<templateId root="2.16.840.1.113883.3.1818.10.4.32"/>
 								<!-- Unbounded Observation -->
 								<observation classCode="OBS" moodCode="EVN">
-									<code code="29546-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Record Type"/>
-									<text>Usual/long-term medication</text>
+									<code code="UNBOUND" displayName="Unbound Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
+									<text>Long Term</text>
 								</observation>
 							</entryRelationship>
 							<!-- Last Review Date -->
@@ -2289,39 +2307,49 @@ Medications and Prescriptions - Medication List
 								<templateId root="2.16.840.1.113883.3.1818.10.4.4"/>
 								<!-- Date Observation -->
 								<observation classCode="OBS" moodCode="EVN">
-									<code code="DTREVIEW" displayName="Date Reviewed" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1"
-									codeSystemName="PITO ObservationType"/>
+									<code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
 									<effectiveTime value="20130305"/>
-									<e2e:confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
 								</observation>
 							</entryRelationship>
-							<!-- Medication Prescription Event-->
+							<!-- Prescription Information -->
 							<entryRelationship typeCode="COMP" contextConductionInd="true">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.20" />
+								<!-- Medication Prescription Event-->
 								<substanceAdministration classCode="SBADM" moodCode="RQO">
 									<id extension="5" root="2.16.840.1.113883.3.1818.10.10.3"/>
 									<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
-									<statusCode code="completed"/>
+									<!-- Start/Stop Date -->
 									<effectiveTime xsi:type="IVL_TS" operator="I">
 										<low value="20130305"/>
 										<high value="20130424" />
 									</effectiveTime>
 									<consumable typeCode="CSM">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
-										<!--Medication Identification-->
+										<!-- Medication Identification -->
 										<manufacturedProduct classCode="MANU">
-											<manufacturedMaterial classCode="MMAT" determinerCode="KIND">
+											<manufacturedLabeledDrug classCode="MMAT" determinerCode="KIND">
+												<code code="00559407" codeSystem="2.16.840.1.113883.5.1105" codeSystemName="HC-DIN" displayName="ACETAMINOPHEN"/>
+												<code code="N02BE01" codeSystem="2.16.840.1.113883.6.73" codeSystemName="whoATC" displayName="ACETAMINOPHEN"/>
 												<name>ACETAMINOPHEN</name>
-											</manufacturedMaterial>
+												<e2e:desc>TYLENOL EXTRA STRENGTH TAB 500MG</e2e:desc>
+												<e2e:formCode code="TAB" displayName="TABLET" codeSystem="2.16.840.1.113883.19.5.3" codeSystemName="HL7 Orderable Drug Form"/>
+												<e2e:ingredient classCode="INGR">
+													<e2e:quantity value="500.0" unit="MG"/>
+													<e2e:ingredient classCode="MMAT" determinerCode="KIND">
+														<e2e:code code="TBD" displayName="ACETAMINOPHEN" codeSystem="TBD" codeSystemName="ClinicalDrug"/>
+														<e2e:name>ACETAMINOPHEN</e2e:name>
+													</e2e:ingredient>
+												</e2e:ingredient>
+											</manufacturedLabeledDrug>
 										</manufacturedProduct>
 									</consumable>
+									<!-- Prescribing Provider -->
 									<author typeCode="AUT" contextControlCode="OP">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
 										<!-- Author Participation -->
 										<time value="20130305"/>
-										<assignedAuthor>
+										<assignedAuthor classCode="ASSIGNED">
 											<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
-											<code nullFlavor='NA'/>
 											<assignedPerson classCode="PSN" determinerCode="INSTANCE">
 												<name use="L">
 													<given>doctor</given>
@@ -2334,9 +2362,12 @@ Medications and Prescriptions - Medication List
 										<templateId root="2.16.840.1.113883.3.1818.10.4.8"/>
 										<!-- Dose Observation -->
 										<substanceAdministration classCode="SBADM" moodCode="RQO">
+											<text>Take 1.0 to 2.0 TABLET PO QID 25 D</text>
+											<!-- Duration -->
 											<effectiveTime xsi:type="IVL_TS" operator="I">
 												<width value="25" unit="D"/>
 											</effectiveTime>
+											<!-- Frequency -->
 											<!-- OSCAR Frequency Code QID -->
 											<effectiveTime xsi:type="PIVL_TS" institutionSpecified="true">
 												<frequency>
@@ -2344,31 +2375,44 @@ Medications and Prescriptions - Medication List
 													<denominator value="1" unit="d"/>
 												</frequency>
 											</effectiveTime>
-											<routeCode code="PO" codeSystem="2.16.840.1.113883.5.112" codeSystemName="RouteOfAdministration" displayName="PO"/>
+											<!-- Route -->
+											<routeCode code="PO" displayName="PO" codeSystem="2.16.840.1.113883.5.112" codeSystemName="RouteOfAdministration"/>
 											<approachSiteCode nullFlavor="NA"/>
+											<!-- Dose -->
 											<doseQuantity>
 												<low value="1.0"/>
 												<high value="2.0"/>
 											</doseQuantity>
-											<!-- OSCAR Form Code TABLET -->
-											<administrationUnitCode code="TAB" codeSystem="2.16.840.1.113883.5.1127" displayName="TABLET"/>
+											<!-- Form -->
+											<administrationUnitCode code="TAB" displayName="TABLET" codeSystem="2.16.840.1.113883.1.11.14570" codeSystemName="AdministerableDrugForm"/>
 											<consumable typeCode="CSM">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
-												<!--Medication Identification-->
+												<!-- Medication Identification -->
 												<manufacturedProduct classCode="MANU">
-													<manufacturedMaterial classCode="MMAT" determinerCode="KIND">
+													<manufacturedLabeledDrug classCode="MMAT" determinerCode="KIND">
+														<code code="00559407" codeSystem="2.16.840.1.113883.5.1105" codeSystemName="HC-DIN" displayName="ACETAMINOPHEN"/>
+														<code code="N02BE01" codeSystem="2.16.840.1.113883.6.73" codeSystemName="whoATC" displayName="ACETAMINOPHEN"/>
 														<name>ACETAMINOPHEN</name>
-													</manufacturedMaterial>
+														<e2e:desc>TYLENOL EXTRA STRENGTH TAB 500MG</e2e:desc>
+														<e2e:formCode code="TAB" displayName="TABLET" codeSystem="2.16.840.1.113883.19.5.3" codeSystemName="HL7 Orderable Drug Form"/>
+														<e2e:ingredient classCode="INGR">
+															<e2e:quantity value="500.0" unit="MG"/>
+															<e2e:ingredient classCode="MMAT" determinerCode="KIND">
+																<e2e:code code="TBD" displayName="ACETAMINOPHEN" codeSystem="TBD" codeSystemName="ClinicalDrug"/>
+																<e2e:name>ACETAMINOPHEN</e2e:name>
+															</e2e:ingredient>
+														</e2e:ingredient>
+													</manufacturedLabeledDrug>
 												</manufacturedProduct>
 											</consumable>
 										</substanceAdministration>
 									</entryRelationship>
-									<!--Medication Observation-->
+									<!-- PRN -->
 									<entryRelationship typeCode="COMP" contextConductionInd="true">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.37"/>
+										<!-- Order Indicator-->
 										<observation classCode="OBS" moodCode="EVN">
-											<code code="PRNIND" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1" codeSystemName="PITO ObservationType" displayName="PRN Indicator"/>
-											<text>PRN Indicator: true</text>
+											<code code="PRNIND" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" displayName="PRN Indicator"/>
 											<value xsi:type="BL" value="true"/>
 										</observation>
 									</entryRelationship>
@@ -2390,20 +2434,27 @@ Medications and Prescriptions - Medication List
 						<templateId root="2.16.840.1.113883.3.1818.10.3.18" />
 						<substanceAdministration classCode="SBADM" moodCode="EVN">
 							<id extension="BC20120201RXA-1452388BN" root="2.16.840.1.113883.3.1818.10.10.3" />
-							<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
+							<code code="DRUG" displayName="Drug Therapy" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 Act
+Code"/>
 							<statusCode code="active"/>
-							<!-- Medication Identification -->
+							<!-- Medication -->
 							<consumable typeCode="CSM">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
+								<!-- Medication Identification -->
 								<manufacturedProduct classCode="MANU">
 									<manufacturedLabeledDrug classCode="MMAT" determinerCode="KIND">
 										<code code="00613215" codeSystem="2.16.840.1.113883.5.1105" codeSystemName="HC-DIN" displayName="SPIRONOLACTONE"/>
 										<code code="C03DA01" codeSystem="2.16.840.1.113883.6.73" codeSystemName="whoATC" displayName="SPIRONOLACTONE"/>
-										<name>SPIRONOLACTONE 25MG TABLET</name>
-										<e2e:desc nullFlavor="UNK"/>
-										<strength>
-											<center value="25.0" unit="MG"/>
-										</strength>
+										<name>SPIRONOLACTONE</name>
+										<e2e:desc>SPIRONOLACTONE 25MG TABLET</e2e:desc>
+										<e2e:formCode code="TAB" displayName="TABLET" codeSystem="2.16.840.1.113883.19.5.3" codeSystemName="HL7 Orderable Drug Form"/>
+										<e2e:ingredient classCode="INGR">
+											<e2e:quantity value="25.0" unit="MG"/>
+											<e2e:ingredient classCode="MMAT" determinerCode="KIND">
+												<e2e:code code="TBD" displayName="SPIRONOLACTONE" codeSystem="TBD" codeSystemName="ClinicalDrug"/>
+												<e2e:name>SPIRONOLACTONE</e2e:name>
+											</e2e:ingredient>
+										</e2e:ingredient>
 									</manufacturedLabeledDrug>
 								</manufacturedProduct>
 							</consumable>
@@ -2412,8 +2463,8 @@ Medications and Prescriptions - Medication List
 								<templateId root="2.16.840.1.113883.3.1818.10.4.32"/>
 								<!-- Unbounded Observation -->
 								<observation classCode="OBS" moodCode="EVN">
-									<code code="29546-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Record Type"/>
-									<text>Usual/long-term medication</text>
+									<code code="UNBOUND" displayName="Unbound Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
+									<text>Long Term</text>
 								</observation>
 							</entryRelationship>
 							<!-- Last Review Date -->
@@ -2421,39 +2472,49 @@ Medications and Prescriptions - Medication List
 								<templateId root="2.16.840.1.113883.3.1818.10.4.4"/>
 								<!-- Date Observation -->
 								<observation classCode="OBS" moodCode="EVN">
-									<code code="DTREVIEW" displayName="Date Reviewed" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1"
-									codeSystemName="PITO ObservationType"/>
+									<code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
 									<effectiveTime value="20130305"/>
-									<e2e:confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
 								</observation>
 							</entryRelationship>
-							<!-- Medication Prescription Event-->
+							<!-- Prescription Information -->
 							<entryRelationship typeCode="COMP" contextConductionInd="true">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.20" />
+								<!-- Medication Prescription Event-->
 								<substanceAdministration classCode="SBADM" moodCode="RQO">
 									<id extension="2" root="2.16.840.1.113883.3.1818.10.10.3"/>
 									<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
-									<statusCode code="completed"/>
+									<!-- Start/Stop Date -->
 									<effectiveTime xsi:type="IVL_TS" operator="I">
 										<low value="20130305"/>
 										<high value="20130430" />
 									</effectiveTime>
 									<consumable typeCode="CSM">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
-										<!--Medication Identification-->
+										<!-- Medication Identification -->
 										<manufacturedProduct classCode="MANU">
-											<manufacturedMaterial classCode="MMAT" determinerCode="KIND">
+											<manufacturedLabeledDrug classCode="MMAT" determinerCode="KIND">
+												<code code="00613215" codeSystem="2.16.840.1.113883.5.1105" codeSystemName="HC-DIN" displayName="SPIRONOLACTONE"/>
+												<code code="C03DA01" codeSystem="2.16.840.1.113883.6.73" codeSystemName="whoATC" displayName="SPIRONOLACTONE"/>
 												<name>SPIRONOLACTONE</name>
-											</manufacturedMaterial>
+												<e2e:desc>SPIRONOLACTONE 25MG TABLET</e2e:desc>
+												<e2e:formCode code="TAB" displayName="TABLET" codeSystem="2.16.840.1.113883.19.5.3" codeSystemName="HL7 Orderable Drug Form"/>
+												<e2e:ingredient classCode="INGR">
+													<e2e:quantity value="25.0" unit="MG"/>
+													<e2e:ingredient classCode="MMAT" determinerCode="KIND">
+														<e2e:code code="TBD" displayName="SPIRONOLACTONE" codeSystem="TBD" codeSystemName="ClinicalDrug"/>
+														<e2e:name>SPIRONOLACTONE</e2e:name>
+													</e2e:ingredient>
+												</e2e:ingredient>
+											</manufacturedLabeledDrug>
 										</manufacturedProduct>
 									</consumable>
+									<!-- Prescribing Provider -->
 									<author typeCode="AUT" contextControlCode="OP">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
 										<!-- Author Participation -->
 										<time value="20130305"/>
-										<assignedAuthor>
+										<assignedAuthor classCode="ASSIGNED">
 											<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
-											<code nullFlavor='NA'/>
 											<assignedPerson classCode="PSN" determinerCode="INSTANCE">
 												<name use="L">
 													<given>doctor</given>
@@ -2466,9 +2527,12 @@ Medications and Prescriptions - Medication List
 										<templateId root="2.16.840.1.113883.3.1818.10.4.8"/>
 										<!-- Dose Observation -->
 										<substanceAdministration classCode="SBADM" moodCode="RQO">
+											<text>Take 1.0 TABLET PO QAM 28 D</text>
+											<!-- Duration -->
 											<effectiveTime xsi:type="IVL_TS" operator="I">
 												<width value="28" unit="D"/>
 											</effectiveTime>
+											<!-- Frequency -->
 											<!-- OSCAR Frequency Code QAM -->
 											<effectiveTime xsi:type="PIVL_TS" institutionSpecified="true">
 												<frequency>
@@ -2476,31 +2540,44 @@ Medications and Prescriptions - Medication List
 													<denominator value="1" unit="d"/>
 												</frequency>
 											</effectiveTime>
-											<routeCode code="PO" codeSystem="2.16.840.1.113883.5.112" codeSystemName="RouteOfAdministration" displayName="PO"/>
+											<!-- Route -->
+											<routeCode code="PO" displayName="PO" codeSystem="2.16.840.1.113883.5.112" codeSystemName="RouteOfAdministration"/>
 											<approachSiteCode nullFlavor="NA"/>
+											<!-- Dose -->
 											<doseQuantity>
 												<low value="1.0"/>
 												<high value="1.0"/>
 											</doseQuantity>
-											<!-- OSCAR Form Code TABLET -->
-											<administrationUnitCode code="TAB" codeSystem="2.16.840.1.113883.5.1127" displayName="TABLET"/>
+											<!-- Form -->
+											<administrationUnitCode code="TAB" displayName="TABLET" codeSystem="2.16.840.1.113883.1.11.14570" codeSystemName="AdministerableDrugForm"/>
 											<consumable typeCode="CSM">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
-												<!--Medication Identification-->
+												<!-- Medication Identification -->
 												<manufacturedProduct classCode="MANU">
-													<manufacturedMaterial classCode="MMAT" determinerCode="KIND">
+													<manufacturedLabeledDrug classCode="MMAT" determinerCode="KIND">
+														<code code="00613215" codeSystem="2.16.840.1.113883.5.1105" codeSystemName="HC-DIN" displayName="SPIRONOLACTONE"/>
+														<code code="C03DA01" codeSystem="2.16.840.1.113883.6.73" codeSystemName="whoATC" displayName="SPIRONOLACTONE"/>
 														<name>SPIRONOLACTONE</name>
-													</manufacturedMaterial>
+														<e2e:desc>SPIRONOLACTONE 25MG TABLET</e2e:desc>
+														<e2e:formCode code="TAB" displayName="TABLET" codeSystem="2.16.840.1.113883.19.5.3" codeSystemName="HL7 Orderable Drug Form"/>
+														<e2e:ingredient classCode="INGR">
+															<e2e:quantity value="25.0" unit="MG"/>
+															<e2e:ingredient classCode="MMAT" determinerCode="KIND">
+																<e2e:code code="TBD" displayName="SPIRONOLACTONE" codeSystem="TBD" codeSystemName="ClinicalDrug"/>
+																<e2e:name>SPIRONOLACTONE</e2e:name>
+															</e2e:ingredient>
+														</e2e:ingredient>
+													</manufacturedLabeledDrug>
 												</manufacturedProduct>
 											</consumable>
 										</substanceAdministration>
 									</entryRelationship>
-									<!--Medication Observation-->
+									<!-- PRN -->
 									<entryRelationship typeCode="COMP" contextConductionInd="true">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.37"/>
+										<!-- Order Indicator-->
 										<observation classCode="OBS" moodCode="EVN">
-											<code code="PRNIND" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1" codeSystemName="PITO ObservationType" displayName="PRN Indicator"/>
-											<text>PRN Indicator: false</text>
+											<code code="PRNIND" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" displayName="PRN Indicator"/>
 											<value xsi:type="BL" value="false"/>
 										</observation>
 									</entryRelationship>
@@ -2512,20 +2589,27 @@ Medications and Prescriptions - Medication List
 						<templateId root="2.16.840.1.113883.3.1818.10.3.18" />
 						<substanceAdministration classCode="SBADM" moodCode="EVN">
 							<id extension="BC20120201RXA-1452388BN" root="2.16.840.1.113883.3.1818.10.10.3" />
-							<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
+							<code code="DRUG" displayName="Drug Therapy" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 Act
+Code"/>
 							<statusCode code="active"/>
-							<!-- Medication Identification -->
+							<!-- Medication -->
 							<consumable typeCode="CSM">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
+								<!-- Medication Identification -->
 								<manufacturedProduct classCode="MANU">
 									<manufacturedLabeledDrug classCode="MMAT" determinerCode="KIND">
 										<code code="00636533" codeSystem="2.16.840.1.113883.5.1105" codeSystemName="HC-DIN" displayName="IBUPROFEN"/>
 										<code code="M01AE01" codeSystem="2.16.840.1.113883.6.73" codeSystemName="whoATC" displayName="IBUPROFEN"/>
-										<name>IBUPROFEN TAB 400MG</name>
-										<e2e:desc nullFlavor="UNK"/>
-										<strength>
-											<center value="400.0" unit="MG"/>
-										</strength>
+										<name>IBUPROFEN</name>
+										<e2e:desc>IBUPROFEN TAB 400MG</e2e:desc>
+										<e2e:formCode code="TAB" displayName="TABLET" codeSystem="2.16.840.1.113883.19.5.3" codeSystemName="HL7 Orderable Drug Form"/>
+										<e2e:ingredient classCode="INGR">
+											<e2e:quantity value="400.0" unit="MG"/>
+											<e2e:ingredient classCode="MMAT" determinerCode="KIND">
+												<e2e:code code="TBD" displayName="IBUPROFEN" codeSystem="TBD" codeSystemName="ClinicalDrug"/>
+												<e2e:name>IBUPROFEN</e2e:name>
+											</e2e:ingredient>
+										</e2e:ingredient>
 									</manufacturedLabeledDrug>
 								</manufacturedProduct>
 							</consumable>
@@ -2534,8 +2618,8 @@ Medications and Prescriptions - Medication List
 								<templateId root="2.16.840.1.113883.3.1818.10.4.32"/>
 								<!-- Unbounded Observation -->
 								<observation classCode="OBS" moodCode="EVN">
-									<code code="29546-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Record Type"/>
-									<text>Usual/long-term medication</text>
+									<code code="UNBOUND" displayName="Unbound Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
+									<text>Long Term</text>
 								</observation>
 							</entryRelationship>
 							<!-- Last Review Date -->
@@ -2543,39 +2627,49 @@ Medications and Prescriptions - Medication List
 								<templateId root="2.16.840.1.113883.3.1818.10.4.4"/>
 								<!-- Date Observation -->
 								<observation classCode="OBS" moodCode="EVN">
-									<code code="DTREVIEW" displayName="Date Reviewed" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1"
-									codeSystemName="PITO ObservationType"/>
+									<code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
 									<effectiveTime value="20130305"/>
-									<e2e:confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
 								</observation>
 							</entryRelationship>
-							<!-- Medication Prescription Event-->
+							<!-- Prescription Information -->
 							<entryRelationship typeCode="COMP" contextConductionInd="true">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.20" />
+								<!-- Medication Prescription Event-->
 								<substanceAdministration classCode="SBADM" moodCode="RQO">
 									<id extension="9" root="2.16.840.1.113883.3.1818.10.10.3"/>
 									<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
-									<statusCode code="completed"/>
+									<!-- Start/Stop Date -->
 									<effectiveTime xsi:type="IVL_TS" operator="I">
 										<low value="20130305"/>
 										<high value="20130430" />
 									</effectiveTime>
 									<consumable typeCode="CSM">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
-										<!--Medication Identification-->
+										<!-- Medication Identification -->
 										<manufacturedProduct classCode="MANU">
-											<manufacturedMaterial classCode="MMAT" determinerCode="KIND">
+											<manufacturedLabeledDrug classCode="MMAT" determinerCode="KIND">
+												<code code="00636533" codeSystem="2.16.840.1.113883.5.1105" codeSystemName="HC-DIN" displayName="IBUPROFEN"/>
+												<code code="M01AE01" codeSystem="2.16.840.1.113883.6.73" codeSystemName="whoATC" displayName="IBUPROFEN"/>
 												<name>IBUPROFEN</name>
-											</manufacturedMaterial>
+												<e2e:desc>IBUPROFEN TAB 400MG</e2e:desc>
+												<e2e:formCode code="TAB" displayName="TABLET" codeSystem="2.16.840.1.113883.19.5.3" codeSystemName="HL7 Orderable Drug Form"/>
+												<e2e:ingredient classCode="INGR">
+													<e2e:quantity value="400.0" unit="MG"/>
+													<e2e:ingredient classCode="MMAT" determinerCode="KIND">
+														<e2e:code code="TBD" displayName="IBUPROFEN" codeSystem="TBD" codeSystemName="ClinicalDrug"/>
+														<e2e:name>IBUPROFEN</e2e:name>
+													</e2e:ingredient>
+												</e2e:ingredient>
+											</manufacturedLabeledDrug>
 										</manufacturedProduct>
 									</consumable>
+									<!-- Prescribing Provider -->
 									<author typeCode="AUT" contextControlCode="OP">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
 										<!-- Author Participation -->
 										<time value="20130305"/>
-										<assignedAuthor>
+										<assignedAuthor classCode="ASSIGNED">
 											<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
-											<code nullFlavor='NA'/>
 											<assignedPerson classCode="PSN" determinerCode="INSTANCE">
 												<name use="L">
 													<given>doctor</given>
@@ -2588,9 +2682,12 @@ Medications and Prescriptions - Medication List
 										<templateId root="2.16.840.1.113883.3.1818.10.4.8"/>
 										<!-- Dose Observation -->
 										<substanceAdministration classCode="SBADM" moodCode="RQO">
+											<text>Take 1.0 TABLET PO TID 28 D</text>
+											<!-- Duration -->
 											<effectiveTime xsi:type="IVL_TS" operator="I">
 												<width value="28" unit="D"/>
 											</effectiveTime>
+											<!-- Frequency -->
 											<!-- OSCAR Frequency Code TID -->
 											<effectiveTime xsi:type="PIVL_TS" institutionSpecified="true">
 												<frequency>
@@ -2598,31 +2695,44 @@ Medications and Prescriptions - Medication List
 													<denominator value="1" unit="d"/>
 												</frequency>
 											</effectiveTime>
-											<routeCode code="PO" codeSystem="2.16.840.1.113883.5.112" codeSystemName="RouteOfAdministration" displayName="PO"/>
+											<!-- Route -->
+											<routeCode code="PO" displayName="PO" codeSystem="2.16.840.1.113883.5.112" codeSystemName="RouteOfAdministration"/>
 											<approachSiteCode nullFlavor="NA"/>
+											<!-- Dose -->
 											<doseQuantity>
 												<low value="1.0"/>
 												<high value="1.0"/>
 											</doseQuantity>
-											<!-- OSCAR Form Code TABLET -->
-											<administrationUnitCode code="TAB" codeSystem="2.16.840.1.113883.5.1127" displayName="TABLET"/>
+											<!-- Form -->
+											<administrationUnitCode code="TAB" displayName="TABLET" codeSystem="2.16.840.1.113883.1.11.14570" codeSystemName="AdministerableDrugForm"/>
 											<consumable typeCode="CSM">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
-												<!--Medication Identification-->
+												<!-- Medication Identification -->
 												<manufacturedProduct classCode="MANU">
-													<manufacturedMaterial classCode="MMAT" determinerCode="KIND">
+													<manufacturedLabeledDrug classCode="MMAT" determinerCode="KIND">
+														<code code="00636533" codeSystem="2.16.840.1.113883.5.1105" codeSystemName="HC-DIN" displayName="IBUPROFEN"/>
+														<code code="M01AE01" codeSystem="2.16.840.1.113883.6.73" codeSystemName="whoATC" displayName="IBUPROFEN"/>
 														<name>IBUPROFEN</name>
-													</manufacturedMaterial>
+														<e2e:desc>IBUPROFEN TAB 400MG</e2e:desc>
+														<e2e:formCode code="TAB" displayName="TABLET" codeSystem="2.16.840.1.113883.19.5.3" codeSystemName="HL7 Orderable Drug Form"/>
+														<e2e:ingredient classCode="INGR">
+															<e2e:quantity value="400.0" unit="MG"/>
+															<e2e:ingredient classCode="MMAT" determinerCode="KIND">
+																<e2e:code code="TBD" displayName="IBUPROFEN" codeSystem="TBD" codeSystemName="ClinicalDrug"/>
+																<e2e:name>IBUPROFEN</e2e:name>
+															</e2e:ingredient>
+														</e2e:ingredient>
+													</manufacturedLabeledDrug>
 												</manufacturedProduct>
 											</consumable>
 										</substanceAdministration>
 									</entryRelationship>
-									<!--Medication Observation-->
+									<!-- PRN -->
 									<entryRelationship typeCode="COMP" contextConductionInd="true">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.37"/>
+										<!-- Order Indicator-->
 										<observation classCode="OBS" moodCode="EVN">
-											<code code="PRNIND" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1" codeSystemName="PITO ObservationType" displayName="PRN Indicator"/>
-											<text>PRN Indicator: true</text>
+											<code code="PRNIND" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" displayName="PRN Indicator"/>
 											<value xsi:type="BL" value="true"/>
 										</observation>
 									</entryRelationship>
@@ -2634,20 +2744,27 @@ Medications and Prescriptions - Medication List
 						<templateId root="2.16.840.1.113883.3.1818.10.3.18" />
 						<substanceAdministration classCode="SBADM" moodCode="EVN">
 							<id extension="BC20120201RXA-1452388BN" root="2.16.840.1.113883.3.1818.10.10.3" />
-							<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
+							<code code="DRUG" displayName="Drug Therapy" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 Act
+Code"/>
 							<statusCode code="active"/>
-							<!-- Medication Identification -->
+							<!-- Medication -->
 							<consumable typeCode="CSM">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
+								<!-- Medication Identification -->
 								<manufacturedProduct classCode="MANU">
 									<manufacturedLabeledDrug classCode="MMAT" determinerCode="KIND">
 										<code code="02041421" codeSystem="2.16.840.1.113883.5.1105" codeSystemName="HC-DIN" displayName="LORAZEPAM"/>
 										<code code="N05BA06" codeSystem="2.16.840.1.113883.6.73" codeSystemName="whoATC" displayName="LORAZEPAM"/>
-										<name>ATIVAN 1MG</name>
-										<e2e:desc nullFlavor="UNK"/>
-										<strength>
-											<center value="1.0" unit="MG"/>
-										</strength>
+										<name>LORAZEPAM</name>
+										<e2e:desc>ATIVAN 1MG</e2e:desc>
+										<e2e:formCode code="TAB" displayName="TABLET" codeSystem="2.16.840.1.113883.19.5.3" codeSystemName="HL7 Orderable Drug Form"/>
+										<e2e:ingredient classCode="INGR">
+											<e2e:quantity value="1.0" unit="MG"/>
+											<e2e:ingredient classCode="MMAT" determinerCode="KIND">
+												<e2e:code code="TBD" displayName="LORAZEPAM" codeSystem="TBD" codeSystemName="ClinicalDrug"/>
+												<e2e:name>LORAZEPAM</e2e:name>
+											</e2e:ingredient>
+										</e2e:ingredient>
 									</manufacturedLabeledDrug>
 								</manufacturedProduct>
 							</consumable>
@@ -2656,8 +2773,8 @@ Medications and Prescriptions - Medication List
 								<templateId root="2.16.840.1.113883.3.1818.10.4.32"/>
 								<!-- Unbounded Observation -->
 								<observation classCode="OBS" moodCode="EVN">
-									<code code="29546-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Record Type"/>
-									<text>Usual/long-term medication</text>
+									<code code="UNBOUND" displayName="Unbound Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
+									<text>Long Term</text>
 								</observation>
 							</entryRelationship>
 							<!-- Last Review Date -->
@@ -2665,39 +2782,49 @@ Medications and Prescriptions - Medication List
 								<templateId root="2.16.840.1.113883.3.1818.10.4.4"/>
 								<!-- Date Observation -->
 								<observation classCode="OBS" moodCode="EVN">
-									<code code="DTREVIEW" displayName="Date Reviewed" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1"
-									codeSystemName="PITO ObservationType"/>
+									<code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
 									<effectiveTime value="20130305"/>
-									<e2e:confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
 								</observation>
 							</entryRelationship>
-							<!-- Medication Prescription Event-->
+							<!-- Prescription Information -->
 							<entryRelationship typeCode="COMP" contextConductionInd="true">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.20" />
+								<!-- Medication Prescription Event-->
 								<substanceAdministration classCode="SBADM" moodCode="RQO">
 									<id extension="7" root="2.16.840.1.113883.3.1818.10.10.3"/>
 									<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
-									<statusCode code="completed"/>
+									<!-- Start/Stop Date -->
 									<effectiveTime xsi:type="IVL_TS" operator="I">
 										<low value="20130305"/>
 										<high value="20130414" />
 									</effectiveTime>
 									<consumable typeCode="CSM">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
-										<!--Medication Identification-->
+										<!-- Medication Identification -->
 										<manufacturedProduct classCode="MANU">
-											<manufacturedMaterial classCode="MMAT" determinerCode="KIND">
+											<manufacturedLabeledDrug classCode="MMAT" determinerCode="KIND">
+												<code code="02041421" codeSystem="2.16.840.1.113883.5.1105" codeSystemName="HC-DIN" displayName="LORAZEPAM"/>
+												<code code="N05BA06" codeSystem="2.16.840.1.113883.6.73" codeSystemName="whoATC" displayName="LORAZEPAM"/>
 												<name>LORAZEPAM</name>
-											</manufacturedMaterial>
+												<e2e:desc>ATIVAN 1MG</e2e:desc>
+												<e2e:formCode code="TAB" displayName="TABLET" codeSystem="2.16.840.1.113883.19.5.3" codeSystemName="HL7 Orderable Drug Form"/>
+												<e2e:ingredient classCode="INGR">
+													<e2e:quantity value="1.0" unit="MG"/>
+													<e2e:ingredient classCode="MMAT" determinerCode="KIND">
+														<e2e:code code="TBD" displayName="LORAZEPAM" codeSystem="TBD" codeSystemName="ClinicalDrug"/>
+														<e2e:name>LORAZEPAM</e2e:name>
+													</e2e:ingredient>
+												</e2e:ingredient>
+											</manufacturedLabeledDrug>
 										</manufacturedProduct>
 									</consumable>
+									<!-- Prescribing Provider -->
 									<author typeCode="AUT" contextControlCode="OP">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
 										<!-- Author Participation -->
 										<time value="20130305"/>
-										<assignedAuthor>
+										<assignedAuthor classCode="ASSIGNED">
 											<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
-											<code nullFlavor='NA'/>
 											<assignedPerson classCode="PSN" determinerCode="INSTANCE">
 												<name use="L">
 													<given>doctor</given>
@@ -2710,9 +2837,12 @@ Medications and Prescriptions - Medication List
 										<templateId root="2.16.840.1.113883.3.1818.10.4.8"/>
 										<!-- Dose Observation -->
 										<substanceAdministration classCode="SBADM" moodCode="RQO">
+											<text>Take 1.0 TABLET SL BID 20 D</text>
+											<!-- Duration -->
 											<effectiveTime xsi:type="IVL_TS" operator="I">
 												<width value="20" unit="D"/>
 											</effectiveTime>
+											<!-- Frequency -->
 											<!-- OSCAR Frequency Code BID -->
 											<effectiveTime xsi:type="PIVL_TS" institutionSpecified="true">
 												<frequency>
@@ -2720,31 +2850,44 @@ Medications and Prescriptions - Medication List
 													<denominator value="1" unit="d"/>
 												</frequency>
 											</effectiveTime>
-											<routeCode code="SL" codeSystem="2.16.840.1.113883.5.112" codeSystemName="RouteOfAdministration" displayName="SL"/>
+											<!-- Route -->
+											<routeCode code="SL" displayName="SL" codeSystem="2.16.840.1.113883.5.112" codeSystemName="RouteOfAdministration"/>
 											<approachSiteCode nullFlavor="NA"/>
+											<!-- Dose -->
 											<doseQuantity>
 												<low value="1.0"/>
 												<high value="1.0"/>
 											</doseQuantity>
-											<!-- OSCAR Form Code TABLET -->
-											<administrationUnitCode code="TAB" codeSystem="2.16.840.1.113883.5.1127" displayName="TABLET"/>
+											<!-- Form -->
+											<administrationUnitCode code="TAB" displayName="TABLET" codeSystem="2.16.840.1.113883.1.11.14570" codeSystemName="AdministerableDrugForm"/>
 											<consumable typeCode="CSM">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
-												<!--Medication Identification-->
+												<!-- Medication Identification -->
 												<manufacturedProduct classCode="MANU">
-													<manufacturedMaterial classCode="MMAT" determinerCode="KIND">
+													<manufacturedLabeledDrug classCode="MMAT" determinerCode="KIND">
+														<code code="02041421" codeSystem="2.16.840.1.113883.5.1105" codeSystemName="HC-DIN" displayName="LORAZEPAM"/>
+														<code code="N05BA06" codeSystem="2.16.840.1.113883.6.73" codeSystemName="whoATC" displayName="LORAZEPAM"/>
 														<name>LORAZEPAM</name>
-													</manufacturedMaterial>
+														<e2e:desc>ATIVAN 1MG</e2e:desc>
+														<e2e:formCode code="TAB" displayName="TABLET" codeSystem="2.16.840.1.113883.19.5.3" codeSystemName="HL7 Orderable Drug Form"/>
+														<e2e:ingredient classCode="INGR">
+															<e2e:quantity value="1.0" unit="MG"/>
+															<e2e:ingredient classCode="MMAT" determinerCode="KIND">
+																<e2e:code code="TBD" displayName="LORAZEPAM" codeSystem="TBD" codeSystemName="ClinicalDrug"/>
+																<e2e:name>LORAZEPAM</e2e:name>
+															</e2e:ingredient>
+														</e2e:ingredient>
+													</manufacturedLabeledDrug>
 												</manufacturedProduct>
 											</consumable>
 										</substanceAdministration>
 									</entryRelationship>
-									<!--Medication Observation-->
+									<!-- PRN -->
 									<entryRelationship typeCode="COMP" contextConductionInd="true">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.37"/>
+										<!-- Order Indicator-->
 										<observation classCode="OBS" moodCode="EVN">
-											<code code="PRNIND" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1" codeSystemName="PITO ObservationType" displayName="PRN Indicator"/>
-											<text>PRN Indicator: true</text>
+											<code code="PRNIND" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" displayName="PRN Indicator"/>
 											<value xsi:type="BL" value="true"/>
 										</observation>
 									</entryRelationship>
@@ -2756,20 +2899,27 @@ Medications and Prescriptions - Medication List
 						<templateId root="2.16.840.1.113883.3.1818.10.3.18" />
 						<substanceAdministration classCode="SBADM" moodCode="EVN">
 							<id extension="BC20120201RXA-1452388BN" root="2.16.840.1.113883.3.1818.10.10.3" />
-							<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
+							<code code="DRUG" displayName="Drug Therapy" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 Act
+Code"/>
 							<statusCode code="active"/>
-							<!-- Medication Identification -->
+							<!-- Medication -->
 							<consumable typeCode="CSM">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
+								<!-- Medication Identification -->
 								<manufacturedProduct classCode="MANU">
 									<manufacturedLabeledDrug classCode="MMAT" determinerCode="KIND">
 										<code code="02244993" codeSystem="2.16.840.1.113883.5.1105" codeSystemName="HC-DIN" displayName="ACETYLSALICYLIC ACID"/>
 										<code code="B01AC06" codeSystem="2.16.840.1.113883.6.73" codeSystemName="whoATC" displayName="ACETYLSALICYLIC ACID"/>
-										<name>ASA 81 MG</name>
-										<e2e:desc nullFlavor="UNK"/>
-										<strength>
-											<center value="81.0" unit="MG"/>
-										</strength>
+										<name>ACETYLSALICYLIC ACID</name>
+										<e2e:desc>ASA 81 MG</e2e:desc>
+										<e2e:formCode code="ECTAB" displayName="TABLET (ENTERIC-COATED)" codeSystem="2.16.840.1.113883.19.5.3" codeSystemName="HL7 Orderable Drug Form"/>
+										<e2e:ingredient classCode="INGR">
+											<e2e:quantity value="81.0" unit="MG"/>
+											<e2e:ingredient classCode="MMAT" determinerCode="KIND">
+												<e2e:code code="TBD" displayName="ACETYLSALICYLIC ACID" codeSystem="TBD" codeSystemName="ClinicalDrug"/>
+												<e2e:name>ACETYLSALICYLIC ACID</e2e:name>
+											</e2e:ingredient>
+										</e2e:ingredient>
 									</manufacturedLabeledDrug>
 								</manufacturedProduct>
 							</consumable>
@@ -2778,8 +2928,8 @@ Medications and Prescriptions - Medication List
 								<templateId root="2.16.840.1.113883.3.1818.10.4.32"/>
 								<!-- Unbounded Observation -->
 								<observation classCode="OBS" moodCode="EVN">
-									<code code="29546-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Record Type"/>
-									<text>Usual/long-term medication</text>
+									<code code="UNBOUND" displayName="Unbound Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
+									<text>Long Term</text>
 								</observation>
 							</entryRelationship>
 							<!-- Last Review Date -->
@@ -2787,39 +2937,49 @@ Medications and Prescriptions - Medication List
 								<templateId root="2.16.840.1.113883.3.1818.10.4.4"/>
 								<!-- Date Observation -->
 								<observation classCode="OBS" moodCode="EVN">
-									<code code="DTREVIEW" displayName="Date Reviewed" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1"
-									codeSystemName="PITO ObservationType"/>
+									<code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
 									<effectiveTime value="20130305"/>
-									<e2e:confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
 								</observation>
 							</entryRelationship>
-							<!-- Medication Prescription Event-->
+							<!-- Prescription Information -->
 							<entryRelationship typeCode="COMP" contextConductionInd="true">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.20" />
+								<!-- Medication Prescription Event-->
 								<substanceAdministration classCode="SBADM" moodCode="RQO">
 									<id extension="6" root="2.16.840.1.113883.3.1818.10.10.3"/>
 									<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
-									<statusCode code="completed"/>
+									<!-- Start/Stop Date -->
 									<effectiveTime xsi:type="IVL_TS" operator="I">
 										<low value="20130305"/>
 										<high value="20130430" />
 									</effectiveTime>
 									<consumable typeCode="CSM">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
-										<!--Medication Identification-->
+										<!-- Medication Identification -->
 										<manufacturedProduct classCode="MANU">
-											<manufacturedMaterial classCode="MMAT" determinerCode="KIND">
+											<manufacturedLabeledDrug classCode="MMAT" determinerCode="KIND">
+												<code code="02244993" codeSystem="2.16.840.1.113883.5.1105" codeSystemName="HC-DIN" displayName="ACETYLSALICYLIC ACID"/>
+												<code code="B01AC06" codeSystem="2.16.840.1.113883.6.73" codeSystemName="whoATC" displayName="ACETYLSALICYLIC ACID"/>
 												<name>ACETYLSALICYLIC ACID</name>
-											</manufacturedMaterial>
+												<e2e:desc>ASA 81 MG</e2e:desc>
+												<e2e:formCode code="ECTAB" displayName="TABLET (ENTERIC-COATED)" codeSystem="2.16.840.1.113883.19.5.3" codeSystemName="HL7 Orderable Drug Form"/>
+												<e2e:ingredient classCode="INGR">
+													<e2e:quantity value="81.0" unit="MG"/>
+													<e2e:ingredient classCode="MMAT" determinerCode="KIND">
+														<e2e:code code="TBD" displayName="ACETYLSALICYLIC ACID" codeSystem="TBD" codeSystemName="ClinicalDrug"/>
+														<e2e:name>ACETYLSALICYLIC ACID</e2e:name>
+													</e2e:ingredient>
+												</e2e:ingredient>
+											</manufacturedLabeledDrug>
 										</manufacturedProduct>
 									</consumable>
+									<!-- Prescribing Provider -->
 									<author typeCode="AUT" contextControlCode="OP">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
 										<!-- Author Participation -->
 										<time value="20130305"/>
-										<assignedAuthor>
+										<assignedAuthor classCode="ASSIGNED">
 											<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
-											<code nullFlavor='NA'/>
 											<assignedPerson classCode="PSN" determinerCode="INSTANCE">
 												<name use="L">
 													<given>doctor</given>
@@ -2832,9 +2992,12 @@ Medications and Prescriptions - Medication List
 										<templateId root="2.16.840.1.113883.3.1818.10.4.8"/>
 										<!-- Dose Observation -->
 										<substanceAdministration classCode="SBADM" moodCode="RQO">
+											<text>Take 1.0 TABLET (ENTERIC-COATED) PO OD 28 D</text>
+											<!-- Duration -->
 											<effectiveTime xsi:type="IVL_TS" operator="I">
 												<width value="28" unit="D"/>
 											</effectiveTime>
+											<!-- Frequency -->
 											<!-- OSCAR Frequency Code OD -->
 											<effectiveTime xsi:type="PIVL_TS" institutionSpecified="true">
 												<frequency>
@@ -2842,31 +3005,44 @@ Medications and Prescriptions - Medication List
 													<denominator value="1" unit="d"/>
 												</frequency>
 											</effectiveTime>
-											<routeCode code="PO" codeSystem="2.16.840.1.113883.5.112" codeSystemName="RouteOfAdministration" displayName="PO"/>
+											<!-- Route -->
+											<routeCode code="PO" displayName="PO" codeSystem="2.16.840.1.113883.5.112" codeSystemName="RouteOfAdministration"/>
 											<approachSiteCode nullFlavor="NA"/>
+											<!-- Dose -->
 											<doseQuantity>
 												<low value="1.0"/>
 												<high value="1.0"/>
 											</doseQuantity>
-											<!-- OSCAR Form Code TABLET (ENTERIC-COATED) -->
-											<administrationUnitCode code="ECTAB" codeSystem="2.16.840.1.113883.5.1127" displayName="TABLET (ENTERIC-COATED)"/>
+											<!-- Form -->
+											<administrationUnitCode code="ECTAB" displayName="TABLET (ENTERIC-COATED)" codeSystem="2.16.840.1.113883.1.11.14570" codeSystemName="AdministerableDrugForm"/>
 											<consumable typeCode="CSM">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
-												<!--Medication Identification-->
+												<!-- Medication Identification -->
 												<manufacturedProduct classCode="MANU">
-													<manufacturedMaterial classCode="MMAT" determinerCode="KIND">
+													<manufacturedLabeledDrug classCode="MMAT" determinerCode="KIND">
+														<code code="02244993" codeSystem="2.16.840.1.113883.5.1105" codeSystemName="HC-DIN" displayName="ACETYLSALICYLIC ACID"/>
+														<code code="B01AC06" codeSystem="2.16.840.1.113883.6.73" codeSystemName="whoATC" displayName="ACETYLSALICYLIC ACID"/>
 														<name>ACETYLSALICYLIC ACID</name>
-													</manufacturedMaterial>
+														<e2e:desc>ASA 81 MG</e2e:desc>
+														<e2e:formCode code="ECTAB" displayName="TABLET (ENTERIC-COATED)" codeSystem="2.16.840.1.113883.19.5.3" codeSystemName="HL7 Orderable Drug Form"/>
+														<e2e:ingredient classCode="INGR">
+															<e2e:quantity value="81.0" unit="MG"/>
+															<e2e:ingredient classCode="MMAT" determinerCode="KIND">
+																<e2e:code code="TBD" displayName="ACETYLSALICYLIC ACID" codeSystem="TBD" codeSystemName="ClinicalDrug"/>
+																<e2e:name>ACETYLSALICYLIC ACID</e2e:name>
+															</e2e:ingredient>
+														</e2e:ingredient>
+													</manufacturedLabeledDrug>
 												</manufacturedProduct>
 											</consumable>
 										</substanceAdministration>
 									</entryRelationship>
-									<!--Medication Observation-->
+									<!-- PRN -->
 									<entryRelationship typeCode="COMP" contextConductionInd="true">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.37"/>
+										<!-- Order Indicator-->
 										<observation classCode="OBS" moodCode="EVN">
-											<code code="PRNIND" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1" codeSystemName="PITO ObservationType" displayName="PRN Indicator"/>
-											<text>PRN Indicator: false</text>
+											<code code="PRNIND" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" displayName="PRN Indicator"/>
 											<value xsi:type="BL" value="false"/>
 										</observation>
 									</entryRelationship>
@@ -2878,20 +3054,27 @@ Medications and Prescriptions - Medication List
 						<templateId root="2.16.840.1.113883.3.1818.10.3.18" />
 						<substanceAdministration classCode="SBADM" moodCode="EVN">
 							<id extension="BC20120201RXA-1452388BN" root="2.16.840.1.113883.3.1818.10.10.3" />
-							<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
+							<code code="DRUG" displayName="Drug Therapy" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 Act
+Code"/>
 							<statusCode code="active"/>
-							<!-- Medication Identification -->
+							<!-- Medication -->
 							<consumable typeCode="CSM">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
+								<!-- Medication Identification -->
 								<manufacturedProduct classCode="MANU">
 									<manufacturedLabeledDrug classCode="MMAT" determinerCode="KIND">
 										<code code="02351420" codeSystem="2.16.840.1.113883.5.1105" codeSystemName="HC-DIN" displayName="FUROSEMIDE"/>
 										<code code="C03CA01" codeSystem="2.16.840.1.113883.6.73" codeSystemName="whoATC" displayName="FUROSEMIDE"/>
-										<name>FUROSEMIDE 20MG</name>
-										<e2e:desc nullFlavor="UNK"/>
-										<strength>
-											<center value="20.0" unit="MG"/>
-										</strength>
+										<name>FUROSEMIDE</name>
+										<e2e:desc>FUROSEMIDE 20MG</e2e:desc>
+										<e2e:formCode code="TAB" displayName="TABLET" codeSystem="2.16.840.1.113883.19.5.3" codeSystemName="HL7 Orderable Drug Form"/>
+										<e2e:ingredient classCode="INGR">
+											<e2e:quantity value="20.0" unit="MG"/>
+											<e2e:ingredient classCode="MMAT" determinerCode="KIND">
+												<e2e:code code="TBD" displayName="FUROSEMIDE" codeSystem="TBD" codeSystemName="ClinicalDrug"/>
+												<e2e:name>FUROSEMIDE</e2e:name>
+											</e2e:ingredient>
+										</e2e:ingredient>
 									</manufacturedLabeledDrug>
 								</manufacturedProduct>
 							</consumable>
@@ -2900,8 +3083,8 @@ Medications and Prescriptions - Medication List
 								<templateId root="2.16.840.1.113883.3.1818.10.4.32"/>
 								<!-- Unbounded Observation -->
 								<observation classCode="OBS" moodCode="EVN">
-									<code code="29546-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Record Type"/>
-									<text>Usual/long-term medication</text>
+									<code code="UNBOUND" displayName="Unbound Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
+									<text>Long Term</text>
 								</observation>
 							</entryRelationship>
 							<!-- Last Review Date -->
@@ -2909,39 +3092,49 @@ Medications and Prescriptions - Medication List
 								<templateId root="2.16.840.1.113883.3.1818.10.4.4"/>
 								<!-- Date Observation -->
 								<observation classCode="OBS" moodCode="EVN">
-									<code code="DTREVIEW" displayName="Date Reviewed" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1"
-									codeSystemName="PITO ObservationType"/>
+									<code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
 									<effectiveTime value="20130305"/>
-									<e2e:confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
 								</observation>
 							</entryRelationship>
-							<!-- Medication Prescription Event-->
+							<!-- Prescription Information -->
 							<entryRelationship typeCode="COMP" contextConductionInd="true">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.20" />
+								<!-- Medication Prescription Event-->
 								<substanceAdministration classCode="SBADM" moodCode="RQO">
 									<id extension="3" root="2.16.840.1.113883.3.1818.10.10.3"/>
 									<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
-									<statusCode code="active"/>
+									<!-- Start/Stop Date -->
 									<effectiveTime xsi:type="IVL_TS" operator="I">
 										<low value="20130305"/>
 										<high value="20130625" />
 									</effectiveTime>
 									<consumable typeCode="CSM">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
-										<!--Medication Identification-->
+										<!-- Medication Identification -->
 										<manufacturedProduct classCode="MANU">
-											<manufacturedMaterial classCode="MMAT" determinerCode="KIND">
+											<manufacturedLabeledDrug classCode="MMAT" determinerCode="KIND">
+												<code code="02351420" codeSystem="2.16.840.1.113883.5.1105" codeSystemName="HC-DIN" displayName="FUROSEMIDE"/>
+												<code code="C03CA01" codeSystem="2.16.840.1.113883.6.73" codeSystemName="whoATC" displayName="FUROSEMIDE"/>
 												<name>FUROSEMIDE</name>
-											</manufacturedMaterial>
+												<e2e:desc>FUROSEMIDE 20MG</e2e:desc>
+												<e2e:formCode code="TAB" displayName="TABLET" codeSystem="2.16.840.1.113883.19.5.3" codeSystemName="HL7 Orderable Drug Form"/>
+												<e2e:ingredient classCode="INGR">
+													<e2e:quantity value="20.0" unit="MG"/>
+													<e2e:ingredient classCode="MMAT" determinerCode="KIND">
+														<e2e:code code="TBD" displayName="FUROSEMIDE" codeSystem="TBD" codeSystemName="ClinicalDrug"/>
+														<e2e:name>FUROSEMIDE</e2e:name>
+													</e2e:ingredient>
+												</e2e:ingredient>
+											</manufacturedLabeledDrug>
 										</manufacturedProduct>
 									</consumable>
+									<!-- Prescribing Provider -->
 									<author typeCode="AUT" contextControlCode="OP">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
 										<!-- Author Participation -->
 										<time value="20130305"/>
-										<assignedAuthor>
+										<assignedAuthor classCode="ASSIGNED">
 											<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
-											<code nullFlavor='NA'/>
 											<assignedPerson classCode="PSN" determinerCode="INSTANCE">
 												<name use="L">
 													<given>doctor</given>
@@ -2954,9 +3147,12 @@ Medications and Prescriptions - Medication List
 										<templateId root="2.16.840.1.113883.3.1818.10.4.8"/>
 										<!-- Dose Observation -->
 										<substanceAdministration classCode="SBADM" moodCode="RQO">
+											<text>Take 1.0 TABLET PO QAM 56 D</text>
+											<!-- Duration -->
 											<effectiveTime xsi:type="IVL_TS" operator="I">
 												<width value="56" unit="D"/>
 											</effectiveTime>
+											<!-- Frequency -->
 											<!-- OSCAR Frequency Code QAM -->
 											<effectiveTime xsi:type="PIVL_TS" institutionSpecified="true">
 												<frequency>
@@ -2964,31 +3160,44 @@ Medications and Prescriptions - Medication List
 													<denominator value="1" unit="d"/>
 												</frequency>
 											</effectiveTime>
-											<routeCode code="PO" codeSystem="2.16.840.1.113883.5.112" codeSystemName="RouteOfAdministration" displayName="PO"/>
+											<!-- Route -->
+											<routeCode code="PO" displayName="PO" codeSystem="2.16.840.1.113883.5.112" codeSystemName="RouteOfAdministration"/>
 											<approachSiteCode nullFlavor="NA"/>
+											<!-- Dose -->
 											<doseQuantity>
 												<low value="1.0"/>
 												<high value="1.0"/>
 											</doseQuantity>
-											<!-- OSCAR Form Code TABLET -->
-											<administrationUnitCode code="TAB" codeSystem="2.16.840.1.113883.5.1127" displayName="TABLET"/>
+											<!-- Form -->
+											<administrationUnitCode code="TAB" displayName="TABLET" codeSystem="2.16.840.1.113883.1.11.14570" codeSystemName="AdministerableDrugForm"/>
 											<consumable typeCode="CSM">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
-												<!--Medication Identification-->
+												<!-- Medication Identification -->
 												<manufacturedProduct classCode="MANU">
-													<manufacturedMaterial classCode="MMAT" determinerCode="KIND">
+													<manufacturedLabeledDrug classCode="MMAT" determinerCode="KIND">
+														<code code="02351420" codeSystem="2.16.840.1.113883.5.1105" codeSystemName="HC-DIN" displayName="FUROSEMIDE"/>
+														<code code="C03CA01" codeSystem="2.16.840.1.113883.6.73" codeSystemName="whoATC" displayName="FUROSEMIDE"/>
 														<name>FUROSEMIDE</name>
-													</manufacturedMaterial>
+														<e2e:desc>FUROSEMIDE 20MG</e2e:desc>
+														<e2e:formCode code="TAB" displayName="TABLET" codeSystem="2.16.840.1.113883.19.5.3" codeSystemName="HL7 Orderable Drug Form"/>
+														<e2e:ingredient classCode="INGR">
+															<e2e:quantity value="20.0" unit="MG"/>
+															<e2e:ingredient classCode="MMAT" determinerCode="KIND">
+																<e2e:code code="TBD" displayName="FUROSEMIDE" codeSystem="TBD" codeSystemName="ClinicalDrug"/>
+																<e2e:name>FUROSEMIDE</e2e:name>
+															</e2e:ingredient>
+														</e2e:ingredient>
+													</manufacturedLabeledDrug>
 												</manufacturedProduct>
 											</consumable>
 										</substanceAdministration>
 									</entryRelationship>
-									<!--Medication Observation-->
+									<!-- PRN -->
 									<entryRelationship typeCode="COMP" contextConductionInd="true">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.37"/>
+										<!-- Order Indicator-->
 										<observation classCode="OBS" moodCode="EVN">
-											<code code="PRNIND" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1" codeSystemName="PITO ObservationType" displayName="PRN Indicator"/>
-											<text>PRN Indicator: false</text>
+											<code code="PRNIND" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" displayName="PRN Indicator"/>
 											<value xsi:type="BL" value="false"/>
 										</observation>
 									</entryRelationship>
@@ -3000,20 +3209,27 @@ Medications and Prescriptions - Medication List
 						<templateId root="2.16.840.1.113883.3.1818.10.3.18" />
 						<substanceAdministration classCode="SBADM" moodCode="EVN">
 							<id extension="BC20120201RXA-1452388BN" root="2.16.840.1.113883.3.1818.10.10.3" />
-							<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
+							<code code="DRUG" displayName="Drug Therapy" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 Act
+Code"/>
 							<statusCode code="active"/>
-							<!-- Medication Identification -->
+							<!-- Medication -->
 							<consumable typeCode="CSM">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
+								<!-- Medication Identification -->
 								<manufacturedProduct classCode="MANU">
 									<manufacturedLabeledDrug classCode="MMAT" determinerCode="KIND">
 										<code code="02363283" codeSystem="2.16.840.1.113883.5.1105" codeSystemName="HC-DIN" displayName="RAMIPRIL"/>
 										<code code="C09AA05" codeSystem="2.16.840.1.113883.6.73" codeSystemName="whoATC" displayName="RAMIPRIL"/>
-										<name>AVA-RAMIPRIL 5MG</name>
-										<e2e:desc nullFlavor="UNK"/>
-										<strength>
-											<center value="5.0" unit="MG"/>
-										</strength>
+										<name>RAMIPRIL</name>
+										<e2e:desc>AVA-RAMIPRIL 5MG</e2e:desc>
+										<e2e:formCode code="TAB" displayName="TABLET" codeSystem="2.16.840.1.113883.19.5.3" codeSystemName="HL7 Orderable Drug Form"/>
+										<e2e:ingredient classCode="INGR">
+											<e2e:quantity value="5.0" unit="MG"/>
+											<e2e:ingredient classCode="MMAT" determinerCode="KIND">
+												<e2e:code code="TBD" displayName="RAMIPRIL" codeSystem="TBD" codeSystemName="ClinicalDrug"/>
+												<e2e:name>RAMIPRIL</e2e:name>
+											</e2e:ingredient>
+										</e2e:ingredient>
 									</manufacturedLabeledDrug>
 								</manufacturedProduct>
 							</consumable>
@@ -3022,8 +3238,8 @@ Medications and Prescriptions - Medication List
 								<templateId root="2.16.840.1.113883.3.1818.10.4.32"/>
 								<!-- Unbounded Observation -->
 								<observation classCode="OBS" moodCode="EVN">
-									<code code="29546-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Record Type"/>
-									<text>Usual/long-term medication</text>
+									<code code="UNBOUND" displayName="Unbound Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
+									<text>Long Term</text>
 								</observation>
 							</entryRelationship>
 							<!-- Last Review Date -->
@@ -3031,39 +3247,49 @@ Medications and Prescriptions - Medication List
 								<templateId root="2.16.840.1.113883.3.1818.10.4.4"/>
 								<!-- Date Observation -->
 								<observation classCode="OBS" moodCode="EVN">
-									<code code="DTREVIEW" displayName="Date Reviewed" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1"
-									codeSystemName="PITO ObservationType"/>
+									<code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
 									<effectiveTime value="20130305"/>
-									<e2e:confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
 								</observation>
 							</entryRelationship>
-							<!-- Medication Prescription Event-->
+							<!-- Prescription Information -->
 							<entryRelationship typeCode="COMP" contextConductionInd="true">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.20" />
+								<!-- Medication Prescription Event-->
 								<substanceAdministration classCode="SBADM" moodCode="RQO">
 									<id extension="1" root="2.16.840.1.113883.3.1818.10.10.3"/>
 									<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
-									<statusCode code="completed"/>
+									<!-- Start/Stop Date -->
 									<effectiveTime xsi:type="IVL_TS" operator="I">
 										<low value="20130305"/>
 										<high value="20130430" />
 									</effectiveTime>
 									<consumable typeCode="CSM">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
-										<!--Medication Identification-->
+										<!-- Medication Identification -->
 										<manufacturedProduct classCode="MANU">
-											<manufacturedMaterial classCode="MMAT" determinerCode="KIND">
+											<manufacturedLabeledDrug classCode="MMAT" determinerCode="KIND">
+												<code code="02363283" codeSystem="2.16.840.1.113883.5.1105" codeSystemName="HC-DIN" displayName="RAMIPRIL"/>
+												<code code="C09AA05" codeSystem="2.16.840.1.113883.6.73" codeSystemName="whoATC" displayName="RAMIPRIL"/>
 												<name>RAMIPRIL</name>
-											</manufacturedMaterial>
+												<e2e:desc>AVA-RAMIPRIL 5MG</e2e:desc>
+												<e2e:formCode code="TAB" displayName="TABLET" codeSystem="2.16.840.1.113883.19.5.3" codeSystemName="HL7 Orderable Drug Form"/>
+												<e2e:ingredient classCode="INGR">
+													<e2e:quantity value="5.0" unit="MG"/>
+													<e2e:ingredient classCode="MMAT" determinerCode="KIND">
+														<e2e:code code="TBD" displayName="RAMIPRIL" codeSystem="TBD" codeSystemName="ClinicalDrug"/>
+														<e2e:name>RAMIPRIL</e2e:name>
+													</e2e:ingredient>
+												</e2e:ingredient>
+											</manufacturedLabeledDrug>
 										</manufacturedProduct>
 									</consumable>
+									<!-- Prescribing Provider -->
 									<author typeCode="AUT" contextControlCode="OP">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
 										<!-- Author Participation -->
 										<time value="20130305"/>
-										<assignedAuthor>
+										<assignedAuthor classCode="ASSIGNED">
 											<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
-											<code nullFlavor='NA'/>
 											<assignedPerson classCode="PSN" determinerCode="INSTANCE">
 												<name use="L">
 													<given>doctor</given>
@@ -3076,9 +3302,12 @@ Medications and Prescriptions - Medication List
 										<templateId root="2.16.840.1.113883.3.1818.10.4.8"/>
 										<!-- Dose Observation -->
 										<substanceAdministration classCode="SBADM" moodCode="RQO">
+											<text>take 1.0 TABLET PO OD 28 D</text>
+											<!-- Duration -->
 											<effectiveTime xsi:type="IVL_TS" operator="I">
 												<width value="28" unit="D"/>
 											</effectiveTime>
+											<!-- Frequency -->
 											<!-- OSCAR Frequency Code OD -->
 											<effectiveTime xsi:type="PIVL_TS" institutionSpecified="true">
 												<frequency>
@@ -3086,31 +3315,44 @@ Medications and Prescriptions - Medication List
 													<denominator value="1" unit="d"/>
 												</frequency>
 											</effectiveTime>
-											<routeCode code="PO" codeSystem="2.16.840.1.113883.5.112" codeSystemName="RouteOfAdministration" displayName="PO"/>
+											<!-- Route -->
+											<routeCode code="PO" displayName="PO" codeSystem="2.16.840.1.113883.5.112" codeSystemName="RouteOfAdministration"/>
 											<approachSiteCode nullFlavor="NA"/>
+											<!-- Dose -->
 											<doseQuantity>
 												<low value="1.0"/>
 												<high value="1.0"/>
 											</doseQuantity>
-											<!-- OSCAR Form Code TABLET -->
-											<administrationUnitCode code="TAB" codeSystem="2.16.840.1.113883.5.1127" displayName="TABLET"/>
+											<!-- Form -->
+											<administrationUnitCode code="TAB" displayName="TABLET" codeSystem="2.16.840.1.113883.1.11.14570" codeSystemName="AdministerableDrugForm"/>
 											<consumable typeCode="CSM">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
-												<!--Medication Identification-->
+												<!-- Medication Identification -->
 												<manufacturedProduct classCode="MANU">
-													<manufacturedMaterial classCode="MMAT" determinerCode="KIND">
+													<manufacturedLabeledDrug classCode="MMAT" determinerCode="KIND">
+														<code code="02363283" codeSystem="2.16.840.1.113883.5.1105" codeSystemName="HC-DIN" displayName="RAMIPRIL"/>
+														<code code="C09AA05" codeSystem="2.16.840.1.113883.6.73" codeSystemName="whoATC" displayName="RAMIPRIL"/>
 														<name>RAMIPRIL</name>
-													</manufacturedMaterial>
+														<e2e:desc>AVA-RAMIPRIL 5MG</e2e:desc>
+														<e2e:formCode code="TAB" displayName="TABLET" codeSystem="2.16.840.1.113883.19.5.3" codeSystemName="HL7 Orderable Drug Form"/>
+														<e2e:ingredient classCode="INGR">
+															<e2e:quantity value="5.0" unit="MG"/>
+															<e2e:ingredient classCode="MMAT" determinerCode="KIND">
+																<e2e:code code="TBD" displayName="RAMIPRIL" codeSystem="TBD" codeSystemName="ClinicalDrug"/>
+																<e2e:name>RAMIPRIL</e2e:name>
+															</e2e:ingredient>
+														</e2e:ingredient>
+													</manufacturedLabeledDrug>
 												</manufacturedProduct>
 											</consumable>
 										</substanceAdministration>
 									</entryRelationship>
-									<!--Medication Observation-->
+									<!-- PRN -->
 									<entryRelationship typeCode="COMP" contextConductionInd="true">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.37"/>
+										<!-- Order Indicator-->
 										<observation classCode="OBS" moodCode="EVN">
-											<code code="PRNIND" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1" codeSystemName="PITO ObservationType" displayName="PRN Indicator"/>
-											<text>PRN Indicator: false</text>
+											<code code="PRNIND" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" displayName="PRN Indicator"/>
 											<value xsi:type="BL" value="false"/>
 										</observation>
 									</entryRelationship>
@@ -3122,20 +3364,27 @@ Medications and Prescriptions - Medication List
 						<templateId root="2.16.840.1.113883.3.1818.10.3.18" />
 						<substanceAdministration classCode="SBADM" moodCode="EVN">
 							<id extension="BC20120201RXA-1452388BN" root="2.16.840.1.113883.3.1818.10.10.3" />
-							<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
+							<code code="DRUG" displayName="Drug Therapy" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 Act
+Code"/>
 							<statusCode code="active"/>
-							<!-- Medication Identification -->
+							<!-- Medication -->
 							<consumable typeCode="CSM">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
+								<!-- Medication Identification -->
 								<manufacturedProduct classCode="MANU">
 									<manufacturedLabeledDrug classCode="MMAT" determinerCode="KIND">
 										<code code="02364948" codeSystem="2.16.840.1.113883.5.1105" codeSystemName="HC-DIN" displayName="CARVEDILOL"/>
 										<code code="C07AG02" codeSystem="2.16.840.1.113883.6.73" codeSystemName="whoATC" displayName="CARVEDILOL"/>
-										<name>CARVEDILOL 12.5MG</name>
-										<e2e:desc nullFlavor="UNK"/>
-										<strength>
-											<center value="12.5" unit="MG"/>
-										</strength>
+										<name>CARVEDILOL</name>
+										<e2e:desc>CARVEDILOL 12.5MG</e2e:desc>
+										<e2e:formCode code="TAB" displayName="TABLET" codeSystem="2.16.840.1.113883.19.5.3" codeSystemName="HL7 Orderable Drug Form"/>
+										<e2e:ingredient classCode="INGR">
+											<e2e:quantity value="12.5" unit="MG"/>
+											<e2e:ingredient classCode="MMAT" determinerCode="KIND">
+												<e2e:code code="TBD" displayName="CARVEDILOL" codeSystem="TBD" codeSystemName="ClinicalDrug"/>
+												<e2e:name>CARVEDILOL</e2e:name>
+											</e2e:ingredient>
+										</e2e:ingredient>
 									</manufacturedLabeledDrug>
 								</manufacturedProduct>
 							</consumable>
@@ -3144,8 +3393,8 @@ Medications and Prescriptions - Medication List
 								<templateId root="2.16.840.1.113883.3.1818.10.4.32"/>
 								<!-- Unbounded Observation -->
 								<observation classCode="OBS" moodCode="EVN">
-									<code code="29546-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Record Type"/>
-									<text>Usual/long-term medication</text>
+									<code code="UNBOUND" displayName="Unbound Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
+									<text>Long Term</text>
 								</observation>
 							</entryRelationship>
 							<!-- Last Review Date -->
@@ -3153,39 +3402,49 @@ Medications and Prescriptions - Medication List
 								<templateId root="2.16.840.1.113883.3.1818.10.4.4"/>
 								<!-- Date Observation -->
 								<observation classCode="OBS" moodCode="EVN">
-									<code code="DTREVIEW" displayName="Date Reviewed" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1"
-									codeSystemName="PITO ObservationType"/>
+									<code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
 									<effectiveTime value="20130305"/>
-									<e2e:confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
 								</observation>
 							</entryRelationship>
-							<!-- Medication Prescription Event-->
+							<!-- Prescription Information -->
 							<entryRelationship typeCode="COMP" contextConductionInd="true">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.20" />
+								<!-- Medication Prescription Event-->
 								<substanceAdministration classCode="SBADM" moodCode="RQO">
 									<id extension="8" root="2.16.840.1.113883.3.1818.10.10.3"/>
 									<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
-									<statusCode code="completed"/>
+									<!-- Start/Stop Date -->
 									<effectiveTime xsi:type="IVL_TS" operator="I">
 										<low value="20130305"/>
 										<high value="20130430" />
 									</effectiveTime>
 									<consumable typeCode="CSM">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
-										<!--Medication Identification-->
+										<!-- Medication Identification -->
 										<manufacturedProduct classCode="MANU">
-											<manufacturedMaterial classCode="MMAT" determinerCode="KIND">
+											<manufacturedLabeledDrug classCode="MMAT" determinerCode="KIND">
+												<code code="02364948" codeSystem="2.16.840.1.113883.5.1105" codeSystemName="HC-DIN" displayName="CARVEDILOL"/>
+												<code code="C07AG02" codeSystem="2.16.840.1.113883.6.73" codeSystemName="whoATC" displayName="CARVEDILOL"/>
 												<name>CARVEDILOL</name>
-											</manufacturedMaterial>
+												<e2e:desc>CARVEDILOL 12.5MG</e2e:desc>
+												<e2e:formCode code="TAB" displayName="TABLET" codeSystem="2.16.840.1.113883.19.5.3" codeSystemName="HL7 Orderable Drug Form"/>
+												<e2e:ingredient classCode="INGR">
+													<e2e:quantity value="12.5" unit="MG"/>
+													<e2e:ingredient classCode="MMAT" determinerCode="KIND">
+														<e2e:code code="TBD" displayName="CARVEDILOL" codeSystem="TBD" codeSystemName="ClinicalDrug"/>
+														<e2e:name>CARVEDILOL</e2e:name>
+													</e2e:ingredient>
+												</e2e:ingredient>
+											</manufacturedLabeledDrug>
 										</manufacturedProduct>
 									</consumable>
+									<!-- Prescribing Provider -->
 									<author typeCode="AUT" contextControlCode="OP">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
 										<!-- Author Participation -->
 										<time value="20130305"/>
-										<assignedAuthor>
+										<assignedAuthor classCode="ASSIGNED">
 											<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
-											<code nullFlavor='NA'/>
 											<assignedPerson classCode="PSN" determinerCode="INSTANCE">
 												<name use="L">
 													<given>doctor</given>
@@ -3198,9 +3457,12 @@ Medications and Prescriptions - Medication List
 										<templateId root="2.16.840.1.113883.3.1818.10.4.8"/>
 										<!-- Dose Observation -->
 										<substanceAdministration classCode="SBADM" moodCode="RQO">
+											<text>Take 1.0 TABLET PO OD 28 D</text>
+											<!-- Duration -->
 											<effectiveTime xsi:type="IVL_TS" operator="I">
 												<width value="28" unit="D"/>
 											</effectiveTime>
+											<!-- Frequency -->
 											<!-- OSCAR Frequency Code OD -->
 											<effectiveTime xsi:type="PIVL_TS" institutionSpecified="true">
 												<frequency>
@@ -3208,31 +3470,44 @@ Medications and Prescriptions - Medication List
 													<denominator value="1" unit="d"/>
 												</frequency>
 											</effectiveTime>
-											<routeCode code="PO" codeSystem="2.16.840.1.113883.5.112" codeSystemName="RouteOfAdministration" displayName="PO"/>
+											<!-- Route -->
+											<routeCode code="PO" displayName="PO" codeSystem="2.16.840.1.113883.5.112" codeSystemName="RouteOfAdministration"/>
 											<approachSiteCode nullFlavor="NA"/>
+											<!-- Dose -->
 											<doseQuantity>
 												<low value="1.0"/>
 												<high value="1.0"/>
 											</doseQuantity>
-											<!-- OSCAR Form Code TABLET -->
-											<administrationUnitCode code="TAB" codeSystem="2.16.840.1.113883.5.1127" displayName="TABLET"/>
+											<!-- Form -->
+											<administrationUnitCode code="TAB" displayName="TABLET" codeSystem="2.16.840.1.113883.1.11.14570" codeSystemName="AdministerableDrugForm"/>
 											<consumable typeCode="CSM">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
-												<!--Medication Identification-->
+												<!-- Medication Identification -->
 												<manufacturedProduct classCode="MANU">
-													<manufacturedMaterial classCode="MMAT" determinerCode="KIND">
+													<manufacturedLabeledDrug classCode="MMAT" determinerCode="KIND">
+														<code code="02364948" codeSystem="2.16.840.1.113883.5.1105" codeSystemName="HC-DIN" displayName="CARVEDILOL"/>
+														<code code="C07AG02" codeSystem="2.16.840.1.113883.6.73" codeSystemName="whoATC" displayName="CARVEDILOL"/>
 														<name>CARVEDILOL</name>
-													</manufacturedMaterial>
+														<e2e:desc>CARVEDILOL 12.5MG</e2e:desc>
+														<e2e:formCode code="TAB" displayName="TABLET" codeSystem="2.16.840.1.113883.19.5.3" codeSystemName="HL7 Orderable Drug Form"/>
+														<e2e:ingredient classCode="INGR">
+															<e2e:quantity value="12.5" unit="MG"/>
+															<e2e:ingredient classCode="MMAT" determinerCode="KIND">
+																<e2e:code code="TBD" displayName="CARVEDILOL" codeSystem="TBD" codeSystemName="ClinicalDrug"/>
+																<e2e:name>CARVEDILOL</e2e:name>
+															</e2e:ingredient>
+														</e2e:ingredient>
+													</manufacturedLabeledDrug>
 												</manufacturedProduct>
 											</consumable>
 										</substanceAdministration>
 									</entryRelationship>
-									<!--Medication Observation-->
+									<!-- PRN -->
 									<entryRelationship typeCode="COMP" contextConductionInd="true">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.37"/>
+										<!-- Order Indicator-->
 										<observation classCode="OBS" moodCode="EVN">
-											<code code="PRNIND" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1" codeSystemName="PITO ObservationType" displayName="PRN Indicator"/>
-											<text>PRN Indicator: false</text>
+											<code code="PRNIND" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" displayName="PRN Indicator"/>
 											<value xsi:type="BL" value="false"/>
 										</observation>
 									</entryRelationship>
@@ -3244,20 +3519,27 @@ Medications and Prescriptions - Medication List
 						<templateId root="2.16.840.1.113883.3.1818.10.3.18" />
 						<substanceAdministration classCode="SBADM" moodCode="EVN">
 							<id extension="BC20120201RXA-1452388BN" root="2.16.840.1.113883.3.1818.10.10.3" />
-							<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
+							<code code="DRUG" displayName="Drug Therapy" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 Act
+Code"/>
 							<statusCode code="active"/>
-							<!-- Medication Identification -->
+							<!-- Medication -->
 							<consumable typeCode="CSM">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
+								<!-- Medication Identification -->
 								<manufacturedProduct classCode="MANU">
 									<manufacturedLabeledDrug classCode="MMAT" determinerCode="KIND">
 										<code code="02387913" codeSystem="2.16.840.1.113883.5.1105" codeSystemName="HC-DIN" displayName="ATORVASTATIN (ATORVASTATIN CALCIUM)"/>
 										<code code="C10AA05" codeSystem="2.16.840.1.113883.6.73" codeSystemName="whoATC" displayName="ATORVASTATIN (ATORVASTATIN CALCIUM)"/>
-										<name>ATORVASTATIN 40MG</name>
-										<e2e:desc nullFlavor="UNK"/>
-										<strength>
-											<center value="40.0" unit="MG"/>
-										</strength>
+										<name>ATORVASTATIN (ATORVASTATIN CALCIUM)</name>
+										<e2e:desc>ATORVASTATIN 40MG</e2e:desc>
+										<e2e:formCode code="TAB" displayName="TABLET" codeSystem="2.16.840.1.113883.19.5.3" codeSystemName="HL7 Orderable Drug Form"/>
+										<e2e:ingredient classCode="INGR">
+											<e2e:quantity value="40.0" unit="MG"/>
+											<e2e:ingredient classCode="MMAT" determinerCode="KIND">
+												<e2e:code code="TBD" displayName="ATORVASTATIN (ATORVASTATIN CALCIUM)" codeSystem="TBD" codeSystemName="ClinicalDrug"/>
+												<e2e:name>ATORVASTATIN (ATORVASTATIN CALCIUM)</e2e:name>
+											</e2e:ingredient>
+										</e2e:ingredient>
 									</manufacturedLabeledDrug>
 								</manufacturedProduct>
 							</consumable>
@@ -3266,8 +3548,8 @@ Medications and Prescriptions - Medication List
 								<templateId root="2.16.840.1.113883.3.1818.10.4.32"/>
 								<!-- Unbounded Observation -->
 								<observation classCode="OBS" moodCode="EVN">
-									<code code="29546-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Record Type"/>
-									<text>Usual/long-term medication</text>
+									<code code="UNBOUND" displayName="Unbound Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
+									<text>Long Term</text>
 								</observation>
 							</entryRelationship>
 							<!-- Last Review Date -->
@@ -3275,39 +3557,49 @@ Medications and Prescriptions - Medication List
 								<templateId root="2.16.840.1.113883.3.1818.10.4.4"/>
 								<!-- Date Observation -->
 								<observation classCode="OBS" moodCode="EVN">
-									<code code="DTREVIEW" displayName="Date Reviewed" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1"
-									codeSystemName="PITO ObservationType"/>
+									<code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
 									<effectiveTime value="20130305"/>
-									<e2e:confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
 								</observation>
 							</entryRelationship>
-							<!-- Medication Prescription Event-->
+							<!-- Prescription Information -->
 							<entryRelationship typeCode="COMP" contextConductionInd="true">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.20" />
+								<!-- Medication Prescription Event-->
 								<substanceAdministration classCode="SBADM" moodCode="RQO">
 									<id extension="4" root="2.16.840.1.113883.3.1818.10.10.3"/>
 									<code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
-									<statusCode code="completed"/>
+									<!-- Start/Stop Date -->
 									<effectiveTime xsi:type="IVL_TS" operator="I">
 										<low value="20130305"/>
 										<high value="20130430" />
 									</effectiveTime>
 									<consumable typeCode="CSM">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
-										<!--Medication Identification-->
+										<!-- Medication Identification -->
 										<manufacturedProduct classCode="MANU">
-											<manufacturedMaterial classCode="MMAT" determinerCode="KIND">
+											<manufacturedLabeledDrug classCode="MMAT" determinerCode="KIND">
+												<code code="02387913" codeSystem="2.16.840.1.113883.5.1105" codeSystemName="HC-DIN" displayName="ATORVASTATIN (ATORVASTATIN CALCIUM)"/>
+												<code code="C10AA05" codeSystem="2.16.840.1.113883.6.73" codeSystemName="whoATC" displayName="ATORVASTATIN (ATORVASTATIN CALCIUM)"/>
 												<name>ATORVASTATIN (ATORVASTATIN CALCIUM)</name>
-											</manufacturedMaterial>
+												<e2e:desc>ATORVASTATIN 40MG</e2e:desc>
+												<e2e:formCode code="TAB" displayName="TABLET" codeSystem="2.16.840.1.113883.19.5.3" codeSystemName="HL7 Orderable Drug Form"/>
+												<e2e:ingredient classCode="INGR">
+													<e2e:quantity value="40.0" unit="MG"/>
+													<e2e:ingredient classCode="MMAT" determinerCode="KIND">
+														<e2e:code code="TBD" displayName="ATORVASTATIN (ATORVASTATIN CALCIUM)" codeSystem="TBD" codeSystemName="ClinicalDrug"/>
+														<e2e:name>ATORVASTATIN (ATORVASTATIN CALCIUM)</e2e:name>
+													</e2e:ingredient>
+												</e2e:ingredient>
+											</manufacturedLabeledDrug>
 										</manufacturedProduct>
 									</consumable>
+									<!-- Prescribing Provider -->
 									<author typeCode="AUT" contextControlCode="OP">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
 										<!-- Author Participation -->
 										<time value="20130305"/>
-										<assignedAuthor>
+										<assignedAuthor classCode="ASSIGNED">
 											<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
-											<code nullFlavor='NA'/>
 											<assignedPerson classCode="PSN" determinerCode="INSTANCE">
 												<name use="L">
 													<given>doctor</given>
@@ -3320,9 +3612,12 @@ Medications and Prescriptions - Medication List
 										<templateId root="2.16.840.1.113883.3.1818.10.4.8"/>
 										<!-- Dose Observation -->
 										<substanceAdministration classCode="SBADM" moodCode="RQO">
+											<text>take 1.0 TABLET PO OD 28 D</text>
+											<!-- Duration -->
 											<effectiveTime xsi:type="IVL_TS" operator="I">
 												<width value="28" unit="D"/>
 											</effectiveTime>
+											<!-- Frequency -->
 											<!-- OSCAR Frequency Code OD -->
 											<effectiveTime xsi:type="PIVL_TS" institutionSpecified="true">
 												<frequency>
@@ -3330,31 +3625,44 @@ Medications and Prescriptions - Medication List
 													<denominator value="1" unit="d"/>
 												</frequency>
 											</effectiveTime>
-											<routeCode code="PO" codeSystem="2.16.840.1.113883.5.112" codeSystemName="RouteOfAdministration" displayName="PO"/>
+											<!-- Route -->
+											<routeCode code="PO" displayName="PO" codeSystem="2.16.840.1.113883.5.112" codeSystemName="RouteOfAdministration"/>
 											<approachSiteCode nullFlavor="NA"/>
+											<!-- Dose -->
 											<doseQuantity>
 												<low value="1.0"/>
 												<high value="1.0"/>
 											</doseQuantity>
-											<!-- OSCAR Form Code TABLET -->
-											<administrationUnitCode code="TAB" codeSystem="2.16.840.1.113883.5.1127" displayName="TABLET"/>
+											<!-- Form -->
+											<administrationUnitCode code="TAB" displayName="TABLET" codeSystem="2.16.840.1.113883.1.11.14570" codeSystemName="AdministerableDrugForm"/>
 											<consumable typeCode="CSM">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.16"/>
-												<!--Medication Identification-->
+												<!-- Medication Identification -->
 												<manufacturedProduct classCode="MANU">
-													<manufacturedMaterial classCode="MMAT" determinerCode="KIND">
+													<manufacturedLabeledDrug classCode="MMAT" determinerCode="KIND">
+														<code code="02387913" codeSystem="2.16.840.1.113883.5.1105" codeSystemName="HC-DIN" displayName="ATORVASTATIN (ATORVASTATIN CALCIUM)"/>
+														<code code="C10AA05" codeSystem="2.16.840.1.113883.6.73" codeSystemName="whoATC" displayName="ATORVASTATIN (ATORVASTATIN CALCIUM)"/>
 														<name>ATORVASTATIN (ATORVASTATIN CALCIUM)</name>
-													</manufacturedMaterial>
+														<e2e:desc>ATORVASTATIN 40MG</e2e:desc>
+														<e2e:formCode code="TAB" displayName="TABLET" codeSystem="2.16.840.1.113883.19.5.3" codeSystemName="HL7 Orderable Drug Form"/>
+														<e2e:ingredient classCode="INGR">
+															<e2e:quantity value="40.0" unit="MG"/>
+															<e2e:ingredient classCode="MMAT" determinerCode="KIND">
+																<e2e:code code="TBD" displayName="ATORVASTATIN (ATORVASTATIN CALCIUM)" codeSystem="TBD" codeSystemName="ClinicalDrug"/>
+																<e2e:name>ATORVASTATIN (ATORVASTATIN CALCIUM)</e2e:name>
+															</e2e:ingredient>
+														</e2e:ingredient>
+													</manufacturedLabeledDrug>
 												</manufacturedProduct>
 											</consumable>
 										</substanceAdministration>
 									</entryRelationship>
-									<!--Medication Observation-->
+									<!-- PRN -->
 									<entryRelationship typeCode="COMP" contextConductionInd="true">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.37"/>
+										<!-- Order Indicator-->
 										<observation classCode="OBS" moodCode="EVN">
-											<code code="PRNIND" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1" codeSystemName="PITO ObservationType" displayName="PRN Indicator"/>
-											<text>PRN Indicator: false</text>
+											<code code="PRNIND" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" displayName="PRN Indicator"/>
 											<value xsi:type="BL" value="false"/>
 										</observation>
 									</entryRelationship>
@@ -3372,7 +3680,7 @@ Problems and Conditions - Problem List
 			<component typeCode="COMP" contextConductionInd="true">
 				<section classCode="DOCSECT" moodCode="EVN">
 					<templateId root="2.16.840.1.113883.3.1818.10.2.21.1"/>
-					<code code="11450-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Problems list Reported"/>
+					<code code="11450-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Problems List Reported"/>
 					<title>Problems and Conditions - Problem List [with entries]</title>
 					<text>Problems</text>
 					<entry typeCode="COMP" contextConductionInd="true"> 
@@ -3380,21 +3688,20 @@ Problems and Conditions - Problem List
 						<!-- Problem List Observation -->
 						<observation classCode="OBS" moodCode="EVN">
 							<id extension="1" root="2.16.840.1.113883.3.1818.10.2.10.31"/>
-							<code nullFlavor="UNK"/>
+							<code code="DX" displayName="DX" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActCode"/>
+							<text>HEART FAILURE*</text>
 							<statusCode code="active"/>
 							<effectiveTime xsi:type="IVL_TS">
 								<low value="20130305"/>
 							</effectiveTime>
-							<value xsi:type="CD" code="OTH" codeSystem="TBD" codeSystemName="TBD" displayName="HEART FAILURE*">
-								<originalText>HEART FAILURE*</originalText>
-							</value>
+							<value xsi:type="CD" code="UNK" displayName="Unknown" codeSystem="2.16.840.1.113883.3.1818.10.2.8.3" codeSystemName="SNOMED-CT"/>
+							<!-- Diagnosing Provider -->
 							<author typeCode="AUT" contextControlCode="OP">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
 								<!-- Author Participation -->
 								<time value="20130305"/>
 								<assignedAuthor>
 									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
-									<code nullFlavor='NA'/>
 									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
 										<name use="L">
 											<given>doctor</given>
@@ -3403,12 +3710,22 @@ Problems and Conditions - Problem List
 									</assignedPerson>
 								</assignedAuthor>
 							</author>
-							<entryRelationship typeCode="COMP" contextConductionInd="false">
+							<!-- Diagnosis Billing Code -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.28"/>
+								<!-- Secondary Code (ICD9) -->
+								<observation classCode="OBS" moodCode="EVN"> 
+									<code code="BILLINGCODE" displayName="Billing Code" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<value xsi:type="CD" code="428" displayName="HEART FAILURE*" codeSystem="2.16.840.1.113883.6.42" codeSystemName="ICD9"/>
+								</observation>
+							</entryRelationship>
+							<!-- Diagnosis Date -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.4"/>
+								<!-- Date Observation -->
 								<observation classCode="OBS" moodCode="EVN">
-									<code code="SECCODE" displayName="Secondary Code" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1"
-									codeSystemName="PITO ObservationType"/>
-									<value xsi:type="CD" code="428" codeSystem="2.16.840.1.113883.6.42" codeSystemName="ICD9" displayName="HEART FAILURE*"/>
+									<code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<effectiveTime value="20130305"/>
 								</observation>
 							</entryRelationship>
 						</observation>
@@ -3418,21 +3735,20 @@ Problems and Conditions - Problem List
 						<!-- Problem List Observation -->
 						<observation classCode="OBS" moodCode="EVN">
 							<id extension="2" root="2.16.840.1.113883.3.1818.10.2.10.31"/>
-							<code nullFlavor="UNK"/>
+							<code code="DX" displayName="DX" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActCode"/>
+							<text>ESSENTIAL HYPERTENSION*</text>
 							<statusCode code="active"/>
 							<effectiveTime xsi:type="IVL_TS">
 								<low value="20130305"/>
 							</effectiveTime>
-							<value xsi:type="CD" code="OTH" codeSystem="TBD" codeSystemName="TBD" displayName="ESSENTIAL HYPERTENSION*">
-								<originalText>ESSENTIAL HYPERTENSION*</originalText>
-							</value>
+							<value xsi:type="CD" code="UNK" displayName="Unknown" codeSystem="2.16.840.1.113883.3.1818.10.2.8.3" codeSystemName="SNOMED-CT"/>
+							<!-- Diagnosing Provider -->
 							<author typeCode="AUT" contextControlCode="OP">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
 								<!-- Author Participation -->
 								<time value="20130305"/>
 								<assignedAuthor>
 									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
-									<code nullFlavor='NA'/>
 									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
 										<name use="L">
 											<given>doctor</given>
@@ -3441,12 +3757,22 @@ Problems and Conditions - Problem List
 									</assignedPerson>
 								</assignedAuthor>
 							</author>
-							<entryRelationship typeCode="COMP" contextConductionInd="false">
+							<!-- Diagnosis Billing Code -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.28"/>
+								<!-- Secondary Code (ICD9) -->
+								<observation classCode="OBS" moodCode="EVN"> 
+									<code code="BILLINGCODE" displayName="Billing Code" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<value xsi:type="CD" code="401" displayName="ESSENTIAL HYPERTENSION*" codeSystem="2.16.840.1.113883.6.42" codeSystemName="ICD9"/>
+								</observation>
+							</entryRelationship>
+							<!-- Diagnosis Date -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.4"/>
+								<!-- Date Observation -->
 								<observation classCode="OBS" moodCode="EVN">
-									<code code="SECCODE" displayName="Secondary Code" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1"
-									codeSystemName="PITO ObservationType"/>
-									<value xsi:type="CD" code="401" codeSystem="2.16.840.1.113883.6.42" codeSystemName="ICD9" displayName="ESSENTIAL HYPERTENSION*"/>
+									<code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<effectiveTime value="20130305"/>
 								</observation>
 							</entryRelationship>
 						</observation>
@@ -3456,21 +3782,20 @@ Problems and Conditions - Problem List
 						<!-- Problem List Observation -->
 						<observation classCode="OBS" moodCode="EVN">
 							<id extension="3" root="2.16.840.1.113883.3.1818.10.2.10.31"/>
-							<code nullFlavor="UNK"/>
+							<code code="DX" displayName="DX" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActCode"/>
+							<text>DIABETES MELLITUS*</text>
 							<statusCode code="active"/>
 							<effectiveTime xsi:type="IVL_TS">
 								<low value="20130305"/>
 							</effectiveTime>
-							<value xsi:type="CD" code="OTH" codeSystem="TBD" codeSystemName="TBD" displayName="DIABETES MELLITUS*">
-								<originalText>DIABETES MELLITUS*</originalText>
-							</value>
+							<value xsi:type="CD" code="UNK" displayName="Unknown" codeSystem="2.16.840.1.113883.3.1818.10.2.8.3" codeSystemName="SNOMED-CT"/>
+							<!-- Diagnosing Provider -->
 							<author typeCode="AUT" contextControlCode="OP">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
 								<!-- Author Participation -->
 								<time value="20130305"/>
 								<assignedAuthor>
 									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
-									<code nullFlavor='NA'/>
 									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
 										<name use="L">
 											<given>doctor</given>
@@ -3479,12 +3804,22 @@ Problems and Conditions - Problem List
 									</assignedPerson>
 								</assignedAuthor>
 							</author>
-							<entryRelationship typeCode="COMP" contextConductionInd="false">
+							<!-- Diagnosis Billing Code -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.28"/>
+								<!-- Secondary Code (ICD9) -->
+								<observation classCode="OBS" moodCode="EVN"> 
+									<code code="BILLINGCODE" displayName="Billing Code" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<value xsi:type="CD" code="250" displayName="DIABETES MELLITUS*" codeSystem="2.16.840.1.113883.6.42" codeSystemName="ICD9"/>
+								</observation>
+							</entryRelationship>
+							<!-- Diagnosis Date -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.4"/>
+								<!-- Date Observation -->
 								<observation classCode="OBS" moodCode="EVN">
-									<code code="SECCODE" displayName="Secondary Code" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1"
-									codeSystemName="PITO ObservationType"/>
-									<value xsi:type="CD" code="250" codeSystem="2.16.840.1.113883.6.42" codeSystemName="ICD9" displayName="DIABETES MELLITUS*"/>
+									<code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<effectiveTime value="20130305"/>
 								</observation>
 							</entryRelationship>
 						</observation>
@@ -3494,21 +3829,20 @@ Problems and Conditions - Problem List
 						<!-- Problem List Observation -->
 						<observation classCode="OBS" moodCode="EVN">
 							<id extension="4" root="2.16.840.1.113883.3.1818.10.2.10.31"/>
-							<code nullFlavor="UNK"/>
+							<code code="DX" displayName="DX" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActCode"/>
+							<text>CHRONIC BRONCHITIS*</text>
 							<statusCode code="active"/>
 							<effectiveTime xsi:type="IVL_TS">
 								<low value="20130305"/>
 							</effectiveTime>
-							<value xsi:type="CD" code="OTH" codeSystem="TBD" codeSystemName="TBD" displayName="CHRONIC BRONCHITIS*">
-								<originalText>CHRONIC BRONCHITIS*</originalText>
-							</value>
+							<value xsi:type="CD" code="UNK" displayName="Unknown" codeSystem="2.16.840.1.113883.3.1818.10.2.8.3" codeSystemName="SNOMED-CT"/>
+							<!-- Diagnosing Provider -->
 							<author typeCode="AUT" contextControlCode="OP">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
 								<!-- Author Participation -->
 								<time value="20130305"/>
 								<assignedAuthor>
 									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
-									<code nullFlavor='NA'/>
 									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
 										<name use="L">
 											<given>doctor</given>
@@ -3517,12 +3851,22 @@ Problems and Conditions - Problem List
 									</assignedPerson>
 								</assignedAuthor>
 							</author>
-							<entryRelationship typeCode="COMP" contextConductionInd="false">
+							<!-- Diagnosis Billing Code -->
+							<entryRelationship typeCode="COMP" contextConductionInd="true">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.28"/>
+								<!-- Secondary Code (ICD9) -->
+								<observation classCode="OBS" moodCode="EVN"> 
+									<code code="BILLINGCODE" displayName="Billing Code" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<value xsi:type="CD" code="491" displayName="CHRONIC BRONCHITIS*" codeSystem="2.16.840.1.113883.6.42" codeSystemName="ICD9"/>
+								</observation>
+							</entryRelationship>
+							<!-- Diagnosis Date -->
+							<entryRelationship typeCode="SUBJ" contextConductionInd="true" inversionInd="true">
+								<templateId root="2.16.840.1.113883.3.1818.10.4.4"/>
+								<!-- Date Observation -->
 								<observation classCode="OBS" moodCode="EVN">
-									<code code="SECCODE" displayName="Secondary Code" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1"
-									codeSystemName="PITO ObservationType"/>
-									<value xsi:type="CD" code="491" codeSystem="2.16.840.1.113883.6.42" codeSystemName="ICD9" displayName="CHRONIC BRONCHITIS*"/>
+									<code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
+									<effectiveTime value="20130305"/>
 								</observation>
 							</entryRelationship>
 						</observation>

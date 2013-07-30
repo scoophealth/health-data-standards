@@ -37,7 +37,7 @@ class MedicationImporterTest < MiniTest::Unit::TestCase
     assert_equal '2.0', medication.dose['high']
 
     #print "Inspect: #{medication.statusOfMedication[:value].inspect}\n"
-    assert_equal 'completed', medication.statusOfMedication[:value]
+    assert_equal 'active', medication.statusOfMedication[:value]
 
     assert_equal 'PO', medication.route['code']
     assert_equal '2.16.840.1.113883.5.112', medication.route['codeSystem']
@@ -45,7 +45,7 @@ class MedicationImporterTest < MiniTest::Unit::TestCase
     assert_equal 'PO', medication.route['displayName']
 
     assert_equal 'TAB', medication.product_form['code']
-    assert_equal '2.16.840.1.113883.5.1127', medication.product_form['codeSystem']
+    assert_equal '2.16.840.1.113883.1.11.14570', medication.product_form['codeSystem']
     assert_equal 'TABLET', medication.product_form['displayName']
 
 
@@ -74,7 +74,7 @@ class MedicationImporterTest < MiniTest::Unit::TestCase
     assert_equal '1.0', medication.dose['low']
     assert_equal '1.0', medication.dose['high']
 
-    assert_equal 'completed', medication.statusOfMedication[:value]
+    assert_equal 'active', medication.statusOfMedication[:value]
 
     assert_equal 'PO', medication.route['code']
     assert_equal '2.16.840.1.113883.5.112', medication.route['codeSystem']
@@ -82,7 +82,7 @@ class MedicationImporterTest < MiniTest::Unit::TestCase
     assert_equal 'PO', medication.route['displayName']
 
     assert_equal 'TAB', medication.product_form['code']
-    assert_equal '2.16.840.1.113883.5.1127', medication.product_form['codeSystem']
+    assert_equal '2.16.840.1.113883.1.11.14570', medication.product_form['codeSystem']
     assert_equal 'TABLET', medication.product_form['displayName']
   end
 end
