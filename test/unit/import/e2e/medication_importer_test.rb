@@ -2,6 +2,7 @@
 # bundle exec ruby -Ilib:test test/unit/import/e2e/medication_importer_test.rb
 require 'test_helper'
 
+module E2E
 class MedicationImporterTest < MiniTest::Unit::TestCase
   def test_medication_importing
     doc = Nokogiri::XML(File.new('test/fixtures/JOHN_CLEESE_1_25091940.xml'))
@@ -85,4 +86,5 @@ class MedicationImporterTest < MiniTest::Unit::TestCase
     assert_equal '2.16.840.1.113883.1.11.14570', medication.product_form['codeSystem']
     assert_equal 'TABLET', medication.product_form['displayName']
   end
+end
 end

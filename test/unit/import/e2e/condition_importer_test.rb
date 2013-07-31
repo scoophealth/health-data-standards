@@ -1,5 +1,6 @@
 require 'test_helper'
 
+module E2E
 class ConditionImporterTest < MiniTest::Unit::TestCase
   def test_condition_importing
     doc = Nokogiri::XML(File.new('test/fixtures/JOHN_CLEESE_1_25091940.xml'))
@@ -24,4 +25,5 @@ class ConditionImporterTest < MiniTest::Unit::TestCase
     assert_equal Time.gm(2013,'mar',5).to_i, condition.start_time
 
   end
+end
 end

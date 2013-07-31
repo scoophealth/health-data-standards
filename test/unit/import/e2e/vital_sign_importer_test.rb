@@ -1,5 +1,6 @@
 require 'test_helper'
 
+module E2E
 class VitalSignImporterTest < MiniTest::Unit::TestCase
 
   def test_vital_sign_importing
@@ -15,4 +16,5 @@ class VitalSignImporterTest < MiniTest::Unit::TestCase
     assert_equal "130/85 (sitting position)", vital_sign.free_text
   end
 
+end
 end

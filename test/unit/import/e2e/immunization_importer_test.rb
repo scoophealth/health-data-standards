@@ -1,5 +1,6 @@
 require 'test_helper'
 
+module E2E
 class ImmunizationImporterTest < MiniTest::Unit::TestCase
   def test_immunization_importing
     doc = Nokogiri::XML(File.new('test/fixtures/JOHN_CLEESE_1_25091940.xml'))
@@ -35,4 +36,5 @@ class ImmunizationImporterTest < MiniTest::Unit::TestCase
     #assert_equal immunization.performer.given_name, 'FirstName'
     #assert_equal '100 Bureau Drive', immunization.performer.addresses.first.street.first
   end
+end
 end

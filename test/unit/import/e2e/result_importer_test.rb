@@ -1,5 +1,6 @@
 require 'test_helper'
 
+module E2E
 class ResultImporterTest < MiniTest::Unit::TestCase
   def test_result_importing
     doc = Nokogiri::XML(File.new('test/fixtures/JOHN_CLEESE_1_25091940.xml'))
@@ -12,4 +13,5 @@ class ResultImporterTest < MiniTest::Unit::TestCase
     assert_equal 'N', result.interpretation['code']
     assert_equal nil, result.interpretation['codeSystem']
   end
+end
 end

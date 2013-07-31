@@ -1,5 +1,6 @@
 require 'test_helper'
 
+module E2E
 class AllergyImporterTest < MiniTest::Unit::TestCase
   def test_allergy_importing
     doc = Nokogiri::XML(File.new('test/fixtures/JOHN_CLEESE_1_25091940.xml'))
@@ -20,4 +21,5 @@ class AllergyImporterTest < MiniTest::Unit::TestCase
     assert_equal true, allergy.nil?
 
   end
+end
 end

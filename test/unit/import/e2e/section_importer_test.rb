@@ -1,5 +1,6 @@
 require 'test_helper'
 
+module E2E
 class SectionImporterTest < MiniTest::Unit::TestCase
   def setup
     @si = HealthDataStandards::Import::E2E::SectionImporter.new('/cda:simple/cda:entry', "./cda:code", "./cda:status")
@@ -43,4 +44,5 @@ class SectionImporterTest < MiniTest::Unit::TestCase
     entry = entries[3]
     assert_equal 1026777600, entry.time
   end
+end
 end
