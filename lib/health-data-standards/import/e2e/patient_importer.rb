@@ -134,7 +134,6 @@ module HealthDataStandards
         # @param [Nokogiri::XML::Node] doc The E2E document parsed by Nokogiri
         def get_demographics(patient, doc)
           effective_date = doc.at_xpath('/cda:ClinicalDocument/cda:effectiveTime')['value']
-          
           patient.effective_time = HL7Helper.timestamp_to_integer(effective_date)
           patient_element = doc.at_xpath('/cda:ClinicalDocument/cda:recordTarget/cda:patientRole/cda:patient')
           patient.first = patient_element.at_xpath('cda:name/cda:given').text

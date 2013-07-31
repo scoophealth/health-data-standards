@@ -10,7 +10,9 @@ class AllergyImporterTest < MiniTest::Unit::TestCase
     allergy = patient.allergies[0]
     assert_equal false, allergy.nil?
     assert_equal 'PENICILLINS, COMBINATIONS WITH OTHER ANTIBACTERIAL', allergy.description
-    assert_equal 'MI', allergy.severity['code']
+    #assert_equal 'MI', allergy.severity['code']
+    #John Cleese no longer has a valid code after Jeremy's July 31, 2013 update.
+    assert_equal nil, allergy.severity['code']
     assert_equal 'C', allergy.status_code['PITO AlleryClinicalStatus'][0]
     assert_equal Time.gm(2013,3,5).to_i, allergy.time
 

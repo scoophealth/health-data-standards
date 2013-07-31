@@ -15,7 +15,7 @@ CDA Header
 	<id extension="1" root="2.16.840.1.113883.3.933"/>
 	<code code="34140-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Referral"/>
 	<title>PITO EMR-2-EMR Record of JOHN CLEESE</title>
-	<effectiveTime value="201307300316"/>
+	<effectiveTime value="201307311253"/>
 	<confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
 	<!-- 
 	********************************************************
@@ -52,7 +52,7 @@ CDA Header
 	********************************************************
 	-->
 	<author typeCode="AUT" contextControlCode="OP">
-		<time value="20130730"/>
+		<time value="20130731"/>
 		<assignedAuthor>
 			<id extension="000000" root="DCCD2C68-389B-44C4-AD99-B8FB2DAD1493"/>
 			<assignedPerson classCode="PSN" determinerCode="INSTANCE">
@@ -115,13 +115,13 @@ Allergies and Intolerances - (Reaction List)
 			<component typeCode="COMP" contextConductionInd="true">
 				<section classCode="DOCSECT" moodCode="EVN">
 					<templateId root="2.16.840.1.113883.3.1818.10.2.4.1"/>
-					<code code="48765-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Allergies and Adverse Reactions Doc"/>
+					<code code="48765-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Allergies andor Adverse Reactions Doc"/>
 					<title>Allergies and Intolerances (Reaction List) [with entries]</title>
 					<text>Allergies</text>
 					<entry typeCode="COMP" contextConductionInd="true">
 						<templateId root="2.16.840.1.113883.3.1818.10.3.3"/>
 						<!--Allergy and Intolerance Observation-->
-						<observation classCode="OBS" moodCode="EVN">
+						<act classCode="ACT" moodCode="EVN">
 							<id extension="1" root="2.16.840.1.113883.3.1818.10.2.10.1"/>
 							<code nullFlavor='NA'/>
 							<statusCode code="active"/>
@@ -140,23 +140,33 @@ Allergies and Intolerances - (Reaction List)
 											</playingEntity>
 										</participantRole>
 									</participant>
+									<!-- Allergen Group Observation -->
+									<entryRelationship typeCode="COMP" contextConductionInd="true">
+										<observation classCode="OBS" moodCode="EVN">
+											<code code="ALLGRP" displayName="Allergen Group Code" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
+											<value xsi:type="CD" nullFlavor="NI" displayName="No Information"/>
+										</observation>
+									</entryRelationship>
+									<!-- Reaction Severity -->
 									<entryRelationship typeCode="COMP" contextConductionInd="true">
 										<templateId root="2.16.840.1.113883.3.1818.10.4.30"/>
 										<!-- Severity Observation -->
 										<observation classCode="OBS" moodCode="EVN">
-											<code code="SEV" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActCode" displayName="Severity"/>
-											<value xsi:type="CD" code="MI" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ObservationValue" displayName="unknown"/>
-										</observation>	
+											<code code="SEV" displayName="Severity" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActCode"/>
+											<value xsi:type="CD" nullFlavor="UNK" displayName="Unknown" codeSystem="2.16.840.1.113883.5.1063" codeSystemName="HL7 ObservationValue"/>
+										</observation>
 									</entryRelationship>
-									<entryRelationship typeCode="COMP" contextConductionInd="true">
+									<!-- Allergy Clinical Status -->
+									<entryRelationship typeCode="SUBJ" contextConductionInd="true">
 										<observation classCode="OBS" moodCode="EVN">
-											<code code="ALLCLINSTS" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1" codeSystemName="PITO ObservationType" displayName="Allergy Clinical Status Code"/>
-											<value xsi:type="CD" code="C" codeSystem="2.16.840.1.113883.3.1818.10.2.8.2" codeSystemName="PITO AllergyClinicalStatus" displayName="Confirmed"/>
+											<code code="CLINSTAT" displayName="Allergy Clinical Status" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
+											<text>Confirmed</text>
+											<value xsi:type="CD" code="C" displayName="Confirmed" codeSystem="2.16.840.1.113883.3.1818.10.2.8.2" codeSystemName="PITO AllergyClinicalStatus"/>
 										</observation>
 									</entryRelationship>
 								</observation>
 							</entryRelationship>
-						</observation>
+						</act>
 					</entry>
 				</section>
 			</component>
@@ -3694,7 +3704,7 @@ Problems and Conditions - Problem List
 							<effectiveTime xsi:type="IVL_TS">
 								<low value="20130305"/>
 							</effectiveTime>
-							<value xsi:type="CD" code="UNK" displayName="Unknown" codeSystem="2.16.840.1.113883.3.1818.10.2.8.3" codeSystemName="SNOMED-CT"/>
+							<value xsi:type="CD" nullFlavor="UNK" displayName="Unknown" codeSystem="2.16.840.1.113883.3.1818.10.2.8.3" codeSystemName="SNOMED-CT"/>
 							<!-- Diagnosing Provider -->
 							<author typeCode="AUT" contextControlCode="OP">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
@@ -3741,7 +3751,7 @@ Problems and Conditions - Problem List
 							<effectiveTime xsi:type="IVL_TS">
 								<low value="20130305"/>
 							</effectiveTime>
-							<value xsi:type="CD" code="UNK" displayName="Unknown" codeSystem="2.16.840.1.113883.3.1818.10.2.8.3" codeSystemName="SNOMED-CT"/>
+							<value xsi:type="CD" nullFlavor="UNK" displayName="Unknown" codeSystem="2.16.840.1.113883.3.1818.10.2.8.3" codeSystemName="SNOMED-CT"/>
 							<!-- Diagnosing Provider -->
 							<author typeCode="AUT" contextControlCode="OP">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
@@ -3788,7 +3798,7 @@ Problems and Conditions - Problem List
 							<effectiveTime xsi:type="IVL_TS">
 								<low value="20130305"/>
 							</effectiveTime>
-							<value xsi:type="CD" code="UNK" displayName="Unknown" codeSystem="2.16.840.1.113883.3.1818.10.2.8.3" codeSystemName="SNOMED-CT"/>
+							<value xsi:type="CD" nullFlavor="UNK" displayName="Unknown" codeSystem="2.16.840.1.113883.3.1818.10.2.8.3" codeSystemName="SNOMED-CT"/>
 							<!-- Diagnosing Provider -->
 							<author typeCode="AUT" contextControlCode="OP">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
@@ -3835,7 +3845,7 @@ Problems and Conditions - Problem List
 							<effectiveTime xsi:type="IVL_TS">
 								<low value="20130305"/>
 							</effectiveTime>
-							<value xsi:type="CD" code="UNK" displayName="Unknown" codeSystem="2.16.840.1.113883.3.1818.10.2.8.3" codeSystemName="SNOMED-CT"/>
+							<value xsi:type="CD" nullFlavor="UNK" displayName="Unknown" codeSystem="2.16.840.1.113883.3.1818.10.2.8.3" codeSystemName="SNOMED-CT"/>
 							<!-- Diagnosing Provider -->
 							<author typeCode="AUT" contextControlCode="OP">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>

@@ -4,7 +4,7 @@ module HealthDataStandards
       class AllergyImporter < SectionImporter
 
         def initialize
-          @entry_xpath = "//cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.4.1']/cda:entry/cda:observation"
+          @entry_xpath = "//cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.4.1']/cda:entry/cda:act"
           @code_xpath = "./cda:entryRelationship/cda:observation/cda:participant/cda:participantRole/cda:playingEntity/cda:code"
           @description_xpath = "./cda:entryRelationship/cda:observation/cda:participant/cda:participantRole/cda:playingEntity/cda:name"
           @type_xpath = "./cda:code"
@@ -37,7 +37,9 @@ module HealthDataStandards
             allergy.type = extract_code(entry_element, @type_xpath)
             #allergy.reaction = extract_code(entry_element, @reaction_xpath)
             allergy.severity = extract_code(entry_element, @severity_xpath)
-
+            #STDERR.puts "ENTRY_ELEMENT: " +entry_element
+            #STDERR.puts "SEVERITY_XPATH: " +@severity_xpath
+            #STDERR.puts "ALLERGY.SEVERITY: "+allergy.severity.inspect
             #puts "ALLERGY: " + allergy.inspect
             allergy_list << allergy
           end
