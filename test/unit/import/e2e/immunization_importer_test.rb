@@ -10,7 +10,7 @@ class ImmunizationImporterTest < MiniTest::Unit::TestCase
 
     immunization = patient.immunizations[0]
     assert immunization.nil? == false
-    assert immunization.codes == {"Unknown"=>["NA"]}
+    assert immunization.codes == {"whoATC"=>["J07CA01"]}
     assert immunization.description == 'Td'
     assert_equal Time.gm(2012,9,1).to_i, immunization.time
     #assert immunization.codes['CVX'].include? '88'
@@ -18,14 +18,14 @@ class ImmunizationImporterTest < MiniTest::Unit::TestCase
 
     immunization = patient.immunizations[1]
     assert immunization.nil? == false
-    assert immunization.codes == {"Unknown"=>["NA"]}
+    assert immunization.codes == {"whoATC"=>["J07AL02"]}
     assert immunization.description == 'Pneumovax'
     assert_equal Time.gm(2009,2,1).to_i, immunization.time
     #assert_equal false, immunization.refusal_ind
 
     immunization = patient.immunizations[2]
     assert immunization.nil? == false
-    assert immunization.codes == {"Unknown"=>["NA"]}
+    assert immunization.codes == {"whoATC"=>["J07BB01"]}
     assert immunization.description == 'Flu'
     assert_equal Time.gm(2012,10,31).to_i, immunization.time
 

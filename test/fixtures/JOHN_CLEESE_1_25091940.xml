@@ -15,7 +15,7 @@ CDA Header
 	<id extension="1" root="2.16.840.1.113883.3.933"/>
 	<code code="34140-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Referral"/>
 	<title>PITO EMR-2-EMR Record of JOHN CLEESE</title>
-	<effectiveTime value="201307311253"/>
+	<effectiveTime value="201308021014"/>
 	<confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
 	<!-- 
 	********************************************************
@@ -52,7 +52,7 @@ CDA Header
 	********************************************************
 	-->
 	<author typeCode="AUT" contextControlCode="OP">
-		<time value="20130731"/>
+		<time value="20130802"/>
 		<assignedAuthor>
 			<id extension="000000" root="DCCD2C68-389B-44C4-AD99-B8FB2DAD1493"/>
 			<assignedPerson classCode="PSN" determinerCode="INSTANCE">
@@ -120,22 +120,22 @@ Allergies and Intolerances - (Reaction List)
 					<text>Allergies</text>
 					<entry typeCode="COMP" contextConductionInd="true">
 						<templateId root="2.16.840.1.113883.3.1818.10.3.3"/>
-						<!--Allergy and Intolerance Observation-->
+						<!-- Allergy and Intolerance Observation -->
 						<act classCode="ACT" moodCode="EVN">
 							<id extension="1" root="2.16.840.1.113883.3.1818.10.2.10.1"/>
-							<code nullFlavor='NA'/>
+							<code nullFlavor="NA"/>
 							<statusCode code="active"/>
 							<effectiveTime value="20130305"/>
 							<entryRelationship typeCode="COMP" contextConductionInd="true">
 								<observation classCode="OBS" moodCode="EVN">
-									<code nullFlavor='NA'/>
+									<code code="MED" displayName="Medication" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActCode"/>
 									<effectiveTime>
 										<low value="19350101"/>
 									</effectiveTime>
 									<participant typeCode="CSM" contextControlCode="OP">
 										<participantRole classCode="MANU">
 											<playingEntity classCode="MMAT" determinerCode="INSTANCE">
-												<code nullFlavor='NA'/>
+												<code nullFlavor="NA"/>
 												<name>PENICILLINS, COMBINATIONS WITH OTHER ANTIBACTERIAL</name>
 											</playingEntity>
 										</participantRole>
@@ -191,7 +191,7 @@ Clinically Measured Observation
 							<author typeCode="AUT" contextControlCode="OP">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
 								<!-- Author Participation -->
-								<time value="20130508013121"/>
+								<time value="20130508133121"/>
 								<assignedAuthor>
 									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
 									<code nullFlavor='NA'/>
@@ -209,7 +209,7 @@ Clinically Measured Observation
 									<code nullFlavor="UNK"/>
 									<!-- OSCAR Type Code: BP -->
 									<text>Blood Pressure</text>
-									<effectiveTime value="20130508120000"/>
+									<effectiveTime value="20130508000000"/>
 									<value xsi:type="ST">130/85 (sitting position)</value>
 								</observation>
 							</component>
@@ -225,7 +225,7 @@ Clinically Measured Observation
 							<author typeCode="AUT" contextControlCode="OP">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
 								<!-- Author Participation -->
-								<time value="20130508013121"/>
+								<time value="20130508133121"/>
 								<assignedAuthor>
 									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
 									<code nullFlavor='NA'/>
@@ -243,7 +243,7 @@ Clinically Measured Observation
 									<code nullFlavor="UNK"/>
 									<!-- OSCAR Type Code: TEMP -->
 									<text>Temperature</text>
-									<effectiveTime value="20130508120000"/>
+									<effectiveTime value="20130508000000"/>
 									<value xsi:type="ST">37 (degrees celcius)</value>
 								</observation>
 							</component>
@@ -259,7 +259,7 @@ Clinically Measured Observation
 							<author typeCode="AUT" contextControlCode="OP">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
 								<!-- Author Participation -->
-								<time value="20130508013121"/>
+								<time value="20130508133121"/>
 								<assignedAuthor>
 									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
 									<code nullFlavor='NA'/>
@@ -277,7 +277,7 @@ Clinically Measured Observation
 									<code nullFlavor="UNK"/>
 									<!-- OSCAR Type Code: WT -->
 									<text>Weight</text>
-									<effectiveTime value="20130508120000"/>
+									<effectiveTime value="20130508000000"/>
 									<value xsi:type="ST">71 (in kg)</value>
 								</observation>
 							</component>
@@ -293,7 +293,7 @@ Clinically Measured Observation
 							<author typeCode="AUT" contextControlCode="OP">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
 								<!-- Author Participation -->
-								<time value="20130508013121"/>
+								<time value="20130508133121"/>
 								<assignedAuthor>
 									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
 									<code nullFlavor='NA'/>
@@ -311,7 +311,7 @@ Clinically Measured Observation
 									<code nullFlavor="UNK"/>
 									<!-- OSCAR Type Code: HT -->
 									<text>Height</text>
-									<effectiveTime value="20130508120000"/>
+									<effectiveTime value="20130508000000"/>
 									<value xsi:type="ST">170 (in cm)</value>
 								</observation>
 							</component>
@@ -327,7 +327,7 @@ Clinically Measured Observation
 							<author typeCode="AUT" contextControlCode="OP">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
 								<!-- Author Participation -->
-								<time value="20130508013121"/>
+								<time value="20130508133121"/>
 								<assignedAuthor>
 									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
 									<code nullFlavor='NA'/>
@@ -345,7 +345,7 @@ Clinically Measured Observation
 									<code nullFlavor="UNK"/>
 									<!-- OSCAR Type Code: WAIS -->
 									<text>Waist</text>
-									<effectiveTime value="20130508120000"/>
+									<effectiveTime value="20130508000000"/>
 									<value xsi:type="ST">36 (Waist Circum in cm)</value>
 								</observation>
 							</component>
@@ -361,7 +361,7 @@ Clinically Measured Observation
 							<author typeCode="AUT" contextControlCode="OP">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
 								<!-- Author Participation -->
-								<time value="20130508013121"/>
+								<time value="20130508133121"/>
 								<assignedAuthor>
 									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
 									<code nullFlavor='NA'/>
@@ -379,7 +379,7 @@ Clinically Measured Observation
 									<code nullFlavor="UNK"/>
 									<!-- OSCAR Type Code: PULSE -->
 									<text>Heart Rate</text>
-									<effectiveTime value="20130508120000"/>
+									<effectiveTime value="20130508000000"/>
 									<value xsi:type="ST">85 (in bpm (nnn) Range:40-180)</value>
 								</observation>
 							</component>
@@ -405,7 +405,7 @@ Family History
 							<id extension="5" root="2.16.840.1.113883.3.1818.10.2.10.33"/>
 							<code code="DX" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code" displayName="Diagnosis"/>
 							<text>Heart Attack</text>
-							<effectiveTime value="20130305013450"/>
+							<effectiveTime value="20130305133450"/>
 							<value xsi:type="ST">Heart Attack</value>
 							<!--Relationship to the patient-->
 							<subject typeCode="SBJ" contextControlCode="OP">
@@ -438,29 +438,29 @@ Immunization List
 					<entry typeCode="COMP" contextConductionInd="true">
 						<templateId root="2.16.840.1.113883.3.1818.10.3.11"/>
 						<!-- Immunization Observation -->
-						<substanceAdministration classCode="SBADM" moodCode="EVN">
+						<substanceAdministration classCode="SBADM" moodCode="EVN" negationInd="false">
 							<id extension="BC20120211VAC-145999X" root="2.16.840.1.113883.3.1818.10.10.3"/>
-							<code code="IMMUNIZ" codeSystem="2.16.840.1.113883.5.4" displayName="Immunization"/>
-							<statusCode code="active"/>
+							<code code="IMMUNIZ" displayName="Immunization" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 Act Code"/>
+							<!-- Immunization Date -->
 							<effectiveTime value="20120901"/>
-							<routeCode code="PO" codeSystem="2.16.840.1.113883.5.112" codeSystemName="RouteOfAdministration" displayName="IM"/>
-							<doseQuantity nullFlavor="UNK"/>
+							<routeCode code="IM" displayName="IM" codeSystem="2.16.840.1.113883.5.112" codeSystemName="RouteOfAdministration"/>
+							<!-- Immunization Product (i.e. DIN) -->
 							<consumable typeCode="CSM">
 								<manufacturedProduct classCode="MANU">
 									<manufacturedMaterial classCode="MMAT" determinerCode="KIND">
-										<code nullFlavor='NA'/>
+										<code code="J07CA01" codeSystem="2.16.840.1.113883.6.73" codeSystemName="whoATC" displayName="Td"/>
 										<name>Td</name>
 										<lotNumberText>1234</lotNumberText>
 									</manufacturedMaterial>
 								</manufacturedProduct>
 							</consumable>
+							<!-- Immunization Administration Provider -->
 							<author typeCode="AUT" contextControlCode="OP">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
 								<!-- Author Participation -->
 								<time value="20130305"/>
 								<assignedAuthor>
 									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
-									<code nullFlavor='NA'/>
 									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
 										<name use="L">
 											<given>doctor</given>
@@ -469,13 +469,13 @@ Immunization List
 									</assignedPerson>
 								</assignedAuthor>
 							</author>
-							<!-- Location -->
+							<!-- Immunization Administration Location -->
 							<participant typeCode="LOC" contextControlCode="OP">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.13"/>
 								<!-- Location Participation -->
 								<participantRole classCode="SDLOC">
 									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.22"/>
-									<playingEntity classCode="PLC" determinerCode="INSTANCE">
+									<playingEntity>
 										<name>Left Delt</name>
 									</playingEntity>
 								</participantRole>
@@ -485,27 +485,27 @@ Immunization List
 					<entry typeCode="COMP" contextConductionInd="true">
 						<templateId root="2.16.840.1.113883.3.1818.10.3.11"/>
 						<!-- Immunization Observation -->
-						<substanceAdministration classCode="SBADM" moodCode="EVN">
+						<substanceAdministration classCode="SBADM" moodCode="EVN" negationInd="false">
 							<id extension="BC20120211VAC-145999X" root="2.16.840.1.113883.3.1818.10.10.3"/>
-							<code code="IMMUNIZ" codeSystem="2.16.840.1.113883.5.4" displayName="Immunization"/>
-							<statusCode code="active"/>
+							<code code="IMMUNIZ" displayName="Immunization" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 Act Code"/>
+							<!-- Immunization Date -->
 							<effectiveTime value="20090201"/>
-							<doseQuantity nullFlavor="UNK"/>
+							<!-- Immunization Product (i.e. DIN) -->
 							<consumable typeCode="CSM">
 								<manufacturedProduct classCode="MANU">
 									<manufacturedMaterial classCode="MMAT" determinerCode="KIND">
-										<code nullFlavor='NA'/>
+										<code code="J07AL02" codeSystem="2.16.840.1.113883.6.73" codeSystemName="whoATC" displayName="Pneumovax"/>
 										<name>Pneumovax</name>
 									</manufacturedMaterial>
 								</manufacturedProduct>
 							</consumable>
+							<!-- Immunization Administration Provider -->
 							<author typeCode="AUT" contextControlCode="OP">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
 								<!-- Author Participation -->
 								<time value="20130305"/>
 								<assignedAuthor>
 									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
-									<code nullFlavor='NA'/>
 									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
 										<name use="L">
 											<given>doctor</given>
@@ -519,28 +519,28 @@ Immunization List
 					<entry typeCode="COMP" contextConductionInd="true">
 						<templateId root="2.16.840.1.113883.3.1818.10.3.11"/>
 						<!-- Immunization Observation -->
-						<substanceAdministration classCode="SBADM" moodCode="EVN">
+						<substanceAdministration classCode="SBADM" moodCode="EVN" negationInd="false">
 							<id extension="BC20120211VAC-145999X" root="2.16.840.1.113883.3.1818.10.10.3"/>
-							<code code="IMMUNIZ" codeSystem="2.16.840.1.113883.5.4" displayName="Immunization"/>
-							<statusCode code="active"/>
+							<code code="IMMUNIZ" displayName="Immunization" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 Act Code"/>
+							<!-- Immunization Date -->
 							<effectiveTime value="20121031"/>
-							<routeCode code="PO" codeSystem="2.16.840.1.113883.5.112" codeSystemName="RouteOfAdministration" displayName="IM"/>
-							<doseQuantity nullFlavor="UNK"/>
+							<routeCode code="IM" displayName="IM" codeSystem="2.16.840.1.113883.5.112" codeSystemName="RouteOfAdministration"/>
+							<!-- Immunization Product (i.e. DIN) -->
 							<consumable typeCode="CSM">
 								<manufacturedProduct classCode="MANU">
 									<manufacturedMaterial classCode="MMAT" determinerCode="KIND">
-										<code nullFlavor='NA'/>
+										<code code="J07BB01" codeSystem="2.16.840.1.113883.6.73" codeSystemName="whoATC" displayName="Flu"/>
 										<name>Flu</name>
 									</manufacturedMaterial>
 								</manufacturedProduct>
 							</consumable>
+							<!-- Immunization Administration Provider -->
 							<author typeCode="AUT" contextControlCode="OP">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
 								<!-- Author Participation -->
 								<time value="20130305"/>
 								<assignedAuthor>
 									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
-									<code nullFlavor='NA'/>
 									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
 										<name use="L">
 											<given>doctor</given>
@@ -549,13 +549,13 @@ Immunization List
 									</assignedPerson>
 								</assignedAuthor>
 							</author>
-							<!-- Location -->
+							<!-- Immunization Administration Location -->
 							<participant typeCode="LOC" contextControlCode="OP">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.13"/>
 								<!-- Location Participation -->
 								<participantRole classCode="SDLOC">
 									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.22"/>
-									<playingEntity classCode="PLC" determinerCode="INSTANCE">
+									<playingEntity>
 										<name>Right Delt</name>
 									</playingEntity>
 								</participantRole>
@@ -630,7 +630,7 @@ bone Lt metatarsal</value>
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -643,7 +643,7 @@ bone Lt metatarsal</value>
 											<code code="664-3" displayName="Gram Stain" codeSystemName="LOINC"/>
 											<text>Gram Stain</text>
 											<statusCode code="final"/>
-											<effectiveTime value="20110429024909"/>
+											<effectiveTime value="20110429144909"/>
 											<value xsi:type="ST">+3 Polymorphs 
 +4 Gram negative bacilli resembling coliforms 
 +4 Gram positive cocci in pairs and chains 
@@ -653,7 +653,7 @@ bone Lt metatarsal</value>
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
 												<!--Performer Participation-->
-												<time value="20110429024909"/>
+												<time value="20110429144909"/>
 												<assignedEntity>
 													<id extension="TBD" root="TBD"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
@@ -665,7 +665,7 @@ bone Lt metatarsal</value>
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -699,7 +699,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -730,7 +730,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -761,7 +761,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -792,7 +792,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -823,7 +823,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -854,7 +854,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -885,7 +885,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -916,7 +916,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -947,7 +947,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -978,7 +978,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -1009,7 +1009,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -1040,7 +1040,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -1071,7 +1071,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -1102,7 +1102,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -1133,7 +1133,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -1164,7 +1164,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -1195,7 +1195,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -1226,7 +1226,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -1257,7 +1257,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -1288,7 +1288,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -1319,7 +1319,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -1350,7 +1350,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -1381,7 +1381,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -1412,7 +1412,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -1443,7 +1443,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -1474,7 +1474,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -1505,7 +1505,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -1536,7 +1536,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -1567,7 +1567,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -1630,7 +1630,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -1661,7 +1661,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -1692,7 +1692,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 											<referenceRange typeCode="REFV">
@@ -1730,7 +1730,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 											<referenceRange typeCode="REFV">
@@ -1768,7 +1768,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 											<referenceRange typeCode="REFV">
@@ -1806,7 +1806,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 											<referenceRange typeCode="REFV">
@@ -1844,7 +1844,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 											<referenceRange typeCode="REFV">
@@ -1882,7 +1882,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 											<referenceRange typeCode="REFV">
@@ -1920,7 +1920,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 											<referenceRange typeCode="REFV">
@@ -1958,7 +1958,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 											<referenceRange typeCode="REFV">
@@ -2005,7 +2005,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -2037,7 +2037,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -2068,7 +2068,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -2099,7 +2099,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -2130,7 +2130,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -2161,7 +2161,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -2192,7 +2192,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -2223,7 +2223,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -2254,7 +2254,7 @@ Imipenem : Further report to follow
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
-													<effectiveTime value="20110927021747"/>
+													<effectiveTime value="20110927141747"/>
 												</procedure>
 											</entryRelationship>
 										</observation>
@@ -2424,16 +2424,6 @@ Code"/>
 										<observation classCode="OBS" moodCode="EVN">
 											<code code="PRNIND" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" displayName="PRN Indicator"/>
 											<value xsi:type="BL" value="true"/>
-										</observation>
-									</entryRelationship>
-									<entryRelationship typeCode="SUBJ" inversionInd="true">
-										<templateId root="2.16.840.1.113883.3.1818.10.4.35"/>
-										<observation classCode="OBS" moodCode="EVN">
-										<code code="INSTRUCT" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1" codeSystemName="PITO ObservationType" displayName="Instructions"/>
-										<text>Special medication instructions to patient</text>
-										<participant typeCode="PRCP" contextControlCode="OP">
-											<participantRole classCode="PAT"/>
-										</participant>
 										</observation>
 									</entryRelationship>
 								</substanceAdministration>

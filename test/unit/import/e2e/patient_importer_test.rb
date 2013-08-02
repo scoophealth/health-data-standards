@@ -24,12 +24,12 @@ class PatientImporterTest < MiniTest::Unit::TestCase
     assert_equal -923616000, patient.birthdate
     assert_equal 'M', patient.gender
     assert_equal '000000000', patient.medical_record_number
-    assert_equal Time.gm(2013,7,31,12,53,0).to_i, patient.effective_time
+    assert_equal Time.gm(2013,8,2,10,14,0).to_i, patient.effective_time
     assert_equal ['EN'], patient.languages
 
   end
 
-  def test_complete_get_demographics
+  def test_complete_example_get_demographics
     doc = Nokogiri::XML(File.new('test/fixtures/PITO/E2E-DTC Ex 001 - Conversion - Fully Loaded - V1-30-00.xml'))
     doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
 
@@ -59,7 +59,7 @@ class PatientImporterTest < MiniTest::Unit::TestCase
     #assert_equal 1270598400, patient.encounters.first.time
   end
 
-  def test_complete_parse_e2e2
+  def test_complete_example_parse_e2e2
     doc = Nokogiri::XML(File.new('test/fixtures/PITO/E2E-DTC Ex 001 - Conversion - Fully Loaded - V1-30-00.xml'))
     doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
 

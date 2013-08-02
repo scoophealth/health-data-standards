@@ -88,7 +88,8 @@ module HealthDataStandards
           # administrationTiming [frequency of drug - could be specific time, interval (every 6 hours), duration (infuse over 30 minutes) but e2e uses frequency only]
           @timing_xpath = './cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration/cda:effectiveTime/cda:frequency'
           # freeTextSig (Instructions to patient)
-          @freetext_xpath = "./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship[cda:templateId/@root='2.16.840.1.113883.3.1818.10.4.35']/cda:observation/cda:text/text()"
+          #@freetext_xpath = "./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship[cda:templateId/@root='2.16.840.1.113883.3.1818.10.4.35']/cda:observation/cda:text/text()"
+          @freetext_xpath = "./entryRelationship/substanceAdministration/entryRelationship/observation[participant/participantRole/@classCode='PAT']/text/text()"
           # doseQuantity
           @dose_xpath = "./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration/cda:doseQuantity"
           # statusOfMedication (active, discharged, chronic, acute)
@@ -199,6 +200,21 @@ module HealthDataStandards
             at['denominator'] = extract_scalar(ate, "./cda:denominator")
             medication.administration_timing['frequency'] = at
           end
+
+          #administration_timing_element = parent_element.at_xpath("./cda:effectiveTime[2]")
+          #if administration_timing_element
+          #  at = {}
+          #  if administration_timing_element['institutionSpecified']
+          #    at['institutionSpecified'] = administration_timing_element['institutionSpecified'].to_boolean
+          #  end
+          #  at['period'] = extract_scalar(administration_timing_element, "./cda:period")
+          #  if at.present?
+          #    medication.administration_timing = at
+          #  end
+          #end
+
+          #entry.administration_timing = {"period" => extract_quantity(element, "./gc32:administrationTiming/gc32:period"),
+          #                               "institutionSpecified" => extract_node_attribute(element.at_xpath("./gc32:administrationTiming"), :institutionSpecified)}
         end
 
         def extract_freetextsig(parent_element, entry)
