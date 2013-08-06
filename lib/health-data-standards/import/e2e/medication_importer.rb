@@ -1,7 +1,67 @@
 module HealthDataStandards
   module Import
     module E2E
-      
+
+      #Common prefix for XPath expressions:
+      #/ClinicalDocument/component/structuredBody/component/section/entry/substanceAdministration
+
+      #OSCAR Field          Notes                       Business Term         Field                 XPath
+      #drugid               Unique ID in database       Record ID             id
+      #provider_no          Doctor who prescribed/recordPrescribing Provider  assignedPerson > name ./entryRelationship/substanceAdministration/author/assignedAuthor/assignedPerson/name
+      #demographic_no       Identify if med record is pa
+      #rx_date              Prescription start          Start/Stop Date       effectiveTime > low   ./entryRelationship/substanceAdministration/effectiveTime/low/@value
+      #end_date             Prescription end            Start/Stop Date       effectiveTime > high  ./entryRelationship/substanceAdministration/effectiveTime/high/@value
+      #written_date         Date written                Authored Date/Time    time                  ./entryRelationship/substanceAdministration/author/time/@value
+      #BN                   Long name of drug (name + stDrug Description      manufacturedLabeledDru./consumable/manufacturedProduct/manufacturedLabeledDrug/e2e:desc
+      #                                                                                             ./entryRelationship/substanceAdministration/consumable/manufacturedProduct/manufacturedLabeledDrug/e2e:desc
+      #                                                                                             ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/consumable/manufacturedProduct/manufacturedLabeledDrug/e2e:desc
+      #takemin              Minimum to take per administDose Instructions     doseQuantity low      ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/doseQuantity/low/@value
+      #                                                 Duration              text                  ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/text
+      #takemax              Maximum to take per administDose Instructions     doseQuantity high     ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/doseQuantity/high/@value
+      #                                                 Duration              text                  ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/text
+      #freqcode             Coded frequency (TID)to fracFrequency             numerator value       ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/effectiveTime/frequency/numerator/@value
+      #                                                 Frequency             denominator value     ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/effectiveTime/frequency/denominator/@value
+      #                                                 Frequency             denominator unit      ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/effectiveTime/frequency/denominator/@unit
+      #                                                 Duration              text                  ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/text
+      #duration             Length of time              Duration              effectiveTime > width ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/effectiveTime/width/@value
+      #                                                 Duration              text                  ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/text
+      #durunit              Coded unit of time (D)      Duration              effectiveTime > width ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/effectiveTime/width/@unit
+      #                                                 Duration              text                  ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/text
+      #prn                  Pro re nata - use as needed Order Indicators      observation > value va./entryRelationship/substanceAdministration/entryRelationship/observation/value/@value
+      #special_instruction  Special freetext instructionInstructions to Patienobservation > text    ./entryRelationship/substanceAdministration/entryRelationship/observation[participant/participantRole/@classCode='PAT']/text/text()
+      #archived             Was it "archived" or deleted
+      #GN                   Generic Name of drug        Drug Name             manufacturedLabeledDru./consumable/manufacturedProduct/manufacturedLabeledDrug/name
+      #                                                                                             ./entryRelationship/substanceAdministration/consumable/manufacturedProduct/manufacturedLabeledDrug/name
+      #                                                                                             ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/consumable/manufacturedProduct/manufacturedLabeledDrug/name
+      #                                                 Ingredient Name       manufacturedLabeledDru./consumable/manufacturedProduct/manufacturedLabeledDrug/e2e:ingredient/e2e:ingredient/e2e:name
+      #                                                                                             ./entryRelationship/substanceAdministration/consumable/manufacturedProduct/manufacturedLabeledDrug/e2e:ingredient/e2e:ingredient/e2e:name
+      #                                                                                             ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/consumable/manufacturedProduct/manufacturedLabeledDrug/e2e:ingredient/e2e:ingredient/e2e:name
+      #                                                 Drug Code             manufacturedLabeledDru./consumable/manufacturedProduct/manufacturedLabeledDrug/code/@displayName
+      #                                                                                             ./entryRelationship/substanceAdministration/consumable/manufacturedProduct/manufacturedLabeledDrug/code/@displayName
+      #                                                                                             ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/consumable/manufacturedProduct/manufacturedLabeledDrug/code/@displayName
+      #ATC                  Anatomical Therapeutic ChemiDrug Code             manufacturedLabeledDru./consumable/manufacturedProduct/manufacturedLabeledDrug/code/@code
+      #                                                                                             ./entryRelationship/substanceAdministration/consumable/manufacturedProduct/manufacturedLabeledDrug/code/@code
+      #                                                                                             ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/consumable/manufacturedProduct/manufacturedLabeledDrug/code/@code
+      #regional_identifier  DIN Number                  Drug Code             manufacturedLabeledDru./consumable/manufacturedProduct/manufacturedLabeledDrug/code/@code
+      #                                                                                             ./entryRelationship/substanceAdministration/consumable/manufacturedProduct/manufacturedLabeledDrug/code/@code
+      #                                                                                             ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/consumable/manufacturedProduct/manufacturedLabeledDrug/code/@code
+      #unit                 Part of dose - unit of measuDrug Ingredient QuantimanufacturedLabeledDru./consumable/manufacturedProduct/manufacturedLabeledDrug/e2e:ingredient/e2e:quantity/@unit
+      #                                                                                             ./entryRelationship/substanceAdministration/consumable/manufacturedProduct/manufacturedLabeledDrug/e2e:ingredient/e2e:quantity/@unit
+      #                                                                                             ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/consumable/manufacturedProduct/manufacturedLabeledDrug/e2e:ingredient/e2e:quantity/@unit
+      #method               How to administer           Duration              text                  ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/text
+      #route                Route of entry into patient Route                 routeCode code        ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/routeCode
+      #                                                 Duration              text                  ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/text
+      #drug_form            Form of the drug            Form                  administrationUnitCode./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/administrationUnitCode
+      #                                                 Duration              text                  ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/text
+      #dosage               How much of the drug        Drug Ingredient QuantimanufacturedLabeledDru./consumable/manufacturedProduct/manufacturedLabeledDrug/e2e:ingredient/e2e:quantity/@value
+      #                                                                                             ./entryRelationship/substanceAdministration/consumable/manufacturedProduct/manufacturedLabeledDrug/e2e:ingredient/e2e:quantity/@value
+      #                                                                                             ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/consumable/manufacturedProduct/manufacturedLabeledDrug/e2e:ingredient/e2e:quantity/@value
+      #long_term            Is a drug still "active" forRecord Status         statusCode            ./statusCode/@code
+      #lastUpdateDate       Most recent update to medicaLast Review Date      effectiveTime value   ./entryRelationship/observation/effectiveTime/@value
+
+
+
+
       # TODO: Coded Product Name, Free Text Product Name, Coded Brand Name and Free Text Brand name need to be pulled out separatelty
       #       This would mean overriding extract_codes
       # TODO: Patient Instructions needs to be implemented. Will likely be a reference to the narrative section
@@ -72,6 +132,7 @@ module HealthDataStandards
       class MedicationImporter < SectionImporter
 
         def initialize
+          @prefix_xpath = "/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/cda:section/cda:entry/cda:substanceAdministration"
           # start of medication section
           @entry_xpath = "//cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.19.1' and cda:code/@code='10160-6']/cda:entry/cda:substanceAdministration"
 
@@ -89,12 +150,12 @@ module HealthDataStandards
           @timing_xpath = './cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration/cda:effectiveTime/cda:frequency'
           # freeTextSig (Instructions to patient)
           #@freetext_xpath = "./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship[cda:templateId/@root='2.16.840.1.113883.3.1818.10.4.35']/cda:observation/cda:text/text()"
-          @freetext_xpath = "./entryRelationship/substanceAdministration/entryRelationship/observation[participant/participantRole/@classCode='PAT']/text/text()"
+          #@freetext_xpath = "./entryRelationship/substanceAdministration/entryRelationship/observation[participant/participantRole/@classCode='PAT']/text/text()"
+          @freetext_xpath = "./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:observation[cda:participant/cda:participantRole/@classCode='PAT']/cda:text/text()"
           # doseQuantity
           @dose_xpath = "./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration/cda:doseQuantity"
           # statusOfMedication (active, discharged, chronic, acute)
-          #@status_xpath = './cda:entryRelationship/cda:substanceAdministration/cda:statusCode'
-          @status_xpath = './cda:statusCode'
+          @status_xpath = './cda:statusCode/@code'
           # route (by mouth, intravenously, topically, etc.)
           @route_xpath = './cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration/cda:routeCode'
           # productForm (tablet, capsule, liquid, ointment)
@@ -229,9 +290,8 @@ module HealthDataStandards
         end
 
         def extract_status(parent_element, entry)
-          #print "#{entry.inspect}\n"
-          status_element = parent_element.xpath(@status_xpath+"/@code")
-          #print "#{status_element.inspect}\n"
+          status_element = parent_element.xpath(@status_xpath)
+          #STDERR.puts "status_element: " +status_element.inspect
           entry.statusOfMedication = {value: status_element.to_s}
         end
 

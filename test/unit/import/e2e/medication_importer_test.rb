@@ -19,8 +19,6 @@ class MedicationImporterTest < MiniTest::Unit::TestCase
     assert medication.codes['HC-DIN'].include? '00559407'
     assert medication.codes['whoATC'].include? 'N02BE01'
 
-    #assert_equal "500.0", medication.value['value']
-    #assert_equal "MG", medication.value['unit']
     assert_equal "500.0", medication.values.first.scalar
     assert_equal "MG", medication.values.first.units
 
@@ -37,7 +35,6 @@ class MedicationImporterTest < MiniTest::Unit::TestCase
     assert_equal '1.0', medication.dose['low']
     assert_equal '2.0', medication.dose['high']
 
-    #print "Inspect: #{medication.statusOfMedication[:value].inspect}\n"
     assert_equal 'active', medication.statusOfMedication[:value]
 
     assert_equal 'PO', medication.route['code']
@@ -57,8 +54,6 @@ class MedicationImporterTest < MiniTest::Unit::TestCase
     assert medication.codes['HC-DIN'].include? '02387913'
     assert medication.codes['whoATC'].include? 'C10AA05'
 
-    #assert_equal "40.0", medication.value['value']
-    #assert_equal "MG", medication.value['unit']
     assert_equal "40.0", medication.values.first.scalar
     assert_equal "MG", medication.values.first.units
 
@@ -115,59 +110,25 @@ class MedicationImporterTest < MiniTest::Unit::TestCase
     #assert_equal 'd', medication.administration_timing['frequency']['denominator']['unit']
 
     #TODO - fix freeTextSig
-    #assert_equal 'Special medication instructions to patient', medication.freeTextSig
+    text1 = "One spray every 5 minutes as needed for chest discomfort."
+    assert medication.freeTextSig.include? text1
+    text2 = "If pain continues for more than 15 minutes or recurs frequently, get to emergency department ASAP."
+    assert medication.freeTextSig.include? text2
 
-    #assert_equal '1.0', medication.dose['low']
-    #assert_equal '2.0', medication.dose['high']
+    assert_equal '325', medication.dose['low']
+    assert_equal '650', medication.dose['high']
 
-    #print "Inspect: #{medication.statusOfMedication[:value].inspect}\n"
-    #assert_equal 'active', medication.statusOfMedication[:value]
+    assert_equal 'active', medication.statusOfMedication[:value]
 
-    #assert_equal 'PO', medication.route['code']
-    #assert_equal '2.16.840.1.113883.5.112', medication.route['codeSystem']
-    #assert_equal 'RouteOfAdministration', medication.route['codeSystemName']
-    #assert_equal 'PO', medication.route['displayName']
+    assert_equal 'PO', medication.route['code']
+    assert_equal '2.16.840.1.113883.5.112', medication.route['codeSystem']
+    assert_equal 'RouteOfAdministration', medication.route['codeSystemName']
+    assert_equal 'per os', medication.route['displayName']
 
-    #assert_equal 'TAB', medication.product_form['code']
-    #assert_equal '2.16.840.1.113883.1.11.14570', medication.product_form['codeSystem']
-    #assert_equal 'TABLET', medication.product_form['displayName']
+    assert_equal 'ORSPRAY', medication.product_form['code']
+    assert_equal '2.16.840.1.113883.1.11.14570', medication.product_form['codeSystem']
+    assert_equal 'oral spray', medication.product_form['displayName']
 
-
-    # last listed medication
-    #medication = patient.medications[8]
-    #assert_equal "ATORVASTATIN 40MG", medication.description
-
-    #assert medication.codes['HC-DIN'].include? '02387913'
-    #assert medication.codes['whoATC'].include? 'C10AA05'
-
-    #assert_equal "40.0", medication.value['value']
-    #assert_equal "MG", medication.value['unit']
-    #assert_equal "40.0", medication.values.first.scalar
-    #assert_equal "MG", medication.values.first.units
-
-    #assert_equal 1362441600, medication.time   # returns nil?
-    #assert_equal 1362441600, medication.start_time
-    #assert_equal 1367280000, medication.end_time
-
-    #assert_equal 1, medication.administration_timing['frequency']['numerator']['value']
-    #assert_equal 1, medication.administration_timing['frequency']['denominator']['value']
-    #assert_equal 'd', medication.administration_timing['frequency']['denominator']['unit']
-
-    #assert_equal '', medication.freeTextSig
-
-    #assert_equal '1.0', medication.dose['low']
-    #assert_equal '1.0', medication.dose['high']
-
-    #assert_equal 'active', medication.statusOfMedication[:value]
-
-    #assert_equal 'PO', medication.route['code']
-    #assert_equal '2.16.840.1.113883.5.112', medication.route['codeSystem']
-    #assert_equal 'RouteOfAdministration', medication.route['codeSystemName']
-    #assert_equal 'PO', medication.route['displayName']
-
-    #assert_equal 'TAB', medication.product_form['code']
-    #assert_equal '2.16.840.1.113883.1.11.14570', medication.product_form['codeSystem']
-    #assert_equal 'TABLET', medication.product_form['displayName']
   end
 end
 end
