@@ -147,10 +147,16 @@ module HealthDataStandards
 
           # location of Medication class fields
           # administrationTiming [frequency of drug - could be specific time, interval (every 6 hours), duration (infuse over 30 minutes) but e2e uses frequency only]
-          @timing_xpath = './cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration/cda:effectiveTime/cda:frequency'
+          @timing_xpath = './cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration'
+          #freqcode             Coded frequency (TID)to fracFrequency             numerator value       ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/effectiveTime/frequency/numerator/@value
+          #                                                 Frequency             denominator value     ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/effectiveTime/frequency/denominator/@value
+          #                                                 Frequency             denominator unit      ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/effectiveTime/frequency/denominator/@unit
+          #                                                 Duration              text                  ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/text
+          #duration             Length of time              Duration              effectiveTime > width ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/effectiveTime/width/@value
+          #                                                 Duration              text                  ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/text
+          #durunit              Coded unit of time (D)      Duration              effectiveTime > width ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/effectiveTime/width/@unit
+          #                                                 Duration              text                  ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/text
           # freeTextSig (Instructions to patient)
-          #@freetext_xpath = "./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship[cda:templateId/@root='2.16.840.1.113883.3.1818.10.4.35']/cda:observation/cda:text/text()"
-          #@freetext_xpath = "./entryRelationship/substanceAdministration/entryRelationship/observation[participant/participantRole/@classCode='PAT']/text/text()"
           @freetext_xpath = "./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:observation[cda:participant/cda:participantRole/@classCode='PAT']/cda:text/text()"
           # doseQuantity
           @dose_xpath = "./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration/cda:doseQuantity"
@@ -253,25 +259,24 @@ module HealthDataStandards
         # this method only handles drug administration timing expressed as a frequency
         # (does not handle specific time, interval or duration specifications)
         def extract_administration_timing(parent_element, medication)
-          ate = parent_element.xpath(@timing_xpath)
-          #print "administration_timing: " + ate.to_s + "\n"
+          ate = parent_element.xpath(@timing_xpath+'/cda:effectiveTime/cda:frequency')
           if ate
             at = {}
             at['numerator'] = extract_scalar(ate, "./cda:numerator")
             at['denominator'] = extract_scalar(ate, "./cda:denominator")
-            medication.administration_timing['frequency'] = at
+            medication.administration_timing['frequency'] = at if at.present?
           end
-
-          #administration_timing_element = parent_element.at_xpath("./cda:effectiveTime[2]")
+          administration_timing_element = parent_element.at_xpath(@timing_xpath+'/cda:effectiveTime')
+          STDERR.puts "duration: "+administration_timing_element.to_s
           #if administration_timing_element
-          #  at = {}
-          #  if administration_timing_element['institutionSpecified']
-          #    at['institutionSpecified'] = administration_timing_element['institutionSpecified'].to_boolean
-          #  end
-          #  at['period'] = extract_scalar(administration_timing_element, "./cda:period")
-          #  if at.present?
-          #    medication.administration_timing = at
-          #  end
+          #   at = {}
+          #   if administration_timing_element['institutionSpecified']
+          #     at['institutionSpecified'] = administration_timing_element['institutionSpecified'].to_boolean
+          #   end
+          #   at['period'] = extract_scalar(administration_timing_element, "./cda:period")
+          #   if at.present?
+          #     medication.administration_timing['period'] = at
+          #   end
           #end
 
           #entry.administration_timing = {"period" => extract_quantity(element, "./gc32:administrationTiming/gc32:period"),

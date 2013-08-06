@@ -105,6 +105,8 @@ class MedicationImporterTest < MiniTest::Unit::TestCase
     assert_equal Time.gm(2013,2,12).to_i, medication.end_time
 
     #TODO - fix administration timing for general case
+    assert medication.administration_timing != nil
+    assert_equal 'xyz', medication.administration_timing.inspect
     #assert_equal 4, medication.administration_timing['frequency']['numerator']['value']
     #assert_equal 1, medication.administration_timing['frequency']['denominator']['value']
     #assert_equal 'd', medication.administration_timing['frequency']['denominator']['unit']
