@@ -3,8 +3,7 @@ module HealthDataStandards
     module E2E
 
       #Common prefix for XPath expressions:
-      #/ClinicalDocument/component/structuredBody/component/section/entry/substanceAdministration
-
+      #/ClinicalDocument/component/structuredBody/component/section[templateId/@root='2.16.840.1.113883.3.1818.10.2.19.1' and code/@code='10160-6']/entry/substanceAdministration
       #OSCAR Field          Notes                       Business Term         Field                 XPath
       #drugid               Unique ID in database       Record ID             id
       #provider_no          Doctor who prescribed/recordPrescribing Provider  assignedPerson > name ./entryRelationship/substanceAdministration/author/assignedAuthor/assignedPerson/name
@@ -22,6 +21,10 @@ module HealthDataStandards
       #freqcode             Coded frequency (TID)to fracFrequency             numerator value       ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/effectiveTime/frequency/numerator/@value
       #                                                 Frequency             denominator value     ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/effectiveTime/frequency/denominator/@value
       #                                                 Frequency             denominator unit      ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/effectiveTime/frequency/denominator/@unit
+      #                                                 Period                low value             ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/effectiveTime/period/low/@value
+      #                                                 Period                low unit              ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/effectiveTime/period/low/@unit
+      #                                                 Period                high value            ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/effectiveTime/period/high/@value
+      #                                                 Period                high unit             ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/effectiveTime/period/high/@unit
       #                                                 Duration              text                  ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/text
       #duration             Length of time              Duration              effectiveTime > width ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/effectiveTime/width/@value
       #                                                 Duration              text                  ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/text
@@ -132,12 +135,10 @@ module HealthDataStandards
       class MedicationImporter < SectionImporter
 
         def initialize
-          @prefix_xpath = "/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/cda:section/cda:entry/cda:substanceAdministration"
           # start of medication section
-          @entry_xpath = "//cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.19.1' and cda:code/@code='10160-6']/cda:entry/cda:substanceAdministration"
+          @entry_xpath = "/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.19.1' and cda:code/@code='10160-6']/cda:entry/cda:substanceAdministration"
 
           # location of base Entry class fields
-          #description_xpath = './cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/cda:name/text()'
           @description_xpath = './cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/e2e:desc/text()'
           @entrystatus_xpath = './cda:statusCode' # not used
           @code_xpath = './cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/cda:code'
@@ -148,14 +149,7 @@ module HealthDataStandards
           # location of Medication class fields
           # administrationTiming [frequency of drug - could be specific time, interval (every 6 hours), duration (infuse over 30 minutes) but e2e uses frequency only]
           @timing_xpath = './cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration'
-          #freqcode             Coded frequency (TID)to fracFrequency             numerator value       ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/effectiveTime/frequency/numerator/@value
-          #                                                 Frequency             denominator value     ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/effectiveTime/frequency/denominator/@value
-          #                                                 Frequency             denominator unit      ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/effectiveTime/frequency/denominator/@unit
-          #                                                 Duration              text                  ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/text
-          #duration             Length of time              Duration              effectiveTime > width ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/effectiveTime/width/@value
-          #                                                 Duration              text                  ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/text
-          #durunit              Coded unit of time (D)      Duration              effectiveTime > width ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/effectiveTime/width/@unit
-          #                                                 Duration              text                  ./entryRelationship/substanceAdministration/entryRelationship/substanceAdministration/text
+
           # freeTextSig (Instructions to patient)
           @freetext_xpath = "./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:observation[cda:participant/cda:participantRole/@classCode='PAT']/cda:text/text()"
           # doseQuantity
@@ -256,31 +250,47 @@ module HealthDataStandards
           #print "End Time: " + entry.end_time.to_s + "\n"
         end
 
-        # this method only handles drug administration timing expressed as a frequency
-        # (does not handle specific time, interval or duration specifications)
+        # Handles drug administration timing expressed as a frequency,
+        # interval, duration or specific time specification)
         def extract_administration_timing(parent_element, medication)
           ate = parent_element.xpath(@timing_xpath+'/cda:effectiveTime/cda:frequency')
           if ate
             at = {}
             at['numerator'] = extract_scalar(ate, "./cda:numerator")
             at['denominator'] = extract_scalar(ate, "./cda:denominator")
-            medication.administration_timing['frequency'] = at if at.present?
+            medication.administration_timing['frequency'] = at
           end
-          administration_timing_element = parent_element.at_xpath(@timing_xpath+'/cda:effectiveTime')
-          STDERR.puts "duration: "+administration_timing_element.to_s
-          #if administration_timing_element
-          #   at = {}
-          #   if administration_timing_element['institutionSpecified']
-          #     at['institutionSpecified'] = administration_timing_element['institutionSpecified'].to_boolean
-          #   end
-          #   at['period'] = extract_scalar(administration_timing_element, "./cda:period")
-          #   if at.present?
-          #     medication.administration_timing['period'] = at
-          #   end
-          #end
+          ate = parent_element.at_xpath(@timing_xpath+'/cda:effectiveTime/cda:period')
+          if ate
+            at = {}
+            at['low'] = extract_scalar(ate, "./cda:low")
+            at['high'] = extract_scalar(ate, "./cda:high")
+            medication.administration_timing['period'] = at
+          end
+          ate = parent_element.at_xpath(@timing_xpath+'/cda:effectiveTime[cda:width]')
+          if ate
+            at = {}
+            at['width'] = extract_scalar(ate, "./cda:width")
+            medication.administration_timing['duration'] = at
+          end
+          #TODO - make sure the following actually works
+          ate = parent_element.at_xpath(@timing_xpath+'/cda:effectiveTime[cda:low]')
+          if ate
+            at = {}
+            at['low'] = extract_duration_fixed_dates(ate, "./cda:low")
+            at['high'] = extract_duration_fixed_dates(ate, "./cda:high")
+            medication.administration_timing['duration_dates'] = at
+          end
+          #STDERR.puts "duration_dates: "+medication.administration_timing['duration_dates'].inspect
+        end
 
-          #entry.administration_timing = {"period" => extract_quantity(element, "./gc32:administrationTiming/gc32:period"),
-          #                               "institutionSpecified" => extract_node_attribute(element.at_xpath("./gc32:administrationTiming"), :institutionSpecified)}
+        def extract_duration_fixed_dates(parent_element, dates_xpath)
+          date_element = parent_element.at_xpath(dates_xpath)
+          if date_element
+            {'inclusive' => date_element['inclusive'], 'value' => date_element['value']}
+          else
+            nil
+          end
         end
 
         def extract_freetextsig(parent_element, entry)

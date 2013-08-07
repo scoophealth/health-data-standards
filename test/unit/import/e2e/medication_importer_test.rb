@@ -106,10 +106,12 @@ class MedicationImporterTest < MiniTest::Unit::TestCase
 
     #TODO - fix administration timing for general case
     assert medication.administration_timing != nil
-    assert_equal 'xyz', medication.administration_timing.inspect
-    #assert_equal 4, medication.administration_timing['frequency']['numerator']['value']
-    #assert_equal 1, medication.administration_timing['frequency']['denominator']['value']
-    #assert_equal 'd', medication.administration_timing['frequency']['denominator']['unit']
+    assert_equal 4, medication.administration_timing['period']['low']['value']
+    assert_equal 'h', medication.administration_timing['period']['low']['unit']
+    assert_equal 6, medication.administration_timing['period']['high']['value']
+    assert_equal 'h', medication.administration_timing['period']['high']['unit']
+    assert_equal 10, medication.administration_timing['duration']['width']['value']
+    assert_equal 'D', medication.administration_timing['duration']['width']['unit']
 
     #TODO - fix freeTextSig
     text1 = "One spray every 5 minutes as needed for chest discomfort."
