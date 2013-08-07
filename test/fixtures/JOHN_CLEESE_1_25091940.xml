@@ -15,7 +15,7 @@ CDA Header
 	<id extension="1" root="2.16.840.1.113883.3.933"/>
 	<code code="34140-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Referral"/>
 	<title>PITO EMR-2-EMR Record of JOHN CLEESE</title>
-	<effectiveTime value="201308021014"/>
+	<effectiveTime value="201308071244"/>
 	<confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
 	<!-- 
 	********************************************************
@@ -52,7 +52,7 @@ CDA Header
 	********************************************************
 	-->
 	<author typeCode="AUT" contextControlCode="OP">
-		<time value="20130802"/>
+		<time value="20130807"/>
 		<assignedAuthor>
 			<id extension="000000" root="DCCD2C68-389B-44C4-AD99-B8FB2DAD1493"/>
 			<assignedPerson classCode="PSN" determinerCode="INSTANCE">
@@ -178,7 +178,7 @@ Clinically Measured Observation
 			<component typeCode="COMP" contextConductionInd="true">
 				<section classCode="DOCSECT" moodCode="EVN">
 					<templateId root="2.16.840.1.113883.3.1818.10.2.8.1"/>
-					<code code="CLINOBS" codeSystem="2.16.840.1.113883.3.1818.10.2.100.1" codeSystemName="PITOObservationType" displayName="Clinically Measured Observations"/>
+					<code code="CLINOBS" codeSystem="2.16.840.1.113883.3.3068.10.6.2" codeSystemName="SectionType-CA-Pending" displayName="Clinically Measured Observations"/>
 					<title>Clinical Measured Observations [with entries]</title>
 					<text>Clinical Measured Observations</text>
 					<entry typeCode="COMP" contextConductionInd="true">
@@ -186,7 +186,7 @@ Clinically Measured Observation
 						<!-- Clinically Measured Observations Organizer -->
 						<organizer classCode="CLUSTER" moodCode="EVN">
 							<id extension="76" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
-							<code code="MEAOBSORG" displayName="Measured Observations Organizer" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1" codeSystemName="PITO ObservationType"/>
+							<code code="MEAOBSORG" displayName="Measured Observations Organizer" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
 							<statusCode code="active"/>
 							<author typeCode="AUT" contextControlCode="OP">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
@@ -194,7 +194,6 @@ Clinically Measured Observation
 								<time value="20130508133121"/>
 								<assignedAuthor>
 									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
-									<code nullFlavor='NA'/>
 									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
 										<name use="L">
 											<given>doctor</given>
@@ -206,11 +205,11 @@ Clinically Measured Observation
 							<component typeCode="COMP" contextConductionInd="true">
 								<observation classCode="OBS" moodCode="EVN">
 									<id extension="76" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
-									<code nullFlavor="UNK"/>
 									<!-- OSCAR Type Code: BP -->
-									<text>Blood Pressure</text>
+									<code code="TBD" displayName="Blood Pressure" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+									<text>Blood Pressure (sitting position)</text>
 									<effectiveTime value="20130508000000"/>
-									<value xsi:type="ST">130/85 (sitting position)</value>
+									<value xsi:type="ST">130/85</value>
 								</observation>
 							</component>
 						</organizer>
@@ -220,7 +219,7 @@ Clinically Measured Observation
 						<!-- Clinically Measured Observations Organizer -->
 						<organizer classCode="CLUSTER" moodCode="EVN">
 							<id extension="77" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
-							<code code="MEAOBSORG" displayName="Measured Observations Organizer" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1" codeSystemName="PITO ObservationType"/>
+							<code code="MEAOBSORG" displayName="Measured Observations Organizer" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
 							<statusCode code="active"/>
 							<author typeCode="AUT" contextControlCode="OP">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
@@ -228,7 +227,6 @@ Clinically Measured Observation
 								<time value="20130508133121"/>
 								<assignedAuthor>
 									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
-									<code nullFlavor='NA'/>
 									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
 										<name use="L">
 											<given>doctor</given>
@@ -240,11 +238,11 @@ Clinically Measured Observation
 							<component typeCode="COMP" contextConductionInd="true">
 								<observation classCode="OBS" moodCode="EVN">
 									<id extension="77" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
-									<code nullFlavor="UNK"/>
 									<!-- OSCAR Type Code: TEMP -->
-									<text>Temperature</text>
+									<code code="8310-5" displayName="Temperature" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+									<text>Temperature (degrees celcius)</text>
 									<effectiveTime value="20130508000000"/>
-									<value xsi:type="ST">37 (degrees celcius)</value>
+									<value xsi:type="ST">37</value>
 								</observation>
 							</component>
 						</organizer>
@@ -254,7 +252,7 @@ Clinically Measured Observation
 						<!-- Clinically Measured Observations Organizer -->
 						<organizer classCode="CLUSTER" moodCode="EVN">
 							<id extension="78" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
-							<code code="MEAOBSORG" displayName="Measured Observations Organizer" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1" codeSystemName="PITO ObservationType"/>
+							<code code="MEAOBSORG" displayName="Measured Observations Organizer" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
 							<statusCode code="active"/>
 							<author typeCode="AUT" contextControlCode="OP">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
@@ -262,7 +260,6 @@ Clinically Measured Observation
 								<time value="20130508133121"/>
 								<assignedAuthor>
 									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
-									<code nullFlavor='NA'/>
 									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
 										<name use="L">
 											<given>doctor</given>
@@ -274,11 +271,11 @@ Clinically Measured Observation
 							<component typeCode="COMP" contextConductionInd="true">
 								<observation classCode="OBS" moodCode="EVN">
 									<id extension="78" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
-									<code nullFlavor="UNK"/>
 									<!-- OSCAR Type Code: WT -->
-									<text>Weight</text>
+									<code code="3141-9" displayName="Weight" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+									<text>Weight (in kg)</text>
 									<effectiveTime value="20130508000000"/>
-									<value xsi:type="ST">71 (in kg)</value>
+									<value xsi:type="ST">71</value>
 								</observation>
 							</component>
 						</organizer>
@@ -288,7 +285,7 @@ Clinically Measured Observation
 						<!-- Clinically Measured Observations Organizer -->
 						<organizer classCode="CLUSTER" moodCode="EVN">
 							<id extension="79" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
-							<code code="MEAOBSORG" displayName="Measured Observations Organizer" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1" codeSystemName="PITO ObservationType"/>
+							<code code="MEAOBSORG" displayName="Measured Observations Organizer" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
 							<statusCode code="active"/>
 							<author typeCode="AUT" contextControlCode="OP">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
@@ -296,7 +293,6 @@ Clinically Measured Observation
 								<time value="20130508133121"/>
 								<assignedAuthor>
 									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
-									<code nullFlavor='NA'/>
 									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
 										<name use="L">
 											<given>doctor</given>
@@ -308,11 +304,11 @@ Clinically Measured Observation
 							<component typeCode="COMP" contextConductionInd="true">
 								<observation classCode="OBS" moodCode="EVN">
 									<id extension="79" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
-									<code nullFlavor="UNK"/>
 									<!-- OSCAR Type Code: HT -->
-									<text>Height</text>
+									<code code="8302-2" displayName="Height" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+									<text>Height (in cm)</text>
 									<effectiveTime value="20130508000000"/>
-									<value xsi:type="ST">170 (in cm)</value>
+									<value xsi:type="ST">170</value>
 								</observation>
 							</component>
 						</organizer>
@@ -322,7 +318,7 @@ Clinically Measured Observation
 						<!-- Clinically Measured Observations Organizer -->
 						<organizer classCode="CLUSTER" moodCode="EVN">
 							<id extension="80" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
-							<code code="MEAOBSORG" displayName="Measured Observations Organizer" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1" codeSystemName="PITO ObservationType"/>
+							<code code="MEAOBSORG" displayName="Measured Observations Organizer" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
 							<statusCode code="active"/>
 							<author typeCode="AUT" contextControlCode="OP">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
@@ -330,7 +326,6 @@ Clinically Measured Observation
 								<time value="20130508133121"/>
 								<assignedAuthor>
 									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
-									<code nullFlavor='NA'/>
 									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
 										<name use="L">
 											<given>doctor</given>
@@ -342,11 +337,11 @@ Clinically Measured Observation
 							<component typeCode="COMP" contextConductionInd="true">
 								<observation classCode="OBS" moodCode="EVN">
 									<id extension="80" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
-									<code nullFlavor="UNK"/>
 									<!-- OSCAR Type Code: WAIS -->
-									<text>Waist</text>
+									<code code="56115-9" displayName="Waist" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+									<text>Waist (Waist Circum in cm)</text>
 									<effectiveTime value="20130508000000"/>
-									<value xsi:type="ST">36 (Waist Circum in cm)</value>
+									<value xsi:type="ST">36</value>
 								</observation>
 							</component>
 						</organizer>
@@ -356,7 +351,7 @@ Clinically Measured Observation
 						<!-- Clinically Measured Observations Organizer -->
 						<organizer classCode="CLUSTER" moodCode="EVN">
 							<id extension="81" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
-							<code code="MEAOBSORG" displayName="Measured Observations Organizer" codeSystem="2.16.840.1.113883.3.1818.10.2.8.1" codeSystemName="PITO ObservationType"/>
+							<code code="MEAOBSORG" displayName="Measured Observations Organizer" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
 							<statusCode code="active"/>
 							<author typeCode="AUT" contextControlCode="OP">
 								<templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
@@ -364,7 +359,6 @@ Clinically Measured Observation
 								<time value="20130508133121"/>
 								<assignedAuthor>
 									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
-									<code nullFlavor='NA'/>
 									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
 										<name use="L">
 											<given>doctor</given>
@@ -376,11 +370,11 @@ Clinically Measured Observation
 							<component typeCode="COMP" contextConductionInd="true">
 								<observation classCode="OBS" moodCode="EVN">
 									<id extension="81" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
-									<code nullFlavor="UNK"/>
 									<!-- OSCAR Type Code: PULSE -->
-									<text>Heart Rate</text>
+									<code code="8867-4" displayName="Heart Rate" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+									<text>Heart Rate (in bpm (nnn) Range:40-180)</text>
 									<effectiveTime value="20130508000000"/>
-									<value xsi:type="ST">85 (in bpm (nnn) Range:40-180)</value>
+									<value xsi:type="ST">85</value>
 								</observation>
 							</component>
 						</organizer>
@@ -439,7 +433,7 @@ Immunization List
 						<templateId root="2.16.840.1.113883.3.1818.10.3.11"/>
 						<!-- Immunization Observation -->
 						<substanceAdministration classCode="SBADM" moodCode="EVN" negationInd="false">
-							<id extension="BC20120211VAC-145999X" root="2.16.840.1.113883.3.1818.10.10.3"/>
+							<id extension="1" root="2.16.840.1.113883.3.1818.10.10.3"/>
 							<code code="IMMUNIZ" displayName="Immunization" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 Act Code"/>
 							<!-- Immunization Date -->
 							<effectiveTime value="20120901"/>
@@ -486,7 +480,7 @@ Immunization List
 						<templateId root="2.16.840.1.113883.3.1818.10.3.11"/>
 						<!-- Immunization Observation -->
 						<substanceAdministration classCode="SBADM" moodCode="EVN" negationInd="false">
-							<id extension="BC20120211VAC-145999X" root="2.16.840.1.113883.3.1818.10.10.3"/>
+							<id extension="2" root="2.16.840.1.113883.3.1818.10.10.3"/>
 							<code code="IMMUNIZ" displayName="Immunization" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 Act Code"/>
 							<!-- Immunization Date -->
 							<effectiveTime value="20090201"/>
@@ -520,7 +514,7 @@ Immunization List
 						<templateId root="2.16.840.1.113883.3.1818.10.3.11"/>
 						<!-- Immunization Observation -->
 						<substanceAdministration classCode="SBADM" moodCode="EVN" negationInd="false">
-							<id extension="BC20120211VAC-145999X" root="2.16.840.1.113883.3.1818.10.10.3"/>
+							<id extension="3" root="2.16.840.1.113883.3.1818.10.10.3"/>
 							<code code="IMMUNIZ" displayName="Immunization" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 Act Code"/>
 							<!-- Immunization Date -->
 							<effectiveTime value="20121031"/>
@@ -572,14 +566,14 @@ Laboratory Results & Results
 			<component typeCode="COMP" contextConductionInd="true">
 				<section classCode="DOCSECT" moodCode="EVN">
 					<templateId root="2.16.840.1.113883.3.1818.10.2.16.1"/>
-					<code code="11502-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Laboratory Report"/>
+					<code code="11502-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Relevant Diagnostic Tests and/or Laboratory Data"/>
 					<title>Laboratory Results and Reports [with entries]</title>
 					<text>Labs</text>
 					<entry typeCode="COMP" contextConductionInd="true">
-						<!-- Laboratory Observation -->
 						<templateId root="2.16.840.1.113883.3.1818.10.2.16.1"/>
-						<observation classCode="OBS" moodCode="RQO">
-							<id extension="2" root="TBD"/>
+						<!-- Laboratory Observation -->
+						<observation classCode="OBS" moodCode="EVN">
+							<id extension="2" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
 							<code nullFlavor='UNK'/>
 							<text>MICRO3</text>
 							<!-- Ordering Provider -->
@@ -589,9 +583,8 @@ Laboratory Results & Results
 								<time value="20110927"/>
 								<assignedAuthor>
 									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
-									<code nullFlavor='NA'/>
 									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
-										<name use="L">BOB MDCARE</name>
+										<name>BOB MDCARE</name>
 									</assignedPerson>
 								</assignedAuthor>
 							</author>
@@ -614,19 +607,21 @@ Laboratory Results & Results
 											<effectiveTime value="20110429084000"/>
 											<value xsi:type="ST">Bone Chip
 bone Lt metatarsal</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110429084000"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>VIHA</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -649,19 +644,21 @@ bone Lt metatarsal</value>
 +4 Gram positive cocci in pairs and chains 
 +2 Gram positive cocci in clusters 
 +2 Yeast</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110429144909"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>VIHA</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -683,19 +680,21 @@ bone Lt metatarsal</value>
 Imipenem : Further report to follow 
 +3 Escherichia coli 
 +3 Klebsiella oxytoca</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110503105149"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>VIHA</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -714,19 +713,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110503104913"/>
 											<value xsi:type="ST">Proteus mirabilis</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110503104913"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>VIHA</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -745,19 +746,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110838"/>
 											<value xsi:type="ST">R</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110502110838"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>VIHA</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -776,19 +779,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110838"/>
 											<value xsi:type="ST">R</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110502110838"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>VIHA</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -807,19 +812,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110838"/>
 											<value xsi:type="ST">R</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110502110838"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>VIHA</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -838,19 +845,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110503104913"/>
 											<value xsi:type="ST">R</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110503104913"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>VIHA</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -869,19 +878,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110503104755"/>
 											<value xsi:type="ST">R</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110503104755"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>VIHA</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -900,19 +911,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110503104755"/>
 											<value xsi:type="ST">R</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110503104755"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>VIHA</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -931,19 +944,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110503104755"/>
 											<value xsi:type="ST">R</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110503104755"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>VIHA</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -962,19 +977,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110503104755"/>
 											<value xsi:type="ST">R</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110503104755"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>VIHA</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -993,19 +1010,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110503104755"/>
 											<value xsi:type="ST">R</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110503104755"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>VIHA</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -1024,19 +1043,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110838"/>
 											<value xsi:type="ST">S</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110502110838"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>VIHA</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -1055,19 +1076,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110838"/>
 											<value xsi:type="ST">S</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110502110838"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>VIHA</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -1086,19 +1109,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110838"/>
 											<value xsi:type="ST">S</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110502110838"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>VIHA</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -1117,19 +1142,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110503104755"/>
 											<value xsi:type="ST">R</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110503104755"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>VIHA</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -1148,19 +1175,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110441"/>
 											<value xsi:type="ST">Escherichia coli</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110502110441"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>VIHA</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -1179,19 +1208,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110441"/>
 											<value xsi:type="ST">R</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110502110441"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>VIHA</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -1210,19 +1241,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110441"/>
 											<value xsi:type="ST">S</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110502110441"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>VIHA</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -1241,19 +1274,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110441"/>
 											<value xsi:type="ST">S</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110502110441"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>VIHA</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -1272,19 +1307,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110441"/>
 											<value xsi:type="ST">R</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110502110441"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>VIHA</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -1303,19 +1340,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110441"/>
 											<value xsi:type="ST">S</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110502110441"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>VIHA</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -1334,19 +1373,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110441"/>
 											<value xsi:type="ST">S</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110502110441"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>VIHA</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -1365,19 +1406,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110429"/>
 											<value xsi:type="ST">Klebsiella oxytoca</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110502110429"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>VIHA</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -1396,19 +1439,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110429"/>
 											<value xsi:type="ST">R</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110502110429"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>VIHA</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -1427,19 +1472,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110429"/>
 											<value xsi:type="ST">S</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110502110429"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>VIHA</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -1458,19 +1505,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110429"/>
 											<value xsi:type="ST">S</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110502110429"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>VIHA</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -1489,19 +1538,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110429"/>
 											<value xsi:type="ST">S</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110502110429"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>VIHA</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -1520,19 +1571,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110429"/>
 											<value xsi:type="ST">S</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110502110429"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>VIHA</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -1551,19 +1604,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110502110429"/>
 											<value xsi:type="ST">S</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110502110429"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>VIHA</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -1577,10 +1632,10 @@ Imipenem : Further report to follow
 						</observation>
 					</entry>
 					<entry typeCode="COMP" contextConductionInd="true">
-						<!-- Laboratory Observation -->
 						<templateId root="2.16.840.1.113883.3.1818.10.2.16.1"/>
-						<observation classCode="OBS" moodCode="RQO">
-							<id extension="3" root="TBD"/>
+						<!-- Laboratory Observation -->
+						<observation classCode="OBS" moodCode="EVN">
+							<id extension="3" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
 							<code nullFlavor='UNK'/>
 							<text>CHEM2/MICRO3</text>
 							<!-- Ordering Provider -->
@@ -1590,9 +1645,8 @@ Imipenem : Further report to follow
 								<time value="20110927"/>
 								<assignedAuthor>
 									<id use="BUS" extension="38809" root="2.16.840.1.113883.3.163.5.0.10.2"/>
-									<code nullFlavor='NA'/>
 									<assignedPerson classCode="PSN" determinerCode="INSTANCE">
-										<name use="L">BOB MDCARE</name>
+										<name>BOB MDCARE</name>
 									</assignedPerson>
 								</assignedAuthor>
 							</author>
@@ -1614,19 +1668,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110731112000"/>
 											<value xsi:type="ST">YELLOW</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110731112000"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>LIFELABS</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -1645,19 +1701,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110731112000"/>
 											<value xsi:type="ST">CLEAR</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110731112000"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>LIFELABS</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -1676,19 +1734,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110731112000"/>
 											<value xsi:type="ST">7.5</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110731112000"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>LIFELABS</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -1697,9 +1757,12 @@ Imipenem : Further report to follow
 											</entryRelationship>
 											<referenceRange typeCode="REFV">
 												<observationRange classCode="OBS" moodCode="EVN.CRT">
-													<code code="2756-5" displayName="pH" codeSystemName="LOINC"/>
-													<text>5.0...8.5</text>
-													<value xsi:type="ST">5.0...8.5</value>
+													<code code="N" displayName="Normal" codeSystem="2.16.840.1.113883.1.11.10206" codeSystemName="ObservationInterpretationNormality"/>
+													<text>Normal Reference range is between 5.0 and 8.5</text>
+													<value xsi:type="IVL_REAL">
+														<low value="5.0"/> 
+														<high value="8.5"/> 
+													</value>
 												</observationRange>
 											</referenceRange>
 										</observation>
@@ -1714,19 +1777,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110731112000"/>
 											<value xsi:type="ST">1.010</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110731112000"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>LIFELABS</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -1735,9 +1800,12 @@ Imipenem : Further report to follow
 											</entryRelationship>
 											<referenceRange typeCode="REFV">
 												<observationRange classCode="OBS" moodCode="EVN.CRT">
-													<code code="5811-5" displayName="Specific Gravity" codeSystemName="LOINC"/>
-													<text>1.003...1.035</text>
-													<value xsi:type="ST">1.003...1.035</value>
+													<code code="N" displayName="Normal" codeSystem="2.16.840.1.113883.1.11.10206" codeSystemName="ObservationInterpretationNormality"/>
+													<text>Normal Reference range is between 1.003 and 1.035</text>
+													<value xsi:type="IVL_REAL">
+														<low value="1.003"/> 
+														<high value="1.035"/> 
+													</value>
 												</observationRange>
 											</referenceRange>
 										</observation>
@@ -1752,19 +1820,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110731112000"/>
 											<value xsi:type="ST">&lt;0.3 g/L</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110731112000"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>LIFELABS</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -1773,9 +1843,11 @@ Imipenem : Further report to follow
 											</entryRelationship>
 											<referenceRange typeCode="REFV">
 												<observationRange classCode="OBS" moodCode="EVN.CRT">
-													<code code="5804-0" displayName="Protein" codeSystemName="LOINC"/>
-													<text>...0.3</text>
-													<value xsi:type="ST">...0.3</value>
+													<code code="N" displayName="Normal" codeSystem="2.16.840.1.113883.1.11.10206" codeSystemName="ObservationInterpretationNormality"/>
+													<text>Normal Reference range is less than 0.3</text>
+													<value xsi:type="IVL_REAL">
+														<high value="0.3"/> 
+													</value>
 												</observationRange>
 											</referenceRange>
 										</observation>
@@ -1790,19 +1862,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110731112000"/>
 											<value xsi:type="ST">&lt;6 mmol/L</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110731112000"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>LIFELABS</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -1811,9 +1885,11 @@ Imipenem : Further report to follow
 											</entryRelationship>
 											<referenceRange typeCode="REFV">
 												<observationRange classCode="OBS" moodCode="EVN.CRT">
-													<code code="2349-9" displayName="Glucose" codeSystemName="LOINC"/>
-													<text>...6</text>
-													<value xsi:type="ST">...6</value>
+													<code code="N" displayName="Normal" codeSystem="2.16.840.1.113883.1.11.10206" codeSystemName="ObservationInterpretationNormality"/>
+													<text>Normal Reference range is less than 6</text>
+													<value xsi:type="IVL_REAL">
+														<high value="6"/> 
+													</value>
 												</observationRange>
 											</referenceRange>
 										</observation>
@@ -1828,19 +1904,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110731112000"/>
 											<value xsi:type="ST">&lt;1.5 mmol/L</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110731112000"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>LIFELABS</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -1849,9 +1927,11 @@ Imipenem : Further report to follow
 											</entryRelationship>
 											<referenceRange typeCode="REFV">
 												<observationRange classCode="OBS" moodCode="EVN.CRT">
-													<code code="2514-8" displayName="Ketones" codeSystemName="LOINC"/>
-													<text>...1.5</text>
-													<value xsi:type="ST">...1.5</value>
+													<code code="N" displayName="Normal" codeSystem="2.16.840.1.113883.1.11.10206" codeSystemName="ObservationInterpretationNormality"/>
+													<text>Normal Reference range is less than 1.5</text>
+													<value xsi:type="IVL_REAL">
+														<high value="1.5"/> 
+													</value>
 												</observationRange>
 											</referenceRange>
 										</observation>
@@ -1866,19 +1946,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110731112000"/>
 											<value xsi:type="ST">NEG</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110731112000"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>LIFELABS</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -1887,7 +1969,7 @@ Imipenem : Further report to follow
 											</entryRelationship>
 											<referenceRange typeCode="REFV">
 												<observationRange classCode="OBS" moodCode="EVN.CRT">
-													<code code="5794-3" displayName="Hemoglobin" codeSystemName="LOINC"/>
+													<code code="N" displayName="Normal" codeSystem="2.16.840.1.113883.1.11.10206" codeSystemName="ObservationInterpretationNormality"/>
 													<text>Neg</text>
 													<value xsi:type="ST">Neg</value>
 												</observationRange>
@@ -1904,19 +1986,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110731112000"/>
 											<value xsi:type="ST">NEG</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110731112000"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>LIFELABS</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -1925,7 +2009,7 @@ Imipenem : Further report to follow
 											</entryRelationship>
 											<referenceRange typeCode="REFV">
 												<observationRange classCode="OBS" moodCode="EVN.CRT">
-													<code code="5802-4" displayName="Nitrite" codeSystemName="LOINC"/>
+													<code code="N" displayName="Normal" codeSystem="2.16.840.1.113883.1.11.10206" codeSystemName="ObservationInterpretationNormality"/>
 													<text>Neg</text>
 													<value xsi:type="ST">Neg</value>
 												</observationRange>
@@ -1942,19 +2026,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110731112000"/>
 											<value xsi:type="ST">+2</value>
-											<interpretationCode code="A"/>
+											<interpretationCode code="A"  displayName="Abnormal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110731112000"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>LIFELABS</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -1963,7 +2049,7 @@ Imipenem : Further report to follow
 											</entryRelationship>
 											<referenceRange typeCode="REFV">
 												<observationRange classCode="OBS" moodCode="EVN.CRT">
-													<code code="5799-2" displayName="Leukocytes" codeSystemName="LOINC"/>
+													<code code="N" displayName="Normal" codeSystem="2.16.840.1.113883.1.11.10206" codeSystemName="ObservationInterpretationNormality"/>
 													<text>Neg</text>
 													<value xsi:type="ST">Neg</value>
 												</observationRange>
@@ -1989,19 +2075,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110731112000"/>
 											<value xsi:type="ST">Final</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110731112000"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>LIFELABS</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -2021,19 +2109,21 @@ Imipenem : Further report to follow
 											<effectiveTime value="20110731112000"/>
 											<value xsi:type="ST">ESCHERICHIA COLI\.Zt\OVER 100 M CFU/L
 </value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110731112000"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>LIFELABS</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -2052,19 +2142,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110731112000"/>
 											<value xsi:type="ST">R</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110731112000"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>LIFELABS</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -2083,19 +2175,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110731112000"/>
 											<value xsi:type="ST">S</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110731112000"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>LIFELABS</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -2114,19 +2208,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110731112000"/>
 											<value xsi:type="ST">S</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110731112000"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>LIFELABS</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -2145,19 +2241,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110731112000"/>
 											<value xsi:type="ST">S</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110731112000"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>LIFELABS</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -2176,19 +2274,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110731112000"/>
 											<value xsi:type="ST">S</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110731112000"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>LIFELABS</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -2207,19 +2307,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110731112000"/>
 											<value xsi:type="ST">S</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110731112000"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>LIFELABS</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->
@@ -2238,19 +2340,21 @@ Imipenem : Further report to follow
 											<statusCode code="final"/>
 											<effectiveTime value="20110731112000"/>
 											<value xsi:type="ST">S</value>
-											<interpretationCode code="N"/>
+											<interpretationCode code="N"  displayName="Normal" codeSystem="2.16.840.1.113883.2.20.3.78" codeSystemName="ObservationInterpretation"/>
+											<!-- Resulting Organization -->
 											<performer typeCode="PRF">
 												<templateId root="2.16.840.1.113883.3.1818.10.4.19"/>
-												<!--Performer Participation-->
+												<!-- Performer Participation -->
 												<time value="20110731112000"/>
 												<assignedEntity>
-													<id extension="TBD" root="TBD"/>
+													<id extension="TBD" root="2.16.840.1.113883.3.40.2.11" assigningAuthorityName="BCMOH"/>
 													<representedOrganization classCode="ORG" determinerCode="INSTANCE">
 														<id extension="TBD" root="TBD"/>
 														<name>LIFELABS</name>
 													</representedOrganization>
 												</assignedEntity>
 											</performer>
+											<!--Specimen Collection Information -->
 											<entryRelationship typeCode="COMP">
 												<procedure classCode="PROC" moodCode="EVN">
 													<!-- specimen collection date -->

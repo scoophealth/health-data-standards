@@ -12,8 +12,8 @@ class VitalSignImporterTest < MiniTest::Unit::TestCase
     vital_sign = patient.vital_signs[0]
 
     assert_equal Time.gm(2013,5,8,0,0,0).to_i, vital_sign.time
-    assert_equal "Blood Pressure", vital_sign.description
-    assert_equal "130/85 (sitting position)", vital_sign.free_text
+    assert_equal "Blood Pressure (sitting position)", vital_sign.description
+    assert_equal "130/85", vital_sign.free_text
   end
 
 end
