@@ -15,7 +15,7 @@ CDA Header
 	<id extension="1" root="2.16.840.1.113883.3.933"/>
 	<code code="34140-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Referral"/>
 	<title>PITO EMR-2-EMR Record of JOHN CLEESE</title>
-	<effectiveTime value="201308071244"/>
+	<effectiveTime value="201308081423"/>
 	<confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
 	<!-- 
 	********************************************************
@@ -52,7 +52,7 @@ CDA Header
 	********************************************************
 	-->
 	<author typeCode="AUT" contextControlCode="OP">
-		<time value="20130807"/>
+		<time value="20130808"/>
 		<assignedAuthor>
 			<id extension="000000" root="DCCD2C68-389B-44C4-AD99-B8FB2DAD1493"/>
 			<assignedPerson classCode="PSN" determinerCode="INSTANCE">
@@ -102,7 +102,7 @@ Alerts
 			<component typeCode="COMP" contextConductionInd="true">
 				<section classCode="DOCSECT" moodCode="EVN">
 					<templateId root="2.16.840.1.113883.3.1818.10.2.3"/>
-					<code code="48765-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Allergies or Adverse Reactions Doc"/>
+					<code code="ALERTS" codeSystem="2.16.840.1.113883.3.3068.10.6.2" codeSystemName="SectionType-CA-Pending" displayName="Alerts"/>
 					<title>Alerts [without entries]</title>
 					<text>No Alerts</text>
 				</section>
@@ -400,17 +400,17 @@ Family History
 							<code code="DX" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code" displayName="Diagnosis"/>
 							<text>Heart Attack</text>
 							<effectiveTime value="20130305133450"/>
-							<value xsi:type="ST">Heart Attack</value>
-							<!--Relationship to the patient-->
+							<value xsi:type="CD" nullFlavor="NA"/>
+							<!--Relationship to the Patient-->
 							<subject typeCode="SBJ" contextControlCode="OP">
 								<relatedSubject classCode="PRS">
-									<code codeSystem="2.16.840.1.113883.5.111" code="OTH" displayName="Father"/>
+									<code code="FTH" displayName="Father" codeSystem="2.16.840.1.113883.5.111" codeSystemName="PersonalRelationshipRoleType"/>
 								</relatedSubject>
 							</subject>
+							<!--Age at Onset-->
 							<entryRelationship typeCode="COMP">
 								<observation classCode="OBS" moodCode="EVN">
-									<!--Age at Onset-->
-									<code code="30972-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Age at onset"/>
+									<code code="30972-4" displayName="Age at onset" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
 									<value xsi:type="INT" value="45"/>
 								</observation>
 							</entryRelationship>

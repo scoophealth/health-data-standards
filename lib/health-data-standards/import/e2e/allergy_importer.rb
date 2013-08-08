@@ -10,6 +10,7 @@ module HealthDataStandards
           @type_xpath = "./cda:code"
           #No support for reaction type (i.e., 'hives', etc.) in OSCAR E2E
           #@reaction_xpath = "./cda:entryRelationship[@typeCode='MFST']/cda:observation[cda:templateId/@root='2.16.840.1.113883.10.20.1.54']/cda:value"
+          @reaction_xpath = "./cda:entryRelationship/cda:observation/cda:entryRelationship/cda:observation[cda:code/@code='REACTOBS']/cda:text"
           @severity_xpath = "./cda:entryRelationship/cda:observation/cda:entryRelationship[cda:templateId/@root='2.16.840.1.113883.3.1818.10.4.30']/cda:observation/cda:value"
           @status_xpath   = "./cda:entryRelationship/cda:observation/cda:entryRelationship/cda:observation/cda:value[@codeSystem='2.16.840.1.113883.3.1818.10.2.8.2']"
           @id_map = {}
@@ -35,7 +36,8 @@ module HealthDataStandards
 
             extract_e2e_status(entry_element, allergy)
             allergy.type = extract_code(entry_element, @type_xpath)
-            #allergy.reaction = extract_code(entry_element, @reaction_xpath)
+            allergy.reaction = extract_code(entry_element, @reaction_xpath)
+            #STDERR.puts "reaction: "+allergy.reaction.inspect
             allergy.severity = extract_code(entry_element, @severity_xpath)
             #STDERR.puts "ENTRY_ELEMENT: " +entry_element
             #STDERR.puts "SEVERITY_XPATH: " +@severity_xpath

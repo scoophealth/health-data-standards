@@ -145,7 +145,8 @@ module HealthDataStandards
           patient.gender = gender_node['code']
           id_node = doc.at_xpath('/cda:ClinicalDocument/cda:recordTarget/cda:patientRole/cda:id')
           patient.medical_record_number = id_node['extension']
-          
+          #TODO import streetAddressLine, city, state, postalCode, phone number, gender description
+
           # parse race, ethnicity, and spoken language
           #race_node = patient_element.at_xpath('cda:raceCode')
           #patient.race = { code: race_node['code'], code_set: 'CDC-RE' } if race_node
