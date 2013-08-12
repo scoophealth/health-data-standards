@@ -1,3 +1,18 @@
+#XPath prefix /ClinicalDocument/component/structuredBody/component/section[code/@code='CLINOBS']/entry/organizer
+#OSCAR Field          Notes              Business Term         XPath
+#id                   unique db entry    Organizer ID          ./id/@extension
+#type                 freetext specified Observation Name      ./component/observation/text
+#                     by config file     Observation Code      ./author/assignedAuthor/code/@displayName
+#                                        Observation Code      ./author/assignedAuthor/code/@code
+#demographicNo        demographic number
+#providerNo           primary key        Observation Author    ./author/assignedAuthor/assignedPerson/name
+#dataField            data value of      Observation Value     ./component/observation/value
+#                     observation
+#measuringInstruction freetext units and Observation Name      ./component/observation/text
+#                     other notes
+#dateObserved         date observation   Observation Date/Time ./component/observation/effectiveTime/@value
+#dateEntered          date entered       Authored Date/Time    ./author/time/@value
+
 module HealthDataStandards
   module Import
     module E2E
@@ -31,7 +46,9 @@ module HealthDataStandards
 
         def initialize
           super
-          @entry_xpath = "//cda:section[cda:code/@code='CLINOBS']/cda:entry/cda:organizer"
+          #@entry_xpath = "//cda:section[cda:code/@code='CLINOBS']/cda:entry/cda:organizer"
+          @entry_xpath = "/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/cda:section[cda:code/@code='CLINOBS']/cda:entry/cda:organizer"
+          @code_xpath = "./cda:code"
           @time_xpath = "./cda:component/cda:observation/cda:effectiveTime"
           @description_xpath = "./cda:component/cda:observation/cda:text"
           @result_text_xpath = "./cda:component/cda:observation/cda:value"
@@ -64,9 +81,12 @@ module HealthDataStandards
           #print "element: " + entry_element.to_s + "\n"
           result = LabResult.new
           result.interpretation = {}
+          extract_codes(entry_element, result)
           extract_dates(entry_element, result)
-          extract_result_text(entry_element, result)
+          extract_value(entry_element, result)
           extract_description(entry_element, result)
+          extract_interpretation(entry_element, result)
+          extract_result_text(entry_element, result)
           result
         end
 
@@ -86,6 +106,15 @@ module HealthDataStandards
 
         def extract_description(parent_element, entry)
           entry.description = parent_element.at_xpath(@description_xpath).text
+        end
+
+        def extract_interpretation(parent_element, result)
+          interpretation_element = parent_element.at_xpath("./cda:interpretationCode")
+          if interpretation_element
+            code = interpretation_element['code']
+            code_system = CodeSystemHelper.code_system_for(interpretation_element['codeSystem'])
+            result.interpretation = {'code' => code, 'codeSystem' => code_system}
+          end
         end
 
       end
