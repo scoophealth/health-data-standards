@@ -24,13 +24,11 @@ module HealthDataStandards
       class AllergyImporter < SectionImporter
 
         def initialize
-          #@entry_xpath = "//cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.4.1']/cda:entry/cda:act"
           @entry_xpath = "/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/cda:section/cda:entry/cda:act"
           @code_xpath = "./cda:entryRelationship/cda:observation/cda:participant/cda:participantRole/cda:playingEntity/cda:code"
           @description_xpath = "./cda:entryRelationship/cda:observation/cda:participant/cda:participantRole/cda:playingEntity/cda:name"
           @type_xpath = "./cda:entryRelationship/cda:observation[cda:participant]/cda:code"
           @reaction_xpath = "./cda:entryRelationship/cda:observation/cda:entryRelationship/cda:observation[cda:code/@code='REACTOBS']"
-          #@severity_xpath = "./cda:entryRelationship/cda:observation/cda:entryRelationship[cda:templateId/@root='2.16.840.1.113883.3.1818.10.4.30']/cda:observation/cda:value"
           @severity_xpath = "./ cda:entryRelationship/cda:observation/cda:entryRelationship/cda:observation[cda:code/@code='SEV']/cda:value"
           @status_xpath   = "./cda:entryRelationship/cda:observation/cda:entryRelationship/cda:observation/cda:value[@codeSystem='2.16.840.1.113883.3.1818.10.2.8.2']"
           @id_map = {}

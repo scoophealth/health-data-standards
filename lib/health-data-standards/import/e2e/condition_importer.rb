@@ -1,3 +1,24 @@
+# XPath prefix /ClinicalDocument/component/structuredBody/component/section[templateId/@root='2.16.840.1.113883.3.1818.10.2.21.1' and code/@code='11450-4']/entry/observation
+#
+#OSCAR Table    Field           Notes                   Business Term            XPath(suffix)
+#-----------    -----           -----                   -------------            -------------
+#dxresearch     dxresearch_no   Primary Key             Record ID                ./id/@extension
+#dxresearch     demographic_no  Identify if problem
+#                               record is part of
+#                               this patient
+#dxresearch     start_date      Specified by user       Onset Date/Date Resolved ./effectiveTime/low/@value
+#                                                       Diagnosis Date           ./entryRelationship/observation/effectiveTime/@value
+#dxresearch     update_date     Time last edited        Authored Date/Time       ./author/time/@value
+#dxresearch     status          Active, Completed       Problem Status           ./statusCode/@code
+#                               or Deleted
+#dxresearch     dxresearch_code ICD9 or ichppccode?     Diagnosis Billing Code   ./entryRelationship/observation/value/@code
+#                               Value
+#dxresearch     coding_system   ICD9 or ichppccode
+#
+#icd9           description     Description             Diagnosis Text           ./text
+#                                                       Diagnosis Billing Code   ./entryRelationship/observation/value/@displayName
+
+
 module HealthDataStandards
   module Import
     module E2E
@@ -24,21 +45,22 @@ module HealthDataStandards
       #   * field :ordinality,    type: String
       #
       # @note The following XPath locations provide access to E2E information elements
-      #   * entry_xpath = "//cda:component/cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.21.1' and cda:code/@code='11450-4']/cda:entry/cda:observation"
-      #   * code_xpath = "./cda:entryRelationship/cda:observation/cda:value"
+      #   * entry_xpath = "/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.21.1' and cda:code/@code='11450-4']/cda:entry/cda:observation"
+      #   * code_xpath = "./cda:entryRelationship/cda:observation[cda:code/@code='BILLINGCODE']/cda:value"
       #   * status_xpath = "./cda:statusCode"
-      #   * description_xpath = "./cda:value/cda:originalText[@originalText]"
-      #   * provider_xpath = "./cda:author" #"/cda:assignedAuthor"
+      #   * description_xpath = "./cda:entryRelationship/cda:observation[cda:code/@code='BILLINGCODE']/cda:value" #./cda:value/cda:originalText[@originalText]
+      #   * provider_xpath = "./cda:author/cda:assignedAuthor"
 
       class ConditionImporter < SectionImporter
 
         def initialize
-          @entry_xpath = "//cda:component/cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.21.1' and cda:code/@code='11450-4']/cda:entry/cda:observation"
-          @code_xpath = "./cda:entryRelationship/cda:observation/cda:value"
+          #@entry_xpath = "//cda:component/cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.21.1' and cda:code/@code='11450-4']/cda:entry/cda:observation"
+          @entry_xpath = "/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.21.1' and cda:code/@code='11450-4']/cda:entry/cda:observation"
+          @code_xpath = "./cda:entryRelationship/cda:observation[cda:code/@code='BILLINGCODE']/cda:value"
           @status_xpath = "./cda:statusCode"
           #@priority_xpath = "./cda:priorityCode"
-          @description_xpath = "./cda:value/cda:originalText[@originalText]"
-          #@description_xpath = "./cda:text/cda:reference[@value]"
+          @description_xpath = "./cda:entryRelationship/cda:observation[cda:code/@code='BILLINGCODE']/cda:value"
+
           @provider_xpath = "./cda:author/cda:assignedAuthor"
           #@cod_xpath = "./cda:entryRelationship[@typeCode='CAUS']/cda:observation/cda:code[@code='419620001']"
         end
@@ -47,8 +69,7 @@ module HealthDataStandards
           @id_map = id_map
           condition_list = []
           entry_elements = doc.xpath(@entry_xpath)
-          #print "conditions: " + entry_elements.to_s + "\n"
-          
+
           entry_elements.each do |entry_element|
             condition = Condition.new
             
@@ -56,7 +77,8 @@ module HealthDataStandards
             extract_dates(entry_element, condition)
             extract_status(entry_element, condition)
             #extract_priority(entry_element, condition)
-            extract_description(entry_element, condition, id_map)
+            #extract_description(entry_element, condition, id_map)
+            extract_e2e_description(entry_element, condition)
             extract_author_time(entry_element, condition)
             #extract_cause_of_death(entry_element, condition) if @cod_xpath
             #extract_type(entry_element, condition)
@@ -66,7 +88,6 @@ module HealthDataStandards
                 condition.treating_provider << import_actor(provider_element)
               end
             end
-
             condition_list << condition
           end
           
@@ -110,6 +131,9 @@ module HealthDataStandards
         #  end
         #end
 
+        def extract_e2e_description(parent_element, entry)
+          entry.description = parent_element.xpath(@description_xpath+'/@displayName')
+        end
 
         def extract_status(parent_element, entry)
           status_element = parent_element.xpath(@status_xpath+"/@code").to_s
