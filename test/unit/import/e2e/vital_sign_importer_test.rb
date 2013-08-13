@@ -32,6 +32,37 @@ class VitalSignImporterTest < MiniTest::Unit::TestCase
     assert_equal 1, patient.vital_signs.size
     vital_sign = patient.vital_signs[0]
 
+    #vital_sign = patient.vital_signs[0]
+
+    #assert_equal 'N', vital_sign.interpretation['code']
+    #assert_equal "177", vital_sign.values.first.scalar
+    #assert_equal "cm", vital_sign.values.first.units
+    #assert_equal 'HITSP C80 Observation Status', vital_sign.interpretation['codeSystem']
+
+    #assert_equal "LOINC", code_system
+    #assert_equal ["14647-2"], result.codes[code_system]
+
+    #translation = result.codes.keys[1]
+
+    #assert_equal "SNOMED-CT", translation
+    #assert_equal ["12345"], result.codes[translation]
+
+    #assert_equal 135, result.values.first.scalar
+    #assert_equal "mg/dl", result.values.first.units
+
+    #assert_equal "<200 mg/dl", result.reference_range
+    #assert_equal "completed", result.status
+
+    #assert_equal Time.parse('2012-01-30T09:00:00').utc.to_i, result.time
+
+    #refute_nil result.interpretation
+
+    #interpretation_code_system = result.interpretation.keys[0]
+
+    #assert_equal "HITSP C80 Observation Status", interpretation_code_system
+    #assert_equal ["N"], result.interpretation[interpretation_code_system]
+
+
     assert_equal Time.gm(2012,1,13,0,0,0).to_i, vital_sign.time
     assert_equal "Waist circumference", vital_sign.description
     assert_equal "", vital_sign.free_text

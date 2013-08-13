@@ -24,7 +24,7 @@ class PatientImporterTest < MiniTest::Unit::TestCase
     assert_equal -923616000, patient.birthdate
     assert_equal 'M', patient.gender
     assert_equal '000000000', patient.medical_record_number
-    assert_equal Time.gm(2013,8,8,14,23,0).to_i, patient.effective_time
+    assert_equal Time.gm(2013,8,13,10,6,0).to_i, patient.effective_time
     assert_equal ['EN'], patient.languages
 
   end

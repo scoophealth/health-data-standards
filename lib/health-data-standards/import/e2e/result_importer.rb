@@ -1,3 +1,45 @@
+#PREFIX_PARTIAL "/ClinicalDocument/component/structuredBody/component/section[templateId/@root='2.16.840.1.113883.3.1818.10.2.16.1' and code/@code='30954-2']/entry/observation"
+#PREFIX PREFIX_PARTIAL+"/entryRelationship/organizer/component/observation"
+# (*)XPath Suffix appended to PREFIX_PARTIAL rather than full prefix
+#OSCAR Table       Field             Notes               Business Term            XPath Suffix
+
+#PatientLabRouting demographic_no    demographic number
+#PatientLabRouting lab_no            lab number
+#                                    (foreign key)
+#Hl7TextInfo       id                primary key         Order Record ID          ./id/@extension (*)
+#Hl7TextInfo       obr_date          date test was done  Result Date/Time         ./author/time/@value (*)
+#                                                        Specimen Collection Date ./entryRelationship/procedure/effectiveTime/@value
+#Hl7TextInfo       requesting_client who requested test? Ordering Provider        ./author/assignedAuthor/assignedPerson/name (*)
+#Hl7TextInfo       discipline        type of test done   Order Name               ./text (*)
+#Hl7TextInfo       report_status     final, corrected,   Result Status            ./entryRelationship/organizer/statusCode/@code (*)
+#                                    preliminary
+#measurements      dataField         freetext result     Result Value             ./value
+#measurements      comments          freetext comments   Result Notes             ./entryRelationship/observation/value
+#
+#measurementsExt   abnormal          normal/abnormal     Interpretation Code      ./interpretationCode
+#measurementsExt   identifier        LOINC               Result Observation Code  ./code/@code
+#measurementsExt   name              freetext test name  Result Observation Code  ./code/@displayName
+#                                                        Result Name              ./text
+#measurementsExt   labname           lab name            Represented Organization ./performer/assignedEntity/representedOrganization/name
+#                                                        > Name
+#measurementsExt   accession         accession number    Result Observation       ./id/@extension
+#                                                        Record ID
+#measurementsExt   datetime          time performed      Result Organizer Status  ./effectiveTime/@value
+#                                                        Resulting Organization   ./performer/time/@value
+#                                                        > Performed Date/Time
+#measurementsExt   olis_status       final, corrected,   Result Status            ./statusCode/@code
+#                                    preliminary
+#measurementsExt   unit              measurement unit    Result Value             ./value/@unit
+#measurementsExt   range             freetext            Reference Range Text     ./referenceRange/observationRange/text
+#                                                        Reference Range Value    ./referenceRange/observationRange/value
+#measurementsExt   minimum           numeric freetext    Reference Range Text     ./referenceRange/observationRange/text
+#                                                        Reference Range Value    ./referenceRange/observationRange/value/low
+#measurementsExt   maximum           numeric freetext    Reference Range Text     ./referenceRange/observationRange/text
+#                                                        Reference Range Value    ./referenceRange/observationRange/value/high
+#measurementsExt   other_id          defines battery     Result Organizer         ./entryRelationship/organizer/id/@extension (*)
+#                                    groupings           Record ID
+
+
 module HealthDataStandards
   module Import
     module E2E
@@ -32,7 +74,9 @@ module HealthDataStandards
       class ResultImporter < SectionImporter
 
         def initialize
-          @entry_xpath = "//cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.16.1' and cda:code/@code='11502-2']/cda:entry/cda:observation/cda:entryRelationship/cda:organizer/cda:component/cda:observation"
+          @entry_xpath = "/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/"+
+              "cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.16.1' and cda:code/@code='30954-2']/"+
+              "cda:entry/cda:observation/cda:entryRelationship/cda:organizer/cda:component/cda:observation"
           @code_xpath = "./cda:code"
           @referencerange_xpath = "./cda:referenceRange"
           @interpretation_xpath = "./cda:interpretationCode"

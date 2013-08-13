@@ -12,10 +12,20 @@ CDA Header
 -->
 	<realmCode code="CA" />
 	<typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040"/>
+	<!-- Conforms to the BC PITO Standard Header specification -->
+	<templateId root="2.16.840.1.113883.3.1818.10.7.1"/>
+	<!-- Conforms to the BC PITO EMR Conversion Document specification -->
+	<templateId root="2.16.840.1.113883.3.1818.10.1.1"/>
+	<!-- Conforms to the BC PITO EMR Generic Episodic Document specification -->
+	<templateId root="2.16.840.1.113883.3.1818.10.1.2"/>
+	<!-- Conforms to the BC PITO EMR Patient Transfer Document specification -->
+	<templateId root="2.16.840.1.113883.3.1818.10.1.3"/>
+	<!-- Conforms to the BC PITO EMR Generic Structured Referal specification -->
+	<templateId root="2.16.840.1.113883.3.1818.10.1.6"/>
 	<id extension="1" root="2.16.840.1.113883.3.933"/>
 	<code code="34140-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Referral"/>
 	<title>PITO EMR-2-EMR Record of JOHN CLEESE</title>
-	<effectiveTime value="201308081423"/>
+	<effectiveTime value="201308131006"/>
 	<confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
 	<!-- 
 	********************************************************
@@ -52,7 +62,7 @@ CDA Header
 	********************************************************
 	-->
 	<author typeCode="AUT" contextControlCode="OP">
-		<time value="20130808"/>
+		<time value="20130813"/>
 		<assignedAuthor>
 			<id extension="000000" root="DCCD2C68-389B-44C4-AD99-B8FB2DAD1493"/>
 			<assignedPerson classCode="PSN" determinerCode="INSTANCE">
@@ -92,8 +102,23 @@ CDA Header
 e-MS CDA Structured Body
 ********************************************************
 -->
-	<component>
-		<structuredBody>
+	<component typeCode="COMP" contextConductionInd="true">
+		<structuredBody classCode="DOCBODY" moodCode="EVN">
+			<confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
+			<languageCode code="en-CA"/>
+<!--
+********************************************************
+Advance Directives
+********************************************************
+-->
+			<component typeCode="COMP" contextConductionInd="true">
+				<section classCode="DOCSECT" moodCode="EVN">
+					<templateId root="2.16.840.1.113883.3.1818.10.2.2"/>
+					<code code="42348-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Advance Directives"/>
+					<title>Advance Directives Section [without entries]</title>
+					<text>No Advance Directives</text>
+				</section>
+			</component>
 <!--
 ********************************************************
 Alerts
@@ -117,7 +142,11 @@ Allergies and Intolerances - (Reaction List)
 					<templateId root="2.16.840.1.113883.3.1818.10.2.4.1"/>
 					<code code="48765-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Allergies andor Adverse Reactions Doc"/>
 					<title>Allergies and Intolerances (Reaction List) [with entries]</title>
-					<text>Allergies</text>
+					<text>
+						<list>
+							<item>PENICILLINS, COMBINATIONS WITH OTHER ANTIBACTERIAL</item>
+						</list>
+					</text>
 					<entry typeCode="COMP" contextConductionInd="true">
 						<templateId root="2.16.840.1.113883.3.1818.10.3.3"/>
 						<!-- Allergy and Intolerance Observation -->
@@ -180,7 +209,16 @@ Clinically Measured Observation
 					<templateId root="2.16.840.1.113883.3.1818.10.2.8.1"/>
 					<code code="CLINOBS" codeSystem="2.16.840.1.113883.3.3068.10.6.2" codeSystemName="SectionType-CA-Pending" displayName="Clinically Measured Observations"/>
 					<title>Clinical Measured Observations [with entries]</title>
-					<text>Clinical Measured Observations</text>
+					<text>
+						<list>
+							<item>Blood Pressure: 130/85 (sitting position)</item>
+							<item>Temperature: 37 (degrees celcius)</item>
+							<item>Weight: 71 (in kg)</item>
+							<item>Height: 170 (in cm)</item>
+							<item>Waist: 36 (Waist Circum in cm)</item>
+							<item>Heart Rate: 85 (in bpm (nnn) Range:40-180)</item>
+						</list>
+					</text>
 					<entry typeCode="COMP" contextConductionInd="true">
 						<templateId root="2.16.840.1.113883.3.1818.10.3.7"/>
 						<!-- Clinically Measured Observations Organizer -->
@@ -206,7 +244,7 @@ Clinically Measured Observation
 								<observation classCode="OBS" moodCode="EVN">
 									<id extension="76" root="2.16.840.1.113883.3.1818.10.2.10.15"/>
 									<!-- OSCAR Type Code: BP -->
-									<code code="TBD" displayName="Blood Pressure" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+									<code code="55284-4" displayName="Blood Pressure" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
 									<text>Blood Pressure (sitting position)</text>
 									<effectiveTime value="20130508000000"/>
 									<value xsi:type="ST">130/85</value>
@@ -383,6 +421,19 @@ Clinically Measured Observation
 			</component>
 <!--
 ********************************************************
+Encounter History and Notes
+********************************************************
+-->
+			<component typeCode="COMP" contextConductionInd="true">
+				<section classCode="DOCSECT" moodCode="EVN">
+					<templateId root="2.16.840.1.113883.3.1818.10.2.22"/>
+					<code code="46240-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of hospitalizations+History of outpatient visits"/>
+					<title>Encounter History and Notes [without entries]</title>
+					<text>No Encounter History</text>
+				</section>
+			</component>
+<!--
+********************************************************
 Family History
 ********************************************************
 -->
@@ -391,7 +442,11 @@ Family History
 					<templateId root="2.16.840.1.113883.3.1818.10.2.13.1"/>
 					<code code="10157-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of Family Member Diseases"/>
 					<title>Family History [with entries]</title>
-					<text>Family History</text>
+					<text>
+						<list>
+							<item>Heart Attack</item>
+						</list>
+					</text>
 					<entry typeCode="COMP" contextConductionInd="true">
 						<templateId root="2.16.840.1.113883.3.1818.10.3.10"/>
 						<!-- Family History Observation -->
@@ -428,7 +483,13 @@ Immunization List
 					<templateId root="2.16.840.1.113883.3.1818.10.2.14.1"/>
 					<code code="11369-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of Immunization"/>
 					<title>Immunizations List [with entries]</title>
-					<text>Immunizations</text>
+					<text>
+						<list>
+							<item>Td Sep 01, 2012 Completed</item>
+							<item>Pneumovax Feb 01, 2009 Completed</item>
+							<item>Flu Oct 31, 2012 Completed</item>
+						</list>
+					</text>
 					<entry typeCode="COMP" contextConductionInd="true">
 						<templateId root="2.16.840.1.113883.3.1818.10.3.11"/>
 						<!-- Immunization Observation -->
@@ -560,15 +621,97 @@ Immunization List
 			</component>
 <!--
 ********************************************************
+Investigative Procedure History
+********************************************************
+-->
+			<component typeCode="COMP" contextConductionInd="true">
+				<section classCode="DOCSECT" moodCode="EVN">
+					<templateId root="2.16.840.1.113883.3.1818.10.2.15"/>
+					<code code="INVPROC" displayName="Investigative Procedure Section" codeSystem="2.16.840.1.113883.3.3068.10.6.2" codeSystemName="SectionType-CA-Pending" />
+					<title>Investigative Procedure History (without entries)</title>
+					<text>No Investigative Procedure History</text>
+				</section>
+			</component>
+<!--
+********************************************************
 Laboratory Results & Results
 ********************************************************
 -->
 			<component typeCode="COMP" contextConductionInd="true">
 				<section classCode="DOCSECT" moodCode="EVN">
 					<templateId root="2.16.840.1.113883.3.1818.10.2.16.1"/>
-					<code code="11502-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Relevant Diagnostic Tests and/or Laboratory Data"/>
+					<code code="30954-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Relevant Diagnostic Tests and/or Laboratory Data"/>
 					<title>Laboratory Results and Reports [with entries]</title>
-					<text>Labs</text>
+					<text>
+						<list>
+							<item>MICRO3	Sep 27, 2011</item>
+							<item>Specimen Source: Bone Chip
+bone Lt metatarsal</item>
+							<item>Gram Stain: +3 Polymorphs 
++4 Gram negative bacilli resembling coliforms 
++4 Gram positive cocci in pairs and chains 
++2 Gram positive cocci in clusters 
++2 Yeast</item>
+							<item>Report Status Preliminary: +3 Proteus mirabilis 
+Imipenem : Further report to follow 
++3 Escherichia coli 
++3 Klebsiella oxytoca</item>
+							<item>Culture: Proteus mirabilis</item>
+							<item>Ampicillin: R</item>
+							<item>Cephalexin: R</item>
+							<item>Cefazolin: R</item>
+							<item>Cefuroxime Parenteral: R</item>
+							<item>Cefixime: R</item>
+							<item>Cefotaxime: R</item>
+							<item>Ceftriaxone: R</item>
+							<item>Cefpodoxime: R</item>
+							<item>Ceftazidime: R</item>
+							<item>Trimethoprim-Sulfa: S</item>
+							<item>Ciprofloxacin: S</item>
+							<item>Gentamicin: S</item>
+							<item>Tetracycline: R</item>
+							<item>Culture: Escherichia coli</item>
+							<item>Ampicillin: R</item>
+							<item>Cephalexin: S</item>
+							<item>Cefazolin: S</item>
+							<item>Trimethoprim-Sulfa: R</item>
+							<item>Ciprofloxacin: S</item>
+							<item>Gentamicin: S</item>
+							<item>Culture: Klebsiella oxytoca</item>
+							<item>Ampicillin: R</item>
+							<item>Cephalexin: S</item>
+							<item>Cefazolin: S</item>
+							<item>Trimethoprim-Sulfa: S</item>
+							<item>Ciprofloxacin: S</item>
+							<item>Gentamicin: S</item>
+						</list>
+						<list>
+							<item>CHEM2/MICRO3	Sep 27, 2011</item>
+							<item>Colour: YELLOW</item>
+							<item>Appearance: CLEAR</item>
+							<item>pH: 7.5</item>
+							<item>Specific Gravity: 1.010</item>
+							<item>Protein: &lt;0.3 g/L</item>
+							<item>Glucose: &lt;6 mmol/L</item>
+							<item>Ketones: &lt;1.5 mmol/L</item>
+							<item>Hemoglobin: NEG</item>
+							<item>Nitrite: NEG</item>
+							<item>Leukocytes: +2</item>
+						</list>
+						<list>
+							<item>CHEM2/MICRO3	Sep 27, 2011</item>
+							<item>Report Status: Final</item>
+							<item>Organism 1: ESCHERICHIA COLI\.Zt\OVER 100 M CFU/L
+</item>
+							<item>Ampicillin: R</item>
+							<item>Cephalothin-Cephalexin: S</item>
+							<item>Trimethoprim-Sulfa: S</item>
+							<item>Ciprofloxacin: S</item>
+							<item>Gentamicin: S</item>
+							<item>Tetracycline: S</item>
+							<item>Nitrofurantoin: S</item>
+						</list>
+					</text>
 					<entry typeCode="COMP" contextConductionInd="true">
 						<templateId root="2.16.840.1.113883.3.1818.10.2.16.1"/>
 						<!-- Laboratory Observation -->
@@ -2371,6 +2514,32 @@ Imipenem : Further report to follow
 			</component>
 <!--
 ********************************************************
+Medical History
+********************************************************
+-->
+			<component typeCode="COMP" contextConductionInd="true">
+				<section classCode="DOCSECT" moodCode="EVN">
+					<templateId root="2.16.840.1.113883.3.1818.10.2.17"/>
+					<code code="11348-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of Past Illness"/>
+					<title>Medical History (without entries)</title>
+					<text>No Medical History</text>
+				</section>
+			</component>
+<!--
+********************************************************
+Medical Imaging History Results & Reports
+********************************************************
+-->
+			<component typeCode="COMP" contextConductionInd="true">
+				<section classCode="DOCSECT" moodCode="EVN">
+					<templateId root="2.16.840.1.113883.3.1818.10.2.18"/>
+					<code code="55115-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Requested imaging studies information"/>
+					<title>Medical Imaging Results and Reports (without entries)</title>
+					<text>No Medical Imaging Results and Reports</text>
+				</section>
+			</component>
+<!--
+********************************************************
 Medications and Prescriptions - Medication List
 ********************************************************
 -->
@@ -2379,6 +2548,19 @@ Medications and Prescriptions - Medication List
 					<templateId root="2.16.840.1.113883.3.1818.10.2.19.1"/>
 					<code code="10160-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of Medication Use"/>
 					<title>Medications and Prescriptions - Medication List [with entries]</title>
+					<text>
+						<list>
+							<item>TYLENOL EXTRA STRENGTH TAB 500MG QID 25 D</item>
+							<item>SPIRONOLACTONE 25MG TABLET QAM 28 D</item>
+							<item>IBUPROFEN TAB 400MG TID 28 D</item>
+							<item>ATIVAN 1MG BID 20 D</item>
+							<item>ASA 81 MG OD 28 D</item>
+							<item>FUROSEMIDE 20MG QAM 56 D</item>
+							<item>AVA-RAMIPRIL 5MG OD 28 D</item>
+							<item>CARVEDILOL 12.5MG OD 28 D</item>
+							<item>ATORVASTATIN 40MG OD 28 D</item>
+						</list>
+					</text>
 					<entry typeCode="COMP" contextConductionInd="true">
 						<templateId root="2.16.840.1.113883.3.1818.10.3.18" />
 						<substanceAdministration classCode="SBADM" moodCode="EVN">
@@ -3778,6 +3960,19 @@ Code"/>
 			</component>
 <!--
 ********************************************************
+Orders & Requests
+********************************************************
+-->
+			<component typeCode="COMP" contextConductionInd="true">
+				<section classCode="DOCSECT" moodCode="EVN">
+					<templateId root="2.16.840.1.113883.3.1818.10.2.20"/>
+					<code code="REQS" codeSystem="2.16.840.1.113883.3.3068.10.6.2" codeSystemName="SectionType-CA-Pending" displayName="Problems list Reported"/>
+					<title>Orders and Requests (without entries)</title>
+					<text>No Orders and Requests</text>
+				</section>
+			</component>
+<!--
+********************************************************
 Problems and Conditions - Problem List
 ********************************************************
 -->
@@ -3786,7 +3981,14 @@ Problems and Conditions - Problem List
 					<templateId root="2.16.840.1.113883.3.1818.10.2.21.1"/>
 					<code code="11450-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Problems List Reported"/>
 					<title>Problems and Conditions - Problem List [with entries]</title>
-					<text>Problems</text>
+					<text>
+						<list>
+							<item>HEART FAILURE* (ICD9: 428)</item>
+							<item>ESSENTIAL HYPERTENSION* (ICD9: 401)</item>
+							<item>DIABETES MELLITUS* (ICD9: 250)</item>
+							<item>CHRONIC BRONCHITIS* (ICD9: 491)</item>
+						</list>
+					</text>
 					<entry typeCode="COMP" contextConductionInd="true"> 
 						<templateId root="2.16.840.1.113883.3.1818.10.3.15"/>
 						<!-- Problem List Observation -->
@@ -3979,6 +4181,20 @@ Problems and Conditions - Problem List
 			</component>
 <!--
 ********************************************************
+Purpose
+********************************************************
+-->
+			<component typeCode="COMP" contextConductionInd="true">
+				<section classCode="DOCSECT" moodCode="EVN">
+					<templateId root="2.16.840.1.113883.3.1818.10.2.22"/>
+					<!-- Purpose Section -->
+					<code code="42349-1" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Reason For Referral"/>
+					<title>Purpose [without entries]</title>
+					<text>Purpose not defined</text>
+				</section>
+			</component>
+<!--
+********************************************************
 Risk Factors
 ********************************************************
 -->
@@ -3988,6 +4204,32 @@ Risk Factors
 					<code code="46467-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Risk Factors"/>
 					<title>Risk Factors [without entries]</title>
 					<text>No Risk Factors</text>
+				</section>
+			</component>
+<!--
+********************************************************
+Surgical Procedure History
+********************************************************
+-->
+			<component typeCode="COMP" contextConductionInd="true">
+				<section classCode="DOCSECT" moodCode="EVN">
+					<templateId root="2.16.840.1.113883.3.1818.10.2.25"/>
+					<code code="10167-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of surgical procedures"/>
+					<title>Care History [without entries]</title>
+					<text>No Care History</text>
+				</section>
+			</component>
+<!--
+********************************************************
+Treatment History
+********************************************************
+-->
+			<component typeCode="COMP" contextConductionInd="true">
+				<section classCode="DOCSECT" moodCode="EVN">
+					<templateId root="2.16.840.1.113883.3.1818.10.2.26"/>
+					<code code="62387-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Interventions "/>
+					<title>Treatment History [without entries]</title>
+					<text>No Treatment History</text>
 				</section>
 			</component>
 		</structuredBody>
