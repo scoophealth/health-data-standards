@@ -65,8 +65,11 @@ module HealthDataStandards
       #   * field :interpretation, type: Hash
       #
       # @note The following are XPath locations for E2E information elements captured by the query-gateway results model.
-      #   * entry_xpath = "//cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.16.1' and cda:code/@code='11502-2']/cda:entry/cda:observation/cda:entryRelationship/cda:organizer/cda:component/cda:observation"
+      #   * entry_xpath = "/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/"+
+      #      "cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.16.1' and cda:code/@code='30954-2']/"+
+      #      "cda:entry/cda:observation/cda:entryRelationship/cda:organizer/cda:component/cda:observation"
       #   * code_xpath = "./cda:code"
+      #   * referencerange_xpath = "./cda:referenceRange"
       #   * interpretation_xpath = "./cda:interpretationCode"
       #   * description_xpath = "./cda:text/text()"
       #   * status_xpath = "./cda:statusCode/@code"
@@ -82,7 +85,7 @@ module HealthDataStandards
           @interpretation_xpath = "./cda:interpretationCode"
           @description_xpath = "./cda:text/text()"
           @status_xpath = "./cda:statusCode/@code"
-          @check_for_usable = true               # Pilot tools will set this to false
+          @check_for_usable = true              # Pilot tools will set this to false
         end
     
         # Traverses the E2E document passed in using XPath and creates an Array of Entry
@@ -95,7 +98,6 @@ module HealthDataStandards
           result_list = []
           entry_elements = doc.xpath(@entry_xpath)
           entry_elements.each do |entry_element|
-            #print "result: " + entry_element.to_s + "\n"
             result = create_entry(entry_element, id_map)
             if @check_for_usable
               result_list << result if result.usable?
@@ -107,32 +109,41 @@ module HealthDataStandards
         end
         
         def create_entry(entry_element, id_map={})
-          #print "element: " + entry_element.to_s + "\n"
           result = LabResult.new
           result.interpretation = {}
           extract_codes(entry_element, result)
-          extract_status(entry_element, result)
           extract_dates(entry_element, result)
           extract_value(entry_element, result)
-          extract_description(entry_element, result)
-          extract_referencerange(entry_element, result)
           extract_interpretation(entry_element, result)
+          extract_description(entry_element, result)
+          extract_status(entry_element, result)
+          extract_reference_range(entry_element, result)
           result
         end
     
         private
 
-        def extract_referencerange(parent_element, result)
-          element = parent_element.xpath(@referencerange_xpath+"/cda:observationRange/cda:text/text()")
-          result.referenceRange = element.to_s if not element.empty?
-
+        def extract_reference_range(parent_element, result)
+          elements = parent_element.xpath(@referencerange_xpath+"/cda:observationRange/cda:text/text()")
+          if not elements.empty?
+            result.referenceRange = ""
+            elements.each do |element|
+              result.referenceRange = result.referenceRange + element.to_s
+              if elements.size > 1
+                result.referenceRange = result.referenceRange + "; "
+              end
+            end
+          else
+            result.referenceRange = "unspecified"
+          end
         end
 
         def extract_interpretation(parent_element, result)
-          interpretation_element = parent_element.xpath(@interpretation_xpath+"/@code")
+          interpretation_element = parent_element.at_xpath("./cda:interpretationCode")
           if interpretation_element
-            code = interpretation_element.to_s
-            result.interpretation = {'code' => code, 'codeSystem' => nil}
+            code = interpretation_element['code']
+            code_system = CodeSystemHelper.code_system_for(interpretation_element['codeSystem'])
+            result.interpretation = {'code' => code, 'codeSystem' => code_system}
           end
         end
 
@@ -140,7 +151,6 @@ module HealthDataStandards
           code_elements = parent_element.xpath(@code_xpath)
 
           code_elements.each do |code_element|
-            #print "codes: " + code_element.to_s + "\n"
             add_code_if_present(code_element, entry)
           end
         end
@@ -148,7 +158,6 @@ module HealthDataStandards
         def add_code_if_present(code_element, entry)
           if code_element['codeSystemName'] && code_element['code']
             entry.add_code(code_element['code'], code_element['codeSystemName'])
-            #print "code: " + entry.codes.to_s + "\n"
           end
         end
 
@@ -157,11 +166,10 @@ module HealthDataStandards
         end
 
         def extract_status(parent_element, entry)
-          status_element = parent_element.at_xpath(@status_xpath)
-          if status_element
-            entry.status =  status_element
-          end
+          status_element = parent_element.xpath(@status_xpath)
+          entry.status_code = {value: status_element.to_s}
         end
+
       end
     end
   end
