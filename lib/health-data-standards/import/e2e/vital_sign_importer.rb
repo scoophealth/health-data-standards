@@ -37,21 +37,16 @@ module HealthDataStandards
             # @note class LabResult < Entry
             #   * field :referenceRange, type: String
             #   * field :interpretation, type: Hash
-            #
-            # @note The following are XPath locations for E2E information elements captured for the query-gateway results model.
-            #   * entry_xpath = "//cda:section[cda:code/@code='CLINOBS']/cda:entry/cda:organizer"
-            #   * time_xpath = "./cda:component/cda:observation/cda:effectiveTime"
-            #   * description_xpath = "./cda:component/cda:observation/cda:text"
-            #   * result_text_xpath = "./cda:component/cda:observation/cda:value"
 
         def initialize
           super
-          @entry_xpath = "/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/cda:section[cda:code/@code='CLINOBS']/cda:entry/cda:organizer"
-          @code_xpath = "./cda:component/cda:observation/cda:code"
-          @interpretation_xpath = "./cda:component/cda:observation/cda:interpretationCode"
-          @time_xpath = "./cda:component/cda:observation/cda:effectiveTime"
-          @description_xpath = "./cda:component/cda:observation/cda:text"
-          @value_xpath = "./cda:component/cda:observation/cda:value"
+          @entry_xpath = "/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/"+
+              "cda:section[cda:code/@code='CLINOBS']/cda:entry/cda:organizer/cda:component/cda:observation"
+          @code_xpath = "./cda:code"
+          @interpretation_xpath = "./cda:interpretationCode"
+          @time_xpath = "./cda:effectiveTime"
+          @description_xpath = "./cda:text" #"/@text"
+          @value_xpath = "./cda:value"
           #@check_for_usable = true               # Pilot tools will set this to false
         end
 
@@ -117,7 +112,7 @@ module HealthDataStandards
         end
 
         def extract_description(parent_element, entry)
-          entry.description = parent_element.at_xpath(@description_xpath).text
+          entry.description = parent_element.xpath(@description_xpath).text
         end
 
         def extract_interpretation(parent_element, result)
@@ -130,7 +125,6 @@ module HealthDataStandards
             result.interpretation = nil
           end
         end
-
       end
     end
   end
