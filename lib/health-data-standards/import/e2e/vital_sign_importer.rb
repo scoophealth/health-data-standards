@@ -46,12 +46,12 @@ module HealthDataStandards
 
         def initialize
           super
-          #@entry_xpath = "//cda:section[cda:code/@code='CLINOBS']/cda:entry/cda:organizer"
           @entry_xpath = "/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/cda:section[cda:code/@code='CLINOBS']/cda:entry/cda:organizer"
-          @code_xpath = "./cda:code"
+          @code_xpath = "./cda:component/cda:observation/cda:code"
+          @interpretation_xpath = "./cda:component/cda:observation/cda:interpretationCode"
           @time_xpath = "./cda:component/cda:observation/cda:effectiveTime"
           @description_xpath = "./cda:component/cda:observation/cda:text"
-          @result_text_xpath = "./cda:component/cda:observation/cda:value"
+          @value_xpath = "./cda:component/cda:observation/cda:value"
           #@check_for_usable = true               # Pilot tools will set this to false
         end
 
@@ -92,8 +92,20 @@ module HealthDataStandards
 
         private
 
+        def extract_value(parent_element, entry)
+          value_element = parent_element.at_xpath(@value_xpath)
+          if value_element
+            value = value_element['value']
+            unit = value_element['unit']
+            value ||= value_element.text
+            if value
+              entry.set_value(value.strip, unit)
+            end
+          end
+        end
+
         def extract_result_text(parent_element, entry)
-          result_element = parent_element.at_xpath(@result_text_xpath)
+          result_element = parent_element.at_xpath(@value_xpath)
           entry.free_text = result_element.text
         end
 
@@ -109,11 +121,13 @@ module HealthDataStandards
         end
 
         def extract_interpretation(parent_element, result)
-          interpretation_element = parent_element.at_xpath("./cda:interpretationCode")
+          interpretation_element = parent_element.at_xpath(@interpretation_xpath)
           if interpretation_element
             code = interpretation_element['code']
             code_system = CodeSystemHelper.code_system_for(interpretation_element['codeSystem'])
             result.interpretation = {'code' => code, 'codeSystem' => code_system}
+          else
+            result.interpretation = nil
           end
         end
 

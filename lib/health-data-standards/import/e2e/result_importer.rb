@@ -139,7 +139,7 @@ module HealthDataStandards
         end
 
         def extract_interpretation(parent_element, result)
-          interpretation_element = parent_element.at_xpath("./cda:interpretationCode")
+          interpretation_element = parent_element.at_xpath(@interpretation_xpath)
           if interpretation_element
             code = interpretation_element['code']
             code_system = CodeSystemHelper.code_system_for(interpretation_element['codeSystem'])
