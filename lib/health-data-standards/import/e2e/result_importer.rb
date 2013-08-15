@@ -85,7 +85,7 @@ module HealthDataStandards
           @interpretation_xpath = "./cda:interpretationCode"
           @description_xpath = "./cda:text/text()"
           @status_xpath = "./cda:statusCode/@code"
-          @check_for_usable = true              # Pilot tools will set this to false
+          #@check_for_usable = true              # Pilot tools will set this to false
         end
     
         # Traverses the E2E document passed in using XPath and creates an Array of Entry
@@ -99,11 +99,11 @@ module HealthDataStandards
           entry_elements = doc.xpath(@entry_xpath)
           entry_elements.each do |entry_element|
             result = create_entry(entry_element, id_map)
-            if @check_for_usable
-              result_list << result if result.usable?
-            else
+            #if @check_for_usable
+            #  result_list << result if result.usable?
+            #else
               result_list << result
-            end
+            #end
           end
           result_list
         end

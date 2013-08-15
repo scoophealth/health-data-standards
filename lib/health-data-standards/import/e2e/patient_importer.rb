@@ -82,11 +82,12 @@ module HealthDataStandards
         end
 
         # @param check_usable_entries [boolean]...importer uses true, stats uses false
-        def check_usable(check_usable_entries)
-          @section_importers.each_pair do |section, importer|
-            importer.check_for_usable = check_usable_entries
-          end
-        end
+        # THIS METHOD DOES NOT APPEAR TO BE USED
+        #def check_usable(check_usable_entries)
+        #  @section_importers.each_pair do |section, importer|
+        #    importer.check_for_usable = check_usable_entries
+        #  end
+        #end
 
         # Parses a PITO E2E document and returns a Hash of of the patient.
         #
@@ -109,11 +110,11 @@ module HealthDataStandards
         # a patient is dead or not.
         # @param [Record] e2e_patient to check the conditions on and set the expired
         #               property if applicable
-        def check_for_cause_of_death(e2e_patient)
-          if e2e_patient.conditions.any? {|condition| condition.cause_of_death }
-            e2e_patient.expired = true
-          end
-        end
+        #def check_for_cause_of_death(e2e_patient)
+        #  if e2e_patient.conditions.any? {|condition| condition.cause_of_death }
+        #    e2e_patient.expired = true
+        #  end
+        #end
 
         # Create a simple representation of the patient from a PITO E2E
         # @param [Record] record Mongoid model to append the Entry objects to

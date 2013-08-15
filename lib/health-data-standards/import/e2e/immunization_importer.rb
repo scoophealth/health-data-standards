@@ -7,7 +7,7 @@ module HealthDataStandards
           @entry_xpath = "//cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.14.1']/cda:entry/cda:substanceAdministration"
           @code_xpath = "./cda:consumable/cda:manufacturedProduct/cda:manufacturedMaterial/cda:code"
           @description_xpath = "./cda:consumable/cda:manufacturedProduct/cda:manufacturedMaterial/cda:name"
-          @check_for_usable = true               # Pilot tools will set this to false
+          #@check_for_usable = true               # Pilot tools will set this to false
         end
 
         # Traverses that PITO E2E document passed in using XPath and creates an Array of Entry
@@ -29,11 +29,11 @@ module HealthDataStandards
             #extract_performer(entry_element, immunization)
             #STDERR.puts "IMMUNIZATION: " + immunization.inspect
             #immunization_list << immunization
-            if @check_for_usable
-              immunization_list << immunization if immunization.usable?
-            else
+            #if @check_for_usable
+            #  immunization_list << immunization if immunization.usable?
+            #else
               immunization_list << immunization
-            end
+            #end
           end
           immunization_list
           #STDERR.puts "IMMUNIZATION_LIST: " + immunization_list.inspect
