@@ -126,6 +126,8 @@ module HealthDataStandards
         def add_code_if_present(code_element, entry)
           if code_element['codeSystem'] && code_element['code']
             entry.add_code(code_element['code'], CodeSystemHelper.code_system_for(code_element['codeSystem']))
+          elsif code_element['nullFlavor']
+            entry.add_code(code_element['nullFlavor'], 'Unknown')
           end
         end
 
