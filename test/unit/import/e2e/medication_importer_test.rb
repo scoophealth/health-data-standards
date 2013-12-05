@@ -22,15 +22,15 @@ class MedicationImporterTest < MiniTest::Unit::TestCase
     assert_equal "500.0", medication.values.first.scalar
     assert_equal "MG", medication.values.first.units
 
-    assert_equal Time.gm(2013,3,5).to_i, medication.time
-    assert_equal Time.gm(2013,3,5).to_i, medication.start_time
-    assert_equal Time.gm(2013,4,24).to_i, medication.end_time
+    assert_equal Time.gm(2013,9,27).to_i, medication.time
+    assert_equal Time.gm(2013,9,27).to_i, medication.start_time
+    assert_equal Time.gm(2013,11,16).to_i, medication.end_time
 
     assert_equal 4, medication.administration_timing['frequency']['numerator']['value']
     assert_equal 1, medication.administration_timing['frequency']['denominator']['value']
     assert_equal 'd', medication.administration_timing['frequency']['denominator']['unit']
 
-    assert_equal '', medication.freeTextSig
+    assert_equal ' E2E_PRN flag', medication.freeTextSig
 
     assert_equal '1.0', medication.dose['low']
     assert_equal '2.0', medication.dose['high']
@@ -57,9 +57,9 @@ class MedicationImporterTest < MiniTest::Unit::TestCase
     assert_equal "40.0", medication.values.first.scalar
     assert_equal "MG", medication.values.first.units
 
-    assert_equal 1362441600, medication.time   # returns nil?
-    assert_equal 1362441600, medication.start_time
-    assert_equal 1367280000, medication.end_time
+    assert_equal Time.gm(2013,9,27).to_i, medication.time   # returns nil?
+    assert_equal Time.gm(2013,9,27).to_i, medication.start_time
+    assert_equal Time.gm(2013,11,22).to_i, medication.end_time
 
     assert_equal 1, medication.administration_timing['frequency']['numerator']['value']
     assert_equal 1, medication.administration_timing['frequency']['denominator']['value']

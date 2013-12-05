@@ -150,6 +150,8 @@ module HealthDataStandards
           # administrationTiming [frequency of drug - could be specific time, interval (every 6 hours), duration (infuse over 30 minutes) but e2e uses frequency only]
           @timing_xpath = './cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration'
 
+          # check for PRN
+          @prn_xpath =   "./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:observation[cda:code/@code='PRNIND']/cda:value/@value"
           # freeTextSig (Instructions to patient)
           @freetext_xpath = "./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:observation[cda:participant/cda:participantRole/@classCode='PAT']/cda:text/text()"
           # doseQuantity
@@ -294,7 +296,13 @@ module HealthDataStandards
         end
 
         def extract_freetextsig(parent_element, entry)
-          entry.freeTextSig = parent_element.xpath(@freetext_xpath).to_s
+          prn_element = parent_element.xpath(@prn_xpath).to_s
+          if prn_element == "true"
+            prnstr = " E2E_PRN flag"
+          else
+            prnstr = ""
+          end
+          entry.freeTextSig = parent_element.xpath(@freetext_xpath).to_s + prnstr
         end
 
         def extract_dose(parent_element, entry)

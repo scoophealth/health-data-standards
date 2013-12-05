@@ -11,24 +11,24 @@ class ResultImporterTest < MiniTest::Unit::TestCase
 
     refute_nil patient
     refute_nil patient.results
-    assert_equal 50, patient.results.size
+    assert_equal 28, patient.results.size
 
-    result = patient.results[33]
+    result = patient.results[15]
     refute_nil result
 
     assert_equal 1, result.codes.keys.size
     code_system = result.codes.keys[0]
-    assert_equal "pH", result.description
+    assert_equal "Glucose Random", result.description
     assert_equal "LOINC", code_system
-    assert_equal ['2756-5'], result.codes[code_system]
+    assert_equal ['14749-6'], result.codes[code_system]
 
     refute_nil result.values
-    assert_equal "7.5", result.values.first.scalar
-    assert_equal nil, result.values.first.units
+    assert_equal "5.2", result.values.first.scalar
+    assert_equal "mmol/L", result.values.first.units
 
-    assert_equal "Normal Reference range is between 5.0 and 8.5", result.reference_range
+    assert_equal "Normal Reference range is greater than 3.3", result.reference_range
     assert_equal "final", result.status_code[:value]
-    assert_equal Time.gm(2011,7,31,11,20,0).to_i, result.time
+    assert_equal Time.gm(2013,5,31,10,20,12).to_i, result.time
 
     interpretation_code_system = result.interpretation.keys[0]
     assert_equal "code", interpretation_code_system

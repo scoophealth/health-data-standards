@@ -16,7 +16,7 @@ class ConditionImporterTest < MiniTest::Unit::TestCase
     assert_equal 'CD', condition.type
     #assert ! condition.cause_of_death
     assert condition.codes['ICD9'].include?('428')
-    assert_equal Time.gm(2013,'mar',5).to_i, condition.start_time
+    assert_equal Time.gm(2013,'sep',26).to_i, condition.start_time
 
     assert_equal 'HEART FAILURE*', condition.description
     assert_equal 'active', condition.status
@@ -29,21 +29,21 @@ class ConditionImporterTest < MiniTest::Unit::TestCase
     condition = patient.conditions[1]
     assert_equal 'CD', condition.type
     assert condition.codes['ICD9'].include? '401'
-    assert_equal Time.gm(2013,'mar',5).to_i, condition.start_time
+    assert_equal Time.gm(2013,'sep',26).to_i, condition.start_time
     assert_equal 'ESSENTIAL HYPERTENSION*', condition.description
     assert_equal 'active', condition.status
 
     condition = patient.conditions[2]
     assert_equal 'CD', condition.type
     assert condition.codes['ICD9'].include? '250'
-    assert_equal Time.gm(2013,'mar',5).to_i, condition.start_time
+    assert_equal Time.gm(2013,'sep',26).to_i, condition.start_time
     assert_equal 'DIABETES MELLITUS*', condition.description
     assert_equal 'active', condition.status
 
     condition = patient.conditions[3]
     assert_equal 'CD', condition.type
     assert condition.codes['ICD9'].include? '491'
-    assert_equal Time.gm(2013,'mar',5).to_i, condition.start_time
+    assert_equal Time.gm(2013,'sep',26).to_i, condition.start_time
     assert_equal 'CHRONIC BRONCHITIS*', condition.description
     assert_equal 'active', condition.status
 

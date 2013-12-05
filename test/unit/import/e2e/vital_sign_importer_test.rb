@@ -9,43 +9,53 @@ class VitalSignImporterTest < MiniTest::Unit::TestCase
     pi = HealthDataStandards::Import::E2E::PatientImporter.instance
     patient = pi.parse_e2e(doc)
 
-    assert_equal 6, patient.vital_signs.size
+    assert_equal 7, patient.vital_signs.size
 
     vital_sign = patient.vital_signs[0]
-    assert_equal Time.gm(2013,5,8,0,0,0).to_i, vital_sign.time
-    assert_equal "Blood Pressure (sitting position)", vital_sign.description
-    assert_equal "130/85", vital_sign.free_text
+    assert_equal Time.gm(2013,9,25,0,0,0).to_i, vital_sign.time
+    assert_equal "Systolic Blood Pressure (sitting position)", vital_sign.description
+    assert_equal "130", vital_sign.values.first.scalar
+    assert_equal "mm[Hg]", vital_sign.values.first.units
     assert_equal nil, vital_sign.interpretation
 
     vital_sign = patient.vital_signs[1]
-    assert_equal Time.gm(2013,5,8,0,0,0).to_i, vital_sign.time
-    assert_equal "Temperature (degrees celcius)", vital_sign.description
-    assert_equal "37", vital_sign.free_text
+    assert_equal Time.gm(2013,9,25,0,0,0).to_i, vital_sign.time
+    assert_equal "Diastolic Blood Pressure (sitting position)", vital_sign.description
+    assert_equal "85", vital_sign.values.first.scalar
+    assert_equal "mm[Hg]", vital_sign.values.first.units
     assert_equal nil, vital_sign.interpretation
 
     vital_sign = patient.vital_signs[2]
-    assert_equal Time.gm(2013,5,8,0,0,0).to_i, vital_sign.time
-    assert_equal "Weight (in kg)", vital_sign.description
-    assert_equal "71", vital_sign.free_text
+    assert_equal Time.gm(2013,9,25,0,0,0).to_i, vital_sign.time
+    assert_equal "Height (in cm)", vital_sign.description
+    assert_equal "187", vital_sign.values.first.scalar
+    assert_equal "cm", vital_sign.values.first.units
     assert_equal nil, vital_sign.interpretation
 
     vital_sign = patient.vital_signs[3]
-    assert_equal Time.gm(2013,5,8,0,0,0).to_i, vital_sign.time
-    assert_equal "Height (in cm)", vital_sign.description
-    assert_equal "170", vital_sign.free_text
-    assert_equal nil, vital_sign.interpretation
+    assert_equal Time.gm(2013,9,25,0,0,0).to_i, vital_sign.time
+    assert_equal "Heart Rate (in bpm (nnn) Range:40-180)", vital_sign.description
+    assert_equal "85", vital_sign.values.first.scalar
+    assert_equal "beats/min", vital_sign.values.first.units
 
     vital_sign = patient.vital_signs[4]
-    assert_equal Time.gm(2013,5,8,0,0,0).to_i, vital_sign.time
-    assert_equal "Waist (Waist Circum in cm)", vital_sign.description
-    assert_equal "36", vital_sign.free_text
-    assert_equal nil, vital_sign.interpretation
+    assert_equal Time.gm(2013,9,25,0,0,0).to_i, vital_sign.time
+    assert_equal "Temperature (degrees celcius)", vital_sign.description
+    assert_equal "37", vital_sign.values.first.scalar
+    assert_equal "C", vital_sign.values.first.units
+
 
     vital_sign = patient.vital_signs[5]
-    assert_equal Time.gm(2013,5,8,0,0,0).to_i, vital_sign.time
-    assert_equal "Heart Rate (in bpm (nnn) Range:40-180)", vital_sign.description
-    assert_equal "85", vital_sign.free_text
-    assert_equal nil, vital_sign.interpretation
+    assert_equal Time.gm(2013,9,25,0,0,0).to_i, vital_sign.time
+    assert_equal "Waist (Waist Circum in cm)", vital_sign.description
+    assert_equal "92", vital_sign.values.first.scalar
+    assert_equal "cm", vital_sign.values.first.units
+
+    vital_sign = patient.vital_signs[6]
+    assert_equal Time.gm(2013,9,25,0,0,0).to_i, vital_sign.time
+    assert_equal "Weight (in kg)", vital_sign.description
+    assert_equal "95", vital_sign.values.first.scalar
+    assert_equal "kg", vital_sign.values.first.units
 
   end
 

@@ -15,7 +15,7 @@ module E2E
 
       providers = @importer.extract_providers(@e2e_doc)
 
-      assert_equal 50, providers.size
+      assert_equal 28, providers.size
       #assert_equal 'xyz', "providers[25].inspect: " + providers[25].inspect
 
       provider_perf = providers.first
