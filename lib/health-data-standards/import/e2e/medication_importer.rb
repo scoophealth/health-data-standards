@@ -3,7 +3,7 @@ module HealthDataStandards
     module E2E
 
       #Common prefix for XPath expressions:
-      #/ClinicalDocument/component/structuredBody/component/section[templateId/@root='2.16.840.1.113883.3.1818.10.2.19.1' and code/@code='10160-6']/entry/substanceAdministration
+      #/ClinicalDocument/component/structuredBody/component/section[templateId/@root='2.16.840.1.113883.3.1818.10.2.19.1' and code/@code='10160-0']/entry/substanceAdministration
       #OSCAR Field          Notes                       Business Term         Field                 XPath
       #drugid               Unique ID in database       Record ID             id
       #provider_no          Doctor who prescribed/recordPrescribing Provider  assignedPerson > name ./entryRelationship/substanceAdministration/author/assignedAuthor/assignedPerson/name
@@ -81,7 +81,7 @@ module HealthDataStandards
       # @note The following are XPath locations for E2E information elements captured by the query-gateway medication model.
       #
       # @note Start of medication section
-      #   * entry_xpath = "//cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.19.1' and cda:code/@code='10160-6']/cda:entry/cda:substanceAdministration"
+      #   * entry_xpath = "//cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.19.1' and cda:code/@code='10160-0']/cda:entry/cda:substanceAdministration"
       #
       # @note Location of base Entry class fields
       #   * description_xpath = "./cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/cda:name/text()"
@@ -136,7 +136,7 @@ module HealthDataStandards
 
         def initialize
           # start of medication section
-          @entry_xpath = "/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.19.1' and cda:code/@code='10160-6']/cda:entry/cda:substanceAdministration"
+          @entry_xpath = "/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.19.1' and cda:code/@code='10160-0']/cda:entry/cda:substanceAdministration"
 
           # location of base Entry class fields
           @description_xpath = './cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/e2e:desc/text()'
