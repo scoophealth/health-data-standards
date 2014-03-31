@@ -173,7 +173,7 @@ module HealthDataStandards
 
           @check_for_usable = true               # Pilot tools will set this to false
         end
-        
+
         def create_entry(entry_element, id_map={})
           medication = Medication.new
 
@@ -307,8 +307,12 @@ module HealthDataStandards
 
         def extract_dose(parent_element, entry)
           dose = {}
-          dose['low'] = parent_element.xpath(@dose_xpath+'/cda:low/@value').to_s
-          dose['high'] = parent_element.xpath(@dose_xpath+"/cda:high/@value").to_s
+          if parent_element.xpath(@dose_xpath+'[@xsi:type]')
+            dose['low'] = parent_element.xpath(@dose_xpath+'/cda:low/@value').to_s
+            dose['high'] = parent_element.xpath(@dose_xpath+"/cda:high/@value").to_s
+          else
+            dose['center'] = parent_element.xpath(@dose_xpath+'/cda:center/@value').to_s
+          end
           entry.dose = dose
         end
 
