@@ -19,7 +19,7 @@ class AllergyImporterTest < MiniTest::Unit::TestCase
     assert_equal "", allergy.reaction['text']
     assert_equal nil, allergy.reaction['value']
     assert_equal nil, allergy.severity
-    assert_equal 'C', allergy.status_code['PITO AlleryClinicalStatus'][0]
+    assert_equal 'C', allergy.status_code['PITO AllergyClinicalStatus'][0]
     assert_equal Time.gm(2013,3,5).to_i, allergy.time
 
     allergy = patient.allergies[2]
@@ -52,7 +52,7 @@ class AllergyImporterTest < MiniTest::Unit::TestCase
     assert_equal '2.16.840.1.113883.6.96', allergy.reaction['value']['codeSystem']
     assert_equal 'SNOMED CT', allergy.reaction['value']['codeSystemName']
 
-    assert_equal 'C', allergy.status_code['PITO AlleryClinicalStatus'][0]
+    assert_equal 'C', allergy.status_code['PITO AllergyClinicalStatus'][0]
     assert_equal Time.gm(2011,2,14).to_i, allergy.time
 
     allergy = patient.allergies[2]

@@ -46,7 +46,7 @@ module HealthDataStandards
           entry_elements = doc.xpath(@entry_xpath)
           entry_elements.each do |entry_element|
             allergy = Allergy.new
-            extract_e2e_codes(entry_element, allergy)
+            extract_codes(entry_element, allergy)
             extract_dates(entry_element, allergy)
             extract_e2e_description(entry_element, allergy)
             extract_negation(entry_element, allergy)
@@ -62,21 +62,6 @@ module HealthDataStandards
         end
 
         private
-
-        def extract_e2e_codes(parent_element, entry)
-          code_elements = parent_element.xpath(@code_xpath)
-          code_elements.each do |code_element|
-            add_e2e_code_if_present(code_element, entry)
-          end
-        end
-
-        def add_e2e_code_if_present(code_element, entry)
-          if code_element['codeSystem'] && code_element['code']
-            entry.add_code(code_element['code'], CodeSystemHelper.code_system_for(code_element['codeSystem']))
-          elsif code_element['nullFlavor']
-            entry.add_code(code_element['nullFlavor'], 'Unknown')
-          end
-        end
 
         def extract_e2e_description(parent_element, entry)
           code_elements = parent_element.xpath(@description_xpath)

@@ -309,10 +309,10 @@ module HealthDataStandards
 
         def extract_dose(parent_element, entry)
           dose = {}
-          if parent_element.xpath(@dose_xpath+'[@xsi:type]')
+          if parent_element.at_xpath(@dose_xpath+'/cda:low/@value')
             dose['low'] = parent_element.xpath(@dose_xpath+'/cda:low/@value').to_s
             dose['high'] = parent_element.xpath(@dose_xpath+"/cda:high/@value").to_s
-          else
+          elsif parent_element.at_xpath(@dose_xpath+'/cda:center/@value')
             dose['center'] = parent_element.xpath(@dose_xpath+'/cda:center/@value').to_s
           end
           entry.dose = dose
