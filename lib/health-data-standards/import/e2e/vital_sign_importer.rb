@@ -40,8 +40,7 @@ module HealthDataStandards
 
         def initialize
           super
-          @entry_xpath = "/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/"+
-              "cda:section[cda:code/@code='CLINOBS']/cda:entry/cda:organizer/cda:component/cda:observation"
+          @entry_xpath = "//cda:component/cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.8.1' and cda:code/@code='CLINOBS']/cda:entry/cda:organizer/cda:component/cda:observation"
           @code_xpath = "./cda:code"
           @interpretation_xpath = "./cda:interpretationCode"
           @time_xpath = "./cda:effectiveTime"
