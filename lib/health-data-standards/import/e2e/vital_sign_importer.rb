@@ -43,7 +43,6 @@ module HealthDataStandards
           @entry_xpath = "//cda:component/cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.8.1' and cda:code/@code='CLINOBS']/cda:entry/cda:organizer/cda:component/cda:observation"
           @code_xpath = "./cda:code"
           @interpretation_xpath = "./cda:interpretationCode"
-          @time_xpath = "./cda:effectiveTime"
           @description_xpath = "./cda:text" #"/@text"
           @value_xpath = "./cda:value"
           #@check_for_usable = true               # Pilot tools will set this to false
@@ -101,13 +100,6 @@ module HealthDataStandards
         def extract_result_text(parent_element, entry)
           result_element = parent_element.at_xpath(@value_xpath)
           entry.free_text = result_element.text
-        end
-
-        def extract_dates(parent_element, entry)
-          time_element = parent_element.at_xpath(@time_xpath)
-          if time_element['value']
-            entry.time = HL7Helper.timestamp_to_integer(time_element['value'])
-          end
         end
 
         def extract_description(parent_element, entry)
