@@ -4,7 +4,7 @@ module HealthDataStandards
       class ImmunizationImporter < SectionImporter
 
         def initialize
-          @entry_xpath = "//cda:component/cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.14.1' and cda:code/@code='11369-6']/cda:entry/cda:substanceAdministration"
+          @entry_xpath = "//cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.14.1' and cda:code/@code='11369-6']/cda:entry/cda:substanceAdministration"
           @code_xpath = "./cda:consumable/cda:manufacturedProduct/cda:manufacturedMaterial/cda:code"
           @description_xpath = "./cda:consumable/cda:manufacturedProduct/cda:manufacturedMaterial/cda:name"
           #@check_for_usable = true               # Pilot tools will set this to false

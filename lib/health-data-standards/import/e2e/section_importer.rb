@@ -28,16 +28,16 @@ module HealthDataStandards
         # @param [Hash] id_map A map of ids to all tagged text in the narrative portion of a document
         # @return [String] text description of tag
         #def lookup_tag(tag, id_map)
-        #   value = id_map[tag]
-        #   # Not sure why, but sometimes the reference is #<Reference> and the ID value is <Reference>, and
-        #   # sometimes it is #<Reference>.  We look for both.
-        #   if !value and tag[0] == '#'
-        #     tag = tag[1,tag.length]
-        #     value = id_map[tag]
-        #   end
+        #  value = id_map[tag]
+        #  # Not sure why, but sometimes the reference is #<Reference> and the ID value is <Reference>, and
+        #  # sometimes it is #<Reference>.  We look for both.
+        #  if !value and tag[0] == '#'
+        #    tag = tag[1, tag.length]
+        #    value = id_map[tag]
+        #  end
         #
-        #   value
-        # end
+        #  value
+        #end
 
         # Traverses that PITO E2E document passed in using XPath and creates an Array of Entry
         # objects based on what it finds                          
@@ -88,7 +88,6 @@ module HealthDataStandards
           end
         end
 
-
         def extract_priority(parent_element, entry)
           priority_element = parent_element.at_xpath(@priority_xpath)
           if priority_element
@@ -98,7 +97,6 @@ module HealthDataStandards
             end
           end
         end
-
 
         def extract_description(parent_element, entry, id_map)
           code_elements = parent_element.xpath(@description_xpath)

@@ -27,7 +27,8 @@ module HealthDataStandards
         '2.16.840.1.113883.6.42' => 'ICD9',
         '2.16.840.1.113883.3.1818.10.2.8.2' => 'PITO AllergyClinicalStatus',
         '2.16.840.1.113883.2.20.3.78' => 'ObservationInterpretation',
-        '2.16.840.1.113883.2.20.5.1' => 'pCLOCD'
+        '2.16.840.1.113883.2.20.5.1' => 'pCLOCD',
+        '2.16.840.1.113883.3.3068.10.6.3' => 'ObservationType-CA-Pending'
       }
       
       # Returns the name of a code system given an oid

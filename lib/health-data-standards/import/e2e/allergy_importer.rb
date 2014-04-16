@@ -25,7 +25,7 @@ module HealthDataStandards
 
         def initialize
           #@entry_xpath = "/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/cda:section/cda:entry/cda:act"
-          @entry_xpath = "//cda:component/cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.4.1' and cda:code/@code='48765-2']/cda:entry/cda:act"
+          @entry_xpath = "//cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.4.1' and cda:code/@code='48765-2']/cda:entry/cda:act"
           @code_xpath = "./cda:entryRelationship/cda:observation/cda:participant/cda:participantRole/cda:playingEntity/cda:code"
           @description_xpath = "./cda:entryRelationship/cda:observation/cda:participant/cda:participantRole/cda:playingEntity/cda:name"
           @type_xpath = "./cda:entryRelationship/cda:observation[cda:participant]/cda:code"
