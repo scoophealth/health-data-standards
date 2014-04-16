@@ -40,18 +40,18 @@ module E2E
       #assert_equal "200000000X", provider2.specialty
       assert_nil provider2.npi
     end
-      #
-      # def test_encounter_provider_extraction
-      #   providers = @importer.extract_providers(@doc, true)
-      #   provider = providers.first
-      #   refute_nil provider
-      #   assert_equal "John", provider[:given_name]
-      #   assert_equal "Johnson", provider[:family_name]
-      #   assert_equal "808401234567893", provider[:npi]
-      #   assert_equal "Family Doctors", provider[:organization]
-      #   assert_equal 4084574400, provider[:start]
-      #   assert_equal "+1-301-555-5555", provider[:phone]
-      # end
+    #
+    # def test_encounter_provider_extraction
+    #   providers = @importer.extract_providers(@doc, true)
+    #   provider = providers.first
+    #   refute_nil provider
+    #   assert_equal "John", provider[:given_name]
+    #   assert_equal "Johnson", provider[:family_name]
+    #   assert_equal "808401234567893", provider[:npi]
+    #   assert_equal "Family Doctors", provider[:organization]
+    #   assert_equal 4084574400, provider[:start]
+    #   assert_equal "+1-301-555-5555", provider[:phone]
+    # end
 
   end
 end

@@ -463,7 +463,7 @@ Encounter History and Notes
 -->
 			<component typeCode="COMP" contextConductionInd="true">
 				<section classCode="DOCSECT" moodCode="EVN">
-					<templateId root="2.16.840.1.113883.3.1818.10.2.22"/>
+					<templateId root="2.16.840.1.113883.3.1818.10.2.12"/>
 					<code code="46240-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of hospitalizations+History of outpatient visits"/>
 					<title>Encounter History and Notes [without entries]</title>
 					<text>No Encounter History</text>

@@ -2,7 +2,7 @@ module HealthDataStandards
   module Import
     module E2E
       class EncounterImporter < SectionImporter
-    
+
         def initialize
           @entry_xpath = "//cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.12.1' and cda:code/@code='46240-8']/cda:entry/cda:encounter"
           @code_xpath = "./cda:code"
@@ -12,7 +12,7 @@ module HealthDataStandards
           #@check_for_usable = true               # Pilot tools will set this to false
           #@id_map = {}
         end
-    
+
         # Traverses the E2E document passed in using XPath and creates an Array of Entry
         # objects based on what it finds                          
         # @param [Nokogiri::XML::Document] doc It is expected that the root node of this document
@@ -27,12 +27,12 @@ module HealthDataStandards
             #if @check_for_usable
             #  encounter_list << encounter if encounter.usable?
             #else
-              encounter_list << encounter
+            encounter_list << encounter
             #end
           end
           encounter_list
         end
-        
+
         def create_entry(entry_element, id_map={})
           encounter = Encounter.new
           extract_codes(entry_element, encounter)
@@ -42,7 +42,7 @@ module HealthDataStandards
           extract_reason(entry_element, encounter)
           encounter
         end
-    
+
         private
 
         def extract_e2e_codes(parent_element, entry)
@@ -73,7 +73,7 @@ module HealthDataStandards
             encounter.facility = facility
           end
         end
-    
+
         def extract_reason(parent_element, encounter)
           reason_element = parent_element.at_xpath(@reason_xpath)
           if reason_element
