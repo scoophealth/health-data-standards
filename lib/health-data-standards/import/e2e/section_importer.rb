@@ -162,6 +162,7 @@ module HealthDataStandards
           return OrganizationImporter.instance.extract_organization(organization_element)
         end
 
+#TODO Add ID parsing via xpath ./cda:id/@extension
         def import_person(person_element)
           return unless person_element
           person = Person.new

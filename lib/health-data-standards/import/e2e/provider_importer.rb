@@ -5,12 +5,11 @@ module HealthDataStandards
   module Import
     module E2E
       class ProviderImporter < SectionImporter
-        
-        
+
         def initialize
-          
+
         end
-        
+
         include Singleton
         include ProviderImportUtils
         # Extract Healthcare Providers from E2E
@@ -32,22 +31,22 @@ module HealthDataStandards
         end
 
         private
-      
+
         def extract_provider_data(performer, use_dates=true)
 
           provider = {}
           entity = performer.xpath("./cda:assignedAuthor")
           name = entity.xpath("./cda:assignedPerson/cda:name")
-          provider[:title]        = extract_data(name, "./cda:prefix")
-          provider[:given_name]   = extract_data(name, "./cda:given")
-          provider[:family_name]  = extract_data(name, "./cda:family")
+          provider[:title] = extract_data(name, "./cda:prefix")
+          provider[:given_name] = extract_data(name, "./cda:given")
+          provider[:family_name] = extract_data(name, "./cda:family")
           provider[:organization] = OrganizationImporter.instance.extract_organization(performer.at_xpath("./cda:assignedEntity/cda:representedOrganization"))
-          provider[:specialty]    = extract_data(entity, "./cda:code/@code")
-          time                    = performer.xpath(performer, "./cda:time/@value")
+          provider[:specialty] = extract_data(entity, "./cda:code/@code")
+          time = performer.xpath(performer, "./cda:time/@value")
 
           if use_dates
-            provider[:start]        = extract_date(time, "./cda:low/@value")
-            provider[:end]          = extract_date(time, "./cda:high/@value")
+            provider[:start] = extract_date(time, "./cda:low/@value")
+            provider[:end] = extract_date(time, "./cda:high/@value")
           end
 
           # E2E doesn't seem to have low/high value so use value of time for both
@@ -60,13 +59,13 @@ module HealthDataStandards
 
           # NIST sample C32s use different OID for NPI vs C83, support both
           npi = extract_data(entity, "./cda:id[@root='2.16.840.1.113883.4.6' or @root='2.16.840.1.113883.3.72.5.2']/@extension")
-          provider[:addresses] = performer.xpath("./cda:assignedEntity/cda:addr").try(:map) {|ae| import_address(ae)}
-          provider[:telecoms] = performer.xpath("./cda:assignedEntity/cda:telecom").try(:map) {|te| import_telecom(te)}
-          
+          provider[:addresses] = performer.xpath("./cda:assignedEntity/cda:addr").try(:map) { |ae| import_address(ae) }
+          provider[:telecoms] = performer.xpath("./cda:assignedEntity/cda:telecom").try(:map) { |te| import_telecom(te) }
+
           provider[:npi] = npi if Provider.valid_npi?(npi)
           provider
         end
-        
+
         def find_or_create_provider(provider_hash)
           #provider = Provider.first(conditions: {npi: provider_hash[:npi]}) if provider_hash[:npi]
           provider = Provider.where(npi: provider_hash[:npi]).first if provider_hash[:npi] && !provider_hash[:npi].empty?
@@ -76,12 +75,12 @@ module HealthDataStandards
             provider = Provider.new(provider_hash)
           end
         end
-      
-        def extract_date(subject,query)
-          date = extract_data(subject,query)
+
+        def extract_date(subject, query)
+          date = extract_data(subject, query)
           date ? Date.parse(date).to_time.to_i : nil
         end
-      
+
         # Returns nil if result is an empty string, block allows text munging of result if there is one
         def extract_data(subject, query)
           result = subject.xpath(query).text
@@ -91,7 +90,6 @@ module HealthDataStandards
             result
           end
         end
-
       end
     end
   end

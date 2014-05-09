@@ -1,3 +1,52 @@
+Provider Todo
+====================
+We want to support provider parsing from E2E from the Top Level, Encounters, Immunizations, Medications and Problem List.
+Author sections generally are in the same format, so consider implementing or modifying the import_person function under section_importer.rb
+Provider ID is to be hashed with a TBD algorithm. Direct name strings will not enter mongodb.
+
+Generic Author Section XPath Fragments
+----------
+ID:     ./cda:author/cda:assignedAuthor/cda:id/@extension
+NAME:   ./cda:author/cda:assignedAuthor/cda:assignedPerson/cda:name/cda:given
+        ./cda:author/cda:assignedAuthor/cda:assignedPerson/cda:name/cda:family
+Note: This may already be partially handled by the import_person function under section_importer.rb
+
+Top Level
+----------
+@entry_xpath = /cda:ClinicalDocument
+
+Use generic author section XPath Fragments
+
+Encounters
+----------
+@entry_xpath = "//cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.12.1' and cda:code/@code='46240-8']/cda:entry/cda:encounter"
+
+ID:     ./cda:participant/cda:participantRole/cda:id/@extension
+NAME:   ./cda:participant/cda:participantRole/cda:playingEntity/cda:name/cda:given
+        ./cda:participant/cda:participantRole/cda:playingEntity/cda:name/cda:family
+
+Immunizations
+----------
+@entry_xpath = "//cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.14.1' and cda:code/@code='11369-6']/cda:entry/cda:substanceAdministration"
+
+Use generic author section XPath Fragments
+
+Medications
+----------
+@entry_xpath = "//cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.19.1' and cda:code/@code='10160-0']/cda:entry/cda:substanceAdministration"
+
+Add on "./cda:entryRelationship/cda:substanceAdministration" to access Prescription Information subsection.
+
+Use generic author section XPath Fragments
+
+Problem List
+----------
+@entry_xpath = "//cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.21.1' and cda:code/@code='11450-4']/cda:entry/cda:observation"
+
+Use generic author section XPath Fragments
+
+
+--------------------
 01) In demographics, make use of this section of the e2etemplate.vm generated information:
 
 ----
@@ -21,7 +70,6 @@
 
 2) Sections to be included in the future if populated in E2E document:
 Care Goal Importer (Plan of Care)
-Encounter
 Insurance Provider
 Medical Equipment (e.g., implants, protheses, wheelchair, etc.)
 Procedure (e.g., colonscopy, total hip replacement, extract blood for CBC test, extract blood for electrolytes test, etc.)
