@@ -9,6 +9,7 @@ module HealthDataStandards
           @description_xpath = "./cda:text/text()"
           @reason_xpath = "./cda:entryRelationship/cda:observation[cda:code/@code='REASON']"
           @participant_xpath = "./cda:participant[@typeCode='LOC']/cda:participantRole[@classCode='SDLOC']"
+          @provider_xpath =    "./cda:participant[@typeCode='PRF']"
           #@check_for_usable = true               # Pilot tools will set this to false
           #@id_map = {}
         end
@@ -40,10 +41,20 @@ module HealthDataStandards
           extract_e2e_description(entry_element, encounter)
           extract_facility(entry_element, encounter)
           extract_reason(entry_element, encounter)
+          extract_performer(entry_element, encounter)
           encounter
         end
 
         private
+
+        def extract_performer(parent_element, encounter)
+          performer_element = parent_element.at_xpath(@provider_xpath)
+          encounter.performer = import_e2e_encounter_actor(performer_element) if performer_element
+        end
+
+        def import_e2e_encounter_actor(actor_element)
+          return ProviderImporter.instance.extract_e2e_encounter_provider(actor_element)
+        end
 
         def extract_e2e_codes(parent_element, entry)
           extract_codes(parent_element, entry)

@@ -66,6 +66,41 @@ module HealthDataStandards
           provider
         end
 
+        def extract_e2e_encounter_provider_data(performer, use_dates=true)
+          provider = {}
+          entity = performer.xpath("./cda:participantRole")
+          name = entity.xpath("./cda:playingEntity[@classCode='PSN']/cda:name")
+          provider[:title] = extract_data(name, "./cda:prefix")
+          provider[:given_name] = extract_data(name, "./cda:given")
+          provider[:family_name] = extract_data(name, "./cda:family")
+          #provider[:organization] = OrganizationImporter.instance.extract_organization(performer.at_xpath("./cda:assignedEntity/cda:representedOrganization"))
+          provider[:specialty] = extract_data(entity, "./cda:code/@code")
+          time = performer.xpath(performer, "./cda:time/@value")
+
+          if use_dates
+            provider[:start] = extract_date(time, "./cda:low/@value")
+            provider[:end] = extract_date(time, "./cda:high/@value")
+          end
+
+          # E2E doesn't seem to have low/high value so use value of time for both
+          if provider[:start] == nil
+            provider[:start] = extract_date(performer, "./cda:time/@value")
+            if provider[:end] == nil
+              provider[:end] = provider[:start]
+            end
+          end
+
+          # NIST sample C32s use different OID for NPI vs C83, support both
+          npi = extract_data(entity, "./cda:id[@root='2.16.840.1.113883.3.1818.10.2.10.19']/@extension")
+
+          provider[:addresses] = performer.xpath("./cda:assignedEntity/cda:addr").try(:map) { |ae| import_address(ae) }
+          provider[:telecoms] = performer.xpath("./cda:assignedEntity/cda:telecom").try(:map) { |te| import_telecom(te) }
+
+          provider[:npi] = npi # if Provider.valid_npi?(npi)
+          #STDERR.puts "provider: " + provider.inspect
+          provider
+        end
+
         def find_or_create_provider(provider_hash)
           #provider = Provider.first(conditions: {npi: provider_hash[:npi]}) if provider_hash[:npi]
           provider = Provider.where(npi: provider_hash[:npi]).first if provider_hash[:npi] && !provider_hash[:npi].empty?

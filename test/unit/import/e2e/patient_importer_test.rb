@@ -53,7 +53,7 @@ module E2E # to ensure no problems with minitest involving duplicated method nam
       patient.save!
 
       assert_equal 'JOHN', patient.first
-      assert_equal 0, patient.encounters.size
+      assert_equal 2, patient.encounters.size
       #assert ! patient.expired
 
       #assert_equal 1270598400, patient.encounters.first.time

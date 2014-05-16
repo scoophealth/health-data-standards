@@ -4,6 +4,11 @@ module ProviderImportUtils
     provider_data = extract_provider_data(performer, false)
     find_or_create_provider(provider_data)
   end
+
+  def extract_e2e_encounter_provider(performer)
+    provider_data = extract_e2e_encounter_provider_data(performer, false)
+    find_or_create_provider(provider_data)
+  end
   
   def find_or_create_provider(provider_hash)
     provider = Provider.where(npi: provider_hash[:npi]).first if provider_hash[:npi] && !provider_hash[:npi].empty?
