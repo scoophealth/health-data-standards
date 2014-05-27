@@ -18,6 +18,10 @@ module E2E
         assert_nil encounter.performer.title
         refute_nil encounter.description
         refute_nil encounter.time
+        #TODO update date this when we have some proper codes
+        assert_equal 2, encounter.codes.size
+        assert_equal "REASON", encounter.codes['code'][0]
+        assert_equal "ObservationType-CA-Pending", encounter.codes['codeSystem'][0]
       end
 
 #        assert encounter.codes['CPT'].include? '99241'
