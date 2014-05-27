@@ -68,7 +68,9 @@ module HealthDataStandards
 
         def extract_e2e_encounter_provider_data(performer, use_dates=true)
           provider = {}
-          entity = performer.xpath("./cda:participantRole")
+          #entity = performer.xpath("./cda:assignedAuthor")
+          #name = entity.xpath("./cda:assignedPerson/cda:name")
+          entity = performer.xpath("./cda:participant[@typeCode='PRF']/cda:participantRole")
           name = entity.xpath("./cda:playingEntity[@classCode='PSN']/cda:name")
           provider[:title] = extract_data(name, "./cda:prefix")
           provider[:given_name] = extract_data(name, "./cda:given")
@@ -84,7 +86,7 @@ module HealthDataStandards
 
           # E2E doesn't seem to have low/high value so use value of time for both
           if provider[:start] == nil
-            provider[:start] = extract_date(performer, "./cda:time/@value")
+            provider[:start] = extract_date(performer, "./cda:effectiveTime/@value")
             if provider[:end] == nil
               provider[:end] = provider[:start]
             end

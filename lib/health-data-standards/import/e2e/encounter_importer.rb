@@ -9,7 +9,9 @@ module HealthDataStandards
           @description_xpath = "./cda:text/text()"
           @reason_xpath = "./cda:entryRelationship/cda:observation[cda:code/@code='REASON']"
           @participant_xpath = "./cda:participant[@typeCode='LOC']/cda:participantRole[@classCode='SDLOC']"
-          @provider_xpath =    "./cda:participant[@typeCode='PRF']"
+          #@provider_xpath =    "./cda:participant[@typeCode='PRF']"
+          #@provider_xpath = "./cda:entryRelationship/cda:observation[cda:code/@code='REASON']/cda:author"
+          @provider_xpath = @entry_xpath
           #@check_for_usable = true               # Pilot tools will set this to false
           #@id_map = {}
         end
@@ -42,6 +44,8 @@ module HealthDataStandards
           extract_facility(entry_element, encounter)
           extract_reason(entry_element, encounter)
           extract_performer(entry_element, encounter)
+          #TODO remove this hack needed for patientapi to consider encounter usable
+          encounter.codes = {'code' => ['REASON'], 'codeSystem' => ['ObservationType-CA-Pending']}
           encounter
         end
 

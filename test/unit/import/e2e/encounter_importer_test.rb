@@ -44,7 +44,7 @@ module E2E
       assert_equal "Encounter", encounter.performer.given_name
       assert_equal "Provider", encounter.performer.family_name
       assert_equal "155388", encounter.performer.npi
-      assert_equal 0, encounter.codes.size
+      assert_equal 2, encounter.codes.size
       assert_equal Time.gm(2011,2,14).to_i, encounter.time
       assert_equal 'General Medical Examination', encounter.description
       assert_nil encounter.facility.name
