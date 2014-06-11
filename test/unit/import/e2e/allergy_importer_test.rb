@@ -11,7 +11,7 @@ module E2E
       allergy = patient.allergies[0]
       assert_equal false, allergy.nil?
       assert_equal 'PENICILLINS, COMBINATIONS WITH OTHER ANTIBACTERIAL', allergy.description
-      assert_equal allergy.codes, {"Unknown"=>["NA"]}
+      assert_equal allergy.codes, {"Unknown"=>["NI"]} #expected and actual reversed because of quoting issues
       assert_equal "MED", allergy.type['code']
       assert_equal "Medication", allergy.type['displayName']
       assert_equal "2.16.840.1.113883.5.4", allergy.type['codeSystem']
@@ -19,8 +19,8 @@ module E2E
       assert_equal "", allergy.reaction['text']
       assert_equal nil, allergy.reaction['value']
       assert_equal nil, allergy.severity
-      assert_equal 'C', allergy.status_code['PITO AllergyClinicalStatus'][0]
-      assert_equal Time.gm(2013,3,5).to_i, allergy.time
+      assert_equal '410605003', allergy.status_code['SNOMED-CT'][0]
+      assert_equal Time.gm(2013,3,5).to_i, allergy.start_time
 
       allergy = patient.allergies[2]
       assert_equal true, allergy.nil?

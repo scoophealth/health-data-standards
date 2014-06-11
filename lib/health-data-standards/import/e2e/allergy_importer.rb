@@ -30,7 +30,7 @@ module HealthDataStandards
           @type_xpath = "./cda:entryRelationship/cda:observation[cda:participant]/cda:code"
           @reaction_xpath = "./cda:entryRelationship/cda:observation/cda:entryRelationship/cda:observation[cda:code/@code='REACTOBS']"
           @severity_xpath = "./ cda:entryRelationship/cda:observation/cda:entryRelationship/cda:observation[cda:code/@code='SEV']/cda:value"
-          @status_xpath = "./cda:entryRelationship/cda:observation/cda:entryRelationship/cda:observation/cda:value[@codeSystem='2.16.840.1.113883.3.1818.10.2.8.2']"
+          @status_xpath = "./cda:entryRelationship/cda:observation/cda:entryRelationship/cda:observation[cda:code/@code='CLINSTAT']/cda:value"
           @id_map = {}
         end
 

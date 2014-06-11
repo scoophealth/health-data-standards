@@ -8,16 +8,16 @@ module E2E
       pi = HealthDataStandards::Import::E2E::PatientImporter.instance
       patient = pi.parse_e2e(doc)
       encounters = patient.encounters
-      assert_equal 2, encounters.size
-      assert_equal "Multivitamin", encounters[0].description
-      assert_equal Time.gm(2013,9,26,16,24,15).to_i, encounters[0].time #20130926162415
+      assert_equal 6, encounters.size
+      assert_equal true, encounters[0].description.include?('130/85 sitting position')
+      assert_equal Time.gm(2013,9,25,15,50,00).to_i, encounters[0].start_time #20130925155000
       encounters.each do |encounter|
         assert_equal "doctor", encounter.performer.given_name
         assert_equal "oscardoc", encounter.performer.family_name
-        assert_equal "999998", encounter.performer.npi
+        assert_equal "cpsid", encounter.performer.npi
         assert_nil encounter.performer.title
         refute_nil encounter.description
-        refute_nil encounter.time
+        refute_nil encounter.start_time
         #TODO update date this when we have some proper codes
         assert_equal 2, encounter.codes.size
         assert_equal "REASON", encounter.codes['code'][0]

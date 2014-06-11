@@ -18,7 +18,7 @@ module E2E
       assert_equal 1, result.codes.keys.size
       code_system = result.codes.keys[0]
       assert_equal "Glucose Random", result.description
-      assert_equal "LOINC", code_system
+      assert_equal "pCLOCD", code_system
       assert_equal ['14749-6'], result.codes[code_system]
 
       refute_nil result.values
@@ -26,8 +26,8 @@ module E2E
       assert_equal "mmol/L", result.values.first.units
 
       assert_equal "Normal Reference range is greater than 3.3", result.reference_range
-      assert_equal "final", result.status_code[:value]
-      assert_equal Time.gm(2013,5,31,10,20,12).to_i, result.time
+      assert_equal "complete", result.status_code[:value]
+      assert_equal Time.gm(2013,5,31,10,20,12).to_i, result.start_time
 
       interpretation_code_system = result.interpretation.keys[0]
       assert_equal "code", interpretation_code_system

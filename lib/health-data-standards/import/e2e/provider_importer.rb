@@ -68,8 +68,6 @@ module HealthDataStandards
 
         def extract_e2e_encounter_provider_data(performer, use_dates=true)
           provider = {}
-          #entity = performer.xpath("./cda:assignedAuthor")
-          #name = entity.xpath("./cda:assignedPerson/cda:name")
           entity = performer.xpath("./cda:participant[@typeCode='PRF']/cda:participantRole")
           name = entity.xpath("./cda:playingEntity[@classCode='PSN']/cda:name")
           provider[:title] = extract_data(name, "./cda:prefix")
@@ -93,7 +91,7 @@ module HealthDataStandards
           end
 
           # NIST sample C32s use different OID for NPI vs C83, support both
-          npi = extract_data(entity, "./cda:id[@root='2.16.840.1.113883.3.1818.10.2.10.19']/@extension")
+          npi = extract_data(entity, "./cda:id/@extension")
 
           provider[:addresses] = performer.xpath("./cda:assignedEntity/cda:addr").try(:map) { |ae| import_address(ae) }
           provider[:telecoms] = performer.xpath("./cda:assignedEntity/cda:telecom").try(:map) { |te| import_telecom(te) }

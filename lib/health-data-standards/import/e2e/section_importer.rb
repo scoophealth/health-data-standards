@@ -162,37 +162,37 @@ module HealthDataStandards
           return OrganizationImporter.instance.extract_organization(organization_element)
         end
 
-#TODO Add ID parsing via xpath ./cda:id/@extension
-        def import_person(person_element)
-          return unless person_element
-          person = Person.new
-          name_element = person_element.at_xpath("./cda:name")
-          if name_element
-            person.title = name_element.at_xpath("./cda:title").try(:text)
-            person.given_name = name_element.at_xpath("./cda:given").try(:text)
-            person.family_name = name_element.at_xpath("./cda:family").try(:text)
-          end
-          person.addresses = person_element.xpath("./cda:addr").map { |addr| import_address(addr) }
-          person.telecoms = person_element.xpath("./cda:telecom").map { |tele| import_telecom(tele) } 
-          return person
-        end
-
-        def import_address(address_element)
-          address = Address.new
-          address.street = [address_element.at_xpath("./cda:streetAddressLine").try(:text)]
-          address.city = address_element.at_xpath("./cda:city").try(:text)
-          address.state = address_element.at_xpath("./cda:state").try(:text)
-          address.zip = address_element.at_xpath("./cda:postalCode").try(:text)
-          address.country = address_element.at_xpath("./cda:country").try(:text)
-          address
-        end
-
-        def import_telecom(telecom_element)
-          tele = Telecom.new
-          tele.value = telecom_element['value']
-          tele.use = telecom_element['use']
-          tele
-        end
+# #TODO Add ID parsing via xpath ./cda:id/@extension
+#         def import_person(person_element)
+#           return unless person_element
+#           person = Person.new
+#           name_element = person_element.at_xpath("./cda:name")
+#           if name_element
+#             person.title = name_element.at_xpath("./cda:title").try(:text)
+#             person.given_name = name_element.at_xpath("./cda:given").try(:text)
+#             person.family_name = name_element.at_xpath("./cda:family").try(:text)
+#           end
+#           person.addresses = person_element.xpath("./cda:addr").map { |addr| import_address(addr) }
+#           person.telecoms = person_element.xpath("./cda:telecom").map { |tele| import_telecom(tele) }
+#           return person
+#         end
+#
+#         def import_address(address_element)
+#           address = Address.new
+#           address.street = [address_element.at_xpath("./cda:streetAddressLine").try(:text)]
+#           address.city = address_element.at_xpath("./cda:city").try(:text)
+#           address.state = address_element.at_xpath("./cda:state").try(:text)
+#           address.zip = address_element.at_xpath("./cda:postalCode").try(:text)
+#           address.country = address_element.at_xpath("./cda:country").try(:text)
+#           address
+#         end
+#
+#         def import_telecom(telecom_element)
+#           tele = Telecom.new
+#           tele.value = telecom_element['value']
+#           tele.use = telecom_element['use']
+#           tele
+#         end
 
         def extract_negation(parent_element, entry)
           negation_indicator = parent_element['negationInd']

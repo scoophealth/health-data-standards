@@ -12,7 +12,7 @@ module E2E
       assert immunization.nil? == false
       assert immunization.codes, {"whoATC"=>["J07CA01"]}
       assert immunization.description == 'Td'
-      assert_equal Time.gm(2012,9,1).to_i, immunization.time
+      assert_equal Time.gm(2012,9,1).to_i, immunization.start_time
       #assert immunization.codes['CVX'].include? '88'
       #assert immunization.codes['CVX'].include? '111'
 
@@ -20,14 +20,14 @@ module E2E
       assert immunization.nil? == false
       assert_equal immunization.codes, {"whoATC"=>["J07BB01"]}
       assert immunization.description == 'Flu'
-      assert_equal Time.gm(2009,2,1).to_i, immunization.time
+      assert_equal Time.gm(2009,2,1).to_i, immunization.start_time
       #assert_equal false, immunization.refusal_ind
 
       immunization = patient.immunizations[2]
       assert immunization.nil? == false
       assert immunization.codes, {"whoATC"=>["J07AL02"]}
       assert immunization.description == 'Pneumovax'
-      assert_equal Time.gm(2012,10,31).to_i, immunization.time
+      assert_equal Time.gm(2012,10,31).to_i, immunization.start_time
 
       #immunization = patient.immunizations[3]
       #assert_equal true, immunization.refusal_ind

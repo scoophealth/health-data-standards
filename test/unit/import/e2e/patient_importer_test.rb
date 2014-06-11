@@ -24,7 +24,7 @@ module E2E # to ensure no problems with minitest involving duplicated method nam
       assert_equal -923616000, patient.birthdate
       assert_equal 'M', patient.gender
       assert_equal '448000001', patient.medical_record_number
-      assert_equal Time.gm(2013,12,3,12,42,0).to_i, patient.effective_time
+      assert_equal Time.gm(2014,6,3,14,12,0).to_i, patient.effective_time
       assert_equal ['EN'], patient.languages
 
     end
@@ -53,7 +53,7 @@ module E2E # to ensure no problems with minitest involving duplicated method nam
       patient.save!
 
       assert_equal 'JOHN', patient.first
-      assert_equal 2, patient.encounters.size
+      assert_equal 6, patient.encounters.size
       #assert ! patient.expired
 
       #assert_equal 1270598400, patient.encounters.first.time
