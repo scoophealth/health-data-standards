@@ -14,12 +14,12 @@ CDA Header
   <templateId root="2.16.840.1.113883.3.1818.10.7.1"/>
   <!-- Conforms to the BC PITO EMR Conversion Document specification -->
   <templateId root="2.16.840.1.113883.3.1818.10.1.1"/>
-  <id root="20C9CF1E-C9DC-4B2A-A390-092451FA3853"/>
+  <id root="A0287802-219F-410D-9EC7-AEF46DD724B5"/>
   <code code="11503-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" codeSystemVersion="2.44" displayName="Medical Records">
     <originalText representation="TXT" mediaType="text/plain"/>
   </code>
   <title>PITO EMR-2-EMR Record of JOHN CLEESE</title>
-  <effectiveTime value="201406031412"/>
+  <effectiveTime value="201406121318"/>
   <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" displayName="Normal"/>
   <languageCode code="en-CA"/>
   <!--
@@ -54,7 +54,7 @@ CDA Header
   ********************************************************
   -->
   <author typeCode="AUT" contextControlCode="OP">
-    <time value="20140603"/>
+    <time value="20140612"/>
     <assignedAuthor classCode="ASSIGNED">
       <id root="2.16.840.1.113883.3.40.2.11" extension="cpsid"/>
       <assignedPerson classCode="PSN" determinerCode="INSTANCE">
@@ -66,7 +66,7 @@ CDA Header
     </assignedAuthor>
   </author>
   <author typeCode="AUT" contextControlCode="OP">
-    <time value="20140603"/>
+    <time value="20140612"/>
     <assignedAuthor classCode="ASSIGNED">
       <id root="2.16.840.1.113883.3.40.2.11" extension="cpsid"/>
       <assignedAuthoringDevice classCode="DEV" determinerCode="INSTANCE">
@@ -146,7 +146,7 @@ Alerts
             <templateId root="2.16.840.1.113883.3.1818.10.3.2"/>
             <observation classCode="OBS" moodCode="EVN">
               <id root="2.16.840.1.113883.3.3331" extension="Alerts-10" assigningAuthorityName="OSCAR EMR"/>
-              <code nullFlavor="NA"/>
+              <code nullFlavor="NI"/>
               <text representation="TXT" mediaType="text/plain">Heart Attack</text>
               <statusCode code="active"/>
               <effectiveTime xsi:type="IVL_TS">
@@ -209,7 +209,7 @@ Allergies and Intolerances - (Reaction List)
                     <!-- Severity Observation -->
                     <observation classCode="OBS" moodCode="EVN">
                       <code code="SEV" displayName="Severity" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActCode"/>
-                      <value xsi:type="CD" nullFlavor="UNK" displayName="Unknown" codeSystem="2.16.840.1.113883.5.1063" codeSystemName="HL7 ObservationValue"/>
+                      <value xsi:type="CD" nullFlavor="UNK" displayName="Unknown"/>
                     </observation>
                   </entryRelationship>
                   <!-- Allergy Clinical Status -->
@@ -252,7 +252,7 @@ Clinically Measured Observation
             <!-- Clinically Measured Observations Organizer -->
             <organizer classCode="CLUSTER" moodCode="EVN">
               <id root="2.16.840.1.113883.3.3331" extension="ClinicalMeasuredObservations-1" assigningAuthorityName="OSCAR EMR"/>
-              <code nullFlavor="NA"/>
+              <code nullFlavor="NI"/>
               <statusCode code="completed"/>
               <author typeCode="AUT" contextControlCode="OP">
                 <templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
@@ -287,7 +287,7 @@ Clinically Measured Observation
             <!-- Clinically Measured Observations Organizer -->
             <organizer classCode="CLUSTER" moodCode="EVN">
               <id root="2.16.840.1.113883.3.3331" extension="ClinicalMeasuredObservations-1" assigningAuthorityName="OSCAR EMR"/>
-              <code nullFlavor="NA"/>
+              <code nullFlavor="NI"/>
               <statusCode code="completed"/>
               <author typeCode="AUT" contextControlCode="OP">
                 <templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
@@ -322,7 +322,7 @@ Clinically Measured Observation
             <!-- Clinically Measured Observations Organizer -->
             <organizer classCode="CLUSTER" moodCode="EVN">
               <id root="2.16.840.1.113883.3.3331" extension="ClinicalMeasuredObservations-2" assigningAuthorityName="OSCAR EMR"/>
-              <code nullFlavor="NA"/>
+              <code nullFlavor="NI"/>
               <statusCode code="completed"/>
               <author typeCode="AUT" contextControlCode="OP">
                 <templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
@@ -357,7 +357,7 @@ Clinically Measured Observation
             <!-- Clinically Measured Observations Organizer -->
             <organizer classCode="CLUSTER" moodCode="EVN">
               <id root="2.16.840.1.113883.3.3331" extension="ClinicalMeasuredObservations-3" assigningAuthorityName="OSCAR EMR"/>
-              <code nullFlavor="NA"/>
+              <code nullFlavor="NI"/>
               <statusCode code="completed"/>
               <author typeCode="AUT" contextControlCode="OP">
                 <templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
@@ -392,7 +392,7 @@ Clinically Measured Observation
             <!-- Clinically Measured Observations Organizer -->
             <organizer classCode="CLUSTER" moodCode="EVN">
               <id root="2.16.840.1.113883.3.3331" extension="ClinicalMeasuredObservations-4" assigningAuthorityName="OSCAR EMR"/>
-              <code nullFlavor="NA"/>
+              <code nullFlavor="NI"/>
               <statusCode code="completed"/>
               <author typeCode="AUT" contextControlCode="OP">
                 <templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
@@ -427,7 +427,7 @@ Clinically Measured Observation
             <!-- Clinically Measured Observations Organizer -->
             <organizer classCode="CLUSTER" moodCode="EVN">
               <id root="2.16.840.1.113883.3.3331" extension="ClinicalMeasuredObservations-5" assigningAuthorityName="OSCAR EMR"/>
-              <code nullFlavor="NA"/>
+              <code nullFlavor="NI"/>
               <statusCode code="completed"/>
               <author typeCode="AUT" contextControlCode="OP">
                 <templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
@@ -462,7 +462,7 @@ Clinically Measured Observation
             <!-- Clinically Measured Observations Organizer -->
             <organizer classCode="CLUSTER" moodCode="EVN">
               <id root="2.16.840.1.113883.3.3331" extension="ClinicalMeasuredObservations-6" assigningAuthorityName="OSCAR EMR"/>
-              <code nullFlavor="NA"/>
+              <code nullFlavor="NI"/>
               <statusCode code="completed"/>
               <author typeCode="AUT" contextControlCode="OP">
                 <templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
@@ -568,7 +568,7 @@ WT    95 in kg</text>
                   <effectiveTime xsi:type="IVL_TS">
                     <low value="20130925155000"/>
                   </effectiveTime>
-                  <value xsi:type="CD" nullFlavor="NA"/>
+                  <value xsi:type="CD" nullFlavor="NI"/>
                   <!-- Reason Author -->
                   <author typeCode="AUT" contextControlCode="OP">
                     <templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
@@ -638,7 +638,7 @@ WT    95 in kg</text>
                   <effectiveTime xsi:type="IVL_TS">
                     <low value="20130926161823"/>
                   </effectiveTime>
-                  <value xsi:type="CD" nullFlavor="NA"/>
+                  <value xsi:type="CD" nullFlavor="NI"/>
                   <!-- Reason Author -->
                   <author typeCode="AUT" contextControlCode="OP">
                     <templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
@@ -708,7 +708,7 @@ WT    95 in kg</text>
                   <effectiveTime xsi:type="IVL_TS">
                     <low value="20130926161901"/>
                   </effectiveTime>
-                  <value xsi:type="CD" nullFlavor="NA"/>
+                  <value xsi:type="CD" nullFlavor="NI"/>
                   <!-- Reason Author -->
                   <author typeCode="AUT" contextControlCode="OP">
                     <templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
@@ -778,7 +778,7 @@ WT    95 in kg</text>
                   <effectiveTime xsi:type="IVL_TS">
                     <low value="20130926161959"/>
                   </effectiveTime>
-                  <value xsi:type="CD" nullFlavor="NA"/>
+                  <value xsi:type="CD" nullFlavor="NI"/>
                   <!-- Reason Author -->
                   <author typeCode="AUT" contextControlCode="OP">
                     <templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
@@ -848,7 +848,7 @@ WT    95 in kg</text>
                   <effectiveTime xsi:type="IVL_TS">
                     <low value="20130926162010"/>
                   </effectiveTime>
-                  <value xsi:type="CD" nullFlavor="NA"/>
+                  <value xsi:type="CD" nullFlavor="NI"/>
                   <!-- Reason Author -->
                   <author typeCode="AUT" contextControlCode="OP">
                     <templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
@@ -918,7 +918,7 @@ WT    95 in kg</text>
                   <effectiveTime xsi:type="IVL_TS">
                     <low value="20130926162035"/>
                   </effectiveTime>
-                  <value xsi:type="CD" nullFlavor="NA"/>
+                  <value xsi:type="CD" nullFlavor="NI"/>
                   <!-- Reason Author -->
                   <author typeCode="AUT" contextControlCode="OP">
                     <templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
@@ -1275,7 +1275,6 @@ Laboratory Results & Results
                   </assignedPerson>
                 </assignedAuthor>
               </author>
-              <!-- Result Organizer -->
               <entryRelationship typeCode="COMP" contextConductionInd="true">
                 <templateId root="2.16.840.1.113883.3.1818.10.4.26"/>
                 <!-- Result Organizer -->
@@ -1303,7 +1302,7 @@ Laboratory Results & Results
                         <!-- Performer Participation -->
                         <time value="20130531102012"/>
                         <assignedEntity>
-                          <id nullFlavor="UNK"/>
+                          <id nullFlavor="NI"/>
                           <representedOrganization classCode="ORG" determinerCode="INSTANCE">
                             <name>LIFELABS</name>
                           </representedOrganization>
@@ -1346,7 +1345,7 @@ Laboratory Results & Results
                         <!-- Performer Participation -->
                         <time value="20130531102012"/>
                         <assignedEntity>
-                          <id nullFlavor="UNK"/>
+                          <id nullFlavor="NI"/>
                           <representedOrganization classCode="ORG" determinerCode="INSTANCE">
                             <name>LIFELABS</name>
                           </representedOrganization>
@@ -1389,7 +1388,7 @@ Laboratory Results & Results
                         <!-- Performer Participation -->
                         <time value="20130531102012"/>
                         <assignedEntity>
-                          <id nullFlavor="UNK"/>
+                          <id nullFlavor="NI"/>
                           <representedOrganization classCode="ORG" determinerCode="INSTANCE">
                             <name>LIFELABS</name>
                           </representedOrganization>
@@ -1432,7 +1431,7 @@ Laboratory Results & Results
                         <!-- Performer Participation -->
                         <time value="20130531102012"/>
                         <assignedEntity>
-                          <id nullFlavor="UNK"/>
+                          <id nullFlavor="NI"/>
                           <representedOrganization classCode="ORG" determinerCode="INSTANCE">
                             <name>LIFELABS</name>
                           </representedOrganization>
@@ -1475,7 +1474,7 @@ Laboratory Results & Results
                         <!-- Performer Participation -->
                         <time value="20130531102012"/>
                         <assignedEntity>
-                          <id nullFlavor="UNK"/>
+                          <id nullFlavor="NI"/>
                           <representedOrganization classCode="ORG" determinerCode="INSTANCE">
                             <name>LIFELABS</name>
                           </representedOrganization>
@@ -1518,7 +1517,7 @@ Laboratory Results & Results
                         <!-- Performer Participation -->
                         <time value="20130531102012"/>
                         <assignedEntity>
-                          <id nullFlavor="UNK"/>
+                          <id nullFlavor="NI"/>
                           <representedOrganization classCode="ORG" determinerCode="INSTANCE">
                             <name>LIFELABS</name>
                           </representedOrganization>
@@ -1561,7 +1560,7 @@ Laboratory Results & Results
                         <!-- Performer Participation -->
                         <time value="20130531102012"/>
                         <assignedEntity>
-                          <id nullFlavor="UNK"/>
+                          <id nullFlavor="NI"/>
                           <representedOrganization classCode="ORG" determinerCode="INSTANCE">
                             <name>LIFELABS</name>
                           </representedOrganization>
@@ -1604,7 +1603,7 @@ Laboratory Results & Results
                         <!-- Performer Participation -->
                         <time value="20130531102012"/>
                         <assignedEntity>
-                          <id nullFlavor="UNK"/>
+                          <id nullFlavor="NI"/>
                           <representedOrganization classCode="ORG" determinerCode="INSTANCE">
                             <name>LIFELABS</name>
                           </representedOrganization>
@@ -1647,7 +1646,7 @@ Laboratory Results & Results
                         <!-- Performer Participation -->
                         <time value="20130531102012"/>
                         <assignedEntity>
-                          <id nullFlavor="UNK"/>
+                          <id nullFlavor="NI"/>
                           <representedOrganization classCode="ORG" determinerCode="INSTANCE">
                             <name>LIFELABS</name>
                           </representedOrganization>
@@ -1690,7 +1689,7 @@ Laboratory Results & Results
                         <!-- Performer Participation -->
                         <time value="20130531102012"/>
                         <assignedEntity>
-                          <id nullFlavor="UNK"/>
+                          <id nullFlavor="NI"/>
                           <representedOrganization classCode="ORG" determinerCode="INSTANCE">
                             <name>LIFELABS</name>
                           </representedOrganization>
@@ -1733,7 +1732,7 @@ Laboratory Results & Results
                         <!-- Performer Participation -->
                         <time value="20130531102012"/>
                         <assignedEntity>
-                          <id nullFlavor="UNK"/>
+                          <id nullFlavor="NI"/>
                           <representedOrganization classCode="ORG" determinerCode="INSTANCE">
                             <name>LIFELABS</name>
                           </representedOrganization>
@@ -1776,7 +1775,7 @@ Laboratory Results & Results
                         <!-- Performer Participation -->
                         <time value="20130531102012"/>
                         <assignedEntity>
-                          <id nullFlavor="UNK"/>
+                          <id nullFlavor="NI"/>
                           <representedOrganization classCode="ORG" determinerCode="INSTANCE">
                             <name>LIFELABS</name>
                           </representedOrganization>
@@ -1819,7 +1818,7 @@ Laboratory Results & Results
                         <!-- Performer Participation -->
                         <time value="20130531102012"/>
                         <assignedEntity>
-                          <id nullFlavor="UNK"/>
+                          <id nullFlavor="NI"/>
                           <representedOrganization classCode="ORG" determinerCode="INSTANCE">
                             <name>LIFELABS</name>
                           </representedOrganization>
@@ -1862,7 +1861,7 @@ Laboratory Results & Results
                         <!-- Performer Participation -->
                         <time value="20130531102012"/>
                         <assignedEntity>
-                          <id nullFlavor="UNK"/>
+                          <id nullFlavor="NI"/>
                           <representedOrganization classCode="ORG" determinerCode="INSTANCE">
                             <name>LIFELABS</name>
                           </representedOrganization>
@@ -1915,7 +1914,7 @@ Laboratory Results & Results
                         <!-- Performer Participation -->
                         <time value="20130531102012"/>
                         <assignedEntity>
-                          <id nullFlavor="UNK"/>
+                          <id nullFlavor="NI"/>
                           <representedOrganization classCode="ORG" determinerCode="INSTANCE">
                             <name>LIFELABS</name>
                           </representedOrganization>
@@ -1968,7 +1967,7 @@ Laboratory Results & Results
                         <!-- Performer Participation -->
                         <time value="20130531102012"/>
                         <assignedEntity>
-                          <id nullFlavor="UNK"/>
+                          <id nullFlavor="NI"/>
                           <representedOrganization classCode="ORG" determinerCode="INSTANCE">
                             <name>LIFELABS</name>
                           </representedOrganization>
@@ -2021,7 +2020,7 @@ Laboratory Results & Results
                         <!-- Performer Participation -->
                         <time value="20130531102012"/>
                         <assignedEntity>
-                          <id nullFlavor="UNK"/>
+                          <id nullFlavor="NI"/>
                           <representedOrganization classCode="ORG" determinerCode="INSTANCE">
                             <name>LIFELABS</name>
                           </representedOrganization>
@@ -2064,7 +2063,7 @@ Laboratory Results & Results
                         <!-- Performer Participation -->
                         <time value="20130531102012"/>
                         <assignedEntity>
-                          <id nullFlavor="UNK"/>
+                          <id nullFlavor="NI"/>
                           <representedOrganization classCode="ORG" determinerCode="INSTANCE">
                             <name>LIFELABS</name>
                           </representedOrganization>
@@ -2115,7 +2114,7 @@ Laboratory Results & Results
                         <!-- Performer Participation -->
                         <time value="20130531102012"/>
                         <assignedEntity>
-                          <id nullFlavor="UNK"/>
+                          <id nullFlavor="NI"/>
                           <representedOrganization classCode="ORG" determinerCode="INSTANCE">
                             <name>LIFELABS</name>
                           </representedOrganization>
@@ -2168,7 +2167,7 @@ Laboratory Results & Results
                         <!-- Performer Participation -->
                         <time value="20130531102012"/>
                         <assignedEntity>
-                          <id nullFlavor="UNK"/>
+                          <id nullFlavor="NI"/>
                           <representedOrganization classCode="ORG" determinerCode="INSTANCE">
                             <name>LIFELABS</name>
                           </representedOrganization>
@@ -2221,7 +2220,7 @@ Laboratory Results & Results
                         <!-- Performer Participation -->
                         <time value="20130531102012"/>
                         <assignedEntity>
-                          <id nullFlavor="UNK"/>
+                          <id nullFlavor="NI"/>
                           <representedOrganization classCode="ORG" determinerCode="INSTANCE">
                             <name>LIFELABS</name>
                           </representedOrganization>
@@ -2255,7 +2254,7 @@ Laboratory Results & Results
                         <!-- Performer Participation -->
                         <time value="20130531102012"/>
                         <assignedEntity>
-                          <id nullFlavor="UNK"/>
+                          <id nullFlavor="NI"/>
                           <representedOrganization classCode="ORG" determinerCode="INSTANCE">
                             <name>LIFELABS</name>
                           </representedOrganization>
@@ -2299,7 +2298,7 @@ Laboratory Results & Results
                         <!-- Performer Participation -->
                         <time value="20130531102012"/>
                         <assignedEntity>
-                          <id nullFlavor="UNK"/>
+                          <id nullFlavor="NI"/>
                           <representedOrganization classCode="ORG" determinerCode="INSTANCE">
                             <name>LIFELABS</name>
                           </representedOrganization>
@@ -2352,7 +2351,7 @@ Laboratory Results & Results
                         <!-- Performer Participation -->
                         <time value="20130531102012"/>
                         <assignedEntity>
-                          <id nullFlavor="UNK"/>
+                          <id nullFlavor="NI"/>
                           <representedOrganization classCode="ORG" determinerCode="INSTANCE">
                             <name>LIFELABS</name>
                           </representedOrganization>
@@ -2405,7 +2404,7 @@ Laboratory Results & Results
                         <!-- Performer Participation -->
                         <time value="20130531102012"/>
                         <assignedEntity>
-                          <id nullFlavor="UNK"/>
+                          <id nullFlavor="NI"/>
                           <representedOrganization classCode="ORG" determinerCode="INSTANCE">
                             <name>LIFELABS</name>
                           </representedOrganization>
@@ -2449,7 +2448,7 @@ Laboratory Results & Results
                         <!-- Performer Participation -->
                         <time value="20130531102012"/>
                         <assignedEntity>
-                          <id nullFlavor="UNK"/>
+                          <id nullFlavor="NI"/>
                           <representedOrganization classCode="ORG" determinerCode="INSTANCE">
                             <name>LIFELABS</name>
                           </representedOrganization>
@@ -2493,7 +2492,7 @@ Laboratory Results & Results
                         <!-- Performer Participation -->
                         <time value="20130531102012"/>
                         <assignedEntity>
-                          <id nullFlavor="UNK"/>
+                          <id nullFlavor="NI"/>
                           <representedOrganization classCode="ORG" determinerCode="INSTANCE">
                             <name>LIFELABS</name>
                           </representedOrganization>
@@ -2546,7 +2545,7 @@ Laboratory Results & Results
                         <!-- Performer Participation -->
                         <time value="20130531102012"/>
                         <assignedEntity>
-                          <id nullFlavor="UNK"/>
+                          <id nullFlavor="NI"/>
                           <representedOrganization classCode="ORG" determinerCode="INSTANCE">
                             <name>LIFELABS</name>
                           </representedOrganization>
@@ -2577,7 +2576,7 @@ Medications and Prescriptions - Medication List
           <templateId root="2.16.840.1.113883.3.1818.10.2.19.1"/>
           <code code="10160-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of Medication Use"/>
           <title>Medications and Prescriptions - Medication List [with entries]</title>
-          <text>
+          <text mediaType="text/x-hl7-text+xml">
             <list>
               <item>TYLENOL EXTRA STRENGTH TAB 500MG QID 25 D</item>
               <item>SPIRONOLACTONE 25MG TABLET QAM 28 D</item>
@@ -2590,12 +2589,11 @@ Medications and Prescriptions - Medication List
               <item>ATORVASTATIN 40MG OD 28 D</item>
             </list>
           </text>
-          <entry typeCode="COMP" contextConductionInd="true">
+          <entry typeCode="DRIV" contextConductionInd="true">
             <templateId root="2.16.840.1.113883.3.1818.10.3.18"/>
             <substanceAdministration classCode="SBADM" moodCode="EVN">
-              <id root="2.16.840.1.113883.3.1818.10.10.3" extension="BC20120201RXA-1452388BN"/>
-              <code code="DRUG" displayName="Drug Therapy" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 Act
-Code"/>
+              <id root="2.16.840.1.113883.3.1818.10.10.3" extension="Medications-5" assigningAuthorityName="OSCAR EMR"/>
+              <code code="DRUG" displayName="Drug Therapy" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActCode"/>
               <statusCode code="active"/>
               <!-- Medication -->
               <consumable typeCode="CSM">
@@ -2624,7 +2622,7 @@ Code"/>
                 <!-- Unbounded Observation -->
                 <observation classCode="OBS" moodCode="EVN">
                   <code code="UNBOUND" displayName="Unbound Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
-                  <text>Long Term</text>
+                  <text representation="TXT" mediaType="text/plain">Long Term</text>
                 </observation>
               </entryRelationship>
               <!-- Last Review Date -->
@@ -2633,7 +2631,9 @@ Code"/>
                 <!-- Date Observation -->
                 <observation classCode="OBS" moodCode="EVN">
                   <code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
-                  <effectiveTime value="20130927"/>
+                  <effectiveTime xsi:type="IVL_TS">
+                    <low value="20130927"/>
+                  </effectiveTime>
                 </observation>
               </entryRelationship>
               <!-- Prescription Information -->
@@ -2641,7 +2641,7 @@ Code"/>
                 <templateId root="2.16.840.1.113883.3.1818.10.4.20"/>
                 <!-- Medication Prescription Event-->
                 <substanceAdministration classCode="SBADM" moodCode="RQO">
-                  <id root="2.16.840.1.113883.3.1818.10.10.3" extension="5"/>
+                  <id root="2.16.840.1.113883.3.3331" extension="MedicationPrescriptions-5" assigningAuthorityName="OSCAR EMR"/>
                   <code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
                   <!-- Start/Stop Date -->
                   <effectiveTime xsi:type="IVL_TS" operator="I">
@@ -2688,7 +2688,7 @@ Code"/>
                     <!-- Dose Observation -->
                     <substanceAdministration classCode="SBADM" moodCode="RQO">
                       <!-- Duration -->
-                      <text>25 D</text>
+                      <text representation="TXT" mediaType="text/plain">25 D</text>
                       <!-- Frequency -->
                       <!-- OSCAR Frequency Code QID -->
                       <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true">
@@ -2699,7 +2699,6 @@ Code"/>
                       </effectiveTime>
                       <!-- Route -->
                       <routeCode code="PO" displayName="PO" codeSystem="2.16.840.1.113883.5.112" codeSystemName="RouteOfAdministration"/>
-                      <approachSiteCode nullFlavor="NA"/>
                       <!-- Dose -->
                       <doseQuantity>
                         <low value="1.0"/>
@@ -2730,9 +2729,9 @@ Code"/>
                     </substanceAdministration>
                   </entryRelationship>
                   <!-- PRN -->
-                  <entryRelationship typeCode="COMP" contextConductionInd="true">
+                  <entryRelationship typeCode="SUBJ" contextConductionInd="true">
                     <templateId root="2.16.840.1.113883.3.1818.10.4.37"/>
-                    <!-- Order Indicator-->
+                    <!-- Order Indicator -->
                     <observation classCode="OBS" moodCode="EVN">
                       <code code="PRNIND" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" displayName="PRN Indicator"/>
                       <value xsi:type="BL" value="true"/>
@@ -2742,12 +2741,11 @@ Code"/>
               </entryRelationship>
             </substanceAdministration>
           </entry>
-          <entry typeCode="COMP" contextConductionInd="true">
+          <entry typeCode="DRIV" contextConductionInd="true">
             <templateId root="2.16.840.1.113883.3.1818.10.3.18"/>
             <substanceAdministration classCode="SBADM" moodCode="EVN">
-              <id root="2.16.840.1.113883.3.1818.10.10.3" extension="BC20120201RXA-1452388BN"/>
-              <code code="DRUG" displayName="Drug Therapy" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 Act
-Code"/>
+              <id root="2.16.840.1.113883.3.1818.10.10.3" extension="Medications-2" assigningAuthorityName="OSCAR EMR"/>
+              <code code="DRUG" displayName="Drug Therapy" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActCode"/>
               <statusCode code="active"/>
               <!-- Medication -->
               <consumable typeCode="CSM">
@@ -2776,7 +2774,7 @@ Code"/>
                 <!-- Unbounded Observation -->
                 <observation classCode="OBS" moodCode="EVN">
                   <code code="UNBOUND" displayName="Unbound Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
-                  <text>Long Term</text>
+                  <text representation="TXT" mediaType="text/plain">Long Term</text>
                 </observation>
               </entryRelationship>
               <!-- Last Review Date -->
@@ -2785,7 +2783,9 @@ Code"/>
                 <!-- Date Observation -->
                 <observation classCode="OBS" moodCode="EVN">
                   <code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
-                  <effectiveTime value="20130927"/>
+                  <effectiveTime xsi:type="IVL_TS">
+                    <low value="20130927"/>
+                  </effectiveTime>
                 </observation>
               </entryRelationship>
               <!-- Prescription Information -->
@@ -2793,7 +2793,7 @@ Code"/>
                 <templateId root="2.16.840.1.113883.3.1818.10.4.20"/>
                 <!-- Medication Prescription Event-->
                 <substanceAdministration classCode="SBADM" moodCode="RQO">
-                  <id root="2.16.840.1.113883.3.1818.10.10.3" extension="2"/>
+                  <id root="2.16.840.1.113883.3.3331" extension="MedicationPrescriptions-2" assigningAuthorityName="OSCAR EMR"/>
                   <code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
                   <!-- Start/Stop Date -->
                   <effectiveTime xsi:type="IVL_TS" operator="I">
@@ -2840,7 +2840,7 @@ Code"/>
                     <!-- Dose Observation -->
                     <substanceAdministration classCode="SBADM" moodCode="RQO">
                       <!-- Duration -->
-                      <text>28 D</text>
+                      <text representation="TXT" mediaType="text/plain">28 D</text>
                       <!-- Frequency -->
                       <!-- OSCAR Frequency Code QAM -->
                       <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true">
@@ -2851,7 +2851,6 @@ Code"/>
                       </effectiveTime>
                       <!-- Route -->
                       <routeCode code="PO" displayName="PO" codeSystem="2.16.840.1.113883.5.112" codeSystemName="RouteOfAdministration"/>
-                      <approachSiteCode nullFlavor="NA"/>
                       <!-- Dose -->
                       <doseQuantity>
                         <low value="1.0"/>
@@ -2882,9 +2881,9 @@ Code"/>
                     </substanceAdministration>
                   </entryRelationship>
                   <!-- PRN -->
-                  <entryRelationship typeCode="COMP" contextConductionInd="true">
+                  <entryRelationship typeCode="SUBJ" contextConductionInd="true">
                     <templateId root="2.16.840.1.113883.3.1818.10.4.37"/>
-                    <!-- Order Indicator-->
+                    <!-- Order Indicator -->
                     <observation classCode="OBS" moodCode="EVN">
                       <code code="PRNIND" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" displayName="PRN Indicator"/>
                       <value xsi:type="BL" value="false"/>
@@ -2894,12 +2893,11 @@ Code"/>
               </entryRelationship>
             </substanceAdministration>
           </entry>
-          <entry typeCode="COMP" contextConductionInd="true">
+          <entry typeCode="DRIV" contextConductionInd="true">
             <templateId root="2.16.840.1.113883.3.1818.10.3.18"/>
             <substanceAdministration classCode="SBADM" moodCode="EVN">
-              <id root="2.16.840.1.113883.3.1818.10.10.3" extension="BC20120201RXA-1452388BN"/>
-              <code code="DRUG" displayName="Drug Therapy" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 Act
-Code"/>
+              <id root="2.16.840.1.113883.3.1818.10.10.3" extension="Medications-8" assigningAuthorityName="OSCAR EMR"/>
+              <code code="DRUG" displayName="Drug Therapy" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActCode"/>
               <statusCode code="active"/>
               <!-- Medication -->
               <consumable typeCode="CSM">
@@ -2928,7 +2926,7 @@ Code"/>
                 <!-- Unbounded Observation -->
                 <observation classCode="OBS" moodCode="EVN">
                   <code code="UNBOUND" displayName="Unbound Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
-                  <text>Long Term</text>
+                  <text representation="TXT" mediaType="text/plain">Long Term</text>
                 </observation>
               </entryRelationship>
               <!-- Last Review Date -->
@@ -2937,7 +2935,9 @@ Code"/>
                 <!-- Date Observation -->
                 <observation classCode="OBS" moodCode="EVN">
                   <code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
-                  <effectiveTime value="20130927"/>
+                  <effectiveTime xsi:type="IVL_TS">
+                    <low value="20130927"/>
+                  </effectiveTime>
                 </observation>
               </entryRelationship>
               <!-- Prescription Information -->
@@ -2945,7 +2945,7 @@ Code"/>
                 <templateId root="2.16.840.1.113883.3.1818.10.4.20"/>
                 <!-- Medication Prescription Event-->
                 <substanceAdministration classCode="SBADM" moodCode="RQO">
-                  <id root="2.16.840.1.113883.3.1818.10.10.3" extension="8"/>
+                  <id root="2.16.840.1.113883.3.3331" extension="MedicationPrescriptions-8" assigningAuthorityName="OSCAR EMR"/>
                   <code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
                   <!-- Start/Stop Date -->
                   <effectiveTime xsi:type="IVL_TS" operator="I">
@@ -2992,7 +2992,7 @@ Code"/>
                     <!-- Dose Observation -->
                     <substanceAdministration classCode="SBADM" moodCode="RQO">
                       <!-- Duration -->
-                      <text>28 D</text>
+                      <text representation="TXT" mediaType="text/plain">28 D</text>
                       <!-- Frequency -->
                       <!-- OSCAR Frequency Code TID -->
                       <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true">
@@ -3003,7 +3003,6 @@ Code"/>
                       </effectiveTime>
                       <!-- Route -->
                       <routeCode code="PO" displayName="PO" codeSystem="2.16.840.1.113883.5.112" codeSystemName="RouteOfAdministration"/>
-                      <approachSiteCode nullFlavor="NA"/>
                       <!-- Dose -->
                       <doseQuantity>
                         <low value="1.0"/>
@@ -3034,9 +3033,9 @@ Code"/>
                     </substanceAdministration>
                   </entryRelationship>
                   <!-- PRN -->
-                  <entryRelationship typeCode="COMP" contextConductionInd="true">
+                  <entryRelationship typeCode="SUBJ" contextConductionInd="true">
                     <templateId root="2.16.840.1.113883.3.1818.10.4.37"/>
-                    <!-- Order Indicator-->
+                    <!-- Order Indicator -->
                     <observation classCode="OBS" moodCode="EVN">
                       <code code="PRNIND" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" displayName="PRN Indicator"/>
                       <value xsi:type="BL" value="true"/>
@@ -3046,12 +3045,11 @@ Code"/>
               </entryRelationship>
             </substanceAdministration>
           </entry>
-          <entry typeCode="COMP" contextConductionInd="true">
+          <entry typeCode="DRIV" contextConductionInd="true">
             <templateId root="2.16.840.1.113883.3.1818.10.3.18"/>
             <substanceAdministration classCode="SBADM" moodCode="EVN">
-              <id root="2.16.840.1.113883.3.1818.10.10.3" extension="BC20120201RXA-1452388BN"/>
-              <code code="DRUG" displayName="Drug Therapy" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 Act
-Code"/>
+              <id root="2.16.840.1.113883.3.1818.10.10.3" extension="Medications-9" assigningAuthorityName="OSCAR EMR"/>
+              <code code="DRUG" displayName="Drug Therapy" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActCode"/>
               <statusCode code="active"/>
               <!-- Medication -->
               <consumable typeCode="CSM">
@@ -3080,7 +3078,7 @@ Code"/>
                 <!-- Unbounded Observation -->
                 <observation classCode="OBS" moodCode="EVN">
                   <code code="UNBOUND" displayName="Unbound Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
-                  <text>Long Term</text>
+                  <text representation="TXT" mediaType="text/plain">Long Term</text>
                 </observation>
               </entryRelationship>
               <!-- Last Review Date -->
@@ -3089,7 +3087,9 @@ Code"/>
                 <!-- Date Observation -->
                 <observation classCode="OBS" moodCode="EVN">
                   <code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
-                  <effectiveTime value="20130927"/>
+                  <effectiveTime xsi:type="IVL_TS">
+                    <low value="20130927"/>
+                  </effectiveTime>
                 </observation>
               </entryRelationship>
               <!-- Prescription Information -->
@@ -3097,7 +3097,7 @@ Code"/>
                 <templateId root="2.16.840.1.113883.3.1818.10.4.20"/>
                 <!-- Medication Prescription Event-->
                 <substanceAdministration classCode="SBADM" moodCode="RQO">
-                  <id root="2.16.840.1.113883.3.1818.10.10.3" extension="9"/>
+                  <id root="2.16.840.1.113883.3.3331" extension="MedicationPrescriptions-9" assigningAuthorityName="OSCAR EMR"/>
                   <code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
                   <!-- Start/Stop Date -->
                   <effectiveTime xsi:type="IVL_TS" operator="I">
@@ -3144,7 +3144,7 @@ Code"/>
                     <!-- Dose Observation -->
                     <substanceAdministration classCode="SBADM" moodCode="RQO">
                       <!-- Duration -->
-                      <text>20 D</text>
+                      <text representation="TXT" mediaType="text/plain">20 D</text>
                       <!-- Frequency -->
                       <!-- OSCAR Frequency Code BID -->
                       <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true">
@@ -3155,7 +3155,6 @@ Code"/>
                       </effectiveTime>
                       <!-- Route -->
                       <routeCode code="SL" displayName="SL" codeSystem="2.16.840.1.113883.5.112" codeSystemName="RouteOfAdministration"/>
-                      <approachSiteCode nullFlavor="NA"/>
                       <!-- Dose -->
                       <doseQuantity>
                         <low value="1.0"/>
@@ -3186,9 +3185,9 @@ Code"/>
                     </substanceAdministration>
                   </entryRelationship>
                   <!-- PRN -->
-                  <entryRelationship typeCode="COMP" contextConductionInd="true">
+                  <entryRelationship typeCode="SUBJ" contextConductionInd="true">
                     <templateId root="2.16.840.1.113883.3.1818.10.4.37"/>
-                    <!-- Order Indicator-->
+                    <!-- Order Indicator -->
                     <observation classCode="OBS" moodCode="EVN">
                       <code code="PRNIND" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" displayName="PRN Indicator"/>
                       <value xsi:type="BL" value="true"/>
@@ -3198,12 +3197,11 @@ Code"/>
               </entryRelationship>
             </substanceAdministration>
           </entry>
-          <entry typeCode="COMP" contextConductionInd="true">
+          <entry typeCode="DRIV" contextConductionInd="true">
             <templateId root="2.16.840.1.113883.3.1818.10.3.18"/>
             <substanceAdministration classCode="SBADM" moodCode="EVN">
-              <id root="2.16.840.1.113883.3.1818.10.10.3" extension="BC20120201RXA-1452388BN"/>
-              <code code="DRUG" displayName="Drug Therapy" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 Act
-Code"/>
+              <id root="2.16.840.1.113883.3.1818.10.10.3" extension="Medications-6" assigningAuthorityName="OSCAR EMR"/>
+              <code code="DRUG" displayName="Drug Therapy" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActCode"/>
               <statusCode code="active"/>
               <!-- Medication -->
               <consumable typeCode="CSM">
@@ -3232,7 +3230,7 @@ Code"/>
                 <!-- Unbounded Observation -->
                 <observation classCode="OBS" moodCode="EVN">
                   <code code="UNBOUND" displayName="Unbound Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
-                  <text>Long Term</text>
+                  <text representation="TXT" mediaType="text/plain">Long Term</text>
                 </observation>
               </entryRelationship>
               <!-- Last Review Date -->
@@ -3241,7 +3239,9 @@ Code"/>
                 <!-- Date Observation -->
                 <observation classCode="OBS" moodCode="EVN">
                   <code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
-                  <effectiveTime value="20130927"/>
+                  <effectiveTime xsi:type="IVL_TS">
+                    <low value="20130927"/>
+                  </effectiveTime>
                 </observation>
               </entryRelationship>
               <!-- Prescription Information -->
@@ -3249,7 +3249,7 @@ Code"/>
                 <templateId root="2.16.840.1.113883.3.1818.10.4.20"/>
                 <!-- Medication Prescription Event-->
                 <substanceAdministration classCode="SBADM" moodCode="RQO">
-                  <id root="2.16.840.1.113883.3.1818.10.10.3" extension="6"/>
+                  <id root="2.16.840.1.113883.3.3331" extension="MedicationPrescriptions-6" assigningAuthorityName="OSCAR EMR"/>
                   <code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
                   <!-- Start/Stop Date -->
                   <effectiveTime xsi:type="IVL_TS" operator="I">
@@ -3296,7 +3296,7 @@ Code"/>
                     <!-- Dose Observation -->
                     <substanceAdministration classCode="SBADM" moodCode="RQO">
                       <!-- Duration -->
-                      <text>28 D</text>
+                      <text representation="TXT" mediaType="text/plain">28 D</text>
                       <!-- Frequency -->
                       <!-- OSCAR Frequency Code OD -->
                       <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true">
@@ -3307,7 +3307,6 @@ Code"/>
                       </effectiveTime>
                       <!-- Route -->
                       <routeCode code="PO" displayName="PO" codeSystem="2.16.840.1.113883.5.112" codeSystemName="RouteOfAdministration"/>
-                      <approachSiteCode nullFlavor="NA"/>
                       <!-- Dose -->
                       <doseQuantity>
                         <low value="1.0"/>
@@ -3338,9 +3337,9 @@ Code"/>
                     </substanceAdministration>
                   </entryRelationship>
                   <!-- PRN -->
-                  <entryRelationship typeCode="COMP" contextConductionInd="true">
+                  <entryRelationship typeCode="SUBJ" contextConductionInd="true">
                     <templateId root="2.16.840.1.113883.3.1818.10.4.37"/>
-                    <!-- Order Indicator-->
+                    <!-- Order Indicator -->
                     <observation classCode="OBS" moodCode="EVN">
                       <code code="PRNIND" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" displayName="PRN Indicator"/>
                       <value xsi:type="BL" value="false"/>
@@ -3350,12 +3349,11 @@ Code"/>
               </entryRelationship>
             </substanceAdministration>
           </entry>
-          <entry typeCode="COMP" contextConductionInd="true">
+          <entry typeCode="DRIV" contextConductionInd="true">
             <templateId root="2.16.840.1.113883.3.1818.10.3.18"/>
             <substanceAdministration classCode="SBADM" moodCode="EVN">
-              <id root="2.16.840.1.113883.3.1818.10.10.3" extension="BC20120201RXA-1452388BN"/>
-              <code code="DRUG" displayName="Drug Therapy" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 Act
-Code"/>
+              <id root="2.16.840.1.113883.3.1818.10.10.3" extension="Medications-3" assigningAuthorityName="OSCAR EMR"/>
+              <code code="DRUG" displayName="Drug Therapy" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActCode"/>
               <statusCode code="active"/>
               <!-- Medication -->
               <consumable typeCode="CSM">
@@ -3384,7 +3382,7 @@ Code"/>
                 <!-- Unbounded Observation -->
                 <observation classCode="OBS" moodCode="EVN">
                   <code code="UNBOUND" displayName="Unbound Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
-                  <text>Long Term</text>
+                  <text representation="TXT" mediaType="text/plain">Long Term</text>
                 </observation>
               </entryRelationship>
               <!-- Last Review Date -->
@@ -3393,7 +3391,9 @@ Code"/>
                 <!-- Date Observation -->
                 <observation classCode="OBS" moodCode="EVN">
                   <code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
-                  <effectiveTime value="20130927"/>
+                  <effectiveTime xsi:type="IVL_TS">
+                    <low value="20130927"/>
+                  </effectiveTime>
                 </observation>
               </entryRelationship>
               <!-- Prescription Information -->
@@ -3401,7 +3401,7 @@ Code"/>
                 <templateId root="2.16.840.1.113883.3.1818.10.4.20"/>
                 <!-- Medication Prescription Event-->
                 <substanceAdministration classCode="SBADM" moodCode="RQO">
-                  <id root="2.16.840.1.113883.3.1818.10.10.3" extension="3"/>
+                  <id root="2.16.840.1.113883.3.3331" extension="MedicationPrescriptions-3" assigningAuthorityName="OSCAR EMR"/>
                   <code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
                   <!-- Start/Stop Date -->
                   <effectiveTime xsi:type="IVL_TS" operator="I">
@@ -3448,7 +3448,7 @@ Code"/>
                     <!-- Dose Observation -->
                     <substanceAdministration classCode="SBADM" moodCode="RQO">
                       <!-- Duration -->
-                      <text>56 D</text>
+                      <text representation="TXT" mediaType="text/plain">56 D</text>
                       <!-- Frequency -->
                       <!-- OSCAR Frequency Code QAM -->
                       <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true">
@@ -3459,7 +3459,6 @@ Code"/>
                       </effectiveTime>
                       <!-- Route -->
                       <routeCode code="PO" displayName="PO" codeSystem="2.16.840.1.113883.5.112" codeSystemName="RouteOfAdministration"/>
-                      <approachSiteCode nullFlavor="NA"/>
                       <!-- Dose -->
                       <doseQuantity>
                         <low value="1.0"/>
@@ -3490,9 +3489,9 @@ Code"/>
                     </substanceAdministration>
                   </entryRelationship>
                   <!-- PRN -->
-                  <entryRelationship typeCode="COMP" contextConductionInd="true">
+                  <entryRelationship typeCode="SUBJ" contextConductionInd="true">
                     <templateId root="2.16.840.1.113883.3.1818.10.4.37"/>
-                    <!-- Order Indicator-->
+                    <!-- Order Indicator -->
                     <observation classCode="OBS" moodCode="EVN">
                       <code code="PRNIND" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" displayName="PRN Indicator"/>
                       <value xsi:type="BL" value="false"/>
@@ -3502,12 +3501,11 @@ Code"/>
               </entryRelationship>
             </substanceAdministration>
           </entry>
-          <entry typeCode="COMP" contextConductionInd="true">
+          <entry typeCode="DRIV" contextConductionInd="true">
             <templateId root="2.16.840.1.113883.3.1818.10.3.18"/>
             <substanceAdministration classCode="SBADM" moodCode="EVN">
-              <id root="2.16.840.1.113883.3.1818.10.10.3" extension="BC20120201RXA-1452388BN"/>
-              <code code="DRUG" displayName="Drug Therapy" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 Act
-Code"/>
+              <id root="2.16.840.1.113883.3.1818.10.10.3" extension="Medications-1" assigningAuthorityName="OSCAR EMR"/>
+              <code code="DRUG" displayName="Drug Therapy" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActCode"/>
               <statusCode code="active"/>
               <!-- Medication -->
               <consumable typeCode="CSM">
@@ -3536,7 +3534,7 @@ Code"/>
                 <!-- Unbounded Observation -->
                 <observation classCode="OBS" moodCode="EVN">
                   <code code="UNBOUND" displayName="Unbound Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
-                  <text>Long Term</text>
+                  <text representation="TXT" mediaType="text/plain">Long Term</text>
                 </observation>
               </entryRelationship>
               <!-- Last Review Date -->
@@ -3545,7 +3543,9 @@ Code"/>
                 <!-- Date Observation -->
                 <observation classCode="OBS" moodCode="EVN">
                   <code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
-                  <effectiveTime value="20130927"/>
+                  <effectiveTime xsi:type="IVL_TS">
+                    <low value="20130927"/>
+                  </effectiveTime>
                 </observation>
               </entryRelationship>
               <!-- Prescription Information -->
@@ -3553,7 +3553,7 @@ Code"/>
                 <templateId root="2.16.840.1.113883.3.1818.10.4.20"/>
                 <!-- Medication Prescription Event-->
                 <substanceAdministration classCode="SBADM" moodCode="RQO">
-                  <id root="2.16.840.1.113883.3.1818.10.10.3" extension="1"/>
+                  <id root="2.16.840.1.113883.3.3331" extension="MedicationPrescriptions-1" assigningAuthorityName="OSCAR EMR"/>
                   <code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
                   <!-- Start/Stop Date -->
                   <effectiveTime xsi:type="IVL_TS" operator="I">
@@ -3600,7 +3600,7 @@ Code"/>
                     <!-- Dose Observation -->
                     <substanceAdministration classCode="SBADM" moodCode="RQO">
                       <!-- Duration -->
-                      <text>28 D</text>
+                      <text representation="TXT" mediaType="text/plain">28 D</text>
                       <!-- Frequency -->
                       <!-- OSCAR Frequency Code OD -->
                       <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true">
@@ -3611,7 +3611,6 @@ Code"/>
                       </effectiveTime>
                       <!-- Route -->
                       <routeCode code="PO" displayName="PO" codeSystem="2.16.840.1.113883.5.112" codeSystemName="RouteOfAdministration"/>
-                      <approachSiteCode nullFlavor="NA"/>
                       <!-- Dose -->
                       <doseQuantity>
                         <low value="1.0"/>
@@ -3642,9 +3641,9 @@ Code"/>
                     </substanceAdministration>
                   </entryRelationship>
                   <!-- PRN -->
-                  <entryRelationship typeCode="COMP" contextConductionInd="true">
+                  <entryRelationship typeCode="SUBJ" contextConductionInd="true">
                     <templateId root="2.16.840.1.113883.3.1818.10.4.37"/>
-                    <!-- Order Indicator-->
+                    <!-- Order Indicator -->
                     <observation classCode="OBS" moodCode="EVN">
                       <code code="PRNIND" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" displayName="PRN Indicator"/>
                       <value xsi:type="BL" value="false"/>
@@ -3654,12 +3653,11 @@ Code"/>
               </entryRelationship>
             </substanceAdministration>
           </entry>
-          <entry typeCode="COMP" contextConductionInd="true">
+          <entry typeCode="DRIV" contextConductionInd="true">
             <templateId root="2.16.840.1.113883.3.1818.10.3.18"/>
             <substanceAdministration classCode="SBADM" moodCode="EVN">
-              <id root="2.16.840.1.113883.3.1818.10.10.3" extension="BC20120201RXA-1452388BN"/>
-              <code code="DRUG" displayName="Drug Therapy" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 Act
-Code"/>
+              <id root="2.16.840.1.113883.3.1818.10.10.3" extension="Medications-7" assigningAuthorityName="OSCAR EMR"/>
+              <code code="DRUG" displayName="Drug Therapy" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActCode"/>
               <statusCode code="active"/>
               <!-- Medication -->
               <consumable typeCode="CSM">
@@ -3688,7 +3686,7 @@ Code"/>
                 <!-- Unbounded Observation -->
                 <observation classCode="OBS" moodCode="EVN">
                   <code code="UNBOUND" displayName="Unbound Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
-                  <text>Long Term</text>
+                  <text representation="TXT" mediaType="text/plain">Long Term</text>
                 </observation>
               </entryRelationship>
               <!-- Last Review Date -->
@@ -3697,7 +3695,9 @@ Code"/>
                 <!-- Date Observation -->
                 <observation classCode="OBS" moodCode="EVN">
                   <code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
-                  <effectiveTime value="20130927"/>
+                  <effectiveTime xsi:type="IVL_TS">
+                    <low value="20130927"/>
+                  </effectiveTime>
                 </observation>
               </entryRelationship>
               <!-- Prescription Information -->
@@ -3705,7 +3705,7 @@ Code"/>
                 <templateId root="2.16.840.1.113883.3.1818.10.4.20"/>
                 <!-- Medication Prescription Event-->
                 <substanceAdministration classCode="SBADM" moodCode="RQO">
-                  <id root="2.16.840.1.113883.3.1818.10.10.3" extension="7"/>
+                  <id root="2.16.840.1.113883.3.3331" extension="MedicationPrescriptions-7" assigningAuthorityName="OSCAR EMR"/>
                   <code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
                   <!-- Start/Stop Date -->
                   <effectiveTime xsi:type="IVL_TS" operator="I">
@@ -3752,7 +3752,7 @@ Code"/>
                     <!-- Dose Observation -->
                     <substanceAdministration classCode="SBADM" moodCode="RQO">
                       <!-- Duration -->
-                      <text>28 D</text>
+                      <text representation="TXT" mediaType="text/plain">28 D</text>
                       <!-- Frequency -->
                       <!-- OSCAR Frequency Code OD -->
                       <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true">
@@ -3763,7 +3763,6 @@ Code"/>
                       </effectiveTime>
                       <!-- Route -->
                       <routeCode code="PO" displayName="PO" codeSystem="2.16.840.1.113883.5.112" codeSystemName="RouteOfAdministration"/>
-                      <approachSiteCode nullFlavor="NA"/>
                       <!-- Dose -->
                       <doseQuantity>
                         <low value="1.0"/>
@@ -3794,9 +3793,9 @@ Code"/>
                     </substanceAdministration>
                   </entryRelationship>
                   <!-- PRN -->
-                  <entryRelationship typeCode="COMP" contextConductionInd="true">
+                  <entryRelationship typeCode="SUBJ" contextConductionInd="true">
                     <templateId root="2.16.840.1.113883.3.1818.10.4.37"/>
-                    <!-- Order Indicator-->
+                    <!-- Order Indicator -->
                     <observation classCode="OBS" moodCode="EVN">
                       <code code="PRNIND" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" displayName="PRN Indicator"/>
                       <value xsi:type="BL" value="false"/>
@@ -3806,12 +3805,11 @@ Code"/>
               </entryRelationship>
             </substanceAdministration>
           </entry>
-          <entry typeCode="COMP" contextConductionInd="true">
+          <entry typeCode="DRIV" contextConductionInd="true">
             <templateId root="2.16.840.1.113883.3.1818.10.3.18"/>
             <substanceAdministration classCode="SBADM" moodCode="EVN">
-              <id root="2.16.840.1.113883.3.1818.10.10.3" extension="BC20120201RXA-1452388BN"/>
-              <code code="DRUG" displayName="Drug Therapy" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 Act
-Code"/>
+              <id root="2.16.840.1.113883.3.1818.10.10.3" extension="Medications-4" assigningAuthorityName="OSCAR EMR"/>
+              <code code="DRUG" displayName="Drug Therapy" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActCode"/>
               <statusCode code="active"/>
               <!-- Medication -->
               <consumable typeCode="CSM">
@@ -3840,7 +3838,7 @@ Code"/>
                 <!-- Unbounded Observation -->
                 <observation classCode="OBS" moodCode="EVN">
                   <code code="UNBOUND" displayName="Unbound Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
-                  <text>Long Term</text>
+                  <text representation="TXT" mediaType="text/plain">Long Term</text>
                 </observation>
               </entryRelationship>
               <!-- Last Review Date -->
@@ -3849,7 +3847,9 @@ Code"/>
                 <!-- Date Observation -->
                 <observation classCode="OBS" moodCode="EVN">
                   <code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
-                  <effectiveTime value="20130927"/>
+                  <effectiveTime xsi:type="IVL_TS">
+                    <low value="20130927"/>
+                  </effectiveTime>
                 </observation>
               </entryRelationship>
               <!-- Prescription Information -->
@@ -3857,7 +3857,7 @@ Code"/>
                 <templateId root="2.16.840.1.113883.3.1818.10.4.20"/>
                 <!-- Medication Prescription Event-->
                 <substanceAdministration classCode="SBADM" moodCode="RQO">
-                  <id root="2.16.840.1.113883.3.1818.10.10.3" extension="4"/>
+                  <id root="2.16.840.1.113883.3.3331" extension="MedicationPrescriptions-4" assigningAuthorityName="OSCAR EMR"/>
                   <code code="DRUG" codeSystem="2.16.840.1.113883.5.4" displayName="Drug Therapy"/>
                   <!-- Start/Stop Date -->
                   <effectiveTime xsi:type="IVL_TS" operator="I">
@@ -3904,7 +3904,7 @@ Code"/>
                     <!-- Dose Observation -->
                     <substanceAdministration classCode="SBADM" moodCode="RQO">
                       <!-- Duration -->
-                      <text>28 D</text>
+                      <text representation="TXT" mediaType="text/plain">28 D</text>
                       <!-- Frequency -->
                       <!-- OSCAR Frequency Code OD -->
                       <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true">
@@ -3915,7 +3915,6 @@ Code"/>
                       </effectiveTime>
                       <!-- Route -->
                       <routeCode code="PO" displayName="PO" codeSystem="2.16.840.1.113883.5.112" codeSystemName="RouteOfAdministration"/>
-                      <approachSiteCode nullFlavor="NA"/>
                       <!-- Dose -->
                       <doseQuantity>
                         <low value="1.0"/>
@@ -3946,9 +3945,9 @@ Code"/>
                     </substanceAdministration>
                   </entryRelationship>
                   <!-- PRN -->
-                  <entryRelationship typeCode="COMP" contextConductionInd="true">
+                  <entryRelationship typeCode="SUBJ" contextConductionInd="true">
                     <templateId root="2.16.840.1.113883.3.1818.10.4.37"/>
-                    <!-- Order Indicator-->
+                    <!-- Order Indicator -->
                     <observation classCode="OBS" moodCode="EVN">
                       <code code="PRNIND" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" displayName="PRN Indicator"/>
                       <value xsi:type="BL" value="false"/>
@@ -3970,7 +3969,29 @@ Orders & Requests
           <templateId root="2.16.840.1.113883.3.1818.10.2.20"/>
           <code code="REQS" codeSystem="2.16.840.1.113883.3.3068.10.6.2" codeSystemName="SectionType-CA-Pending" displayName="Problems list Reported"/>
           <title>Orders and Requests (without entries)</title>
-          <text>No Orders and Requests</text>
+          <text mediaType="text/x-hl7-text+xml">This section is not supported by the Originating Application</text>
+          <entry nullFlavor="NI" typeCode="DRIV" contextConductionInd="true">
+            <observation nullFlavor="NI" classCode="OBS" moodCode="RQO">
+              <id root="2.16.840.1.113883.3.3331" extension="Referrals-0" assigningAuthorityName="OSCAR EMR"/>
+              <code nullFlavor="NA"/>
+              <text nullFlavor="NI"/>
+              <effectiveTime nullFlavor="NI"/>
+              <performer nullFlavor="NI" typeCode="PRF">
+                <assignedEntity nullFlavor="NI" classCode="ASSIGNED">
+                  <id nullFlavor="NI"/>
+                </assignedEntity>
+              </performer>
+              <author nullFlavor="NI" typeCode="AUT" contextControlCode="OP">
+                <time nullFlavor="NI"/>
+                <assignedAuthor classCode="ASSIGNED">
+                  <id nullFlavor="NI"/>
+                  <assignedPerson classCode="PSN" determinerCode="INSTANCE">
+                    <name nullFlavor="NI"/>
+                  </assignedPerson>
+                </assignedAuthor>
+              </author>
+            </observation>
+          </entry>
         </section>
       </component>
 <!--
@@ -3983,7 +4004,7 @@ Problems and Conditions - Problem List
           <templateId root="2.16.840.1.113883.3.1818.10.2.21.1"/>
           <code code="11450-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Problems List Reported"/>
           <title>Problems and Conditions - Problem List [with entries]</title>
-          <text>
+          <text mediaType="text/x-hl7-text+xml">
             <list>
               <item>HEART FAILURE* (ICD9: 428)</item>
               <item>ESSENTIAL HYPERTENSION* (ICD9: 401)</item>
@@ -3991,18 +4012,18 @@ Problems and Conditions - Problem List
               <item>CHRONIC BRONCHITIS* (ICD9: 491)</item>
             </list>
           </text>
-          <entry typeCode="COMP" contextConductionInd="true">
+          <entry typeCode="DRIV" contextConductionInd="true">
             <templateId root="2.16.840.1.113883.3.1818.10.3.15"/>
             <!-- Problem List Observation -->
             <observation classCode="OBS" moodCode="EVN">
-              <id root="2.16.840.1.113883.3.1818.10.2.10.31" extension="1"/>
-              <code code="DX" displayName="DX" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActCode"/>
-              <text>HEART FAILURE*</text>
+              <id root="2.16.840.1.113883.3.3331" extension="ProblemList-1"  assigningAuthorityName="OSCAR EMR"/>
+              <code code="282291009" displayName="Diagnosis" codeSystem="2.16.840.1.113883.6.69" codeSystemName="SNOMED-CT"/>
+              <text representation="TXT" mediaType="text/plain">HEART FAILURE*</text>
               <statusCode code="active"/>
               <effectiveTime xsi:type="IVL_TS">
                 <low value="20130926"/>
               </effectiveTime>
-              <value xsi:type="CD" nullFlavor="UNK" displayName="Unknown" codeSystem="2.16.840.1.113883.3.1818.10.2.8.3" codeSystemName="SNOMED-CT"/>
+              <value xsi:type="CD" nullFlavor="UNK"/>
               <!-- Diagnosing Provider -->
               <author typeCode="AUT" contextControlCode="OP">
                 <templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
@@ -4033,23 +4054,25 @@ Problems and Conditions - Problem List
                 <!-- Date Observation -->
                 <observation classCode="OBS" moodCode="EVN">
                   <code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
-                  <effectiveTime value="20130926"/>
+                  <effectiveTime xsi:type="IVL_TS">
+                    <low value="20130926120000"/>
+                  </effectiveTime>
                 </observation>
               </entryRelationship>
             </observation>
           </entry>
-          <entry typeCode="COMP" contextConductionInd="true">
+          <entry typeCode="DRIV" contextConductionInd="true">
             <templateId root="2.16.840.1.113883.3.1818.10.3.15"/>
             <!-- Problem List Observation -->
             <observation classCode="OBS" moodCode="EVN">
-              <id root="2.16.840.1.113883.3.1818.10.2.10.31" extension="2"/>
-              <code code="DX" displayName="DX" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActCode"/>
-              <text>ESSENTIAL HYPERTENSION*</text>
+              <id root="2.16.840.1.113883.3.3331" extension="ProblemList-2"  assigningAuthorityName="OSCAR EMR"/>
+              <code code="282291009" displayName="Diagnosis" codeSystem="2.16.840.1.113883.6.69" codeSystemName="SNOMED-CT"/>
+              <text representation="TXT" mediaType="text/plain">ESSENTIAL HYPERTENSION*</text>
               <statusCode code="active"/>
               <effectiveTime xsi:type="IVL_TS">
                 <low value="20130926"/>
               </effectiveTime>
-              <value xsi:type="CD" nullFlavor="UNK" displayName="Unknown" codeSystem="2.16.840.1.113883.3.1818.10.2.8.3" codeSystemName="SNOMED-CT"/>
+              <value xsi:type="CD" nullFlavor="UNK"/>
               <!-- Diagnosing Provider -->
               <author typeCode="AUT" contextControlCode="OP">
                 <templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
@@ -4080,23 +4103,25 @@ Problems and Conditions - Problem List
                 <!-- Date Observation -->
                 <observation classCode="OBS" moodCode="EVN">
                   <code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
-                  <effectiveTime value="20130926"/>
+                  <effectiveTime xsi:type="IVL_TS">
+                    <low value="20130926120000"/>
+                  </effectiveTime>
                 </observation>
               </entryRelationship>
             </observation>
           </entry>
-          <entry typeCode="COMP" contextConductionInd="true">
+          <entry typeCode="DRIV" contextConductionInd="true">
             <templateId root="2.16.840.1.113883.3.1818.10.3.15"/>
             <!-- Problem List Observation -->
             <observation classCode="OBS" moodCode="EVN">
-              <id root="2.16.840.1.113883.3.1818.10.2.10.31" extension="3"/>
-              <code code="DX" displayName="DX" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActCode"/>
-              <text>DIABETES MELLITUS*</text>
+              <id root="2.16.840.1.113883.3.3331" extension="ProblemList-3"  assigningAuthorityName="OSCAR EMR"/>
+              <code code="282291009" displayName="Diagnosis" codeSystem="2.16.840.1.113883.6.69" codeSystemName="SNOMED-CT"/>
+              <text representation="TXT" mediaType="text/plain">DIABETES MELLITUS*</text>
               <statusCode code="active"/>
               <effectiveTime xsi:type="IVL_TS">
                 <low value="20130926"/>
               </effectiveTime>
-              <value xsi:type="CD" nullFlavor="UNK" displayName="Unknown" codeSystem="2.16.840.1.113883.3.1818.10.2.8.3" codeSystemName="SNOMED-CT"/>
+              <value xsi:type="CD" nullFlavor="UNK"/>
               <!-- Diagnosing Provider -->
               <author typeCode="AUT" contextControlCode="OP">
                 <templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
@@ -4127,23 +4152,25 @@ Problems and Conditions - Problem List
                 <!-- Date Observation -->
                 <observation classCode="OBS" moodCode="EVN">
                   <code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
-                  <effectiveTime value="20130926"/>
+                  <effectiveTime xsi:type="IVL_TS">
+                    <low value="20130926120000"/>
+                  </effectiveTime>
                 </observation>
               </entryRelationship>
             </observation>
           </entry>
-          <entry typeCode="COMP" contextConductionInd="true">
+          <entry typeCode="DRIV" contextConductionInd="true">
             <templateId root="2.16.840.1.113883.3.1818.10.3.15"/>
             <!-- Problem List Observation -->
             <observation classCode="OBS" moodCode="EVN">
-              <id root="2.16.840.1.113883.3.1818.10.2.10.31" extension="4"/>
-              <code code="DX" displayName="DX" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7 ActCode"/>
-              <text>CHRONIC BRONCHITIS*</text>
+              <id root="2.16.840.1.113883.3.3331" extension="ProblemList-4"  assigningAuthorityName="OSCAR EMR"/>
+              <code code="282291009" displayName="Diagnosis" codeSystem="2.16.840.1.113883.6.69" codeSystemName="SNOMED-CT"/>
+              <text representation="TXT" mediaType="text/plain">CHRONIC BRONCHITIS*</text>
               <statusCode code="active"/>
               <effectiveTime xsi:type="IVL_TS">
                 <low value="20130926"/>
               </effectiveTime>
-              <value xsi:type="CD" nullFlavor="UNK" displayName="Unknown" codeSystem="2.16.840.1.113883.3.1818.10.2.8.3" codeSystemName="SNOMED-CT"/>
+              <value xsi:type="CD" nullFlavor="UNK"/>
               <!-- Diagnosing Provider -->
               <author typeCode="AUT" contextControlCode="OP">
                 <templateId root="2.16.840.1.113883.3.1818.10.4.2"/>
@@ -4174,25 +4201,13 @@ Problems and Conditions - Problem List
                 <!-- Date Observation -->
                 <observation classCode="OBS" moodCode="EVN">
                   <code code="DATEOBS" displayName="Date Observation" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending"/>
-                  <effectiveTime value="20130926"/>
+                  <effectiveTime xsi:type="IVL_TS">
+                    <low value="20130926120000"/>
+                  </effectiveTime>
                 </observation>
               </entryRelationship>
             </observation>
           </entry>
-        </section>
-      </component>
-<!--
-********************************************************
-Purpose
-********************************************************
--->
-      <component typeCode="COMP" contextConductionInd="true">
-        <section classCode="DOCSECT" moodCode="EVN">
-          <templateId root="2.16.840.1.113883.3.1818.10.2.22"/>
-          <!-- Purpose Section -->
-          <code code="42349-1" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Reason For Referral"/>
-          <title>Purpose [without entries]</title>
-          <text>Purpose not defined</text>
         </section>
       </component>
 <!--
@@ -4205,17 +4220,17 @@ Risk Factors
           <templateId root="2.16.840.1.113883.3.1818.10.2.24.1"/>
           <code code="46467-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Risk Factors"/>
           <title>Risk Factors [with entries]</title>
-          <text>
+          <text mediaType="text/x-hl7-text+xml">
             <list>
               <item>Situational Crisis</item>
             </list>
           </text>
-          <entry typeCode="COMP" contextConductionInd="true">
+          <entry typeCode="DRIV" contextConductionInd="true">
             <templateId root="2.16.840.1.113883.3.1818.10.3.17"/>
             <!-- Risk Factors Organizer -->
             <organizer classCode="CLUSTER" moodCode="EVN">
-              <id root="2.16.840.1.113883.3.1818.10.2.10.15" extension="6"/>
-              <code code="80943009"  displayName="Risk factor (observable entity)" codeSystem="2.16.840.1.113883.3.1818.10.2.8.3" codeSystemName="SNOMED-CT"/>
+              <id root="2.16.840.1.113883.3.3331" extension="RiskFactors-6" assigningAuthorityName="OSCAR EMR"/>
+              <code code="80943009" displayName="Risk factor (observable entity)" codeSystem="2.16.840.1.113883.3.1818.10.2.8.3" codeSystemName="SNOMED-CT"/>
               <statusCode code="active"/>
               <!-- Observation Author -->
               <author typeCode="AUT" contextControlCode="OP">
@@ -4235,41 +4250,17 @@ Risk Factors
               <!-- Component Observation -->
               <component typeCode="COMP" contextConductionInd="true">
                 <observation classCode="OBS" moodCode="EVN">
-                  <id nullFlavor="NA"/>
-                  <code nullFlavor="UNK"/>
-                  <text>Situational Crisis</text>
-                  <effectiveTime value="20130926161823"/>
-                  <value xsi:type="BL" value="true"/>
+                  <id root="2.16.840.1.113883.3.3331" extension="RiskFactors-6" assigningAuthorityName="OSCAR EMR"/>
+                  <code nullFlavor="NI"/>
+                  <text representation="TXT" mediaType="text/plain">Situational Crisis</text>
+                  <effectiveTime xsi:type="IVL_TS">
+                    <low value="20130926161823"/>
+                  </effectiveTime>
+                  <value xsi:type="CD" nullFlavor="NI"/>
                 </observation>
               </component>
             </organizer>
           </entry>
-        </section>
-      </component>
-<!--
-********************************************************
-Surgical Procedure History
-********************************************************
--->
-      <component typeCode="COMP" contextConductionInd="true">
-        <section classCode="DOCSECT" moodCode="EVN">
-          <templateId root="2.16.840.1.113883.3.1818.10.2.25"/>
-          <code code="10167-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of surgical procedures"/>
-          <title>Care History [without entries]</title>
-          <text>No Care History</text>
-        </section>
-      </component>
-<!--
-********************************************************
-Treatment History
-********************************************************
--->
-      <component typeCode="COMP" contextConductionInd="true">
-        <section classCode="DOCSECT" moodCode="EVN">
-          <templateId root="2.16.840.1.113883.3.1818.10.2.26"/>
-          <code code="62387-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Interventions "/>
-          <title>Treatment History [without entries]</title>
-          <text>No Treatment History</text>
         </section>
       </component>
     </structuredBody>
