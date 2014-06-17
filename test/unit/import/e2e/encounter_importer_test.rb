@@ -10,11 +10,13 @@ module E2E
       encounters = patient.encounters
       assert_equal 6, encounters.size
       assert_equal true, encounters[0].description.include?('130/85 sitting position')
-      assert_equal Time.gm(2013,9,25,15,50,00).to_i, encounters[0].start_time #20130925155000
+      assert_equal Time.gm(2013,9,25,15,50,00).to_i, encounters[0].start_time #20130925155000  => 1380124200
+      assert_equal Time.gm(2013,9,25,15,50,00).to_i, encounters[0].performer.start #20130925155000
       encounters.each do |encounter|
         assert_equal "doctor", encounter.performer.given_name
         assert_equal "oscardoc", encounter.performer.family_name
         assert_equal "cpsid", encounter.performer.npi
+        assert_equal Time.gm(2013,9,25,15,50,00).to_i, encounter.performer.start #20130925155000
         assert_nil encounter.performer.title
         refute_nil encounter.description
         refute_nil encounter.start_time

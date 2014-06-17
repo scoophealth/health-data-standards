@@ -45,13 +45,13 @@ module HealthDataStandards
           time = performer.xpath(performer, "./cda:time/@value")
 
           if use_dates
-            provider[:start] = extract_date(time, "./cda:low/@value")
-            provider[:end] = extract_date(time, "./cda:high/@value")
+            provider[:start] = extract_datetime(time, "./cda:low/@value")
+            provider[:end] = extract_datetime(time, "./cda:high/@value")
           end
 
           # E2E doesn't seem to have low/high value so use value of time for both
           if provider[:start] == nil
-            provider[:start] = extract_date(performer, "./cda:time/@value")
+            provider[:start] = extract_datetime(performer, "./cda:time/@value")
             if provider[:end] == nil
               provider[:end] = provider[:start]
             end
@@ -78,16 +78,16 @@ module HealthDataStandards
           time = performer.xpath(performer, "./cda:time/@value")
 
           if use_dates
-            provider[:start] = extract_date(time, "./cda:low/@value")
-            provider[:end] = extract_date(time, "./cda:high/@value")
+            provider[:start] = extract_datetime(time, "./cda:low/@value")
+            provider[:end] = extract_datetime(time, "./cda:high/@value")
           end
 
-          # E2E doesn't seem to have low/high value so use value of time for both
           if provider[:start] == nil
-            provider[:start] = extract_date(performer, "./cda:effectiveTime/@value")
-            if provider[:end] == nil
-              provider[:end] = provider[:start]
-            end
+            provider[:start] = extract_datetime(performer, "./cda:effectiveTime/cda:low/@value")
+          end
+
+          if provider[:end] == nil
+            provider[:end] = extract_datetime(performer, "./cda:effectiveTime/cda:high/@value")
           end
 
           # NIST sample C32s use different OID for NPI vs C83, support both
@@ -111,9 +111,10 @@ module HealthDataStandards
           end
         end
 
-        def extract_date(subject, query)
+        # use DateTime rather than Date to capture time of day rather than truncate to date
+        def extract_datetime(subject, query)
           date = extract_data(subject, query)
-          date ? Date.parse(date).to_time.to_i : nil
+          date ? DateTime.parse(date).to_time.to_i : nil
         end
 
         # Returns nil if result is an empty string, block allows text munging of result if there is one
