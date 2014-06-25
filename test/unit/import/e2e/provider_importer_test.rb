@@ -38,7 +38,8 @@ module E2E
       #assert_equal "Physician-3", provider2.family_name
       # assert_equal "NIST HL7 Test Laboratory", provider2[:organization]
       #assert_equal "200000000X", provider2.specialty
-      assert_nil provider2.npi
+      #assert_nil provider2.npi
+      assert_equal "", provider2.npi
     end
     #
     # def test_encounter_provider_extraction

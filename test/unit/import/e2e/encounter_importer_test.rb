@@ -13,11 +13,14 @@ module E2E
       assert_equal Time.gm(2013,9,25,15,50,00).to_i, encounters[0].start_time #20130925155000  => 1380124200
       assert_equal Time.gm(2013,9,25,15,50,00).to_i, encounters[0].performer.start #20130925155000
       encounters.each do |encounter|
-        assert_equal "doctor", encounter.performer.given_name
-        assert_equal "oscardoc", encounter.performer.family_name
-        assert_equal "cpsid", encounter.performer.npi
+        assert_equal "", encounter.performer.given_name
+        assert_equal "fiBE1z+k3/bo0InO41DyBEJuDs+VEhX2e4SNJg==", encounter.performer.family_name
+        assert_equal "", encounter.performer.npi
+        #assert_equal "doctor", encounter.performer.given_name
+        #assert_equal "oscardoc", encounter.performer.family_name
+        #assert_equal "cpsid", encounter.performer.npi
         assert_equal Time.gm(2013,9,25,15,50,00).to_i, encounter.performer.start #20130925155000
-        assert_nil encounter.performer.title
+        assert_equal "", encounter.performer.title #assert_nil encounter.performer.title
         refute_nil encounter.description
         refute_nil encounter.start_time
         #TODO update date this when we have some proper codes
@@ -46,10 +49,14 @@ module E2E
       assert_equal 1, patient.encounters.size
 
       encounter = patient.encounters[0]
-      assert_equal "Mr.", encounter.performer.title
-      assert_equal "Encounter", encounter.performer.given_name
-      assert_equal "Provider", encounter.performer.family_name
-      assert_equal "155388", encounter.performer.npi
+      assert_equal "", encounter.performer.title
+      assert_equal "", encounter.performer.given_name
+      assert_equal "LQQL4aeUK9k6zTFjOOIhOzZgd9IVHV8GZnedcg==", encounter.performer.family_name
+      assert_equal "", encounter.performer.npi
+      #assert_equal "Mr.", encounter.performer.title
+      #assert_equal "Encounter", encounter.performer.given_name
+      #assert_equal "Provider", encounter.performer.family_name
+      #assert_equal "155388", encounter.performer.npi
       assert_equal 2, encounter.codes.size
       assert_equal Time.gm(2011,2,14).to_i, encounter.time
       assert_equal 'General Medical Examination', encounter.description

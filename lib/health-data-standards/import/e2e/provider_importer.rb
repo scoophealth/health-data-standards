@@ -32,6 +32,50 @@ module HealthDataStandards
 
         private
 
+        def generate_hash(the_string)
+          the_hash = OpenSSL::Digest::SHA224.new
+          the_hash << the_string
+          Base64.strict_encode64(the_hash.digest)
+        end
+
+        def anonymize_provider_info(provider, print_key = false)
+          anon_provider = {}
+          provider_identity = ""
+          the_string = ''
+          if provider[:title]
+            the_string += provider[:title]
+          end
+          if provider[:given_name]
+            the_string += provider[:given_name]
+            provider_identity += provider[:given_name]
+          end
+          if provider[:family_name]
+            the_string += provider[:family_name]
+            provider_identity += " " + provider[:family_name]
+          end
+          if provider[:specialty]
+            the_string += provider[:specialty]
+          end
+          if provider[:npi]
+            the_string += provider[:npi]
+            provider_identity += ", NPI: "+provider[:npi]
+          end
+          anon_provider[:title] = ''
+          anon_provider[:given_name] = ''
+          anon_provider[:family_name] = generate_hash(the_string)
+          anon_provider[:organization] = Organization.new
+          anon_provider[:specialty] = ''
+          anon_provider[:addresses] = []
+          anon_provider[:telecoms] = []
+          anon_provider[:npi] = ''
+          anon_provider[:start] = provider[:start]
+          anon_provider[:end] = provider[:end]
+          if print_key
+            STDERR.puts "Provider_Hash: "+anon_provider[:family_name]+ ", Provider: "+provider_identity
+          end
+          anon_provider
+        end
+
         def extract_provider_data(performer, use_dates=true)
 
           provider = {}
@@ -42,6 +86,8 @@ module HealthDataStandards
           provider[:family_name] = extract_data(name, "./cda:family")
           provider[:organization] = OrganizationImporter.instance.extract_organization(performer.at_xpath("./cda:assignedEntity/cda:representedOrganization"))
           provider[:specialty] = extract_data(entity, "./cda:code/@code")
+
+
           time = performer.xpath(performer, "./cda:time/@value")
 
           if use_dates
@@ -63,6 +109,7 @@ module HealthDataStandards
           provider[:telecoms] = performer.xpath("./cda:assignedEntity/cda:telecom").try(:map) { |te| import_telecom(te) }
 
           provider[:npi] = npi if Provider.valid_npi?(npi)
+          provider = anonymize_provider_info(provider)
           provider
         end
 
@@ -75,6 +122,7 @@ module HealthDataStandards
           provider[:family_name] = extract_data(name, "./cda:family")
           #provider[:organization] = OrganizationImporter.instance.extract_organization(performer.at_xpath("./cda:assignedEntity/cda:representedOrganization"))
           provider[:specialty] = extract_data(entity, "./cda:code/@code")
+
           time = performer.xpath(performer, "./cda:time/@value")
 
           if use_dates
@@ -98,6 +146,7 @@ module HealthDataStandards
 
           provider[:npi] = npi # if Provider.valid_npi?(npi)
           #STDERR.puts "provider: " + provider.inspect
+          provider = anonymize_provider_info(provider, print_key=false)
           provider
         end
 
