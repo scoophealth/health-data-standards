@@ -2110,7 +2110,7 @@ Encounter History and Notes
 
 			<component typeCode="COMP" contextConductionInd="true">
 				<section classCode="DOCSECT" moodCode="EVN">
-					<templateId root="2.16.840.1.113883.3.1818.10.2.22.1"/>
+					<templateId root="2.16.840.1.113883.3.1818.10.2.12.1"/>
 					<code code="46240-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of hospitalizations+History of outpatient visits"/>
 					<title>Encounter History and Notes [with entries]</title>
 					<text>
@@ -3578,7 +3578,7 @@ Medications & Prescriptions - Medication List
 			<component typeCode="COMP" contextConductionInd="true">
 				<section classCode="DOCSECT" moodCode="EVN">
 					<templateId root="2.16.840.1.113883.3.1818.10.2.19.1"/>
-					<code code="10160-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of Medication Use"/>
+					<code code="10160-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of Medication Use"/>
 					<title>Medications and Prescriptions - Medication List [with entries]</title>
 					<text>
 						<list>

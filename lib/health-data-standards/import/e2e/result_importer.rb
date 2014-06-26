@@ -77,9 +77,7 @@ module HealthDataStandards
       class ResultImporter < SectionImporter
 
         def initialize
-          @entry_xpath = "/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/"+
-              "cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.16.1' and cda:code/@code='30954-2']/"+
-              "cda:entry/cda:observation/cda:entryRelationship/cda:organizer/cda:component/cda:observation"
+          @entry_xpath = "//cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.16.1' and cda:code/@code='30954-2']/cda:entry/cda:observation/cda:entryRelationship/cda:organizer/cda:component/cda:observation"
           @code_xpath = "./cda:code"
           @referencerange_xpath = "./cda:referenceRange"
           @interpretation_xpath = "./cda:interpretationCode"

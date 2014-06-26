@@ -54,13 +54,13 @@ module HealthDataStandards
       class ConditionImporter < SectionImporter
 
         def initialize
-          #@entry_xpath = "//cda:component/cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.21.1' and cda:code/@code='11450-4']/cda:entry/cda:observation"
-          @entry_xpath = "/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.21.1' and cda:code/@code='11450-4']/cda:entry/cda:observation"
-          @code_xpath = "./cda:entryRelationship/cda:observation[cda:code/@code='BILLINGCODE']/cda:value"
+          @entry_xpath = "//cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.21.1' and cda:code/@code='11450-4']/cda:entry/cda:observation"
+          #@entry_xpath = "/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.21.1' and cda:code/@code='11450-4']/cda:entry/cda:observation"
+          @code_xpath = "./cda:entryRelationship/cda:observation[cda:code/@code='BILLINGCODE' or cda:code/@code='ICD9CODE']/cda:value"
           @status_xpath = "./cda:statusCode"
           #@priority_xpath = "./cda:priorityCode"
-          @description_xpath = "./cda:entryRelationship/cda:observation[cda:code/@code='BILLINGCODE']/cda:value"
-
+          @description_xpath = "./cda:entryRelationship/cda:observation[cda:code/@code='BILLINGCODE' or cda:code/@code='ICD9CODE']/cda:value"
+          @description_secondary_xpath = "./cda:text/text()"
           @provider_xpath = "./cda:author/cda:assignedAuthor"
           #@cod_xpath = "./cda:entryRelationship[@typeCode='CAUS']/cda:observation/cda:code[@code='419620001']"
         end
@@ -132,7 +132,11 @@ module HealthDataStandards
         #end
 
         def extract_e2e_description(parent_element, entry)
-          entry.description = parent_element.xpath(@description_xpath+'/@displayName')
+          if parent_element.at_xpath(@description_xpath+'/@displayName') then
+            entry.description = parent_element.xpath(@description_xpath+'/@displayName')
+          else
+            entry.description = parent_element.xpath(@description_secondary_xpath).to_s
+          end
         end
 
         def extract_status(parent_element, entry)

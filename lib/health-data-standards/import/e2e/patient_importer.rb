@@ -54,7 +54,7 @@ module HealthDataStandards
         #    ./cda:consumable/cda:manufacturedProduct/cda:manufacturedMaterial/cda:code
         def initialize(check_usable = true)
           @section_importers = {}
-          #@section_importers[:encounters] = EncounterImporter.new
+          @section_importers[:encounters] = EncounterImporter.new
           #@section_importers[:procedures] = ProcedureImporter.new
           @section_importers[:results] = ResultImporter.new
           @section_importers[:vital_signs] = VitalSignImporter.new
@@ -120,7 +120,7 @@ module HealthDataStandards
         # @param [Record] record Mongoid model to append the Entry objects to
         # @param [Nokogiri::XML::Document] doc It is expected that the root node of this document
         #        will have the "cda" namespace registered to "urn:hl7-org:v3"
-        # @return [Hash] a represnetation of the patient with symbols as keys for each section
+        # @return [Hash] a representation of the patient with symbols as keys for each section
         def create_e2e_hash(record, doc)
           id_map = build_id_map(doc)
           @section_importers.each_pair do |section, importer|

@@ -28,16 +28,16 @@ module HealthDataStandards
         # @param [Hash] id_map A map of ids to all tagged text in the narrative portion of a document
         # @return [String] text description of tag
         #def lookup_tag(tag, id_map)
-        #   value = id_map[tag]
-        #   # Not sure why, but sometimes the reference is #<Reference> and the ID value is <Reference>, and
-        #   # sometimes it is #<Reference>.  We look for both.
-        #   if !value and tag[0] == '#'
-        #     tag = tag[1,tag.length]
-        #     value = id_map[tag]
-        #   end
+        #  value = id_map[tag]
+        #  # Not sure why, but sometimes the reference is #<Reference> and the ID value is <Reference>, and
+        #  # sometimes it is #<Reference>.  We look for both.
+        #  if !value and tag[0] == '#'
+        #    tag = tag[1, tag.length]
+        #    value = id_map[tag]
+        #  end
         #
-        #   value
-        # end
+        #  value
+        #end
 
         # Traverses that PITO E2E document passed in using XPath and creates an Array of Entry
         # objects based on what it finds                          
@@ -88,7 +88,6 @@ module HealthDataStandards
           end
         end
 
-
         def extract_priority(parent_element, entry)
           priority_element = parent_element.at_xpath(@priority_xpath)
           if priority_element
@@ -98,7 +97,6 @@ module HealthDataStandards
             end
           end
         end
-
 
         def extract_description(parent_element, entry, id_map)
           code_elements = parent_element.xpath(@description_xpath)
@@ -110,11 +108,8 @@ module HealthDataStandards
 
         def extract_codes(parent_element, entry)
           code_elements = parent_element.xpath(@code_xpath)
-          
           code_elements.each do |code_element|
-
             add_code_if_present(code_element, entry)
-
             translations = code_element.xpath('cda:translation')
             translations.each do |translation|
               add_code_if_present(translation, entry)
@@ -132,8 +127,7 @@ module HealthDataStandards
         end
 
         def extract_dates(parent_element, entry, element_name="effectiveTime")
-          
-          if parent_element.at_xpath("cda:#{element_name}")
+          if parent_element.at_xpath("cda:#{element_name}/@value")
             entry.time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:#{element_name}")['value'])
           end
           if parent_element.at_xpath("cda:#{element_name}/cda:low")
@@ -168,36 +162,37 @@ module HealthDataStandards
           return OrganizationImporter.instance.extract_organization(organization_element)
         end
 
-        def import_person(person_element)
-          return unless person_element
-          person = Person.new
-          name_element = person_element.at_xpath("./cda:name")
-          if name_element
-            person.title = name_element.at_xpath("./cda:title").try(:text)
-            person.given_name = name_element.at_xpath("./cda:given").try(:text)
-            person.family_name = name_element.at_xpath("./cda:family").try(:text)
-          end
-          person.addresses = person_element.xpath("./cda:addr").map { |addr| import_address(addr) }
-          person.telecoms = person_element.xpath("./cda:telecom").map { |tele| import_telecom(tele) } 
-          return person
-        end
-
-        def import_address(address_element)
-          address = Address.new
-          address.street = [address_element.at_xpath("./cda:streetAddressLine").try(:text)]
-          address.city = address_element.at_xpath("./cda:city").try(:text)
-          address.state = address_element.at_xpath("./cda:state").try(:text)
-          address.zip = address_element.at_xpath("./cda:postalCode").try(:text)
-          address.country = address_element.at_xpath("./cda:country").try(:text)
-          address
-        end
-
-        def import_telecom(telecom_element)
-          tele = Telecom.new
-          tele.value = telecom_element['value']
-          tele.use = telecom_element['use']
-          tele
-        end
+# #TODO Add ID parsing via xpath ./cda:id/@extension
+#         def import_person(person_element)
+#           return unless person_element
+#           person = Person.new
+#           name_element = person_element.at_xpath("./cda:name")
+#           if name_element
+#             person.title = name_element.at_xpath("./cda:title").try(:text)
+#             person.given_name = name_element.at_xpath("./cda:given").try(:text)
+#             person.family_name = name_element.at_xpath("./cda:family").try(:text)
+#           end
+#           person.addresses = person_element.xpath("./cda:addr").map { |addr| import_address(addr) }
+#           person.telecoms = person_element.xpath("./cda:telecom").map { |tele| import_telecom(tele) }
+#           return person
+#         end
+#
+#         def import_address(address_element)
+#           address = Address.new
+#           address.street = [address_element.at_xpath("./cda:streetAddressLine").try(:text)]
+#           address.city = address_element.at_xpath("./cda:city").try(:text)
+#           address.state = address_element.at_xpath("./cda:state").try(:text)
+#           address.zip = address_element.at_xpath("./cda:postalCode").try(:text)
+#           address.country = address_element.at_xpath("./cda:country").try(:text)
+#           address
+#         end
+#
+#         def import_telecom(telecom_element)
+#           tele = Telecom.new
+#           tele.value = telecom_element['value']
+#           tele.use = telecom_element['use']
+#           tele
+#         end
 
         def extract_negation(parent_element, entry)
           negation_indicator = parent_element['negationInd']

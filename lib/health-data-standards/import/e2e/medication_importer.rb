@@ -3,7 +3,7 @@ module HealthDataStandards
     module E2E
 
       #Common prefix for XPath expressions:
-      #/ClinicalDocument/component/structuredBody/component/section[templateId/@root='2.16.840.1.113883.3.1818.10.2.19.1' and code/@code='10160-6']/entry/substanceAdministration
+      #/ClinicalDocument/component/structuredBody/component/section[templateId/@root='2.16.840.1.113883.3.1818.10.2.19.1' and code/@code='10160-0']/entry/substanceAdministration
       #OSCAR Field          Notes                       Business Term         Field                 XPath
       #drugid               Unique ID in database       Record ID             id
       #provider_no          Doctor who prescribed/recordPrescribing Provider  assignedPerson > name ./entryRelationship/substanceAdministration/author/assignedAuthor/assignedPerson/name
@@ -81,7 +81,7 @@ module HealthDataStandards
       # @note The following are XPath locations for E2E information elements captured by the query-gateway medication model.
       #
       # @note Start of medication section
-      #   * entry_xpath = "//cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.19.1' and cda:code/@code='10160-6']/cda:entry/cda:substanceAdministration"
+      #   * entry_xpath = "//cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.19.1' and cda:code/@code='10160-0']/cda:entry/cda:substanceAdministration"
       #
       # @note Location of base Entry class fields
       #   * description_xpath = "./cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/cda:name/text()"
@@ -136,7 +136,7 @@ module HealthDataStandards
 
         def initialize
           # start of medication section
-          @entry_xpath = "/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.19.1' and cda:code/@code='10160-6']/cda:entry/cda:substanceAdministration"
+          @entry_xpath = "//cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.19.1' and cda:code/@code='10160-0']/cda:entry/cda:substanceAdministration"
 
           # location of base Entry class fields
           @description_xpath = './cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/e2e:desc/text()'
@@ -147,6 +147,7 @@ module HealthDataStandards
           @strength_xpath = './cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/e2e:ingredient/e2e:quantity'
 
           # location of Medication class fields
+          @subadm_xpath = './cda:entryRelationship/cda:substanceAdministration'
           # administrationTiming [frequency of drug - could be specific time, interval (every 6 hours), duration (infuse over 30 minutes) but e2e uses frequency only]
           @timing_xpath = './cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration'
 
@@ -173,7 +174,7 @@ module HealthDataStandards
 
           @check_for_usable = true               # Pilot tools will set this to false
         end
-        
+
         def create_entry(entry_element, id_map={})
           medication = Medication.new
 
@@ -199,7 +200,7 @@ module HealthDataStandards
           extract_description(entry_element, medication)
           extract_codes(entry_element, medication)
           extract_entry_value(entry_element, medication)
-          extract_dates(entry_element, medication)
+          extract_subadm_dates(entry_element, medication)
 
           extract_administration_timing(entry_element, medication)
           extract_freetextsig(entry_element, medication)
@@ -232,17 +233,18 @@ module HealthDataStandards
         end
 
         # Find date in Medication Prescription Event.
-        def extract_dates(parent_element, entry, element_name="effectiveTime")
+        def extract_subadm_dates(parent_element, entry, element_name="effectiveTime")
+          extract_dates(parent_element.xpath(@subadm_xpath), entry, element_name)
           #print "XML Node: " + parent_element.to_s + "\n"
           #if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}")
           #  entry.time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}")['value'])
           #end
-          if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:low")
-            entry.start_time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:low")['value'])
-          end
-          if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:high")
-            entry.end_time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:high")['value'])
-          end
+          #if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:low")
+          #  entry.start_time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:low")['value'])
+          #end
+          #if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:high")
+          #  entry.end_time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:high")['value'])
+          #end
           #if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:center")
           #  entry.time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:center")['value'])
           #end
@@ -307,8 +309,12 @@ module HealthDataStandards
 
         def extract_dose(parent_element, entry)
           dose = {}
-          dose['low'] = parent_element.xpath(@dose_xpath+'/cda:low/@value').to_s
-          dose['high'] = parent_element.xpath(@dose_xpath+"/cda:high/@value").to_s
+          if parent_element.at_xpath(@dose_xpath+'/cda:low/@value')
+            dose['low'] = parent_element.xpath(@dose_xpath+'/cda:low/@value').to_s
+            dose['high'] = parent_element.xpath(@dose_xpath+"/cda:high/@value").to_s
+          elsif parent_element.at_xpath(@dose_xpath+'/cda:center/@value')
+            dose['center'] = parent_element.xpath(@dose_xpath+'/cda:center/@value').to_s
+          end
           entry.dose = dose
         end
 

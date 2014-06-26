@@ -5,12 +5,11 @@ module HealthDataStandards
   module Import
     module E2E
       class ProviderImporter < SectionImporter
-        
-        
+
         def initialize
-          
+
         end
-        
+
         include Singleton
         include ProviderImportUtils
         # Extract Healthcare Providers from E2E
@@ -32,27 +31,73 @@ module HealthDataStandards
         end
 
         private
-      
+
+        def generate_hash(the_string)
+          the_hash = OpenSSL::Digest::SHA224.new
+          the_hash << the_string
+          Base64.strict_encode64(the_hash.digest)
+        end
+
+        def anonymize_provider_info(provider, print_key = false)
+          anon_provider = {}
+          provider_identity = ""
+          the_string = ''
+          if provider[:title]
+            the_string += provider[:title]
+          end
+          if provider[:given_name]
+            the_string += provider[:given_name]
+            provider_identity += provider[:given_name]
+          end
+          if provider[:family_name]
+            the_string += provider[:family_name]
+            provider_identity += " " + provider[:family_name]
+          end
+          if provider[:specialty]
+            the_string += provider[:specialty]
+          end
+          if provider[:npi]
+            the_string += provider[:npi]
+            provider_identity += ", NPI: "+provider[:npi]
+          end
+          anon_provider[:title] = ''
+          anon_provider[:given_name] = ''
+          anon_provider[:family_name] = generate_hash(the_string)
+          anon_provider[:organization] = Organization.new
+          anon_provider[:specialty] = ''
+          anon_provider[:addresses] = []
+          anon_provider[:telecoms] = []
+          anon_provider[:npi] = ''
+          anon_provider[:start] = provider[:start]
+          anon_provider[:end] = provider[:end]
+          if print_key
+            STDERR.puts "Provider_Hash: "+anon_provider[:family_name]+ ", Provider: "+provider_identity
+          end
+          anon_provider
+        end
+
         def extract_provider_data(performer, use_dates=true)
 
           provider = {}
           entity = performer.xpath("./cda:assignedAuthor")
           name = entity.xpath("./cda:assignedPerson/cda:name")
-          provider[:title]        = extract_data(name, "./cda:prefix")
-          provider[:given_name]   = extract_data(name, "./cda:given")
-          provider[:family_name]  = extract_data(name, "./cda:family")
+          provider[:title] = extract_data(name, "./cda:prefix")
+          provider[:given_name] = extract_data(name, "./cda:given")
+          provider[:family_name] = extract_data(name, "./cda:family")
           provider[:organization] = OrganizationImporter.instance.extract_organization(performer.at_xpath("./cda:assignedEntity/cda:representedOrganization"))
-          provider[:specialty]    = extract_data(entity, "./cda:code/@code")
-          time                    = performer.xpath(performer, "./cda:time/@value")
+          provider[:specialty] = extract_data(entity, "./cda:code/@code")
+
+
+          time = performer.xpath(performer, "./cda:time/@value")
 
           if use_dates
-            provider[:start]        = extract_date(time, "./cda:low/@value")
-            provider[:end]          = extract_date(time, "./cda:high/@value")
+            provider[:start] = extract_datetime(time, "./cda:low/@value")
+            provider[:end] = extract_datetime(time, "./cda:high/@value")
           end
 
           # E2E doesn't seem to have low/high value so use value of time for both
           if provider[:start] == nil
-            provider[:start] = extract_date(performer, "./cda:time/@value")
+            provider[:start] = extract_datetime(performer, "./cda:time/@value")
             if provider[:end] == nil
               provider[:end] = provider[:start]
             end
@@ -60,13 +105,51 @@ module HealthDataStandards
 
           # NIST sample C32s use different OID for NPI vs C83, support both
           npi = extract_data(entity, "./cda:id[@root='2.16.840.1.113883.4.6' or @root='2.16.840.1.113883.3.72.5.2']/@extension")
-          provider[:addresses] = performer.xpath("./cda:assignedEntity/cda:addr").try(:map) {|ae| import_address(ae)}
-          provider[:telecoms] = performer.xpath("./cda:assignedEntity/cda:telecom").try(:map) {|te| import_telecom(te)}
-          
+          provider[:addresses] = performer.xpath("./cda:assignedEntity/cda:addr").try(:map) { |ae| import_address(ae) }
+          provider[:telecoms] = performer.xpath("./cda:assignedEntity/cda:telecom").try(:map) { |te| import_telecom(te) }
+
           provider[:npi] = npi if Provider.valid_npi?(npi)
+          provider = anonymize_provider_info(provider)
           provider
         end
-        
+
+        def extract_e2e_encounter_provider_data(performer, use_dates=true)
+          provider = {}
+          entity = performer.xpath("./cda:participant[@typeCode='PRF']/cda:participantRole")
+          name = entity.xpath("./cda:playingEntity[@classCode='PSN']/cda:name")
+          provider[:title] = extract_data(name, "./cda:prefix")
+          provider[:given_name] = extract_data(name, "./cda:given")
+          provider[:family_name] = extract_data(name, "./cda:family")
+          #provider[:organization] = OrganizationImporter.instance.extract_organization(performer.at_xpath("./cda:assignedEntity/cda:representedOrganization"))
+          provider[:specialty] = extract_data(entity, "./cda:code/@code")
+
+          time = performer.xpath(performer, "./cda:time/@value")
+
+          if use_dates
+            provider[:start] = extract_datetime(time, "./cda:low/@value")
+            provider[:end] = extract_datetime(time, "./cda:high/@value")
+          end
+
+          if provider[:start] == nil
+            provider[:start] = extract_datetime(performer, "./cda:effectiveTime/cda:low/@value")
+          end
+
+          if provider[:end] == nil
+            provider[:end] = extract_datetime(performer, "./cda:effectiveTime/cda:high/@value")
+          end
+
+          # NIST sample C32s use different OID for NPI vs C83, support both
+          npi = extract_data(entity, "./cda:id/@extension")
+
+          provider[:addresses] = performer.xpath("./cda:assignedEntity/cda:addr").try(:map) { |ae| import_address(ae) }
+          provider[:telecoms] = performer.xpath("./cda:assignedEntity/cda:telecom").try(:map) { |te| import_telecom(te) }
+
+          provider[:npi] = npi # if Provider.valid_npi?(npi)
+          #STDERR.puts "provider: " + provider.inspect
+          provider = anonymize_provider_info(provider, print_key=false)
+          provider
+        end
+
         def find_or_create_provider(provider_hash)
           #provider = Provider.first(conditions: {npi: provider_hash[:npi]}) if provider_hash[:npi]
           provider = Provider.where(npi: provider_hash[:npi]).first if provider_hash[:npi] && !provider_hash[:npi].empty?
@@ -76,12 +159,13 @@ module HealthDataStandards
             provider = Provider.new(provider_hash)
           end
         end
-      
-        def extract_date(subject,query)
-          date = extract_data(subject,query)
-          date ? Date.parse(date).to_time.to_i : nil
+
+        # use DateTime rather than Date to capture time of day rather than truncate to date
+        def extract_datetime(subject, query)
+          date = extract_data(subject, query)
+          date ? DateTime.parse(date).to_time.to_i : nil
         end
-      
+
         # Returns nil if result is an empty string, block allows text munging of result if there is one
         def extract_data(subject, query)
           result = subject.xpath(query).text
@@ -91,7 +175,6 @@ module HealthDataStandards
             result
           end
         end
-
       end
     end
   end
