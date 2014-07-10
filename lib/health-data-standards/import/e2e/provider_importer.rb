@@ -146,7 +146,9 @@ module HealthDataStandards
 
           provider[:npi] = npi # if Provider.valid_npi?(npi)
           #STDERR.puts "provider: " + provider.inspect
-          provider = anonymize_provider_info(provider, print_key=false)
+
+          # To log hash keys assigned to providers set print_key to true
+          provider = anonymize_provider_info(provider, print_key=true)
           provider
         end
 
