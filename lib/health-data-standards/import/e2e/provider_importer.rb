@@ -34,7 +34,7 @@ module HealthDataStandards
 
         def generate_hash(the_string)
           the_hash = OpenSSL::Digest::SHA224.new
-          the_hash << the_string
+          the_hash << the_string.upcase  # need 'JOHN SMITH' to match 'John Smith', for instance
           Base64.strict_encode64(the_hash.digest)
         end
 
