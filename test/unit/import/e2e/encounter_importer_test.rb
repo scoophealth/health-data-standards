@@ -14,7 +14,7 @@ module E2E
       assert_equal Time.gm(2013,9,25,15,50,00).to_i, encounters[0].performer.start #20130925155000
       encounters.each do |encounter|
         assert_equal "", encounter.performer.given_name
-        assert_equal "fiBE1z+k3/bo0InO41DyBEJuDs+VEhX2e4SNJg==", encounter.performer.family_name
+        assert_equal "qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==", encounter.performer.family_name
         assert_equal "", encounter.performer.npi
         #assert_equal "doctor", encounter.performer.given_name
         #assert_equal "oscardoc", encounter.performer.family_name
@@ -51,7 +51,7 @@ module E2E
       encounter = patient.encounters[0]
       assert_equal "", encounter.performer.title
       assert_equal "", encounter.performer.given_name
-      assert_equal "LQQL4aeUK9k6zTFjOOIhOzZgd9IVHV8GZnedcg==", encounter.performer.family_name
+      assert_equal "z4hMj1x8RjceNv1Mdw/qNiCxMRnMob5d4SHNYQ==", encounter.performer.family_name
       assert_equal "", encounter.performer.npi
       #assert_equal "Mr.", encounter.performer.title
       #assert_equal "Encounter", encounter.performer.given_name
