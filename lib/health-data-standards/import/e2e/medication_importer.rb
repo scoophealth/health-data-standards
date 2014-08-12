@@ -165,12 +165,15 @@ module HealthDataStandards
           @form_xpath = './cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration/cda:administrationUnitCode'
 
           # location of embedded OrderInformation class fields
+          @order_xpath   = './cda:entryRelationship/cda:substanceAdministration'
           # orderNumber (order identifier from perspective of ordering clinician)
           @orderno_xpath = './cda:entryRelationship/cda:substanceAdministration/cda:id'
           # orderExpirationDateTime (Date when order is no longer valid)
           @expiredate_xpath = './cda:entryRelationship/cda:substanceAdministration/cda:effectiveTime/cda:high'
           # orderDateTime (Date when order provider wrote the order/prescription)
           @orderdate_xpath = './cda:entryRelationship/cda:substanceAdministration/cda:author/cda:time'
+          # order provider
+          @orderprovider_xpath = './cda:entryRelationship/cda:substanceAdministration/cda:author/cda:assignedAuthor/cda:assignedPerson/cda:name'
 
           @check_for_usable = true               # Pilot tools will set this to false
         end
@@ -209,7 +212,7 @@ module HealthDataStandards
           extract_route(entry_element, medication)
           extract_form(entry_element, medication)
 
-          #extract_order_information(entry_element, medication)
+          extract_order_information(entry_element, medication)
           extract_author_time(entry_element, medication)
           #extract_fulfillment_history(entry_element, medication)
           medication
@@ -350,23 +353,23 @@ module HealthDataStandards
           #print "code: " + entry.productForm.to_s + "\n"
         end
 
-        #def extract_order_information(parent_element, medication)
-        #  order_elements = parent_element.xpath("./cda:entryRelationship[@typeCode='REFR']/cda:supply[@moodCode='INT']")
-        #  if order_elements
-        #    order_elements.each do |order_element|
-        #      order_information = OrderInformation.new
-        #      actor_element = order_element.at_xpath('./cda:author')
-        #      if actor_element
-        #        order_information.provider = ProviderImporter.instance.extract_provider(actor_element, "assignedAuthor")
-        #      end
-        #      order_information.order_number = order_element.at_xpath('./cda:id').try(:[], 'root')
-        #      order_information.fills = order_element.at_xpath('./cda:repeatNumber').try(:[], 'value').try(:to_i)
-        #      order_information.quantity_ordered = extract_scalar(order_element, "./cda:quantity")
-        #
-        #      medication.orderInformation << order_information
-        #    end
-        #  end
-        #end
+        def extract_order_information(parent_element, medication)
+          order_elements = parent_element.xpath(@order_xpath)
+          if order_elements
+            order_elements.each do |order_element|
+              order_information = OrderInformation.new
+              actor_element = order_element.at_xpath('./cda:author') #cda:author/cda:assignedAuthor/cda:assignedPerson/cda:name
+              if actor_element
+                order_information.performer = ProviderImporter.instance.extract_e2e_medication_provider(actor_element)
+              end
+              #order_information.order_number = order_element.at_xpath('./cda:id').try(:[], 'root')
+              #order_information.fills = order_element.at_xpath('./cda:repeatNumber').try(:[], 'value').try(:to_i)
+              #order_information.quantity_ordered = extract_scalar(order_element, "./cda:quantity")
+
+              medication.orderInformation << order_information
+            end
+          end
+        end
 
         def extract_author_time(parent_element, entry, element_name="author")
           if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}")

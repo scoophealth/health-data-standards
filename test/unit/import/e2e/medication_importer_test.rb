@@ -44,6 +44,13 @@ module E2E
       assert_equal '2.16.840.1.113883.1.11.14570', medication.product_form['codeSystem']
       assert_equal 'TABLET', medication.product_form['displayName']
 
+      assert_equal 1, medication.order_information.size
+      #assert_equal 1, medication.order_information.first.fills
+      #assert_equal 1, medication.order_information.first.quantity_ordered['value']
+      #assert_equal 'tablet', medication.order_information.first.quantity_ordered['unit']
+      assert_equal '', medication.order_information[0].performer.given_name
+      assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
+      assert_equal '', medication.order_information[0].performer.npi
 
       # last listed medication
       medication = patient.medications[8]

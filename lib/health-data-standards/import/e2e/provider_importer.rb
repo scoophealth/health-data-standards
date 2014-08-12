@@ -152,6 +152,26 @@ module HealthDataStandards
           provider
         end
 
+        def extract_e2e_medication_provider_data(performer)
+          provider = {}
+          name = performer.xpath("./cda:assignedAuthor/cda:assignedPerson/cda:name")
+          provider[:given_name] = extract_data(name, "./cda:given")
+          provider[:family_name] = extract_data(name, "./cda:family")
+
+          time = performer.xpath(performer, "./cda:time/@value")
+
+          provider[:start] = extract_datetime(performer, "./cda:time/@value")
+
+          # NIST sample C32s use different OID for NPI vs C83, support both
+          npi = extract_data(performer, "./cda:assignedAuthor/cda:id/@extension")
+
+          provider[:npi] = npi
+
+          # To log hash keys assigned to providers set print_key to true
+          provider = anonymize_provider_info(provider, print_key=true)
+          provider
+        end
+
         def find_or_create_provider(provider_hash)
           #provider = Provider.first(conditions: {npi: provider_hash[:npi]}) if provider_hash[:npi]
           provider = Provider.where(npi: provider_hash[:npi]).first if provider_hash[:npi] && !provider_hash[:npi].empty?
