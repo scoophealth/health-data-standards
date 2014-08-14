@@ -50,6 +50,8 @@ module E2E
       #assert_equal 'tablet', medication.order_information.first.quantity_ordered['unit']
       assert_equal '', medication.order_information[0].performer.given_name
       assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
+      assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].performer.start
+      assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
       assert_equal '', medication.order_information[0].performer.npi
 
       # last listed medication

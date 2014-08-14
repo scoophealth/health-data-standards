@@ -361,6 +361,9 @@ module HealthDataStandards
               actor_element = order_element.at_xpath('./cda:author') #cda:author/cda:assignedAuthor/cda:assignedPerson/cda:name
               if actor_element
                 order_information.performer = ProviderImporter.instance.extract_e2e_medication_provider(actor_element)
+                if order_information.performer.start
+                  order_information.orderDateTime =  order_information.performer.start
+                end
               end
               #order_information.order_number = order_element.at_xpath('./cda:id').try(:[], 'root')
               #order_information.fills = order_element.at_xpath('./cda:repeatNumber').try(:[], 'value').try(:to_i)
