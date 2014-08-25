@@ -15,6 +15,10 @@ The Quality Measure engine relies on a MongoDB [MongoDB](http://www.mongodb.org/
 
     http://www.mongodb.org/display/DOCS/Quickstart
 
+To run unit tests execute (mongod must be running):
+
+    rake test
+
 Project Practices
 =================
 
