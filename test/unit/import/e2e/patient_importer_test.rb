@@ -29,7 +29,7 @@ module E2E # to ensure no problems with minitest involving duplicated method nam
 
     end
 
-    def test_complete_example_get_demographics
+    def test_get_demographics_complete_example
       doc = Nokogiri::XML(File.new('test/fixtures/PITO/E2E-DTC Ex 001 - Conversion - Fully Loaded - V1-30-00.xml'))
       doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
 
@@ -72,10 +72,10 @@ module E2E # to ensure no problems with minitest involving duplicated method nam
       assert_equal 6, patient.encounters.size
       #assert ! patient.expired
 
-      #assert_equal 1270598400, patient.encounters.first.time
+      assert_equal 1380124200, patient.encounters.first.start_time
     end
 
-    def test_complete_example_parse_e2e2
+    def test_parse_e2e_complete_example
       doc = Nokogiri::XML(File.new('test/fixtures/PITO/E2E-DTC Ex 001 - Conversion - Fully Loaded - V1-30-00.xml'))
       doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
 
@@ -83,10 +83,26 @@ module E2E # to ensure no problems with minitest involving duplicated method nam
       patient.save!
 
       assert_equal 'Eve', patient.first
-      #assert_equal 0, patient.encounters.size
+      assert_equal 1, patient.encounters.size
       #assert ! patient.expired
 
-      #assert_equal 1270598400, patient.encounters.first.time
+      assert_equal Time.gm(2011,2,14).to_i, patient.encounters.first.time
+    end
+
+    def test_parse_e2e2_zarilla
+      doc = Nokogiri::XML(File.new('test/fixtures/PITO/MZarilla.xml'))
+      doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
+
+      patient = HealthDataStandards::Import::E2E::PatientImporter.instance.parse_e2e(doc)
+      patient.save!
+
+      assert_equal 'Melvin', patient.first
+      assert_equal 3, patient.encounters.size
+      assert_equal 5, patient.conditions.size
+      #assert ! patient.expired
+
+      assert_equal 1339495200, patient.encounters.first.start_time
+      assert_nil patient.encounters.first.time
     end
 
     def test_expired
@@ -94,8 +110,8 @@ module E2E # to ensure no problems with minitest involving duplicated method nam
       doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
 
       patient = HealthDataStandards::Import::E2E::PatientImporter.instance.parse_e2e(doc)
-      #patient.save!
-      #assert_equal 1, patient.conditions.size
+      patient.save!
+      assert_equal 4, patient.conditions.size
       #assert patient.expired
 
     end
