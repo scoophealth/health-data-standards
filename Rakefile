@@ -18,5 +18,5 @@ end
 
 task :test => [:test_unit, :quality] do
 
-  system("open coverage/index.html")
+  system("open coverage/index.html || xdg-open coverage/index.html")
 end
