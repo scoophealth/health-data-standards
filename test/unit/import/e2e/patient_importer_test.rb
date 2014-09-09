@@ -45,6 +45,22 @@ module E2E # to ensure no problems with minitest involving duplicated method nam
       assert_equal ['EN'], patient.languages
     end
 
+    def test_get_demographics_zarilla
+      doc = Nokogiri::XML(File.new('test/fixtures/PITO/MZarilla.xml'))
+      doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
+
+      patient = Record.new
+      HealthDataStandards::Import::E2E::PatientImporter.instance.get_demographics(patient, doc)
+
+      assert_equal 'Melvin', patient.first
+      assert_equal 'Zarilla', patient.last
+      assert_equal Time.gm(2011,4,9).to_i, patient.birthdate
+      assert_equal 'F', patient.gender
+      assert_equal '9698686174', patient.medical_record_number
+      assert_equal Time.gm(2014,9,9,9,47,20).to_i, patient.effective_time
+      assert_nil patient.languages
+    end
+
     def test_parse_e2e
       doc = Nokogiri::XML(File.new('test/fixtures/JOHN_CLEESE_1_25091940.xml'))
       doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
