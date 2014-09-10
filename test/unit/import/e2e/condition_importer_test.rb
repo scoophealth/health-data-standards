@@ -49,7 +49,7 @@ module E2E
     end
 
 
-    def test_complete_example_condition_importing
+    def test_condition_importing_complete_example
       doc = Nokogiri::XML(File.new('test/fixtures/PITO/E2E-DTC Ex 001 - Conversion - Fully Loaded - V1-30-00.xml'))
       doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
       pi = HealthDataStandards::Import::E2E::PatientImporter.instance
@@ -72,5 +72,55 @@ module E2E
       #assert_equal  'doe', condition.treating_provider[0]['family_name']
 
     end
+
+    def test_condition_importing_zarilla
+      doc = Nokogiri::XML(File.new('test/fixtures/PITO/MZarilla.xml'))
+      doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
+      pi = HealthDataStandards::Import::E2E::PatientImporter.instance
+      patient = pi.parse_e2e(doc)
+
+      assert_equal 5, patient.conditions.size
+      condition = patient.conditions[0]
+
+      assert_equal 'CD', condition.type
+      #assert ! condition.cause_of_death
+      assert condition.codes['ICD9'].include?('250')
+      assert_equal Time.gm(2011,'oct',10).to_i, condition.start_time
+
+      assert_equal 'DIABETES MELLITUS', condition.description
+      #assert_equal 'active', condition.status
+
+      #print "provider: " + condition.treating_provider.to_s + "\n"
+      #assert_equal 'xyz', condition.treating_provider.inspect
+      #assert_equal  'doctor', condition.treating_provider[0]['given_name']
+      #assert_equal  'doe', condition.treating_provider[0]['family_name']
+
+      condition = patient.conditions[1]
+      assert_equal 'CD', condition.type
+      assert condition.codes['ICD9'].include? '493'
+      assert_equal nil, condition.start_time
+      assert_equal 'ASTHMA', condition.description
+      #assert_equal 'active', condition.status
+
+      condition = patient.conditions[2]
+      assert_equal nil, condition.type
+      #assert condition.codes['ICD9'].include? '250'
+      assert_equal '{}', condition.codes.to_s
+      assert_equal Time.gm(2012,'jan',21).to_i, condition.start_time
+      assert_equal 'Fetal alcohol syndrome', condition.description
+      #assert_equal 'active', condition.status
+
+      condition = patient.conditions[3]
+      assert_equal 'CD', condition.type
+      assert condition.codes['ICD9'].include? '401'
+      assert_equal Time.gm(2001,'aug',14).to_i, condition.start_time
+      assert_equal Time.gm(2001,'aug',14).to_i, condition.end_time
+      assert_equal 'ESSENTIAL HYPERTENSION', condition.description
+      assert_equal nil, condition.status
+
+
+    end
+
+
   end
 end
