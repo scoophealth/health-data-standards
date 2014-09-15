@@ -96,6 +96,7 @@ module HealthDataStandards
         # @return [Record] a Mongoid model representing the patient
         def parse_e2e(doc)
           e2e_patient = Record.new
+          get_demographic_no(e2e_patient, doc)
           get_demographics(e2e_patient, doc)
           create_e2e_hash(e2e_patient, doc)
           #check_for_cause_of_death(e2e_patient)
@@ -125,6 +126,16 @@ module HealthDataStandards
           id_map = build_id_map(doc)
           @section_importers.each_pair do |section, importer|
             record.send(section.to_setter, importer.create_entries(doc, id_map))
+          end
+        end
+
+        # Inspects an E2E document and generates an ID in 1:1 correspondence with the EMR instance's primary
+        # key for patient demographics.  Will be different for different database instances.
+        # TODO fix this method
+        def get_demographic_no(patient, doc)
+          demographic_no = doc.at_xpath('/cda:ClinicalDocument/cda:id/@extension')
+          if demographic_no
+            STDERR.puts "demographic_no: " + demographic_no['value'].inspect
           end
         end
 
