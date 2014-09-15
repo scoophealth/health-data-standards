@@ -20,6 +20,8 @@ class Record
                                                    # because it cannot be easily represented in a
                                                    # HITSP C32
 
+  field :emr_demographics_primary_key, type: String # used to keep mongodb in 1:1 correspondence with EMR records
+
   embeds_many :allergies
   embeds_many :care_goals, class_name: "Entry" # This can be any number of different entry types
   embeds_many :conditions
