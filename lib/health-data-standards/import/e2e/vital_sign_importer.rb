@@ -104,6 +104,10 @@ module HealthDataStandards
 
         def extract_description(parent_element, entry)
           entry.description = parent_element.xpath(@description_xpath).text
+          if entry.description == nil || entry.description.length == 0
+            # try to pull description from code displayName
+            entry.description = parent_element.xpath("./cda:code/@displayName")
+          end
         end
 
         def extract_interpretation(parent_element, result)
