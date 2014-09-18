@@ -27,7 +27,7 @@ module E2E
 
     end
 
-    def test_complete_example_allergy_importing
+    def test_allergy_importing_complete_example
       doc = Nokogiri::XML(File.new('test/fixtures/PITO/E2E-DTC Ex 001 - Conversion - Fully Loaded - V1-30-00.xml'))
       doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
       pi = HealthDataStandards::Import::E2E::PatientImporter.instance
@@ -57,6 +57,37 @@ module E2E
 
       allergy = patient.allergies[2]
       assert_equal true, allergy.nil?
+
+    end
+
+
+    def test_allergy_importing_zarilla
+      doc = Nokogiri::XML(File.new('test/fixtures/PITO/MZarilla.xml'))
+      doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
+      pi = HealthDataStandards::Import::E2E::PatientImporter.instance
+      patient = pi.parse_e2e(doc)
+
+      assert_equal 3, patient.allergies.size
+      allergy = patient.allergies[0]
+      assert_equal false, allergy.nil?
+      assert_equal 'Peanut - dietary (substance)', allergy.description
+      assert_equal allergy.codes, {"Unknown"=>["NI"]} #expected and actual reversed because of quoting issues
+      assert_equal "FALG", allergy.type['code']
+      assert_equal "Food Allergy", allergy.type['displayName']
+      assert_equal "", allergy.type['codeSystem']
+      assert_equal "", allergy.type['codeSystemName']
+      assert_equal 'A4', allergy.severity['code']
+      assert_equal 'Severe reaction', allergy.severity['displayName']
+      assert_equal '2.16.840.1.113883.5.1063', allergy.severity['codeSystem']
+      assert_equal 'ObservationValue', allergy.severity['codeSystemName']
+      assert_equal '', allergy.reaction['text']
+      assert_equal nil, allergy.reaction['value']
+
+      assert_equal '410605003', allergy.status_code['SNOMED-CT'][0]
+      assert_equal Time.gm(2012,4,12,15,6,5).to_i, allergy.start_time
+
+      allergy = patient.allergies[2]
+      assert_equal false, allergy.nil?
 
     end
   end
