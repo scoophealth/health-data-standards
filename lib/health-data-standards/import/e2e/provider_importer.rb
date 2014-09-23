@@ -123,13 +123,14 @@ module HealthDataStandards
           #provider[:organization] = OrganizationImporter.instance.extract_organization(performer.at_xpath("./cda:assignedEntity/cda:representedOrganization"))
           provider[:specialty] = extract_data(entity, "./cda:code/@code")
 
+          # returns empty time array in E2E documents seen to date
           time = performer.xpath(performer, "./cda:time/@value")
-
           if use_dates
             provider[:start] = extract_datetime(time, "./cda:low/@value")
             provider[:end] = extract_datetime(time, "./cda:high/@value")
           end
 
+          # does the actual time settings in E2E documents seen to date
           if provider[:start] == nil
             provider[:start] = extract_datetime(performer, "./cda:effectiveTime/cda:low/@value")
           end
@@ -178,13 +179,19 @@ module HealthDataStandards
           #provider ||= Provider.create(provider_hash)
           #STDERR.puts "provider_hash: "+provider_hash.inspect
           if provider == nil
-            provider = Provider.new(provider_hash)
+            provider = Provider.create(provider_hash) #new(provider_hash)
           end
+          provider
         end
 
-        # use DateTime rather than Date to capture time of day rather than truncate to date
+        # Uses DateTime rather than Date to capture time of day rather than truncate to date.
+        # Will use timezone info if present so output datetime can differ from the output of
+        # HL7Helper.timestamp_to_integer used in encounter importer which assumes UTC
         def extract_datetime(subject, query)
           date = extract_data(subject, query)
+          #TODO address the issue of strings including timezone information properly, this just ignores
+          # this informatiion which is consistent with it being ignored in other code like HL7Helper.
+          date = date.split('-')[0] if date
           date ? DateTime.parse(date).to_time.to_i : nil
         end
 

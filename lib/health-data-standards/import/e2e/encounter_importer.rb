@@ -11,7 +11,6 @@ module HealthDataStandards
           @participant_xpath = "./cda:participant[@typeCode='LOC']/cda:participantRole[@classCode='SDLOC']"
           #@provider_xpath =    "./cda:participant[@typeCode='PRF']"
           #@provider_xpath = "./cda:entryRelationship/cda:observation[cda:code/@code='REASON']/cda:author"
-          @provider_xpath = @entry_xpath
           #@check_for_usable = true               # Pilot tools will set this to false
           #@id_map = {}
         end
@@ -45,15 +44,16 @@ module HealthDataStandards
           extract_reason(entry_element, encounter)
           extract_performer(entry_element, encounter)
           #TODO remove this hack needed for patientapi to consider encounter usable
-          encounter.codes = {'code' => ['REASON'], 'codeSystem' => ['ObservationType-CA-Pending']}
+          if encounter.codes.size == 0
+            encounter.codes = {'code' => ['REASON'], 'codeSystem' => ['ObservationType-CA-Pending']}
+          end
           encounter
         end
 
         private
 
         def extract_performer(parent_element, encounter)
-          performer_element = parent_element.at_xpath(@provider_xpath)
-          encounter.performer = import_e2e_encounter_actor(performer_element) if performer_element
+          encounter.performer = import_e2e_encounter_actor(parent_element) if parent_element
         end
 
         def import_e2e_encounter_actor(actor_element)

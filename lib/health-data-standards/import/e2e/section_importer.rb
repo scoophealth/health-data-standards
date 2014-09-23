@@ -126,6 +126,7 @@ module HealthDataStandards
           end
         end
 
+        #TODO resolve issue of UTC versus local time when the timezone isn't specified adequately
         def extract_dates(parent_element, entry, element_name="effectiveTime")
           if parent_element.at_xpath("cda:#{element_name}/@value")
             entry.time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:#{element_name}")['value'])

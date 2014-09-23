@@ -12,6 +12,17 @@ module E2E
       assert_equal true, encounters[0].description.include?('130/85 sitting position')
       assert_equal Time.gm(2013,9,25,15,50,00).to_i, encounters[0].start_time #20130925155000  => 1380124200
       assert_equal Time.gm(2013,9,25,15,50,00).to_i, encounters[0].performer.start #20130925155000
+      assert_equal Time.gm(2013,9,26,16,18,23).to_i, encounters[1].start_time
+      assert_equal Time.gm(2013,9,26,16,18,23).to_i, encounters[1].performer.start
+      assert_equal Time.gm(2013,9,26,16,19,01).to_i, encounters[2].start_time
+      assert_equal Time.gm(2013,9,26,16,19,01).to_i, encounters[2].performer.start
+      assert_equal Time.gm(2013,9,26,16,19,59).to_i, encounters[3].start_time
+      assert_equal Time.gm(2013,9,26,16,19,59).to_i, encounters[3].performer.start
+      assert_equal Time.gm(2013,9,26,16,20,10).to_i, encounters[4].start_time
+      assert_equal Time.gm(2013,9,26,16,20,10).to_i, encounters[4].performer.start
+      assert_equal Time.gm(2013,9,26,16,20,35).to_i, encounters[5].start_time
+      assert_equal Time.gm(2013,9,26,16,20,35).to_i, encounters[5].performer.start
+
       encounters.each do |encounter|
         assert_equal "", encounter.performer.given_name
         assert_equal "qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==", encounter.performer.family_name
@@ -19,11 +30,10 @@ module E2E
         #assert_equal "doctor", encounter.performer.given_name
         #assert_equal "oscardoc", encounter.performer.family_name
         #assert_equal "cpsid", encounter.performer.npi
-        assert_equal Time.gm(2013,9,25,15,50,00).to_i, encounter.performer.start #20130925155000
         assert_equal "", encounter.performer.title #assert_nil encounter.performer.title
         refute_nil encounter.description
         refute_nil encounter.start_time
-        #TODO update date this when we have some proper codes
+        #TODO update this when we have some proper codes
         assert_equal 2, encounter.codes.size
         assert_equal "REASON", encounter.codes['code'][0]
         assert_equal "ObservationType-CA-Pending", encounter.codes['codeSystem'][0]
@@ -40,7 +50,7 @@ module E2E
 
     end
 
-    def test_complete_example_encounter_importing
+    def test_importing_complete_example
       doc = Nokogiri::XML(File.new('test/fixtures/PITO/E2E-DTC Ex 001 - Conversion - Fully Loaded - V1-30-00.xml'))
       doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
       pi = HealthDataStandards::Import::E2E::PatientImporter.instance
@@ -66,5 +76,41 @@ module E2E
       assert encounter.reason.codes['SNOMED-CT'].include? '37743000'
       assert_equal 'General Medical Examination', encounter.reason.description
     end
-  end
+
+    def test_encounter_importing_zarilla
+      doc = Nokogiri::XML(File.new('test/fixtures/PITO/MZarilla.xml'))
+      doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
+      pi = HealthDataStandards::Import::E2E::PatientImporter.instance
+      patient = pi.parse_e2e(doc)
+      encounters = patient.encounters
+      assert_equal 3, encounters.size
+      assert_equal true, encounters[0].description.include?('Cough and Fever')
+      assert_equal Time.gm(2012,6,12,10,0,0).to_i, encounters[0].start_time
+      assert_equal Time.gm(2012,6,12,10,0,0).to_i, encounters[0].performer.start
+      assert_equal Time.gm(2012,12,15).to_i, encounters[1].start_time
+      assert_equal Time.gm(2012,12,15).to_i, encounters[1].performer.start
+      assert_equal Time.gm(2012,12,20,14,0).to_i, encounters[2].start_time
+      assert_equal Time.gm(2012,12,20,14,0).to_i, encounters[2].performer.start
+
+      assert_equal '723CDj1qKtsyu1RWPnBZZ4xV+24qZMoEYh/BuQ==', encounters[0].performer.family_name
+      assert_equal '723CDj1qKtsyu1RWPnBZZ4xV+24qZMoEYh/BuQ==', encounters[1].performer.family_name
+      assert_equal 'uEFPPUFw3c7CDbHqEc96WJlAffuarPOnsUFbnw==', encounters[2].performer.family_name
+
+      encounters.each do |encounter|
+        assert_equal "", encounter.performer.given_name
+        assert_equal "", encounter.performer.npi
+        assert_equal "", encounter.performer.title #assert_nil encounter.performer.title
+        refute_nil encounter.description
+        refute_nil encounter.start_time
+        #TODO update this when we have some proper codes
+        assert_equal 2, encounter.codes.size
+        assert_equal "REASON", encounter.codes['code'][0]
+        assert_equal "ObservationType-CA-Pending", encounter.codes['codeSystem'][0]
+      end
+
+    end
+
+    end
+
+
 end
