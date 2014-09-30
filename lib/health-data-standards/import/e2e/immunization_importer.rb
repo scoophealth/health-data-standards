@@ -59,7 +59,7 @@ module HealthDataStandards
           elsif code_element['nullFlavor']
             entry.add_code(code_element['nullFlavor'], 'Unknown')
           else
-            STDERR.puts "CODE_ELEMENT: " + code_element.inspect
+            #STDERR.puts "CODE_ELEMENT: " + code_element.inspect
           end
         end
 

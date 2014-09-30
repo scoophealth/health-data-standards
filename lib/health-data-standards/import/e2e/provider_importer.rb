@@ -71,7 +71,8 @@ module HealthDataStandards
           anon_provider[:start] = provider[:start]
           anon_provider[:end] = provider[:end]
           if print_key
-            STDERR.puts "Provider_Hash: "+anon_provider[:family_name]+ ", Provider: "+provider_identity
+            provider_hash = "Provider_Hash: "+anon_provider[:family_name]+ ", Provider: "+provider_identity
+            File.open('Provider_Hash.txt', 'a') { |file| file.puts(provider_hash) }
           end
           anon_provider
         end
@@ -158,6 +159,11 @@ module HealthDataStandards
           name = performer.xpath("./cda:assignedAuthor/cda:assignedPerson/cda:name")
           provider[:given_name] = extract_data(name, "./cda:given")
           provider[:family_name] = extract_data(name, "./cda:family")
+          if !provider[:family_name]
+            # no need to parse string like "Dr. W. Pewarchuck" into given and family names as
+            # it is anonymized anyway
+            provider[:family_name] = name.text()
+          end
 
           time = performer.xpath(performer, "./cda:time/@value")
 

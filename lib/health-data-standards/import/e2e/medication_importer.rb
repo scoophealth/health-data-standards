@@ -139,7 +139,7 @@ module HealthDataStandards
           @entry_xpath = "//cda:section[cda:templateId/@root='2.16.840.1.113883.3.1818.10.2.19.1' and cda:code/@code='10160-0']/cda:entry/cda:substanceAdministration"
 
           # location of base Entry class fields
-          @description_xpath = './cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/e2e:desc/text()'
+          @description_xpath = './cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug'#/e2e:desc/text()'
           @entrystatus_xpath = './cda:statusCode' # not used
           @code_xpath = './cda:consumable/cda:manufacturedProduct/cda:manufacturedLabeledDrug/cda:code'
           # using cda:strength to populate Entry.value
@@ -154,7 +154,9 @@ module HealthDataStandards
           # check for PRN
           @prn_xpath =   "./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:observation[cda:code/@code='PRNIND']/cda:value/@value"
           # freeTextSig (Instructions to patient)
-          @freetext_xpath = "./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:observation[cda:participant/cda:participantRole/@classCode='PAT']/cda:text/text()"
+          @freetext_xpath_prefix  = "./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:observation[cda:code[@code='INSTRUCT'] and cda:participant/cda:participantRole"
+          @freetext_xpath_suffix1 = "/cda:code[@code='PAT'] ]/cda:text/text()"
+          @freetext_xpath_suffix2 = "/@classCode='PAT' ]/cda:text/text()"
           # doseQuantity
           @dose_xpath = "./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:substanceAdministration/cda:doseQuantity"
           # statusOfMedication (active, discharged, chronic, acute)
@@ -207,7 +209,7 @@ module HealthDataStandards
 
           extract_administration_timing(entry_element, medication)
           extract_freetextsig(entry_element, medication)
-          extract_dose(entry_element, medication)
+          extract_e2e_dose(entry_element, medication)
           extract_status(entry_element, medication)
           extract_route(entry_element, medication)
           extract_form(entry_element, medication)
@@ -221,18 +223,37 @@ module HealthDataStandards
         private
 
         def extract_description(parent_element, entry)
-          code_elements = parent_element.xpath(@description_xpath)
+          code_elements = parent_element.xpath(@description_xpath+'/e2e:desc/text()')
+          if code_elements.size == 0 # fallback to using medication name
+            code_elements = parent_element.xpath(@description_xpath+'/cda:name/text()')
+          end
           code_elements.each do |code_element|
             entry.description = code_element
           end
         end
 
+        # get medication strength value
         def extract_entry_value(parent_element, entry)
           #myscalar = parent_element.xpath(@strength_xpath+"/cda:center/@value").to_s
           myscalar = parent_element.xpath(@strength_xpath+"/@value").to_s
           #myunit = parent_element.xpath(@strength_xpath+"/cda:center/@unit").to_s
           myunit = parent_element.xpath(@strength_xpath+"/@unit").to_s
-          entry.set_value(myscalar,myunit)
+          if myscalar != "" && myunit != ""
+            entry.set_value(myscalar,myunit)
+          elsif # TODO clean this up, handles doseQuantity having the scalar value
+            myvalue = {}
+            if parent_element.at_xpath(@dose_xpath+'/cda:low/@value')
+              myvalue['low'] = parent_element.xpath(@dose_xpath+'/cda:low/@value').to_s
+              #myvalue['high'] = parent_element.xpath(@dose_xpath+"/cda:high/@value").to_s
+              myvalue['unit'] = parent_element.xpath(@dose_xpath+"/cda:low/@unit").to_s
+              entry.set_value(myvalue['low'],myvalue['unit'])
+            elsif parent_element.at_xpath(@dose_xpath+'/cda:center/@value')
+              myvalue['center'] = parent_element.xpath(@dose_xpath+'/cda:center/@value').to_s
+              myvalue['unit'] = parent_element.xpath(@dose_xpath+"/cda:center/@unit").to_s
+              entry.set_value(myvalue['center'],myvalue['unit'])
+            end
+          end
+
         end
 
         # Find date in Medication Prescription Event.
@@ -307,16 +328,32 @@ module HealthDataStandards
           else
             prnstr = ""
           end
-          entry.freeTextSig = parent_element.xpath(@freetext_xpath).to_s + prnstr
+          entry.freeTextSig = parent_element.xpath(@freetext_xpath_prefix + @freetext_xpath_suffix1)
+          if entry.freeTextSig == ''
+            entry.freeTextSig = parent_element.xpath(@freetext_xpath_prefix + @freetext_xpath_suffix2)
+          end
+          entry.freeTextSig = entry.freeTextSig + prnstr
         end
 
-        def extract_dose(parent_element, entry)
+        # get medication count, extract_entry_value gets medication strength (value+unit)
+        def extract_e2e_dose(parent_element, entry)
+          # dose is counting number of pills, etc.  Shouldn't have units
           dose = {}
-          if parent_element.at_xpath(@dose_xpath+'/cda:low/@value')
+          if parent_element.at_xpath(@dose_xpath+'/cda:low/@value') &&
+              parent_element.xpath(@dose_xpath+'/cda:low/@unit').size == 0
             dose['low'] = parent_element.xpath(@dose_xpath+'/cda:low/@value').to_s
             dose['high'] = parent_element.xpath(@dose_xpath+"/cda:high/@value").to_s
-          elsif parent_element.at_xpath(@dose_xpath+'/cda:center/@value')
+            #dose['unit'] = parent_element.xpath(@dose_xpath+'/cda:low/@unit').to_s
+          elsif parent_element.at_xpath(@dose_xpath+'/cda:center/@value') &&
+              parent_element.xpath(@dose_xpath+'/cda:center/@unit').size == 0
             dose['center'] = parent_element.xpath(@dose_xpath+'/cda:center/@value').to_s
+            #dose['unit'] = parent_element.xpath(@dose_xpath+'/cda:center/@unit').to_s
+          elsif parent_element.at_xpath(@dose_xpath+'/cda:center/@value') &&
+              parent_element.xpath(@dose_xpath+'/cda:center/@unit').size == 1 &&
+              parent_element.xpath(@dose_xpath+'/cda:center/@unit')[0] == 'Tablet(s)'
+            dose['center'] = parent_element.xpath(@dose_xpath+'/cda:center/@value').to_s
+          else
+            dose = nil #has unit so will be parsed by extract_entry_value
           end
           entry.dose = dose
         end

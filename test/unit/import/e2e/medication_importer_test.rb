@@ -10,6 +10,10 @@ module E2E
       pi = HealthDataStandards::Import::E2E::PatientImporter.instance
       patient = pi.parse_e2e(doc)
 
+
+      # number of medication sections
+      assert_equal 9, patient.medications.size
+
       # first listed medication
       medication = patient.medications[0]
       assert_equal "TYLENOL EXTRA STRENGTH TAB 500MG", medication.description
@@ -54,7 +58,106 @@ module E2E
       assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
       assert_equal '', medication.order_information[0].performer.npi
 
-      # last listed medication
+      # second listed medication (check what, when, who provided)
+      medication = patient.medications[1]
+      assert medication.codes['HC-DIN'].include? '00613215'
+      assert medication.codes['whoATC'].include? 'C03DA01'
+      assert_equal Time.gm(2013,9,27).to_i, medication.time
+      assert_equal Time.gm(2013,9,27).to_i, medication.start_time
+      assert_equal Time.gm(2013,11,22).to_i, medication.end_time
+      assert_equal 1, medication.order_information.size
+      assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
+      assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].performer.start
+      assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
+      assert_equal '', medication.freeTextSig
+
+      # third listed medication (check what, when, who provided)
+      medication = patient.medications[2]
+      assert medication.codes['HC-DIN'].include? '00636533'
+      assert medication.codes['whoATC'].include? 'M01AE01'
+      assert_equal Time.gm(2013,9,27).to_i, medication.time
+      assert_equal Time.gm(2013,9,27).to_i, medication.start_time
+      assert_equal Time.gm(2013,11,22).to_i, medication.end_time
+      assert_equal 1, medication.order_information.size
+      assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
+      assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].performer.start
+      assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
+      assert_includes medication.freeTextSig, 'E2E_PRN flag'
+
+
+
+
+      # fourth listed medication (check what, when, who provided)
+      medication = patient.medications[3]
+      assert medication.codes['HC-DIN'].include? '02041421'
+      assert medication.codes['whoATC'].include? 'N05BA06'
+      assert_equal Time.gm(2013,9,27).to_i, medication.time
+      assert_equal Time.gm(2013,9,27).to_i, medication.start_time
+      assert_equal Time.gm(2013,11,6).to_i, medication.end_time
+      assert_equal 1, medication.order_information.size
+      assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
+      assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].performer.start
+      assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
+      assert_equal ' E2E_PRN flag', medication.freeTextSig
+
+
+      # fifth listed medication (check what, when, who provided)
+      medication = patient.medications[4]
+      assert medication.codes['HC-DIN'].include? '02244993'
+      assert medication.codes['whoATC'].include? 'B01AC06'
+      assert_equal Time.gm(2013,9,27).to_i, medication.time
+      assert_equal Time.gm(2013,9,27).to_i, medication.start_time
+      assert_equal Time.gm(2013,11,22).to_i, medication.end_time
+      assert_equal 1, medication.order_information.size
+      assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
+      assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].performer.start
+      assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
+      assert_equal '', medication.freeTextSig
+
+      # sixth listed medication (check what, when, who provided)
+      medication = patient.medications[5]
+      assert medication.codes['HC-DIN'].include? '02351420'
+      assert medication.codes['whoATC'].include? 'C03CA01'
+      assert_equal Time.gm(2013,9,27).to_i, medication.time
+      assert_equal Time.gm(2013,9,27).to_i, medication.start_time
+      assert_equal Time.gm(2014,1,17).to_i, medication.end_time
+      assert_equal 1, medication.order_information.size
+      assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
+      assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].performer.start
+      assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
+      assert_equal '', medication.freeTextSig
+
+
+      # seventh listed medication (check what, when, who provided)
+      medication = patient.medications[6]
+      assert medication.codes['HC-DIN'].include? '02363283'
+      assert medication.codes['whoATC'].include? 'C09AA05'
+      refute medication.codes['whoATC'].include? 'C03CA01'
+      assert_equal Time.gm(2013,9,27).to_i, medication.time
+      assert_equal Time.gm(2013,9,27).to_i, medication.start_time
+      assert_equal Time.gm(2013,11,22).to_i, medication.end_time
+      assert_equal 1, medication.order_information.size
+      assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
+      assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].performer.start
+      assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
+      assert_equal '', medication.freeTextSig
+
+
+      # eighth listed medication (check what, when, who provided)
+      medication = patient.medications[7]
+      assert medication.codes['HC-DIN'].include? '02364948'
+      assert medication.codes['whoATC'].include? 'C07AG02'
+      refute medication.codes['whoATC'].include? 'C03CA01'
+      assert_equal Time.gm(2013,9,27).to_i, medication.time
+      assert_equal Time.gm(2013,9,27).to_i, medication.start_time
+      assert_equal Time.gm(2013,11,22).to_i, medication.end_time
+      assert_equal 1, medication.order_information.size
+      assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
+      assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].performer.start
+      assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
+      assert_equal '', medication.freeTextSig
+
+      # ninth and last listed medication
       medication = patient.medications[8]
       assert_equal "ATORVASTATIN 40MG", medication.description
 
@@ -87,15 +190,27 @@ module E2E
       assert_equal 'TAB', medication.product_form['code']
       assert_equal '2.16.840.1.113883.1.11.14570', medication.product_form['codeSystem']
       assert_equal 'TABLET', medication.product_form['displayName']
+
+      # loop through all medications
+      patient.medications.each do |medication|
+        assert_equal 1, medication.order_information.size
+        assert_equal '', medication.order_information[0].performer.given_name
+        assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
+        assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
+        assert_equal '', medication.order_information[0].performer.npi
+      end
     end
 
-    def test_complete_example_medication_importing
+    def test_medication_importing_complete_example
       doc = Nokogiri::XML(File.new('test/fixtures/PITO/E2E-DTC Ex 001 - Conversion - Fully Loaded - V1-30-00.xml'))
       doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
       pi = HealthDataStandards::Import::E2E::PatientImporter.instance
       patient = pi.parse_e2e(doc)
 
       patient.save!
+
+      # number of medication sections
+      assert_equal 1, patient.medications.size
 
       # first listed medication
       medication = patient.medications[0]
@@ -121,13 +236,16 @@ module E2E
       assert_equal 'D', medication.administration_timing['duration']['width']['unit']
 
       #TODO - fix freeTextSig
+      prntrue = 'E2E_PRN flag'
+      assert medication.freeTextSig.include? prntrue
       text1 = "One spray every 5 minutes as needed for chest discomfort."
       assert medication.freeTextSig.include? text1
       text2 = "If pain continues for more than 15 minutes or recurs frequently, get to emergency department ASAP."
       assert medication.freeTextSig.include? text2
 
-      assert_equal '325', medication.dose['low']
-      assert_equal '650', medication.dose['high']
+      #assert_equal '325', medication.dose['low']
+      #assert_equal '650', medication.dose['high']
+      assert_equal nil, medication.dose
 
       assert_equal 'active', medication.statusOfMedication[:value]
 
@@ -139,6 +257,147 @@ module E2E
       assert_equal 'ORSPRAY', medication.product_form['code']
       assert_equal '2.16.840.1.113883.1.11.14570', medication.product_form['codeSystem']
       assert_equal 'oral spray', medication.product_form['displayName']
+
+      assert_equal 1, medication.order_information.size
+      assert_equal '', medication.order_information[0].performer.given_name
+      assert_equal 'vdX7pCevIhQh7oEafJD6xtu5SVQxXwwc85znuA==', medication.order_information[0].performer.family_name
+      assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
+      assert_equal '', medication.order_information[0].performer.npi
+
+    end
+
+    def test_medication_importing_zarilla
+      doc = Nokogiri::XML(File.new('test/fixtures/PITO/MZarilla.xml'))
+      doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
+      pi = HealthDataStandards::Import::E2E::PatientImporter.instance
+      patient = pi.parse_e2e(doc)
+
+      # number of medication sections
+      assert_equal 7, patient.medications.size
+
+      # no useful provider information for Zarilla
+      patient.medications.each do |medication|
+        assert_equal 1, medication.order_information.size
+        assert_equal '', medication.order_information[0].performer.given_name
+        assert_equal '0UoCjCo6K8lHYQK7KII0xBWisB+CjqYqxbPkLw==', medication.order_information[0].performer.family_name
+        assert_equal nil, medication.order_information[0].performer.start
+        assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
+        assert_equal '', medication.order_information[0].performer.npi
+      end
+
+      # first listed medication
+      medication = patient.medications[0]
+      assert_equal "VENTOLIN HFA", medication.description
+      assert medication.codes['HC-DIN'].include? '2241497'
+
+      assert_equal "100", medication.values.first.scalar
+      assert_equal "Mcg", medication.values.first.units
+      assert_equal nil, medication.dose
+      assert_equal Time.gm(2013,11,6).to_i, medication.start_time
+      assert_equal 'active', medication.statusOfMedication[:value]
+      assert_equal '1-2 Puffs four times daily for 30 days. Use with Aerochamber', medication.freeTextSig
+      refute_includes medication.freeTextSig, 'E2E_PRN flag'
+
+      # second listed medication
+      medication = patient.medications[1]
+      assert_equal "ERYTHRO-BASE", medication.description
+      assert medication.codes['HC-DIN'].include? '682020'
+
+      assert_equal "1", medication.values.first.scalar
+      assert_equal "Tablet(s)", medication.values.first.units
+      assert_equal nil, medication.dose
+      assert_equal Time.gm(2014,2,13).to_i, medication.start_time
+      assert_equal 'active', medication.statusOfMedication[:value]
+      assert_equal 'Take with Food', medication.freeTextSig
+      refute_includes medication.freeTextSig, 'E2E_PRN flag'
+
+      # third listed medication (Note: has PRNIND set to true)
+      medication = patient.medications[2]
+      assert_equal "Melatonin 5mg capsule", medication.description
+      assert medication.codes['Unknown'].include? 'NI'
+
+      assert_equal "5", medication.values.first.scalar
+      assert_equal "Mg", medication.values.first.units
+      assert_equal nil, medication.dose
+      assert_equal Time.gm(2014,2,4).to_i, medication.start_time
+      assert_equal 'active', medication.statusOfMedication[:value]
+      assert_equal 'One capsule daily at bedtime as needed
+. Take at bedtime E2E_PRN flag', medication.freeTextSig
+      assert_includes medication.freeTextSig, 'E2E_PRN flag'
+
+      # fourth listed medication
+      medication = patient.medications[3]
+      assert_equal "AMOXICILLIN 125MG/5ML SUSP", medication.description
+      assert medication.codes['HC-DIN'].include? '2243224'
+
+      assert_equal "125", medication.values.first.scalar
+      assert_equal "Mg", medication.values.first.units
+      assert_equal nil, medication.dose
+      assert_equal Time.gm(2014,2,27).to_i, medication.start_time
+      assert_equal Time.gm(2014,3,6).to_i, medication.end_time
+      assert_equal 'completed', medication.statusOfMedication[:value]
+      assert_equal '125mg (5ml) three times daily
+. Shake well before use and take until finished', medication.freeTextSig
+      refute_includes medication.freeTextSig, 'E2E_PRN flag'
+
+      # fifth listed medication
+      medication = patient.medications[4]
+      assert_equal "DOM-SALBUTAMOL 5MG/ML SOLN", medication.description
+      assert medication.codes['HC-DIN'].include? '2139324'
+
+      assert_equal "1", medication.values.first.scalar
+      assert_equal "Millilitres", medication.values.first.units
+      assert_equal nil, medication.dose
+      assert_equal Time.gm(2014,1,5).to_i, medication.start_time
+      assert_equal 'active', medication.statusOfMedication[:value]
+      assert_equal '1ml with 5ml Normal saline by Nebulizer twice daily.', medication.freeTextSig
+      refute_includes medication.freeTextSig, 'E2E_PRN flag'
+
+
+      # sixth listed medication
+      medication = patient.medications[5]
+      assert_equal "KENALOG-10 INJECTION 10MG/ML", medication.description
+      assert medication.codes['HC-DIN'].include? '1999761'
+
+      assert_equal "5", medication.values.first.scalar
+      assert_equal "Mg", medication.values.first.units
+      assert_equal nil, medication.dose
+      assert_equal Time.gm(2014,2,4).to_i, medication.start_time
+      assert_equal 'active', medication.statusOfMedication[:value]
+      assert_equal '5mg administered intra-articularly to right foot monthly. Bring medication to Doctor\'s office for administration.', medication.freeTextSig
+      refute_includes medication.freeTextSig, 'E2E_PRN flag'
+
+
+      # seventh and last listed medication
+      medication = patient.medications[6]
+      assert_equal "APO-METHYLPHENIDATE", medication.description
+      assert medication.codes['HC-DIN'].include? '2273950'
+
+      assert_equal "5", medication.values.first.scalar
+      assert_equal "Mg", medication.values.first.units
+      assert_equal nil, medication.dose
+      assert_equal Time.gm(2013,12,6).to_i, medication.start_time
+      assert_equal Time.gm(2014,3,6).to_i, medication.end_time
+      assert_equal 'completed', medication.statusOfMedication[:value]
+      assert_equal '5mg twice daily.', medication.freeTextSig
+      refute_includes medication.freeTextSig, 'E2E_PRN flag'
+
+      #assert_equal 'xyz', medication.administration_timing.inspect
+      #assert_equal 4, medication.administration_timing['frequency']['numerator']['value']
+      # assert_equal 1, medication.administration_timing['frequency']['denominator']['value']
+      # assert_equal 'd', medication.administration_timing['frequency']['denominator']['unit']
+      #
+      #
+
+      #
+      # assert_equal 'PO', medication.route['code']
+      # assert_equal '2.16.840.1.113883.5.112', medication.route['codeSystem']
+      # assert_equal 'RouteOfAdministration', medication.route['codeSystemName']
+      # assert_equal 'PO', medication.route['displayName']
+      #
+      # assert_equal 'TAB', medication.product_form['code']
+      # assert_equal '2.16.840.1.113883.1.11.14570', medication.product_form['codeSystem']
+      # assert_equal 'TABLET', medication.product_form['displayName']
 
     end
   end
