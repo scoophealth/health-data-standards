@@ -296,7 +296,14 @@ module E2E
       assert_equal Time.gm(2013,11,6).to_i, medication.start_time
       assert_equal 'active', medication.statusOfMedication[:value]
       assert_equal '1-2 Puffs four times daily for 30 days. Use with Aerochamber', medication.freeTextSig
+      assert_equal '[Frequency: Four times daily]', medication.administration_timing['text']
       refute_includes medication.freeTextSig, 'E2E_PRN flag'
+      assert_nil medication.route['text']
+      assert_nil medication.route['code']
+      assert_nil medication.route['codeSystem']
+      assert_nil medication.route['codeSystemName']
+      assert_nil medication.route['displayName']
+      assert_equal 0, medication.product_form.size
 
       # second listed medication
       medication = patient.medications[1]
@@ -309,7 +316,14 @@ module E2E
       assert_equal Time.gm(2014,2,13).to_i, medication.start_time
       assert_equal 'active', medication.statusOfMedication[:value]
       assert_equal 'Take with Food', medication.freeTextSig
+      assert_equal '[Frequency: Four times daily]', medication.administration_timing['text']
       refute_includes medication.freeTextSig, 'E2E_PRN flag'
+      assert_nil medication.route['text']
+      assert_nil medication.route['code']
+      assert_nil medication.route['codeSystem']
+      assert_nil medication.route['codeSystemName']
+      assert_nil medication.route['displayName']
+      assert_equal 0, medication.product_form.size
 
       # third listed medication (Note: has PRNIND set to true)
       medication = patient.medications[2]
@@ -323,7 +337,14 @@ module E2E
       assert_equal 'active', medication.statusOfMedication[:value]
       assert_equal 'One capsule daily at bedtime as needed
 . Take at bedtime E2E_PRN flag', medication.freeTextSig
+      assert_equal '[Frequency: Once daily]', medication.administration_timing['text']
       assert_includes medication.freeTextSig, 'E2E_PRN flag'
+      assert_nil medication.route['text']
+      assert_nil medication.route['code']
+      assert_nil medication.route['codeSystem']
+      assert_nil medication.route['codeSystemName']
+      assert_nil medication.route['displayName']
+      assert_equal 0, medication.product_form.size
 
       # fourth listed medication
       medication = patient.medications[3]
@@ -338,7 +359,14 @@ module E2E
       assert_equal 'completed', medication.statusOfMedication[:value]
       assert_equal '125mg (5ml) three times daily
 . Shake well before use and take until finished', medication.freeTextSig
+      assert_equal '[Frequency: Three times daily]', medication.administration_timing['text']
       refute_includes medication.freeTextSig, 'E2E_PRN flag'
+      assert_nil medication.route['text']
+      assert_nil medication.route['code']
+      assert_nil medication.route['codeSystem']
+      assert_nil medication.route['codeSystemName']
+      assert_nil medication.route['displayName']
+      assert_equal 0, medication.product_form.size
 
       # fifth listed medication
       medication = patient.medications[4]
@@ -351,8 +379,14 @@ module E2E
       assert_equal Time.gm(2014,1,5).to_i, medication.start_time
       assert_equal 'active', medication.statusOfMedication[:value]
       assert_equal '1ml with 5ml Normal saline by Nebulizer twice daily.', medication.freeTextSig
+      assert_equal '[Frequency: Twice daily]', medication.administration_timing['text']
       refute_includes medication.freeTextSig, 'E2E_PRN flag'
-
+      assert_nil medication.route['text']
+      assert_nil medication.route['code']
+      assert_nil medication.route['codeSystem']
+      assert_nil medication.route['codeSystemName']
+      assert_nil medication.route['displayName']
+      assert_equal 0, medication.product_form.size
 
       # sixth listed medication
       medication = patient.medications[5]
@@ -365,8 +399,14 @@ module E2E
       assert_equal Time.gm(2014,2,4).to_i, medication.start_time
       assert_equal 'active', medication.statusOfMedication[:value]
       assert_equal '5mg administered intra-articularly to right foot monthly. Bring medication to Doctor\'s office for administration.', medication.freeTextSig
+      assert_equal '[Frequency: Once a month]', medication.administration_timing['text']
       refute_includes medication.freeTextSig, 'E2E_PRN flag'
-
+      assert_nil medication.route['code']
+      assert_equal 'intra-articularly', medication.route['text']
+      assert_equal '2.16.840.1.113883.5.112', medication.route['codeSystem']
+      assert_equal 'RouteOfAdministration', medication.route['codeSystemName']
+      assert_nil medication.route['displayName']
+      assert_equal 0, medication.product_form.size
 
       # seventh and last listed medication
       medication = patient.medications[6]
@@ -380,24 +420,15 @@ module E2E
       assert_equal Time.gm(2014,3,6).to_i, medication.end_time
       assert_equal 'completed', medication.statusOfMedication[:value]
       assert_equal '5mg twice daily.', medication.freeTextSig
+      assert_equal '[Frequency: Twice daily]', medication.administration_timing['text']
       refute_includes medication.freeTextSig, 'E2E_PRN flag'
+      assert_nil medication.route['text']
+      assert_nil medication.route['code']
+      assert_nil medication.route['codeSystem']
+      assert_nil medication.route['codeSystemName']
+      assert_nil medication.route['displayName']
+      assert_equal 0, medication.product_form.size
 
-      #assert_equal 'xyz', medication.administration_timing.inspect
-      #assert_equal 4, medication.administration_timing['frequency']['numerator']['value']
-      # assert_equal 1, medication.administration_timing['frequency']['denominator']['value']
-      # assert_equal 'd', medication.administration_timing['frequency']['denominator']['unit']
-      #
-      #
-
-      #
-      # assert_equal 'PO', medication.route['code']
-      # assert_equal '2.16.840.1.113883.5.112', medication.route['codeSystem']
-      # assert_equal 'RouteOfAdministration', medication.route['codeSystemName']
-      # assert_equal 'PO', medication.route['displayName']
-      #
-      # assert_equal 'TAB', medication.product_form['code']
-      # assert_equal '2.16.840.1.113883.1.11.14570', medication.product_form['codeSystem']
-      # assert_equal 'TABLET', medication.product_form['displayName']
 
     end
   end

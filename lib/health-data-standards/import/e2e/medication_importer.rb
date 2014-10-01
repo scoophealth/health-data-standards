@@ -309,7 +309,10 @@ module HealthDataStandards
             at['high'] = extract_duration_fixed_dates(ate, "./cda:high")
             medication.administration_timing['duration_dates'] = at
           end
-          #STDERR.puts "duration_dates: "+medication.administration_timing['duration_dates'].inspect
+          ate = parent_element.at_xpath(@timing_xpath+'/cda:doseQuantity/../cda:text/text()')
+          if ate
+            medication.administration_timing['text'] = ate.to_s
+          end
         end
 
         def extract_duration_fixed_dates(parent_element, dates_xpath)
@@ -374,6 +377,10 @@ module HealthDataStandards
             route['codeSystemName'] = code_element['codeSystemName']
             route['displayName'] = code_element['displayName']
             entry.route = route
+          end
+          text_elements = parent_element.xpath(@route_xpath+"/cda:originalText/text()")
+          text_elements.each do |text_element|
+            entry.route['text'] = text_element.to_s
           end
         end
 
