@@ -107,6 +107,9 @@ module E2E
       assert_equal 'N', result.interpretation['code']
       # TODO - verify that Osler and Oscar are using the correct codeSystem
       # assert_equal 'ObservationInterpretation', result.interpretation['codeSystem']
+
+      # One nullFlavor observation is present in patient lab results
+      assert_equal 0, patient.results[30].codes.size
     end
   end
 end
