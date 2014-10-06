@@ -124,7 +124,9 @@ module HealthDataStandards
         def extract_e2e_value(parent_element, entry)
           value_element = parent_element.at_xpath('cda:value')
           if value_element
-            type = value_element['type']
+            #TODO find out why type isn't captured consistently by hds and query-gateway; maybe due to different nokogiri versions
+            type = value_element['type'] #works for hds testing
+            type ||= value_element['xsi:type'] #works for query-gateway testing (different nokogiri versions?)
             value = value_element['value']
             unit = value_element['unit']
             value ||= value_element.text
