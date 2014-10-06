@@ -111,7 +111,7 @@ module HealthDataStandards
           result.interpretation = {}
           extract_codes(entry_element, result)
           extract_dates(entry_element, result)
-          extract_value(entry_element, result)
+          extract_e2e_value(entry_element, result)
           extract_interpretation(entry_element, result)
           extract_description(entry_element, result)
           extract_status(entry_element, result)
@@ -120,6 +120,27 @@ module HealthDataStandards
         end
     
         private
+
+        def extract_e2e_value(parent_element, entry)
+          value_element = parent_element.at_xpath('cda:value')
+          if value_element
+            type = value_element['type']
+            value = value_element['value']
+            unit = value_element['unit']
+            value ||= value_element.text
+            if value
+              if type == 'PQ'
+                entry.set_value(value.strip, unit)
+              elsif type == 'ST'
+                entry.free_text = value
+              else
+                #TODO This next assignment of value is only here to preserve backward compatabilty
+                entry.set_value(value.strip, unit)
+              end
+            end
+
+          end
+        end
 
         def extract_reference_range(parent_element, result)
           elements = parent_element.xpath(@referencerange_xpath+"/cda:observationRange/cda:text/text()")
