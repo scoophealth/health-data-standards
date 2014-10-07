@@ -121,6 +121,7 @@ module HealthDataStandards
     
         private
 
+        #TODO after debugging complete use extract_value method in section_importer.rb
         def extract_e2e_value(parent_element, entry)
           value_element = parent_element.at_xpath('cda:value')
           if value_element
