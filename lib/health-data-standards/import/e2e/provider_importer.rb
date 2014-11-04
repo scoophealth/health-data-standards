@@ -72,7 +72,7 @@ module HealthDataStandards
           anon_provider[:end] = provider[:end]
           if print_key
             provider_hash = "Provider_Hash: "+anon_provider[:family_name]+ ", Provider: "+provider_identity
-            File.open('/tmp/Provider_Hash.txt', 'a') { |file| file.puts(provider_hash) }
+            File.open("#{Rails.root}/log/Provider_Hash.txt", 'a') { |file| file.puts(provider_hash) }
           end
           anon_provider
         end
