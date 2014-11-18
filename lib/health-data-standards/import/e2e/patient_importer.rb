@@ -97,6 +97,7 @@ module HealthDataStandards
         def parse_e2e(doc)
           e2e_patient = Record.new
           get_demographics_no(e2e_patient, doc)
+          get_primary_care_provider_id(e2e_patient, doc)
           get_demographics(e2e_patient, doc)
           create_e2e_hash(e2e_patient, doc)
           #check_for_cause_of_death(e2e_patient)
@@ -138,6 +139,16 @@ module HealthDataStandards
             patient.emr_demographics_primary_key = demographics_no.attr('extension')
           else
             patient.emr_demographics_primary_key = nil
+          end
+        end
+
+        # Inspects an E2E document and determines patient's primary care provider.
+        def get_primary_care_provider_id(patient, doc)
+          author_id = doc.at_xpath('/cda:ClinicalDocument/cda:author/cda:assignedAuthor/cda:id')
+          if author_id.attr('extension')
+            patient.emr_primary_care_provider_id = author_id.attr('extension')
+          else
+            patient.emr_primary_care_provider_id = nil
           end
         end
 

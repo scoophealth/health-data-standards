@@ -38,6 +38,15 @@ module E2E # to ensure no problems with minitest involving duplicated method nam
       assert_equal "1", patient.emr_demographics_primary_key
     end
 
+    def test_get_primary_care_provider_id
+      doc = Nokogiri::XML(File.new('test/fixtures/JOHN_CLEESE_1_25091940.xml'))
+      doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
+
+      patient = Record.new
+      HealthDataStandards::Import::E2E::PatientImporter.instance.get_primary_care_provider_id(patient, doc)
+      assert_equal "cpsid", patient.emr_primary_care_provider_id
+    end
+
     def test_get_demographics_complete_example
       doc = Nokogiri::XML(File.new('test/fixtures/PITO/E2E-DTC Ex 001 - Conversion - Fully Loaded - V1-30-00.xml'))
       doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
@@ -62,6 +71,15 @@ module E2E # to ensure no problems with minitest involving duplicated method nam
       patient = Record.new
       HealthDataStandards::Import::E2E::PatientImporter.instance.get_demographics_no(patient, doc)
       assert_equal "12345", patient.emr_demographics_primary_key
+    end
+
+    def test_get_primary_care_provider_id_complete_example
+      doc = Nokogiri::XML(File.new('test/fixtures/PITO/E2E-DTC Ex 001 - Conversion - Fully Loaded - V1-30-00.xml'))
+      doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
+
+      patient = Record.new
+      HealthDataStandards::Import::E2E::PatientImporter.instance.get_primary_care_provider_id(patient, doc)
+      assert_equal "38809", patient.emr_primary_care_provider_id
     end
 
     def test_get_demographics_zarilla
@@ -89,6 +107,16 @@ module E2E # to ensure no problems with minitest involving duplicated method nam
       HealthDataStandards::Import::E2E::PatientImporter.instance.get_demographics_no(patient, doc)
       assert_equal nil, patient.emr_demographics_primary_key
     end
+
+    def test_get_primary_care_provider_id_zarilla
+      doc = Nokogiri::XML(File.new('test/fixtures/PITO/MZarilla.xml'))
+      doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
+
+      patient = Record.new
+      HealthDataStandards::Import::E2E::PatientImporter.instance.get_primary_care_provider_id(patient, doc)
+      assert_equal '91604', patient.emr_primary_care_provider_id
+    end
+
 
     def test_parse_e2e
       doc = Nokogiri::XML(File.new('test/fixtures/JOHN_CLEESE_1_25091940.xml'))
