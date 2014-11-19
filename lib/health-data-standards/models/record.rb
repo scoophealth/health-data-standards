@@ -21,7 +21,7 @@ class Record
                                                    # HITSP C32
 
   field :emr_demographics_primary_key, type: String # used to keep mongodb in 1:1 correspondence with EMR records
-  field :emr_primary_care_provider_id, type: String # used to identify patients family doctor
+  field :primary_care_provider_id, type: String # used to identify patients family doctor
 
   embeds_many :allergies
   embeds_many :care_goals, class_name: "Entry" # This can be any number of different entry types

@@ -44,7 +44,7 @@ module E2E # to ensure no problems with minitest involving duplicated method nam
 
       patient = Record.new
       HealthDataStandards::Import::E2E::PatientImporter.instance.get_primary_care_provider_id(patient, doc)
-      assert_equal "cpsid", patient.emr_primary_care_provider_id
+      assert_equal "cpsid", patient.primary_care_provider_id
     end
 
     def test_get_demographics_complete_example
@@ -79,7 +79,7 @@ module E2E # to ensure no problems with minitest involving duplicated method nam
 
       patient = Record.new
       HealthDataStandards::Import::E2E::PatientImporter.instance.get_primary_care_provider_id(patient, doc)
-      assert_equal "38809", patient.emr_primary_care_provider_id
+      assert_equal "38809", patient.primary_care_provider_id
     end
 
     def test_get_demographics_zarilla
@@ -114,7 +114,7 @@ module E2E # to ensure no problems with minitest involving duplicated method nam
 
       patient = Record.new
       HealthDataStandards::Import::E2E::PatientImporter.instance.get_primary_care_provider_id(patient, doc)
-      assert_equal '91604', patient.emr_primary_care_provider_id
+      assert_equal '91604', patient.primary_care_provider_id
     end
 
 

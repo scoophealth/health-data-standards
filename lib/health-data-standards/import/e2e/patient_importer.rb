@@ -146,9 +146,9 @@ module HealthDataStandards
         def get_primary_care_provider_id(patient, doc)
           author_id = doc.at_xpath('/cda:ClinicalDocument/cda:author/cda:assignedAuthor/cda:id')
           if author_id.attr('extension')
-            patient.emr_primary_care_provider_id = author_id.attr('extension')
+            patient.primary_care_provider_id = author_id.attr('extension')
           else
-            patient.emr_primary_care_provider_id = nil
+            patient.primary_care_provider_id = nil
           end
         end
 
