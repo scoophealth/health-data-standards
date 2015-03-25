@@ -153,6 +153,8 @@ module HealthDataStandards
 
           # check for PRN
           @prn_xpath =   "./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:observation[cda:code/@code='PRNIND']/cda:value/@value"
+          # check for LONG TERM MED
+          @lt_xpath =    "./cda:entryRelationship[cda:templateId/@root='2.16.840.1.113883.3.1818.10.4.32']/cda:observation[cda:code/@code='UNBOUND']/cda:text/text()"
           # freeTextSig (Instructions to patient)
           @freetext_xpath_prefix  = "./cda:entryRelationship/cda:substanceAdministration/cda:entryRelationship/cda:observation[cda:code[@code='INSTRUCT'] and cda:participant/cda:participantRole"
           @freetext_xpath_suffix1 = "/cda:code[@code='PAT'] ]/cda:text/text()"
@@ -327,15 +329,22 @@ module HealthDataStandards
         def extract_freetextsig(parent_element, entry)
           prn_element = parent_element.xpath(@prn_xpath).to_s
           if prn_element == "true"
-            prnstr = " E2E_PRN flag"
+            prnstr = " E2E_PRN_FLAG"
           else
             prnstr = ""
+          end
+          ltmedstr = ""
+          ltmed_element = parent_element.xpath(@lt_xpath).to_s
+          if ! (ltmed_element.nil? || ltmed_element.empty?)
+            if ltmed_element.eql? "Long Term"
+              ltmedstr = " LONG_TERM_MED_FLAG"
+            end
           end
           entry.freeTextSig = parent_element.xpath(@freetext_xpath_prefix + @freetext_xpath_suffix1)
           if entry.freeTextSig == ''
             entry.freeTextSig = parent_element.xpath(@freetext_xpath_prefix + @freetext_xpath_suffix2)
           end
-          entry.freeTextSig = entry.freeTextSig + prnstr
+          entry.freeTextSig = entry.freeTextSig + prnstr + ltmedstr
         end
 
         # get medication count, extract_entry_value gets medication strength (value+unit)

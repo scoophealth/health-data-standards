@@ -32,7 +32,7 @@ module E2E
       assert_equal 1, medication.administration_timing['frequency']['denominator']['value']
       assert_equal 'd', medication.administration_timing['frequency']['denominator']['unit']
 
-      assert_equal ' E2E_PRN flag', medication.freeTextSig
+      assert_equal ' E2E_PRN_FLAG LONG_TERM_MED_FLAG', medication.freeTextSig
 
       assert_equal '1.0', medication.dose['low']
       assert_equal '2.0', medication.dose['high']
@@ -69,7 +69,7 @@ module E2E
       assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
       assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].performer.start
       assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
-      assert_equal '', medication.freeTextSig
+      assert_equal ' LONG_TERM_MED_FLAG', medication.freeTextSig
 
       # third listed medication (check what, when, who provided)
       medication = patient.medications[2]
@@ -82,7 +82,7 @@ module E2E
       assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
       assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].performer.start
       assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
-      assert_includes medication.freeTextSig, 'E2E_PRN flag'
+      assert_includes medication.freeTextSig, ' E2E_PRN_FLAG LONG_TERM_MED_FLAG'
 
 
 
@@ -98,7 +98,7 @@ module E2E
       assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
       assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].performer.start
       assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
-      assert_equal ' E2E_PRN flag', medication.freeTextSig
+      assert_equal ' E2E_PRN_FLAG LONG_TERM_MED_FLAG', medication.freeTextSig
 
 
       # fifth listed medication (check what, when, who provided)
@@ -112,7 +112,7 @@ module E2E
       assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
       assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].performer.start
       assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
-      assert_equal '', medication.freeTextSig
+      assert_equal ' LONG_TERM_MED_FLAG', medication.freeTextSig
 
       # sixth listed medication (check what, when, who provided)
       medication = patient.medications[5]
@@ -125,7 +125,7 @@ module E2E
       assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
       assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].performer.start
       assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
-      assert_equal '', medication.freeTextSig
+      assert_equal ' LONG_TERM_MED_FLAG', medication.freeTextSig
 
 
       # seventh listed medication (check what, when, who provided)
@@ -140,7 +140,7 @@ module E2E
       assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
       assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].performer.start
       assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
-      assert_equal '', medication.freeTextSig
+      assert_equal ' LONG_TERM_MED_FLAG', medication.freeTextSig
 
 
       # eighth listed medication (check what, when, who provided)
@@ -155,7 +155,7 @@ module E2E
       assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
       assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].performer.start
       assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
-      assert_equal '', medication.freeTextSig
+      assert_equal ' LONG_TERM_MED_FLAG', medication.freeTextSig
 
       # ninth and last listed medication
       medication = patient.medications[8]
@@ -175,7 +175,7 @@ module E2E
       assert_equal 1, medication.administration_timing['frequency']['denominator']['value']
       assert_equal 'd', medication.administration_timing['frequency']['denominator']['unit']
 
-      assert_equal '', medication.freeTextSig
+      assert_equal ' LONG_TERM_MED_FLAG', medication.freeTextSig
 
       assert_equal '1.0', medication.dose['low']
       assert_equal '1.0', medication.dose['high']
@@ -236,7 +236,7 @@ module E2E
       assert_equal 'D', medication.administration_timing['duration']['width']['unit']
 
       #TODO - fix freeTextSig
-      prntrue = 'E2E_PRN flag'
+      prntrue = 'E2E_PRN_FLAG'
       assert medication.freeTextSig.include? prntrue
       text1 = "One spray every 5 minutes as needed for chest discomfort."
       assert medication.freeTextSig.include? text1
@@ -297,7 +297,7 @@ module E2E
       assert_equal 'active', medication.statusOfMedication[:value]
       assert_equal '1-2 Puffs four times daily for 30 days. Use with Aerochamber', medication.freeTextSig
       assert_equal '[Frequency: Four times daily]', medication.administration_timing['text']
-      refute_includes medication.freeTextSig, 'E2E_PRN flag'
+      refute_includes medication.freeTextSig, 'E2E_PRN_FLAG'
       assert_nil medication.route['text']
       assert_nil medication.route['code']
       assert_nil medication.route['codeSystem']
@@ -317,7 +317,7 @@ module E2E
       assert_equal 'active', medication.statusOfMedication[:value]
       assert_equal 'Take with Food', medication.freeTextSig
       assert_equal '[Frequency: Four times daily]', medication.administration_timing['text']
-      refute_includes medication.freeTextSig, 'E2E_PRN flag'
+      refute_includes medication.freeTextSig, 'E2E_PRN_FLAG'
       assert_nil medication.route['text']
       assert_nil medication.route['code']
       assert_nil medication.route['codeSystem']
@@ -336,9 +336,9 @@ module E2E
       assert_equal Time.gm(2014,2,4).to_i, medication.start_time
       assert_equal 'active', medication.statusOfMedication[:value]
       assert_equal 'One capsule daily at bedtime as needed
-. Take at bedtime E2E_PRN flag', medication.freeTextSig
+. Take at bedtime E2E_PRN_FLAG', medication.freeTextSig
       assert_equal '[Frequency: Once daily]', medication.administration_timing['text']
-      assert_includes medication.freeTextSig, 'E2E_PRN flag'
+      assert_includes medication.freeTextSig, 'E2E_PRN_FLAG'
       assert_nil medication.route['text']
       assert_nil medication.route['code']
       assert_nil medication.route['codeSystem']
@@ -360,7 +360,7 @@ module E2E
       assert_equal '125mg (5ml) three times daily
 . Shake well before use and take until finished', medication.freeTextSig
       assert_equal '[Frequency: Three times daily]', medication.administration_timing['text']
-      refute_includes medication.freeTextSig, 'E2E_PRN flag'
+      refute_includes medication.freeTextSig, 'E2E_PRN_FLAG'
       assert_nil medication.route['text']
       assert_nil medication.route['code']
       assert_nil medication.route['codeSystem']
@@ -380,7 +380,7 @@ module E2E
       assert_equal 'active', medication.statusOfMedication[:value]
       assert_equal '1ml with 5ml Normal saline by Nebulizer twice daily.', medication.freeTextSig
       assert_equal '[Frequency: Twice daily]', medication.administration_timing['text']
-      refute_includes medication.freeTextSig, 'E2E_PRN flag'
+      refute_includes medication.freeTextSig, 'E2E_PRN_FLAG'
       assert_nil medication.route['text']
       assert_nil medication.route['code']
       assert_nil medication.route['codeSystem']
@@ -400,7 +400,7 @@ module E2E
       assert_equal 'active', medication.statusOfMedication[:value]
       assert_equal '5mg administered intra-articularly to right foot monthly. Bring medication to Doctor\'s office for administration.', medication.freeTextSig
       assert_equal '[Frequency: Once a month]', medication.administration_timing['text']
-      refute_includes medication.freeTextSig, 'E2E_PRN flag'
+      refute_includes medication.freeTextSig, 'E2E_PRN_FLAG'
       assert_nil medication.route['code']
       assert_equal 'intra-articularly', medication.route['text']
       assert_equal '2.16.840.1.113883.5.112', medication.route['codeSystem']
@@ -421,7 +421,7 @@ module E2E
       assert_equal 'completed', medication.statusOfMedication[:value]
       assert_equal '5mg twice daily.', medication.freeTextSig
       assert_equal '[Frequency: Twice daily]', medication.administration_timing['text']
-      refute_includes medication.freeTextSig, 'E2E_PRN flag'
+      refute_includes medication.freeTextSig, 'E2E_PRN_FLAG'
       assert_nil medication.route['text']
       assert_nil medication.route['code']
       assert_nil medication.route['codeSystem']

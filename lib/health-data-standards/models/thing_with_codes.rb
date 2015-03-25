@@ -46,7 +46,15 @@ module ThingWithCodes
   # @param [String] code the code to add
   # @param [String] code_system the code system that the code belongs to
   def add_code(code, code_system)
-    self.codes[code_system] ||= []
-    self.codes[code_system] << code
+    cs = code_system
+    c = code
+    unless code_system.is_a? Numeric
+      cs = cs.strip
+    end
+    self.codes[cs] ||= []
+    unless code.is_a? Numeric
+      c = code.strip
+    end
+    self.codes[cs] << c
   end
 end

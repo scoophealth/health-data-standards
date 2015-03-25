@@ -66,6 +66,21 @@ class EntryTest < MiniTest::Unit::TestCase
                                   {'set' => 'SNOMED-CT', 'values' => ['24601']}])
   end
 
+
+  def test_is_in_code_set_strip_whitespace
+    entry = Entry.new
+    entry.add_code(" 854935 ", " RxNorm ")
+    entry.add_code("  44556699  ", "RxNorm ")
+    entry.add_code(" 1245 ", " Junk ")
+    assert entry.is_in_code_set?([{'set' => 'RxNorm', 'values' => ['854935', '5440']},
+                                  {'set' => 'SNOMED-CT', 'values' => ['24601']}])
+    assert !entry.is_in_code_set?([{'set' => ' RxNorm ', 'values' => ['854935', '5440']},
+                                   {'set' => 'SNOMED-CT', 'values' => ['24601']}])
+    assert !entry.is_in_code_set?([{'set' => 'RxNorm', 'values' => [' 854935 ', '5440']},
+                                   {'set' => 'SNOMED-CT', 'values' => ['24601']}])
+
+  end
+
   def test_is_not_in_code_set
     entry = Entry.new
     entry.add_code("44556699", "RxNorm")
