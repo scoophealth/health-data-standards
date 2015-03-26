@@ -66,7 +66,7 @@ class EntryTest < MiniTest::Unit::TestCase
                                   {'set' => 'SNOMED-CT', 'values' => ['24601']}])
   end
 
-
+  # added to test that whitespace before/after code system name and codes is stripped
   def test_is_in_code_set_strip_whitespace
     entry = Entry.new
     entry.add_code(" 854935 ", " RxNorm ")

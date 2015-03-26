@@ -43,6 +43,9 @@ module ThingWithCodes
   end
 
   # Add a code into the Entry
+  # This code was altered by R. Rusk to remove leading and trailing whitespace
+  # in code system names and codes.  Leading whitespace is seen in the ATC codes
+  # in Oscar EMR databases leading to string matching difficulties.
   # @param [String] code the code to add
   # @param [String] code_system the code system that the code belongs to
   def add_code(code, code_system)
