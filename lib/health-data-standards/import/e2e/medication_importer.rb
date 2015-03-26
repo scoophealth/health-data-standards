@@ -337,7 +337,7 @@ module HealthDataStandards
           ltmed_element = parent_element.xpath(@lt_xpath).to_s
           if ! (ltmed_element.nil? || ltmed_element.empty?)
             if ltmed_element.eql? "Long Term"
-              ltmedstr = " LONG_TERM_MED_FLAG"
+              ltmedstr = " E2E_LONG_TERM_FLAG"
             end
           end
           entry.freeTextSig = parent_element.xpath(@freetext_xpath_prefix + @freetext_xpath_suffix1)
