@@ -201,6 +201,73 @@ module E2E
       end
     end
 
+=begin
+    def test_medication_importing_big
+        doc = Nokogiri::XML(File.new('test/fixtures/TEST_PATIENT.xml'))
+        doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
+        pi = HealthDataStandards::Import::E2E::PatientImporter.instance
+        patient = pi.parse_e2e(doc)
+
+        # number of medication sections
+        assert_equal 63, patient.medications.size
+        medication = patient.medications[35]
+        assert medication.codes['HC-DIN'].include? '02256134'
+        assert medication.codes['whoATC'].include? 'C07AB07'
+        assert_equal "APO-BISOPROLOL 5MG", medication.description
+
+        assert_equal "5.0", medication.values.first.scalar
+        assert_equal "tab", medication.values.first.units
+
+        assert_equal Time.gm(2015,3,9).to_i, medication.time
+        assert_equal Time.gm(2015,3,9).to_i, medication.start_time
+        assert_equal Time.gm(2015,6,17).to_i, medication.end_time
+
+        assert_equal 1, medication.administration_timing['frequency']['numerator']['value']
+        assert_equal 1, medication.administration_timing['frequency']['denominator']['value']
+        assert_equal 'd', medication.administration_timing['frequency']['denominator']['unit']
+
+        assert_equal ' E2E_LONG_TERM_FLAG', medication.freeTextSig
+
+        ### TODO Find out why medication.dose isn't working!!!
+        #assert_equal '1.0', medication.inspect # dose['low']
+        #assert_equal '1.0', medication.dose['high']
+
+        assert_equal 'active', medication.statusOfMedication[:value]
+
+        assert_equal 'PO', medication.route['code']
+        assert_equal '2.16.840.1.113883.5.112', medication.route['codeSystem']
+        assert_equal 'RouteOfAdministration', medication.route['codeSystemName']
+        assert_equal 'PO', medication.route['displayName']
+
+        assert_equal nil, medication.product_form['code']
+
+        assert_equal 32, medication.order_information.size
+        #### TODO Enhance parsing of order_information
+        #assert_equal 1, medication.order_information.first.fills
+        #assert_equal 1, medication.order_information.first.quantity_ordered['value']
+        #assert_equal 'tablet', medication.order_information.first.quantity_ordered['unit']
+        assert_equal '', medication.order_information[0].performer.given_name
+        assert_equal 'kxDpGMv+o1ZFJEXV/9LUTW1tA7uVv3c/fhT13Q==', medication.order_information[0].performer.family_name
+        #assert_equal Time.gm(2014,6,25).to_i, medication.order_information[0].performer.start
+        assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
+        assert_equal '', medication.order_information[0].performer.npi
+
+        medication = patient.medications[34]
+        assert_equal 'APO-RAMIPRIL 5MG', medication.description
+        assert_equal 11, medication.order_information.size
+        assert_equal Time.gm(2013,2,27).to_i, medication.order_information[0].orderDateTime
+        assert_equal Time.gm(2013,5,28).to_i, medication.order_information[0].orderExpirationDateTime
+        assert_equal Time.gm(2012,12,10).to_i, medication.order_information[1].orderDateTime
+        assert_equal Time.gm(2013,3,10).to_i, medication.order_information[1].orderExpirationDateTime
+        assert_equal Time.gm(2012,9,17).to_i, medication.order_information[2].orderDateTime
+        assert_equal Time.gm(2012,12,16).to_i, medication.order_information[2].orderExpirationDateTime
+        assert_equal Time.gm(2010,12,1).to_i, medication.order_information[10].orderDateTime
+        assert_equal Time.gm(2011,3,1).to_i, medication.order_information[10].orderExpirationDateTime
+        assert_equal 'kxDpGMv+o1ZFJEXV/9LUTW1tA7uVv3c/fhT13Q==', medication.order_information[0].performer.family_name
+        assert_equal 'kxDpGMv+o1ZFJEXV/9LUTW1tA7uVv3c/fhT13Q==', medication.order_information[10].performer.family_name
+    end
+=end
+
     def test_medication_importing_complete_example
       doc = Nokogiri::XML(File.new('test/fixtures/PITO/E2E-DTC Ex 001 - Conversion - Fully Loaded - V1-30-00.xml'))
       doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
@@ -261,7 +328,9 @@ module E2E
       assert_equal 1, medication.order_information.size
       assert_equal '', medication.order_information[0].performer.given_name
       assert_equal 'vdX7pCevIhQh7oEafJD6xtu5SVQxXwwc85znuA==', medication.order_information[0].performer.family_name
-      assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
+      assert_equal Time.gm(2013,2,11).to_i, medication.order_information[0].orderDateTime
+      assert_equal Time.gm(2013,2,12).to_i, medication.order_information[0].orderExpirationDateTime
+      assert_equal Time.gm(2003,5,29).to_i, medication.order_information[0].performer.start
       assert_equal '', medication.order_information[0].performer.npi
 
     end
@@ -281,7 +350,8 @@ module E2E
         assert_equal '', medication.order_information[0].performer.given_name
         assert_equal '0UoCjCo6K8lHYQK7KII0xBWisB+CjqYqxbPkLw==', medication.order_information[0].performer.family_name
         assert_equal nil, medication.order_information[0].performer.start
-        assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
+        #assert_equal Time.gm(2014,2,27).to_i, medication.order_information[0].orderDateTime
+        #assert_equal Time.gm(2014,3,6).to_i, medication.order_information[0].orderExpirationDateTime
         assert_equal '', medication.order_information[0].performer.npi
       end
 
@@ -294,6 +364,8 @@ module E2E
       assert_equal "Mcg", medication.values.first.units
       assert_equal nil, medication.dose
       assert_equal Time.gm(2013,11,6).to_i, medication.start_time
+      assert_equal Time.gm(2013,11,6).to_i, medication.order_information[0].orderDateTime
+      #assert_equal Time.gm(2014,3,6).to_i, medication.order_information[0].orderExpirationDateTime
       assert_equal 'active', medication.statusOfMedication[:value]
       assert_equal '1-2 Puffs four times daily for 30 days. Use with Aerochamber', medication.freeTextSig
       assert_equal '[Frequency: Four times daily]', medication.administration_timing['text']
@@ -314,6 +386,7 @@ module E2E
       assert_equal "Tablet(s)", medication.values.first.units
       assert_equal nil, medication.dose
       assert_equal Time.gm(2014,2,13).to_i, medication.start_time
+      assert_equal Time.gm(2014,2,13).to_i, medication.order_information[0].orderDateTime
       assert_equal 'active', medication.statusOfMedication[:value]
       assert_equal 'Take with Food', medication.freeTextSig
       assert_equal '[Frequency: Four times daily]', medication.administration_timing['text']
@@ -334,6 +407,7 @@ module E2E
       assert_equal "Mg", medication.values.first.units
       assert_equal nil, medication.dose
       assert_equal Time.gm(2014,2,4).to_i, medication.start_time
+      assert_equal Time.gm(2014,2,4).to_i, medication.order_information[0].orderDateTime
       assert_equal 'active', medication.statusOfMedication[:value]
       assert_equal 'One capsule daily at bedtime as needed
 . Take at bedtime E2E_PRN_FLAG', medication.freeTextSig
@@ -356,6 +430,8 @@ module E2E
       assert_equal nil, medication.dose
       assert_equal Time.gm(2014,2,27).to_i, medication.start_time
       assert_equal Time.gm(2014,3,6).to_i, medication.end_time
+      assert_equal Time.gm(2014,2,27).to_i, medication.order_information[0].orderDateTime
+      assert_equal Time.gm(2014,3,6).to_i, medication.order_information[0].orderExpirationDateTime
       assert_equal 'completed', medication.statusOfMedication[:value]
       assert_equal '125mg (5ml) three times daily
 . Shake well before use and take until finished', medication.freeTextSig
@@ -377,6 +453,7 @@ module E2E
       assert_equal "Millilitres", medication.values.first.units
       assert_equal nil, medication.dose
       assert_equal Time.gm(2014,1,5).to_i, medication.start_time
+      assert_equal Time.gm(2014,1,5).to_i, medication.order_information[0].orderDateTime
       assert_equal 'active', medication.statusOfMedication[:value]
       assert_equal '1ml with 5ml Normal saline by Nebulizer twice daily.', medication.freeTextSig
       assert_equal '[Frequency: Twice daily]', medication.administration_timing['text']
@@ -397,6 +474,7 @@ module E2E
       assert_equal "Mg", medication.values.first.units
       assert_equal nil, medication.dose
       assert_equal Time.gm(2014,2,4).to_i, medication.start_time
+      assert_equal Time.gm(2014,2,4).to_i, medication.order_information[0].orderDateTime
       assert_equal 'active', medication.statusOfMedication[:value]
       assert_equal '5mg administered intra-articularly to right foot monthly. Bring medication to Doctor\'s office for administration.', medication.freeTextSig
       assert_equal '[Frequency: Once a month]', medication.administration_timing['text']
@@ -418,6 +496,8 @@ module E2E
       assert_equal nil, medication.dose
       assert_equal Time.gm(2013,12,6).to_i, medication.start_time
       assert_equal Time.gm(2014,3,6).to_i, medication.end_time
+      assert_equal Time.gm(2013,12,6).to_i, medication.order_information[0].orderDateTime
+      assert_equal Time.gm(2014,3,6).to_i, medication.order_information[0].orderExpirationDateTime
       assert_equal 'completed', medication.statusOfMedication[:value]
       assert_equal '5mg twice daily.', medication.freeTextSig
       assert_equal '[Frequency: Twice daily]', medication.administration_timing['text']
