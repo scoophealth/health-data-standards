@@ -441,7 +441,7 @@ module E2E
       #puts YAML::dump(patient.medications)
 
       # number of medication sections
-      assert_equal 7, patient.medications.size
+      assert_equal 6, patient.medications.size
 
       # no useful provider information for Zarilla
       patient.medications.each do |medication|
@@ -493,29 +493,8 @@ module E2E
       assert_nil medication.route['displayName']
       assert_equal 0, medication.product_form.size
 
-      # third listed medication (Note: has PRNIND set to true)
-      medication = patient.medications[2]
-      assert_equal "Melatonin 5mg capsule", medication.description
-      assert medication.codes['Unknown'].include? 'NI'
-
-      assert_equal "5", medication.values.first.scalar
-      assert_equal "Mg", medication.values.first.units
-      assert_equal nil, medication.dose
-      assert_equal Time.gm(2014,2,4).to_i, medication.start_time
-      assert_equal 'active', medication.statusOfMedication[:value]
-      assert_equal 'One capsule daily at bedtime as needed
-. Take at bedtime E2E_PRN_FLAG', medication.freeTextSig
-      assert_equal '[Frequency: Once daily]', medication.administration_timing['text']
-      assert_includes medication.freeTextSig, 'E2E_PRN_FLAG'
-      assert_nil medication.route['text']
-      assert_nil medication.route['code']
-      assert_nil medication.route['codeSystem']
-      assert_nil medication.route['codeSystemName']
-      assert_nil medication.route['displayName']
-      assert_equal 0, medication.product_form.size
-
       # fourth listed medication
-      medication = patient.medications[3]
+      medication = patient.medications[2]
       assert_equal "AMOXICILLIN 125MG/5ML SUSP", medication.description
       assert medication.codes['HC-DIN'].include? '2243224'
 
@@ -537,7 +516,7 @@ module E2E
       assert_equal 0, medication.product_form.size
 
       # fifth listed medication
-      medication = patient.medications[4]
+      medication = patient.medications[3]
       assert_equal "DOM-SALBUTAMOL 5MG/ML SOLN", medication.description
       assert medication.codes['HC-DIN'].include? '2139324'
 
@@ -557,7 +536,7 @@ module E2E
       assert_equal 0, medication.product_form.size
 
       # sixth listed medication
-      medication = patient.medications[5]
+      medication = patient.medications[4]
       assert_equal "KENALOG-10 INJECTION 10MG/ML", medication.description
       assert medication.codes['HC-DIN'].include? '1999761'
 
@@ -577,7 +556,7 @@ module E2E
       assert_equal 0, medication.product_form.size
 
       # seventh and last listed medication
-      medication = patient.medications[6]
+      medication = patient.medications[5]
       assert_equal "APO-METHYLPHENIDATE", medication.description
       assert medication.codes['HC-DIN'].include? '2273950'
 

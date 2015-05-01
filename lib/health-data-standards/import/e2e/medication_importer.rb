@@ -204,25 +204,37 @@ module HealthDataStandards
           # the following isn't in the IT4 model
           #medication.cumulativeMedicationDuration={}
 
-          extract_description(entry_element, medication)
-          extract_codes(entry_element, medication)
-          extract_entry_value(entry_element, medication)
-          extract_subadm_dates(entry_element, medication)
+          if test_null_flavor(entry_element, medication)
+             medication
+          else
+                extract_description(entry_element, medication)
+                extract_codes(entry_element, medication)
+                extract_entry_value(entry_element, medication)
+                extract_subadm_dates(entry_element, medication)
 
-          extract_administration_timing(entry_element, medication)
-          extract_freetextsig(entry_element, medication)
-          extract_e2e_dose(entry_element, medication)
-          extract_status(entry_element, medication)
-          extract_route(entry_element, medication)
-          extract_form(entry_element, medication)
+                extract_administration_timing(entry_element, medication)
+                extract_freetextsig(entry_element, medication)
+                extract_e2e_dose(entry_element, medication)
+                extract_status(entry_element, medication)
+                extract_route(entry_element, medication)
+                extract_form(entry_element, medication)
 
-          extract_order_information(entry_element, medication)
-          extract_author_time(entry_element, medication)
-          #extract_fulfillment_history(entry_element, medication)
-          medication
+                extract_order_information(entry_element, medication)
+                extract_author_time(entry_element, medication)
+                #extract_fulfillment_history(entry_element, medication)
+                medication
+            end 
         end
 
         private
+
+        def test_null_flavor(parent_element, entry)
+
+          if parent_element.at_xpath("@nullFlavor")
+            return true
+          end 
+          return false
+        end 
 
         def extract_description(parent_element, entry)
           code_elements = parent_element.xpath(@description_xpath+'/e2e:desc/text()')
