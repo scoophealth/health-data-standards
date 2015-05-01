@@ -204,6 +204,9 @@ module HealthDataStandards
           # the following isn't in the IT4 model
           #medication.cumulativeMedicationDuration={}
 
+          # check if this element has a null flavor, if it is we just 
+          # return an empty medication which will result in the medication 
+          # being ignored by the rest of the importer. 
           if test_null_flavor(entry_element, medication)
              medication
           else
@@ -228,6 +231,8 @@ module HealthDataStandards
 
         private
 
+        # Test for a case where the medication entry (substanceAdministration) is a flavor of null.
+        #   return true if the nullFlavor attribute is set on the element, false otherwise. 
         def test_null_flavor(parent_element, entry)
 
           if parent_element.at_xpath("@nullFlavor")
