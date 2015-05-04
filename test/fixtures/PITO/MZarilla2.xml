@@ -525,7 +525,7 @@ Advise mom to see public health for next vaccination.</text>
               </entryRelationship>
             </encounter>
           </entry>
-          <entry typeCode="DRIV" contextConductionInd="true">
+          <entry typeCode="DRIV" contextConductionInd="true" nullFlavo="NI">
             <templateId root="2.16.840.1.113883.3.1818.10.3.9" />
             <encounter classCode="ENC" moodCode="EVN">
               <id root="2.16.840.1.113883.3.3331" extension="Encounters-9008" assigningAuthorityName="Osler Systems Management inc." />
