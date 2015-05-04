@@ -469,7 +469,7 @@ Advise mom to see public health for next vaccination.</text>
             <templateId root="2.16.840.1.113883.3.1818.10.3.9" />
             <encounter classCode="ENC" moodCode="EVN">
               <id root="2.16.840.1.113883.3.3331" extension="Encounters-9005" assigningAuthorityName="Osler Systems Management inc." />
-              <effectiveTime>
+              <effectiveTime nullFlavor="NA">
                 <low value="201206121000-0700" />
               </effectiveTime>
               <participant nullFlavor="NI" typeCode="LOC" contextControlCode="OP">

@@ -128,18 +128,23 @@ module HealthDataStandards
 
         #TODO resolve issue of UTC versus local time when the timezone isn't specified adequately
         def extract_dates(parent_element, entry, element_name="effectiveTime")
-          if parent_element.at_xpath("cda:#{element_name}/@value")
-            entry.time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:#{element_name}")['value'])
-          end
-          if parent_element.at_xpath("cda:#{element_name}/cda:low")
-            entry.start_time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:#{element_name}/cda:low")['value'])
-          end
-          if parent_element.at_xpath("cda:#{element_name}/cda:high")
-            entry.end_time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:#{element_name}/cda:high")['value'])
-          end
-          if parent_element.at_xpath("cda:#{element_name}/cda:center")
-            entry.time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:#{element_name}/cda:center")['value'])
-          end
+          if !parent_element.at_xpath("cda:#{element_name}/@nullFlavor")
+            if parent_element.at_xpath("cda:#{element_name}/@value")
+              entry.time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:#{element_name}")['value'])
+            end
+            if parent_element.at_xpath("cda:#{element_name}/cda:low")
+              entry.start_time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:#{element_name}/cda:low")['value'])
+            end
+            if parent_element.at_xpath("cda:#{element_name}/cda:high")
+              entry.end_time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:#{element_name}/cda:high")['value'])
+            end
+            if parent_element.at_xpath("cda:#{element_name}/cda:center")
+              entry.time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:#{element_name}/cda:center")['value'])
+            end
+          else
+          end 
+
+
         end
 
         def extract_value(parent_element, entry)
