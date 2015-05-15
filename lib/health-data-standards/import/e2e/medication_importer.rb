@@ -191,6 +191,7 @@ module HealthDataStandards
           medication.dose={}
           #medication.typeOfMedication={}
           medication.statusOfMedication={}
+          medication.longTerm=nil
           medication.route={}
           #medication.site={}
           #medication.doseRestriction={}
@@ -209,6 +210,8 @@ module HealthDataStandards
           extract_codes(entry_element, medication)
           extract_entry_value(entry_element, medication)
           extract_subadm_dates(entry_element, medication)
+
+          extract_longterm_flag(entry_element, medication)
 
           extract_administration_timing(entry_element, medication)
           extract_freetextsig(entry_element, medication)
@@ -257,6 +260,17 @@ module HealthDataStandards
             end
           end
 
+        end
+
+        def extract_longterm_flag(parent_element, entry)
+          ltmed_element = parent_element.xpath(@lt_xpath).to_s
+          unless ltmed_element.nil? || ltmed_element.empty?
+            if ltmed_element.eql? "Long Term"
+              entry.long_term = TRUE
+            elsif ltmed_element.eql? "Short Term"
+              entry.long_term = FALSE
+            end
+          end
         end
 
         # Find date in Medication Prescription Event.
@@ -339,6 +353,7 @@ module HealthDataStandards
           unless ltmed_element.nil? || ltmed_element.empty?
             if ltmed_element.eql? "Long Term"
               ltmedstr = " E2E_LONG_TERM_FLAG"
+              #entry.long_term = TRUE
             end
           end
           entry.freeTextSig = parent_element.xpath(@freetext_xpath_prefix + @freetext_xpath_suffix1)
@@ -412,6 +427,7 @@ module HealthDataStandards
           if order_elements
             order_elements.each do |order_element|
               order_information = OrderInformation.new
+              order_information.prn = nil
               actor_element = order_element.at_xpath('./cda:author') #cda:author/cda:assignedAuthor/cda:assignedPerson/cda:name
               if actor_element
                 order_information.performer = ProviderImporter.instance.extract_e2e_medication_provider(actor_element)
@@ -426,6 +442,13 @@ module HealthDataStandards
               unless order_element.at_xpath('./cda:effectiveTime/cda:high').nil?
                 #STDERR.puts "order_element ="+order_element.at_xpath('./cda:effectiveTime/cda:high').attr('value').inspect
                 order_information.orderExpirationDateTime = HL7Helper.timestamp_to_integer(order_element.at_xpath('./cda:effectiveTime/cda:high').attr('value'))
+              end
+              prn_element = order_element.xpath("./cda:entryRelationship/cda:observation[cda:code/@code='PRNIND']/cda:value/@value").to_s
+              #STDERR.puts "PRN_ELEMENT: "+prn_element.inspect
+              if prn_element == "true"
+                order_information.prn = TRUE
+              elsif prn_element == "false"
+                order_information.prn = FALSE
               end
               #STDERR.puts "start = "+order_information.orderDateTime.inspect
               #STDERR.puts "end = "+order_information.orderExpirationDateTime.inspect

@@ -32,6 +32,7 @@ module E2E
       assert_equal 1, medication.administration_timing['frequency']['denominator']['value']
       assert_equal 'd', medication.administration_timing['frequency']['denominator']['unit']
 
+      assert_equal TRUE, medication.longTerm
       assert_equal ' E2E_PRN_FLAG E2E_LONG_TERM_FLAG', medication.freeTextSig
 
       assert_equal '1.0', medication.dose['low']
@@ -49,6 +50,7 @@ module E2E
       assert_equal 'TABLET', medication.product_form['displayName']
 
       assert_equal 1, medication.order_information.size
+      assert_equal TRUE, medication.order_information[0].prn
       #assert_equal 1, medication.order_information.first.fills
       #assert_equal 1, medication.order_information.first.quantity_ordered['value']
       #assert_equal 'tablet', medication.order_information.first.quantity_ordered['unit']
@@ -69,6 +71,8 @@ module E2E
       assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
       assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].performer.start
       assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
+      assert_equal TRUE, medication.longTerm
+      assert_equal FALSE, medication.order_information[0].prn
       assert_equal ' E2E_LONG_TERM_FLAG', medication.freeTextSig
 
       # third listed medication (check what, when, who provided)
@@ -82,6 +86,8 @@ module E2E
       assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
       assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].performer.start
       assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
+      assert_equal TRUE, medication.longTerm
+      assert_equal TRUE, medication.order_information[0].prn
       assert_includes medication.freeTextSig, ' E2E_PRN_FLAG E2E_LONG_TERM_FLAG'
 
 
@@ -98,6 +104,8 @@ module E2E
       assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
       assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].performer.start
       assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
+      assert_equal TRUE, medication.longTerm
+      assert_equal TRUE, medication.order_information[0].prn
       assert_equal ' E2E_PRN_FLAG E2E_LONG_TERM_FLAG', medication.freeTextSig
 
 
@@ -112,6 +120,8 @@ module E2E
       assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
       assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].performer.start
       assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
+      assert_equal TRUE, medication.longTerm
+      assert_equal FALSE, medication.order_information[0].prn
       assert_equal ' E2E_LONG_TERM_FLAG', medication.freeTextSig
 
       # sixth listed medication (check what, when, who provided)
@@ -125,6 +135,8 @@ module E2E
       assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
       assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].performer.start
       assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
+      assert_equal TRUE, medication.longTerm
+      assert_equal FALSE, medication.order_information[0].prn
       assert_equal ' E2E_LONG_TERM_FLAG', medication.freeTextSig
 
 
@@ -140,6 +152,8 @@ module E2E
       assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
       assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].performer.start
       assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
+      assert_equal TRUE, medication.longTerm
+      assert_equal FALSE, medication.order_information[0].prn
       assert_equal ' E2E_LONG_TERM_FLAG', medication.freeTextSig
 
 
@@ -155,6 +169,8 @@ module E2E
       assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
       assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].performer.start
       assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
+      assert_equal TRUE, medication.longTerm
+      assert_equal FALSE, medication.order_information[0].prn
       assert_equal ' E2E_LONG_TERM_FLAG', medication.freeTextSig
 
       # ninth and last listed medication
@@ -175,6 +191,12 @@ module E2E
       assert_equal 1, medication.administration_timing['frequency']['denominator']['value']
       assert_equal 'd', medication.administration_timing['frequency']['denominator']['unit']
 
+      assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
+      assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].performer.start
+      assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
+      assert_equal 1, medication.order_information.size
+      assert_equal TRUE, medication.longTerm
+      assert_equal FALSE, medication.order_information[0].prn
       assert_equal ' E2E_LONG_TERM_FLAG', medication.freeTextSig
 
       assert_equal '1.0', medication.dose['low']
@@ -226,6 +248,7 @@ module E2E
         assert_equal 1, medication.administration_timing['frequency']['denominator']['value']
         assert_equal 'd', medication.administration_timing['frequency']['denominator']['unit']
 
+        assert_equal TRUE, medication.longTerm
         assert_equal ' E2E_LONG_TERM_FLAG', medication.freeTextSig
 
         ### TODO Find out why medication.dose isn't working!!!
@@ -251,18 +274,28 @@ module E2E
         #assert_equal Time.gm(2014,6,25).to_i, medication.order_information[0].performer.start
         assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
         assert_equal '', medication.order_information[0].performer.npi
+        assert_equal FALSE, medication.order_information[0].prn
+        assert_equal TRUE, medication.order_information[10].prn
+        assert_equal FALSE, medication.order_information[31].prn
 
         medication = patient.medications[34]
         assert_equal 'APO-RAMIPRIL 5MG', medication.description
         assert_equal 11, medication.order_information.size
+        assert_equal TRUE, medication.longTerm
+        assert_equal ' E2E_LONG_TERM_FLAG', medication.freeTextSig
+        refute_includes medication.freeTextSig, 'E2E_PRN_FLAG'
         assert_equal Time.gm(2013,2,27).to_i, medication.order_information[0].orderDateTime
         assert_equal Time.gm(2013,5,28).to_i, medication.order_information[0].orderExpirationDateTime
+        assert_equal FALSE, medication.order_information[0].prn
         assert_equal Time.gm(2012,12,10).to_i, medication.order_information[1].orderDateTime
         assert_equal Time.gm(2013,3,10).to_i, medication.order_information[1].orderExpirationDateTime
+        assert_equal FALSE, medication.order_information[1].prn
         assert_equal Time.gm(2012,9,17).to_i, medication.order_information[2].orderDateTime
         assert_equal Time.gm(2012,12,16).to_i, medication.order_information[2].orderExpirationDateTime
+        assert_equal TRUE, medication.order_information[2].prn
         assert_equal Time.gm(2010,12,1).to_i, medication.order_information[10].orderDateTime
         assert_equal Time.gm(2011,3,1).to_i, medication.order_information[10].orderExpirationDateTime
+        assert_equal FALSE, medication.order_information[10].prn
         assert_equal 'kxDpGMv+o1ZFJEXV/9LUTW1tA7uVv3c/fhT13Q==', medication.order_information[0].performer.family_name
         assert_equal 'kxDpGMv+o1ZFJEXV/9LUTW1tA7uVv3c/fhT13Q==', medication.order_information[10].performer.family_name
     end
@@ -303,6 +336,7 @@ module E2E
       assert_equal 'D', medication.administration_timing['duration']['width']['unit']
 
       #TODO - fix freeTextSig
+      assert_equal FALSE, medication.longTerm
       prntrue = 'E2E_PRN_FLAG'
       assert medication.freeTextSig.include? prntrue
       text1 = "One spray every 5 minutes as needed for chest discomfort."
@@ -332,6 +366,7 @@ module E2E
       assert_equal Time.gm(2013,2,12).to_i, medication.order_information[0].orderExpirationDateTime
       assert_equal Time.gm(2003,5,29).to_i, medication.order_information[0].performer.start
       assert_equal '', medication.order_information[0].performer.npi
+      assert_equal TRUE, medication.order_information[0].prn
 
     end
 
@@ -367,6 +402,7 @@ module E2E
       assert_equal Time.gm(2013,11,6).to_i, medication.order_information[0].orderDateTime
       #assert_equal Time.gm(2014,3,6).to_i, medication.order_information[0].orderExpirationDateTime
       assert_equal 'active', medication.statusOfMedication[:value]
+      assert_equal nil, medication.longTerm
       assert_equal '1-2 Puffs four times daily for 30 days. Use with Aerochamber', medication.freeTextSig
       assert_equal '[Frequency: Four times daily]', medication.administration_timing['text']
       refute_includes medication.freeTextSig, 'E2E_PRN_FLAG'
@@ -376,6 +412,8 @@ module E2E
       assert_nil medication.route['codeSystemName']
       assert_nil medication.route['displayName']
       assert_equal 0, medication.product_form.size
+      assert_equal 1, medication.order_information.size
+      assert_equal FALSE, medication.order_information[0].prn
 
       # second listed medication
       medication = patient.medications[1]
@@ -388,6 +426,7 @@ module E2E
       assert_equal Time.gm(2014,2,13).to_i, medication.start_time
       assert_equal Time.gm(2014,2,13).to_i, medication.order_information[0].orderDateTime
       assert_equal 'active', medication.statusOfMedication[:value]
+      assert_equal nil, medication.longTerm
       assert_equal 'Take with Food', medication.freeTextSig
       assert_equal '[Frequency: Four times daily]', medication.administration_timing['text']
       refute_includes medication.freeTextSig, 'E2E_PRN_FLAG'
@@ -397,6 +436,8 @@ module E2E
       assert_nil medication.route['codeSystemName']
       assert_nil medication.route['displayName']
       assert_equal 0, medication.product_form.size
+      assert_equal 1, medication.order_information.size
+      assert_equal FALSE, medication.order_information[0].prn
 
       # third listed medication (Note: has PRNIND set to true)
       medication = patient.medications[2]
@@ -409,6 +450,7 @@ module E2E
       assert_equal Time.gm(2014,2,4).to_i, medication.start_time
       assert_equal Time.gm(2014,2,4).to_i, medication.order_information[0].orderDateTime
       assert_equal 'active', medication.statusOfMedication[:value]
+      assert_equal nil, medication.longTerm
       assert_equal 'One capsule daily at bedtime as needed
 . Take at bedtime E2E_PRN_FLAG', medication.freeTextSig
       assert_equal '[Frequency: Once daily]', medication.administration_timing['text']
@@ -419,6 +461,8 @@ module E2E
       assert_nil medication.route['codeSystemName']
       assert_nil medication.route['displayName']
       assert_equal 0, medication.product_form.size
+      assert_equal 1, medication.order_information.size
+      assert_equal TRUE, medication.order_information[0].prn
 
       # fourth listed medication
       medication = patient.medications[3]
@@ -433,6 +477,7 @@ module E2E
       assert_equal Time.gm(2014,2,27).to_i, medication.order_information[0].orderDateTime
       assert_equal Time.gm(2014,3,6).to_i, medication.order_information[0].orderExpirationDateTime
       assert_equal 'completed', medication.statusOfMedication[:value]
+      assert_equal nil, medication.longTerm
       assert_equal '125mg (5ml) three times daily
 . Shake well before use and take until finished', medication.freeTextSig
       assert_equal '[Frequency: Three times daily]', medication.administration_timing['text']
@@ -443,6 +488,8 @@ module E2E
       assert_nil medication.route['codeSystemName']
       assert_nil medication.route['displayName']
       assert_equal 0, medication.product_form.size
+      assert_equal 1, medication.order_information.size
+      assert_equal FALSE, medication.order_information[0].prn
 
       # fifth listed medication
       medication = patient.medications[4]
@@ -455,6 +502,7 @@ module E2E
       assert_equal Time.gm(2014,1,5).to_i, medication.start_time
       assert_equal Time.gm(2014,1,5).to_i, medication.order_information[0].orderDateTime
       assert_equal 'active', medication.statusOfMedication[:value]
+      assert_equal nil, medication.longTerm
       assert_equal '1ml with 5ml Normal saline by Nebulizer twice daily.', medication.freeTextSig
       assert_equal '[Frequency: Twice daily]', medication.administration_timing['text']
       refute_includes medication.freeTextSig, 'E2E_PRN_FLAG'
@@ -464,6 +512,8 @@ module E2E
       assert_nil medication.route['codeSystemName']
       assert_nil medication.route['displayName']
       assert_equal 0, medication.product_form.size
+      assert_equal 1, medication.order_information.size
+      assert_equal FALSE, medication.order_information[0].prn
 
       # sixth listed medication
       medication = patient.medications[5]
@@ -476,6 +526,7 @@ module E2E
       assert_equal Time.gm(2014,2,4).to_i, medication.start_time
       assert_equal Time.gm(2014,2,4).to_i, medication.order_information[0].orderDateTime
       assert_equal 'active', medication.statusOfMedication[:value]
+      assert_equal nil, medication.longTerm
       assert_equal '5mg administered intra-articularly to right foot monthly. Bring medication to Doctor\'s office for administration.', medication.freeTextSig
       assert_equal '[Frequency: Once a month]', medication.administration_timing['text']
       refute_includes medication.freeTextSig, 'E2E_PRN_FLAG'
@@ -485,6 +536,8 @@ module E2E
       assert_equal 'RouteOfAdministration', medication.route['codeSystemName']
       assert_nil medication.route['displayName']
       assert_equal 0, medication.product_form.size
+      assert_equal 1, medication.order_information.size
+      assert_equal FALSE, medication.order_information[0].prn
 
       # seventh and last listed medication
       medication = patient.medications[6]
@@ -499,6 +552,7 @@ module E2E
       assert_equal Time.gm(2013,12,6).to_i, medication.order_information[0].orderDateTime
       assert_equal Time.gm(2014,3,6).to_i, medication.order_information[0].orderExpirationDateTime
       assert_equal 'completed', medication.statusOfMedication[:value]
+      assert_equal nil, medication.longTerm
       assert_equal '5mg twice daily.', medication.freeTextSig
       assert_equal '[Frequency: Twice daily]', medication.administration_timing['text']
       refute_includes medication.freeTextSig, 'E2E_PRN_FLAG'
@@ -508,6 +562,8 @@ module E2E
       assert_nil medication.route['codeSystemName']
       assert_nil medication.route['displayName']
       assert_equal 0, medication.product_form.size
+      assert_equal 1, medication.order_information.size
+      assert_equal FALSE, medication.order_information[0].prn
 
 
     end
