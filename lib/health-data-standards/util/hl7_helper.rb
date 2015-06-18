@@ -14,7 +14,15 @@ module HealthDataStandards
           hour = timestamp.length >= 10 ? timestamp[8..9].to_i : 0
           min = timestamp.length >= 12 ? timestamp[10..11].to_i : 0
           sec = timestamp.length >= 14 ? timestamp[12..13].to_i : 0
-          
+
+          # handle some impossible values found in Oscar EMR data
+          if month < 1 or month > 12
+            month = 1
+          end
+          if day < 1 or day > 31
+            day = 1
+          end
+
           Time.gm(year, month, day, hour, min, sec).to_i
         else
           nil

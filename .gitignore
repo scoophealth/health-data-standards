@@ -5,3 +5,4 @@ test/xsd
 .rvmrc
 .yardoc
 Provider_Hash.txt
+test/fixtures/TEST_PATIENT*

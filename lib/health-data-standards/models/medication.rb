@@ -4,6 +4,7 @@ class Medication < Entry
   field :dose, type: Hash
   field :typeOfMedication, type: Hash
   field :statusOfMedication, type: Hash
+  field :longTerm, type: Boolean
   embeds_many :fulfillmentHistory, class_name: 'FulfillmentHistory'
   embeds_many :orderInformation, class_name: 'OrderInformation'
 
@@ -29,6 +30,8 @@ class Medication < Entry
   alias :type_of_medication= :typeOfMedication=
   alias :status_of_medication :statusOfMedication
   alias :status_of_medication= :statusOfMedication=
+  alias :long_term :longTerm
+  alias :long_term= :longTerm=
   alias :fulfillment_history :fulfillmentHistory
   alias :fulfillment_history= :fulfillmentHistory=
   alias :order_information :orderInformation
