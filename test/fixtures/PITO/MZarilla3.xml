@@ -465,6 +465,7 @@ Rx Biaxin
 Tylenol
 Ventolin with aerochamber.
 Advise mom to see public health for next vaccination.</text>
+
           <entry typeCode="DRIV" contextConductionInd="true">
             <templateId root="2.16.840.1.113883.3.1818.10.3.9" />
             <encounter classCode="ENC" moodCode="EVN">
@@ -525,12 +526,15 @@ Advise mom to see public health for next vaccination.</text>
               </entryRelationship>
             </encounter>
           </entry>
+
+
           <entry typeCode="DRIV" contextConductionInd="true" nullFlavo="NI">
             <templateId root="2.16.840.1.113883.3.1818.10.3.9" />
             <encounter classCode="ENC" moodCode="EVN">
               <id root="2.16.840.1.113883.3.3331" extension="Encounters-9008" assigningAuthorityName="Osler Systems Management inc." />
               <effectiveTime>
-                <low value="20121215" />
+                    <low nullFlavour="NA"/>
+                    <high nullFlavour="NA"/>
               </effectiveTime>
               <participant nullFlavor="NI" typeCode="LOC" contextControlCode="OP">
                 <templateId root="2.16.840.1.113883.3.1818.10.4.21" />
@@ -561,7 +565,8 @@ Advise mom to see public health for next vaccination.</text>
                 <observation classCode="OBS" moodCode="EVN">
                   <code code="DATEOBS" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
                   <effectiveTime>
-                    <low value="20121218000000.000-0800" />
+                    <low nullFlavour="NA"/>
+                    <high nullFlavour="NA"/>
                   </effectiveTime>
                 </observation>
               </entryRelationship>
@@ -607,7 +612,8 @@ Pathology reports: Normal PAP smears in past 5 assessments; skin biopsy – mela
             <encounter classCode="ENC" moodCode="EVN">
               <id root="2.16.840.1.113883.3.3331" extension="Encounters-9009" assigningAuthorityName="Osler Systems Management inc." />
               <effectiveTime>
-                <low value="201212201400-0800" />
+                <low nullFlavour="NA"/>
+                <high nullFlavour="NA"/>
               </effectiveTime>
               <participant nullFlavor="NI" typeCode="LOC" contextControlCode="OP">
                 <templateId root="2.16.840.1.113883.3.1818.10.4.21" />
@@ -638,7 +644,8 @@ Pathology reports: Normal PAP smears in past 5 assessments; skin biopsy – mela
                 <observation classCode="OBS" moodCode="EVN">
                   <code code="DATEOBS" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
                   <effectiveTime>
-                    <low value="20130103000000.000-0800" />
+                    <low nullFlavour="NA"/>
+                    <high nullFlavour="NA"/>
                   </effectiveTime>
                 </observation>
               </entryRelationship>

@@ -139,7 +139,22 @@ module E2E
         assert_equal "REASON", encounter.codes['code'][0]
         assert_equal "ObservationType-CA-Pending", encounter.codes['codeSystem'][0]
       end
+    end
 
+    def test_encounter_with_null_start_and_end_times 
+      doc = Nokogiri::XML(File.new('test/fixtures/PITO/MZarilla3.xml'))
+      doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
+      pi = HealthDataStandards::Import::E2E::PatientImporter.instance
+      patient = pi.parse_e2e(doc)
+      encounters = patient.encounters
+      assert_equal 3, encounters.size
+
+      assert_nil encounters[0].start_time
+      assert_nil encounters[0].end_time
+
+
+      assert_nil encounters[1].start_time
+      assert_nil encounters[1].end_time
     end
 
     end
