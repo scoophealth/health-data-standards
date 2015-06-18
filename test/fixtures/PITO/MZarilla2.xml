@@ -2464,6 +2464,8 @@ VENTOLIN HFA, Directions: 1x 100 Mcg Four times daily, Repeats: 0, Details: 1-2 
               </entryRelationship>
             </substanceAdministration>
           </entry>
+
+
           <entry typeCode="DRIV" contextConductionInd="true">
             <templateId root="2.16.840.1.113883.3.1818.10.3.18" />
             <substanceAdministration classCode="SBADM" moodCode="EVN">
@@ -2479,19 +2481,23 @@ VENTOLIN HFA, Directions: 1x 100 Mcg Four times daily, Repeats: 0, Details: 1-2 
                   </manufacturedLabeledDrug>
                 </manufacturedProduct>
               </consumable>
+
               <entryRelationship nullFlavor="NI" typeCode="SUBJ" contextConductionInd="true">
                 <observation nullFlavor="NI" classCode="OBS" moodCode="EVN">
                   <code code="UNBOUND" codeSystem="2.16.840.1.113883.3.3068.10.6.3" codeSystemName="ObservationType-CA-Pending" />
                 </observation>
               </entryRelationship>
+
               <entryRelationship typeCode="COMP" contextConductionInd="true">
                 <templateId root="2.16.840.1.113883.3.1818.10.4.20" />
                 <substanceAdministration classCode="SBADM" moodCode="RQO">
                   <id root="2.16.840.1.113883.3.3331" extension="MedicationPrescriptions-1954" assigningAuthorityName="Osler Systems Management inc." />
                   <code code="DRUG" codeSystem="2.16.840.1.113883.5.4" codeSystemName="ActCode" />
+
                   <effectiveTime xsi:type="IVL_TS">
                     <low value="20140213" />
                   </effectiveTime>
+
                   <consumable typeCode="CSM">
                     <templateId root="2.16.840.1.113883.3.1818.10.4.16" />
                     <manufacturedProduct classCode="MANU">
@@ -2510,6 +2516,7 @@ VENTOLIN HFA, Directions: 1x 100 Mcg Four times daily, Repeats: 0, Details: 1-2 
                       </assignedPerson>
                     </assignedAuthor>
                   </author>
+                  
                   <entryRelationship typeCode="COMP" contextConductionInd="true">
                     <templateId root="2.16.840.1.113883.3.1818.10.4.8" />
                     <substanceAdministration classCode="SBADM" moodCode="RQO">

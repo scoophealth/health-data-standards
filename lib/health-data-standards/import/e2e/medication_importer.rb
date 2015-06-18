@@ -279,7 +279,6 @@ module HealthDataStandards
 
         end
 
-<<<<<<< HEAD
       # Find date in Medication Prescription Event.
       def extract_subadm_dates(parent_element, entry, element_name="effectiveTime")
             
@@ -304,8 +303,9 @@ module HealthDataStandards
                   entry.time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:#{element_name}/cda:center")['value'])
                 end
           end 
-=======
-        def extract_longterm_flag(parent_element, entry)
+      end 
+
+      def extract_longterm_flag(parent_element, entry)
           ltmed_element = parent_element.xpath(@lt_xpath).to_s
           unless ltmed_element.nil? || ltmed_element.empty?
             if ltmed_element.eql? "Long Term"
@@ -314,30 +314,7 @@ module HealthDataStandards
               entry.long_term = FALSE
             end
           end
-        end
-
-        # Find date in Medication Prescription Event.
-        def extract_subadm_dates(parent_element, entry, element_name="effectiveTime")
-          extract_dates(parent_element.xpath(@subadm_xpath), entry, element_name)
-          #print "XML Node: " + parent_element.to_s + "\n"
-          #if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}")
-          #  entry.time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}")['value'])
-          #end
-          #if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:low")
-          #  entry.start_time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:low")['value'])
-          #end
-          #if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:high")
-          #  entry.end_time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:high")['value'])
-          #end
-          #if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:center")
-          #  entry.time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:center")['value'])
-          #end
-          #print "Codes: " + entry.codes_to_s + "\n"
-          #print "Time: " + entry.time.to_s + "\n"
-          #print "Start Time: " + entry.start_time.to_s + "\n"
-          #print "End Time: " + entry.end_time.to_s + "\n"
->>>>>>> 8282df62fbd6791c77ae8af90f70c8f61d85b0ed
-        end
+      end
 
         # Handles drug administration timing expressed as a frequency,
         # interval, duration or specific time specification)
@@ -479,14 +456,17 @@ module HealthDataStandards
                 #   order_information.orderDateTime =  order_information.performer.start
                 # end
               end
+
               unless order_element.at_xpath('./cda:effectiveTime/cda:low').nil?
                 #STDERR.puts "order_element ="+order_element.at_xpath('./cda:effectiveTime/cda:low').attr('value').inspect
                 order_information.orderDateTime =HL7Helper.timestamp_to_integer(order_element.at_xpath('./cda:effectiveTime/cda:low').attr('value'))
               end
+              
               unless order_element.at_xpath('./cda:effectiveTime/cda:high').nil?
                 #STDERR.puts "order_element ="+order_element.at_xpath('./cda:effectiveTime/cda:high').attr('value').inspect
                 order_information.orderExpirationDateTime = HL7Helper.timestamp_to_integer(order_element.at_xpath('./cda:effectiveTime/cda:high').attr('value'))
               end
+
               prn_element = order_element.xpath("./cda:entryRelationship/cda:observation[cda:code/@code='PRNIND']/cda:value/@value").to_s
               #STDERR.puts "PRN_ELEMENT: "+prn_element.inspect
               if prn_element == "true"

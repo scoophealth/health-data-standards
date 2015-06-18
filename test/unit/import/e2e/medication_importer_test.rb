@@ -585,7 +585,6 @@ module E2E
         assert_equal '', medication.order_information[0].performer.given_name
         assert_equal '0UoCjCo6K8lHYQK7KII0xBWisB+CjqYqxbPkLw==', medication.order_information[0].performer.family_name
         assert_equal nil, medication.order_information[0].performer.start
-        assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
         assert_equal '', medication.order_information[0].performer.npi
       end
 
