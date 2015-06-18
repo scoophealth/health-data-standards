@@ -102,6 +102,7 @@ module HealthDataStandards
             add_code_if_present(code_element, entry)
             entry.description = code_element['displayName']
             entry.type = code_element['type']
+            entry.type ||= code_element['xsi:type']
           end
         end
 
