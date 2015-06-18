@@ -783,6 +783,7 @@ Natural Mother: Diabetes mellitus, Comment: Family history of obesity with extre
           </entry>
         </section>
       </component>
+
       <component typeCode="COMP" contextConductionInd="true">
         <section classCode="DOCSECT" moodCode="EVN">
           <templateId root="2.16.840.1.113883.3.1818.10.2.14.1" />
@@ -791,12 +792,13 @@ Natural Mother: Diabetes mellitus, Comment: Family history of obesity with extre
           <text mediaType="text/x-hl7-text+xml">Pentacel: Patient’s Mother is extremely nervous. - Date: Mar 10, 2014, Series #: 2 of 3, Lot #: A41CA687A., Facility: Conform Family Clinic
 Rotavirus (oral) - Date: Apr 17, 2012, Series #: 1 of 2, Lot #: 5551212, Facility: Primary Office
 VZ (Varicella Zoster): Patient refused vaccine due to fear of needles. - Date: Jun 21, 2011, Refused Immunization, Series #: 1 of 1, Lot #: U1768AA, Facility: Family Practice Clinic</text>
+
           <entry typeCode="DRIV" contextConductionInd="true">
             <templateId root="2.16.840.1.113883.3.1818.10.3.11" />
             <substanceAdministration classCode="SBADM" moodCode="EVN">
               <id root="2.16.840.1.113883.3.3331" extension="Immunizations-734" assigningAuthorityName="Osler Systems Management inc." />
               <code code="IMMUNIZ" codeSystem="2.16.840.1.113883.5.4" codeSystemName="ActCode" />
-              <effectiveTime value="20120417" />
+              <effectiveTime nullFlavor="NA" />
               <consumable typeCode="CSM">
                 <manufacturedProduct classCode="MANU">
                   <manufacturedMaterial classCode="MMAT" determinerCode="KIND">
@@ -842,6 +844,7 @@ VZ (Varicella Zoster): Patient refused vaccine due to fear of needles. - Date: J
               </entryRelationship>
             </substanceAdministration>
           </entry>
+          
           <entry typeCode="DRIV" contextConductionInd="true">
             <templateId root="2.16.840.1.113883.3.1818.10.3.11" />
             <substanceAdministration classCode="SBADM" moodCode="EVN">
