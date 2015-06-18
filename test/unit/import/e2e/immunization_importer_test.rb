@@ -73,7 +73,6 @@ module E2E
 
       immunization = patient.immunizations[0]
       assert_nil immunization.time  
-      puts "HERE"
     end
   end
 end
