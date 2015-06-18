@@ -6,8 +6,9 @@ class OrderInformation
   field :quantityOrdered, type: Hash
   field :orderExpirationDateTime, type: Integer
   field :orderDateTime, type: Integer
+  field :prn, type: Boolean
 
-  embeds_one :performer, class_name: "Provider"
+  embeds_one :performer, class_name: 'Provider'
 
   alias :order_number :orderNumber
   alias :order_number= :orderNumber=

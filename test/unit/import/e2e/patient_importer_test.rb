@@ -172,5 +172,15 @@ module E2E # to ensure no problems with minitest involving duplicated method nam
       #assert patient.expired
 
     end
+
+    def test_nullflavour_birthdate
+      doc = Nokogiri::XML(File.new('test/fixtures/PITO/MZarilla3.xml'))
+      doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
+
+      patient = HealthDataStandards::Import::E2E::PatientImporter.instance.parse_e2e(doc)
+      patient.save!
+      assert_equal nil, patient.birthdate
+
+    end
   end
 end
