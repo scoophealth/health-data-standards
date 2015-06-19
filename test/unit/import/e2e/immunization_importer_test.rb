@@ -72,6 +72,7 @@ module E2E
       patient = pi.parse_e2e(doc)
 
       immunization = patient.immunizations[0]
+      assert_nil immunization.start_time  
       assert_nil immunization.time  
     end
   end

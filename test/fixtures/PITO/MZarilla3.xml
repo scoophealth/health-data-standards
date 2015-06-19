@@ -1159,9 +1159,9 @@ Apr 11 2012 8:43AM
                       <code code="6690-2" codeSystem="2.16.840.1.113883.2.20.5.1" codeSystemName="pCLOCD" />
                       <text representation="TXT" mediaType="text/plain">WBC</text>
                       <statusCode nullFlavor="NA" />
-                      <effectiveTime>
-                        <low value="20120312175006-0700" />
-                      </effectiveTime>
+
+                      <effectiveTime nullFlavor="NA" /> <!-- -------------- THIS IS A TEST FOR NULL FLAVOR TIME STAMP FOR RESULTS -->
+
                       <value xsi:type="ST">9.3 giga/L</value>
                       <interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83" codeSystemName="ObservationInterpretation" displayName="Normal" />
                       <referenceRange typeCode="REFV">
@@ -1178,9 +1178,13 @@ Apr 11 2012 8:43AM
                       <code code="789-8" codeSystem="2.16.840.1.113883.2.20.5.1" codeSystemName="pCLOCD" />
                       <text representation="TXT" mediaType="text/plain">RBC</text>
                       <statusCode nullFlavor="NA" />
+
                       <effectiveTime>
-                        <low value="20120312175006-0700" />
+
+                        <low nulFlavor="NA" /> <!-- --------- THIS IS A TEST FOR NULL FLAVOR IN THE TIME STAMP FOR RESULTS--> 
+
                       </effectiveTime>
+
                       <value xsi:type="ST">4.88 tera/L</value>
                       <interpretationCode code="A" codeSystem="2.16.840.1.113883.5.83" codeSystemName="ObservationInterpretation" displayName="Abnormal" />
                       <referenceRange typeCode="REFV">
