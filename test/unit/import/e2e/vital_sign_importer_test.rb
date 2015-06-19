@@ -217,5 +217,20 @@ module E2E
       assert_equal nil, vital_sign.values.first.units
 
     end
+
+    def test_vital_sign_null_flavor_times
+      doc = Nokogiri::XML(File.new('test/fixtures/PITO/MZarilla3.xml'))
+      doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
+      pi = HealthDataStandards::Import::E2E::PatientImporter.instance
+      patient = pi.parse_e2e(doc)
+
+      vital_sign = patient.vital_signs[0]
+      assert_nil vital_sign.time
+      assert_nil vital_sign.start_time
+
+      vital_sign = patient.vital_signs[1]
+      assert_nil vital_sign.time
+      assert_nil vital_sign.start_time
+    end 
   end
 end

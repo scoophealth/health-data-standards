@@ -319,9 +319,9 @@ Food Allergy: Peanut - dietary (substance), Severity: Severe, Details: Reported 
                   <id nullFlavor="NA" />
                   <code code="8302-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" codeSystemVersion="2.44" displayName="Body height" />
                   <text representation="TXT" mediaType="text/plain">Body height</text>
-                  <effectiveTime>
-                    <low value="20131101" />
-                  </effectiveTime>
+
+                  <effectiveTime nullFlavor="NA" /> <!-- USED FOR TEST FOR EFFECTIVE TIME NULL FLAVOR -->
+                    
                   <value xsi:type="PQ" unit="cm" value="82.5" />
                 </observation>
               </component>
@@ -330,9 +330,11 @@ Food Allergy: Peanut - dietary (substance), Severity: Severe, Details: Reported 
                   <id nullFlavor="NA" />
                   <code code="3141-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" codeSystemVersion="2.44" displayName="Body weight" />
                   <text representation="TXT" mediaType="text/plain">Body weight</text>
+
                   <effectiveTime>
-                    <low value="20131101" />
+                    <low nullFlavor="NA" /> <!-- USED FOR TEST FOR EFFECTIVE TIME NULL FLAVOR -->
                   </effectiveTime>
+                  
                   <value xsi:type="PQ" unit="kg" value="11.3" />
                 </observation>
               </component>
