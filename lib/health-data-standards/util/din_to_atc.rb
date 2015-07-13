@@ -8,7 +8,9 @@ module HealthDataStandards
       @@din2atc_dict = Hash.new
 
       if defined?(Rails.root)
-        file = File.read("#{Rails.root}/lib/din2atc.txt")
+        #file = File.read("#{Rails.root}/lib/din2atc.txt")
+        #file = File.read(Rails.root.join('lib', 'din2atc.txt'))
+        file = File.read(File.expand_path('../../../../',__FILE__)+'/lib/din2atc.txt')
       elsif
         file = File.read(File.join(File.dirname(__FILE__),'..','..','din2atc.txt'))
       else
