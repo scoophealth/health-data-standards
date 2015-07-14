@@ -394,6 +394,7 @@ module E2E
       medication = patient.medications[0]
       assert_equal "VENTOLIN HFA", medication.description
       assert medication.codes['HC-DIN'].include? '2241497'
+      #assert medication.codes['whoATC'].include? 'R03AC02'
 
       assert_equal "100", medication.values.first.scalar
       assert_equal "Mcg", medication.values.first.units
