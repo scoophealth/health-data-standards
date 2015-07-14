@@ -394,7 +394,8 @@ module E2E
       medication = patient.medications[0]
       assert_equal "VENTOLIN HFA", medication.description
       assert medication.codes['HC-DIN'].include? '2241497'
-      #assert medication.codes['whoATC'].include? 'R03AC02'
+      #assert_equal "xyz", medication.codes.inspect
+      assert medication.codes['whoATC'].include? 'R03AC02'
 
       assert_equal "100", medication.values.first.scalar
       assert_equal "Mcg", medication.values.first.units
@@ -420,6 +421,7 @@ module E2E
       medication = patient.medications[1]
       assert_equal "ERYTHRO-BASE", medication.description
       assert medication.codes['HC-DIN'].include? '682020'
+      assert medication.codes['whoATC'].include? 'J01FA01'
 
       assert_equal "1", medication.values.first.scalar
       assert_equal "Tablet(s)", medication.values.first.units
@@ -469,6 +471,7 @@ module E2E
       medication = patient.medications[3]
       assert_equal "AMOXICILLIN 125MG/5ML SUSP", medication.description
       assert medication.codes['HC-DIN'].include? '2243224'
+      assert medication.codes['whoATC'].include? 'Unknown'
 
       assert_equal "125", medication.values.first.scalar
       assert_equal "Mg", medication.values.first.units
@@ -496,6 +499,7 @@ module E2E
       medication = patient.medications[4]
       assert_equal "DOM-SALBUTAMOL 5MG/ML SOLN", medication.description
       assert medication.codes['HC-DIN'].include? '2139324'
+      assert medication.codes['whoATC'].include? 'Unknown'
 
       assert_equal "1", medication.values.first.scalar
       assert_equal "Millilitres", medication.values.first.units
@@ -520,6 +524,7 @@ module E2E
       medication = patient.medications[5]
       assert_equal "KENALOG-10 INJECTION 10MG/ML", medication.description
       assert medication.codes['HC-DIN'].include? '1999761'
+      assert medication.codes['whoATC'].include? 'H02AB08'
 
       assert_equal "5", medication.values.first.scalar
       assert_equal "Mg", medication.values.first.units
@@ -544,6 +549,7 @@ module E2E
       medication = patient.medications[6]
       assert_equal "APO-METHYLPHENIDATE", medication.description
       assert medication.codes['HC-DIN'].include? '2273950'
+      assert medication.codes['whoATC'].include? 'N06BA04'
 
       assert_equal "5", medication.values.first.scalar
       assert_equal "Mg", medication.values.first.units

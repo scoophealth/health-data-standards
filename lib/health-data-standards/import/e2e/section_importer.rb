@@ -122,7 +122,7 @@ module HealthDataStandards
           if code_element['codeSystem'] && code_element['code']
             entry.add_code(code_element['code'], CodeSystemHelper.code_system_for(code_element['codeSystem']))
             if CodeSystemHelper.code_system_for(code_element['codeSystem']) == 'HC-DIN'
-              entry.add_code(DinToAtc.atc_for(code_element['code']), CodeSystemHelper.code_system_for('whoATC'))
+              entry.add_code(DinToAtc.atc_for(code_element['code']), 'whoATC')
               #STDERR.puts code_element['code'], DinToAtc.atc_for(code_element['code'])
             end
           elsif code_element['nullFlavor']
