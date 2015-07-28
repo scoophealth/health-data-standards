@@ -64,5 +64,16 @@ module E2E
       assert_equal Time.gm(2011,6,21).to_i, immunization.time
 
     end
+
+    def test_time_null_flavours
+      doc = Nokogiri::XML(File.new('test/fixtures/PITO/MZarilla3.xml'))
+      doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
+      pi = HealthDataStandards::Import::E2E::PatientImporter.instance
+      patient = pi.parse_e2e(doc)
+
+      immunization = patient.immunizations[0]
+      assert_nil immunization.start_time  
+      assert_nil immunization.time  
+    end
   end
 end

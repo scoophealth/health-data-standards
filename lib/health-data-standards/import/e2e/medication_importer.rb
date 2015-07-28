@@ -206,27 +206,44 @@ module HealthDataStandards
           # the following isn't in the IT4 model
           #medication.cumulativeMedicationDuration={}
 
-          extract_description(entry_element, medication)
-          extract_codes(entry_element, medication)
-          extract_entry_value(entry_element, medication)
-          extract_subadm_dates(entry_element, medication)
+          # check if this element has a null flavor, if it is we just 
+          # return an empty medication which will result in the medication 
+          # being ignored by the rest of the importer. 
+          if test_null_flavor(entry_element, medication)
+             medication
+          else
+                extract_description(entry_element, medication)
+                extract_codes(entry_element, medication)
+                extract_entry_value(entry_element, medication)
+                extract_subadm_dates(entry_element, medication)
 
-          extract_longterm_flag(entry_element, medication)
+                extract_longterm_flag(entry_element, medication)
 
-          extract_administration_timing(entry_element, medication)
-          extract_freetextsig(entry_element, medication)
-          extract_e2e_dose(entry_element, medication)
-          extract_status(entry_element, medication)
-          extract_route(entry_element, medication)
-          extract_form(entry_element, medication)
+                extract_administration_timing(entry_element, medication)
+                extract_freetextsig(entry_element, medication)
+                extract_e2e_dose(entry_element, medication)
+                extract_status(entry_element, medication)
+                extract_route(entry_element, medication)
+                extract_form(entry_element, medication)
 
-          extract_order_information(entry_element, medication)
-          extract_author_time(entry_element, medication)
-          #extract_fulfillment_history(entry_element, medication)
-          medication
+                extract_order_information(entry_element, medication)
+                extract_author_time(entry_element, medication)
+                #extract_fulfillment_history(entry_element, medication)
+                medication
+            end 
         end
 
         private
+
+        # Test for a case where the medication entry (substanceAdministration) is a flavor of null.
+        #   return true if the nullFlavor attribute is set on the element, false otherwise. 
+        def test_null_flavor(parent_element, entry)
+
+          if parent_element.at_xpath("@nullFlavor")
+            return true
+          end 
+          return false
+        end 
 
         def extract_description(parent_element, entry)
           code_elements = parent_element.xpath(@description_xpath+'/e2e:desc/text()')
@@ -262,7 +279,33 @@ module HealthDataStandards
 
         end
 
-        def extract_longterm_flag(parent_element, entry)
+      # Find date in Medication Prescription Event.
+      def extract_subadm_dates(parent_element, entry, element_name="effectiveTime")
+            
+          parent_element = parent_element.xpath(@subadm_xpath)
+
+          if parent_element.at_xpath("cda:#{element_name}")["nullFlavor"]
+
+            entry.start_time = -2208985139 #this is Jan 1st 1900, it is basically guaranteed to make this an active medication provided the status field is "completed"
+            entry.end_time = nil
+
+          else
+                if  parent_element.at_xpath("cda:#{element_name}/@value")
+                  entry.time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:#{element_name}")['value'])
+                end
+                if parent_element.at_xpath("cda:#{element_name}/cda:low")
+                  entry.start_time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:#{element_name}/cda:low")['value'])
+                end
+                if parent_element.at_xpath("cda:#{element_name}/cda:high")
+                  entry.end_time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:#{element_name}/cda:high")['value'])
+                end
+                if parent_element.at_xpath("cda:#{element_name}/cda:center")
+                  entry.time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:#{element_name}/cda:center")['value'])
+                end
+          end 
+      end 
+
+      def extract_longterm_flag(parent_element, entry)
           ltmed_element = parent_element.xpath(@lt_xpath).to_s
           unless ltmed_element.nil? || ltmed_element.empty?
             if ltmed_element.eql? "Long Term"
@@ -271,29 +314,7 @@ module HealthDataStandards
               entry.long_term = FALSE
             end
           end
-        end
-
-        # Find date in Medication Prescription Event.
-        def extract_subadm_dates(parent_element, entry, element_name="effectiveTime")
-          extract_dates(parent_element.xpath(@subadm_xpath), entry, element_name)
-          #print "XML Node: " + parent_element.to_s + "\n"
-          #if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}")
-          #  entry.time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}")['value'])
-          #end
-          #if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:low")
-          #  entry.start_time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:low")['value'])
-          #end
-          #if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:high")
-          #  entry.end_time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:high")['value'])
-          #end
-          #if parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:center")
-          #  entry.time = HL7Helper.timestamp_to_integer(parent_element.at_xpath("cda:entryRelationship/cda:substanceAdministration/cda:#{element_name}/cda:center")['value'])
-          #end
-          #print "Codes: " + entry.codes_to_s + "\n"
-          #print "Time: " + entry.time.to_s + "\n"
-          #print "Start Time: " + entry.start_time.to_s + "\n"
-          #print "End Time: " + entry.end_time.to_s + "\n"
-        end
+      end
 
         # Handles drug administration timing expressed as a frequency,
         # interval, duration or specific time specification)
@@ -435,14 +456,17 @@ module HealthDataStandards
                 #   order_information.orderDateTime =  order_information.performer.start
                 # end
               end
+
               unless order_element.at_xpath('./cda:effectiveTime/cda:low').nil?
                 #STDERR.puts "order_element ="+order_element.at_xpath('./cda:effectiveTime/cda:low').attr('value').inspect
                 order_information.orderDateTime =HL7Helper.timestamp_to_integer(order_element.at_xpath('./cda:effectiveTime/cda:low').attr('value'))
               end
+              
               unless order_element.at_xpath('./cda:effectiveTime/cda:high').nil?
                 #STDERR.puts "order_element ="+order_element.at_xpath('./cda:effectiveTime/cda:high').attr('value').inspect
                 order_information.orderExpirationDateTime = HL7Helper.timestamp_to_integer(order_element.at_xpath('./cda:effectiveTime/cda:high').attr('value'))
               end
+
               prn_element = order_element.xpath("./cda:entryRelationship/cda:observation[cda:code/@code='PRNIND']/cda:value/@value").to_s
               #STDERR.puts "PRN_ELEMENT: "+prn_element.inspect
               if prn_element == "true"

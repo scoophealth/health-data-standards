@@ -111,5 +111,29 @@ module E2E
       # One nullFlavor observation is present in patient lab results
       assert_equal 0, patient.results[30].codes.size
     end
+
+    def test_null_flavor_times
+
+      doc = Nokogiri::XML(File.new('test/fixtures/PITO/MZarilla3.xml'))
+      doc.root.add_namespace_definition('cda', 'urn:hl7-org:v3')
+      pi = HealthDataStandards::Import::E2E::PatientImporter.instance
+      patient = pi.parse_e2e(doc)
+
+      result = patient.results[0]      
+      code_system = result.codes.keys[0]
+      assert_equal ["6690-2"], result.codes[code_system]
+
+      assert_nil result.start_time
+      assert_nil result.time
+
+      result = patient.results[1]      
+      code_system = result.codes.keys[0]
+      assert_equal ["789-8"], result.codes[code_system]
+
+      assert_nil result.start_time
+      assert_nil result.time
+
+
+    end
   end
 end
