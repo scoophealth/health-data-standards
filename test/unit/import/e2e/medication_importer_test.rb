@@ -18,6 +18,7 @@ module E2E
       medication = patient.medications[0]
       assert_equal "TYLENOL EXTRA STRENGTH TAB 500MG", medication.description
 
+      assert_equal 2, medication.codes.length # guard against duplicated entries
       assert medication.codes['HC-DIN'].include? '00559407'
       assert medication.codes['whoATC'].include? 'N02BE01'
 
@@ -62,8 +63,10 @@ module E2E
 
       # second listed medication (check what, when, who provided)
       medication = patient.medications[1]
+      assert_equal 2, medication.codes.length
       assert medication.codes['HC-DIN'].include? '00613215'
       assert medication.codes['whoATC'].include? 'C03DA01'
+      assert_equal 1, medication.codes['whoATC'].length
       assert_equal Time.gm(2013,9,27).to_i, medication.time
       assert_equal Time.gm(2013,9,27).to_i, medication.start_time
       assert_equal Time.gm(2013,11,22).to_i, medication.end_time
@@ -77,6 +80,7 @@ module E2E
 
       # third listed medication (check what, when, who provided)
       medication = patient.medications[2]
+      assert_equal 2, medication.codes.length
       assert medication.codes['HC-DIN'].include? '00636533'
       assert medication.codes['whoATC'].include? 'M01AE01'
       assert_equal Time.gm(2013,9,27).to_i, medication.time
@@ -95,6 +99,7 @@ module E2E
 
       # fourth listed medication (check what, when, who provided)
       medication = patient.medications[3]
+      assert_equal 2, medication.codes.length
       assert medication.codes['HC-DIN'].include? '02041421'
       assert medication.codes['whoATC'].include? 'N05BA06'
       assert_equal Time.gm(2013,9,27).to_i, medication.time
@@ -111,6 +116,7 @@ module E2E
 
       # fifth listed medication (check what, when, who provided)
       medication = patient.medications[4]
+      assert_equal 2, medication.codes.length
       assert medication.codes['HC-DIN'].include? '02244993'
       assert medication.codes['whoATC'].include? 'B01AC06'
       assert_equal Time.gm(2013,9,27).to_i, medication.time
@@ -126,6 +132,7 @@ module E2E
 
       # sixth listed medication (check what, when, who provided)
       medication = patient.medications[5]
+      assert_equal 2, medication.codes.length
       assert medication.codes['HC-DIN'].include? '02351420'
       assert medication.codes['whoATC'].include? 'C03CA01'
       assert_equal Time.gm(2013,9,27).to_i, medication.time
@@ -142,6 +149,7 @@ module E2E
 
       # seventh listed medication (check what, when, who provided)
       medication = patient.medications[6]
+      assert_equal 2, medication.codes.length
       assert medication.codes['HC-DIN'].include? '02363283'
       assert medication.codes['whoATC'].include? 'C09AA05'
       refute medication.codes['whoATC'].include? 'C03CA01'
@@ -159,6 +167,7 @@ module E2E
 
       # eighth listed medication (check what, when, who provided)
       medication = patient.medications[7]
+      assert_equal 2, medication.codes.length
       assert medication.codes['HC-DIN'].include? '02364948'
       assert medication.codes['whoATC'].include? 'C07AG02'
       refute medication.codes['whoATC'].include? 'C03CA01'
@@ -177,6 +186,7 @@ module E2E
       medication = patient.medications[8]
       assert_equal "ATORVASTATIN 40MG", medication.description
 
+      assert_equal 2, medication.codes.length
       assert medication.codes['HC-DIN'].include? '02387913'
       assert medication.codes['whoATC'].include? 'C10AA05'
 

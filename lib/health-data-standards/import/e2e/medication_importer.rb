@@ -207,7 +207,7 @@ module HealthDataStandards
           #medication.cumulativeMedicationDuration={}
 
           extract_description(entry_element, medication)
-          extract_codes(entry_element, medication)
+          extract_med_codes(entry_element, medication)
           extract_entry_value(entry_element, medication)
           extract_subadm_dates(entry_element, medication)
 
@@ -227,6 +227,40 @@ module HealthDataStandards
         end
 
         private
+
+        def extract_med_codes(parent_element, entry)
+          code_elements = parent_element.xpath(@code_xpath)
+          add_atc = true # used to prevent adding ATC code multiple times
+          code_elements.each do |code_element|
+            add_atc = add_med_code_if_present(code_element, entry, add_atc)
+            translations = code_element.xpath('cda:translation')
+            translations.each do |translation|
+              add_atc = add_med_code_if_present(translation, entry, add_atc)
+            end
+          end
+
+        end
+
+        def add_med_code_if_present(code_element, entry, add_atc)
+          if code_element['codeSystem'] && code_element['code']
+            if CodeSystemHelper.code_system_for(code_element['codeSystem']) == 'whoATC'
+              if add_atc
+                entry.add_code(code_element['code'], CodeSystemHelper.code_system_for(code_element['codeSystem']))
+                add_atc = false        # make sure ATC code is only added once
+              end
+            else # not 'whoATC'
+              entry.add_code(code_element['code'], CodeSystemHelper.code_system_for(code_element['codeSystem']))
+              if add_atc && CodeSystemHelper.code_system_for(code_element['codeSystem']) == 'HC-DIN'
+                entry.add_code(DinToAtc.atc_for(code_element['code']), 'whoATC')
+                add_atc = false        # make sure ATC code is only added once
+                #STDERR.puts code_element['code'], DinToAtc.atc_for(code_element['code'])
+              end
+            end
+          elsif code_element['nullFlavor']
+            entry.add_code(code_element['nullFlavor'], 'Unknown')
+          end
+          return add_atc
+        end
 
         def extract_description(parent_element, entry)
           code_elements = parent_element.xpath(@description_xpath+'/e2e:desc/text()')
