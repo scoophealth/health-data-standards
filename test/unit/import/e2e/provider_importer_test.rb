@@ -38,7 +38,7 @@ module E2E
         assert_equal "", provider_perf.provider.given_name
         #all provider_perf are LIFELABS
         assert_equal '0UoCjCo6K8lHYQK7KII0xBWisB+CjqYqxbPkLw==', provider_perf.provider.family_name
-        assert_equal "", provider_perf.provider.npi
+        assert_equal provider_perf.provider.family_name, provider_perf.provider.npi
         assert_equal nil, provider_perf.provider.tin
         assert_equal "", provider_perf.provider.specialty
         assert_equal nil, provider_perf.provider.phone
@@ -50,7 +50,7 @@ module E2E
       # assert_equal "NIST HL7 Test Laboratory", provider2[:organization]
       #assert_equal "200000000X", provider2.specialty
       #assert_nil provider2.npi
-      assert_equal "", provider2.npi
+      assert_equal provider2.family_name, provider2.npi
     end
     #
     # def test_encounter_provider_extraction

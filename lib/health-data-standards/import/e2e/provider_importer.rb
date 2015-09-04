@@ -67,7 +67,7 @@ module HealthDataStandards
           anon_provider[:specialty] = ''
           anon_provider[:addresses] = []
           anon_provider[:telecoms] = []
-          anon_provider[:npi] = ''
+          anon_provider[:npi] = anon_provider[:family_name]  # if empty causes creation of new entry in providers collection
           anon_provider[:start] = provider[:start]
           anon_provider[:end] = provider[:end]
           if print_key

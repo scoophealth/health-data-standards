@@ -57,9 +57,9 @@ module E2E
       #assert_equal 'tablet', medication.order_information.first.quantity_ordered['unit']
       assert_equal '', medication.order_information[0].performer.given_name
       assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
-      assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].performer.start
-      assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
-      assert_equal '', medication.order_information[0].performer.npi
+      assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].orderDateTime
+      #assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
+      assert_equal medication.order_information[0].performer.family_name, medication.order_information[0].performer.npi
 
       # second listed medication (check what, when, who provided)
       medication = patient.medications[1]
@@ -72,8 +72,8 @@ module E2E
       assert_equal Time.gm(2013,11,22).to_i, medication.end_time
       assert_equal 1, medication.order_information.size
       assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
-      assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].performer.start
-      assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
+      assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].orderDateTime
+      #assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
       assert_equal TRUE, medication.longTerm
       assert_equal FALSE, medication.order_information[0].prn
       assert_equal ' E2E_LONG_TERM_FLAG', medication.freeTextSig
@@ -88,8 +88,8 @@ module E2E
       assert_equal Time.gm(2013,11,22).to_i, medication.end_time
       assert_equal 1, medication.order_information.size
       assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
-      assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].performer.start
-      assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
+      assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].orderDateTime
+      #assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
       assert_equal TRUE, medication.longTerm
       assert_equal TRUE, medication.order_information[0].prn
       assert_includes medication.freeTextSig, ' E2E_PRN_FLAG E2E_LONG_TERM_FLAG'
@@ -107,8 +107,8 @@ module E2E
       assert_equal Time.gm(2013,11,6).to_i, medication.end_time
       assert_equal 1, medication.order_information.size
       assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
-      assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].performer.start
-      assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
+      assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].orderDateTime
+      #assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
       assert_equal TRUE, medication.longTerm
       assert_equal TRUE, medication.order_information[0].prn
       assert_equal ' E2E_PRN_FLAG E2E_LONG_TERM_FLAG', medication.freeTextSig
@@ -124,8 +124,8 @@ module E2E
       assert_equal Time.gm(2013,11,22).to_i, medication.end_time
       assert_equal 1, medication.order_information.size
       assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
-      assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].performer.start
-      assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
+      assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].orderDateTime
+      #assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
       assert_equal TRUE, medication.longTerm
       assert_equal FALSE, medication.order_information[0].prn
       assert_equal ' E2E_LONG_TERM_FLAG', medication.freeTextSig
@@ -140,8 +140,8 @@ module E2E
       assert_equal Time.gm(2014,1,17).to_i, medication.end_time
       assert_equal 1, medication.order_information.size
       assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
-      assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].performer.start
-      assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
+      assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].orderDateTime
+      #assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
       assert_equal TRUE, medication.longTerm
       assert_equal FALSE, medication.order_information[0].prn
       assert_equal ' E2E_LONG_TERM_FLAG', medication.freeTextSig
@@ -158,8 +158,8 @@ module E2E
       assert_equal Time.gm(2013,11,22).to_i, medication.end_time
       assert_equal 1, medication.order_information.size
       assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
-      assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].performer.start
-      assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
+      assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].orderDateTime
+      #assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
       assert_equal TRUE, medication.longTerm
       assert_equal FALSE, medication.order_information[0].prn
       assert_equal ' E2E_LONG_TERM_FLAG', medication.freeTextSig
@@ -176,8 +176,8 @@ module E2E
       assert_equal Time.gm(2013,11,22).to_i, medication.end_time
       assert_equal 1, medication.order_information.size
       assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
-      assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].performer.start
-      assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
+      assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].orderDateTime
+      #assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
       assert_equal TRUE, medication.longTerm
       assert_equal FALSE, medication.order_information[0].prn
       assert_equal ' E2E_LONG_TERM_FLAG', medication.freeTextSig
@@ -202,8 +202,8 @@ module E2E
       assert_equal 'd', medication.administration_timing['frequency']['denominator']['unit']
 
       assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
-      assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].performer.start
-      assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
+      assert_equal Time.gm(2013,9,27).to_i, medication.order_information[0].orderDateTime
+      #assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
       assert_equal 1, medication.order_information.size
       assert_equal TRUE, medication.longTerm
       assert_equal FALSE, medication.order_information[0].prn
@@ -228,8 +228,8 @@ module E2E
         assert_equal 1, medication.order_information.size
         assert_equal '', medication.order_information[0].performer.given_name
         assert_equal 'qbGJGxVjhsCx/JR42Bd7tX4nbBYNgR/TehN7gQ==', medication.order_information[0].performer.family_name
-        assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
-        assert_equal '', medication.order_information[0].performer.npi
+        #assert_equal medication.order_information[0].performer.start, medication.order_information[0].orderDateTime
+        assert_equal medication.order_information[0].performer.family_name, medication.order_information[0].performer.npi
       end
     end
 
@@ -375,7 +375,7 @@ module E2E
       assert_equal Time.gm(2013,2,11).to_i, medication.order_information[0].orderDateTime
       assert_equal Time.gm(2013,2,12).to_i, medication.order_information[0].orderExpirationDateTime
       assert_equal Time.gm(2003,5,29).to_i, medication.order_information[0].performer.start
-      assert_equal '', medication.order_information[0].performer.npi
+      assert_equal medication.order_information[0].performer.family_name, medication.order_information[0].performer.npi
       assert_equal TRUE, medication.order_information[0].prn
 
     end
@@ -397,7 +397,7 @@ module E2E
         assert_equal nil, medication.order_information[0].performer.start
         #assert_equal Time.gm(2014,2,27).to_i, medication.order_information[0].orderDateTime
         #assert_equal Time.gm(2014,3,6).to_i, medication.order_information[0].orderExpirationDateTime
-        assert_equal '', medication.order_information[0].performer.npi
+        assert_equal medication.order_information[0].performer.family_name, medication.order_information[0].performer.npi
       end
 
       # first listed medication
